@@ -1,1 +1,3273 @@
-var IS_CLIENT_SIDE="undefined"!=typeof window,IS_ANDROID_WEBVIEW=Boolean(IS_CLIENT_SIDE&&window.AndroidBridge),IS_IOS_WEBVIEW=Boolean(IS_CLIENT_SIDE&&window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.VKWebAppClose),IS_WEB=IS_CLIENT_SIDE&&!IS_ANDROID_WEBVIEW&&!IS_IOS_WEBVIEW,androidBridge=IS_CLIENT_SIDE?window.AndroidBridge:void 0,iosBridge=IS_IOS_WEBVIEW?window.webkit.messageHandlers:void 0;function _bridgeSend(e,t){androidBridge&&androidBridge[e]?androidBridge[e](JSON.stringify(t)):iosBridge&&iosBridge[e]&&"function"==typeof iosBridge[e].postMessage&&iosBridge[e].postMessage(t)}function _bridgeSupports(e){return IS_ANDROID_WEBVIEW?androidBridge&&"function"==typeof androidBridge[e]:!!IS_IOS_WEBVIEW&&(iosBridge&&iosBridge[e]&&"function"==typeof iosBridge[e].postMessage)}var IS_BRIDGE_AVAILABLE=!IS_WEB&&_bridgeSupports("VKWebAppConversionHit");if(function(e){if(!e.fastXDM){var t={},o={},i=[],n={};e.fastXDM={_id:0,helperUrl:"https://vk.com/js/api/xdmHelper.js",Server:function(o,i,n){this.methods=o||{},this.filter=i,this.options=n||{},this.id=e.fastXDM._id++,this.key=function(){for(var e="",t=0;t<5;t++)e+=Math.ceil(15*Math.random()).toString(16);return e}(),this.frameName="fXD"+this.key,this.server=!0,this.methods["%init%"]=this.methods.__fxdm_i=function(){d((function(t){for(var o in this.methods)if(this.methods[o]instanceof e.fastXDM.Server){var i=this.methods[o];"p"===t.protocol&&t.send(this,t.json.stringify(["%proxy%",[o,i.key]])),this.methods[o]=function(){this.callMethod.apply(this,arguments)}.bind(i)}}),this),e.fastXDM.run(this.id),this.methods.onInit&&this.methods.onInit()},t[this.key]=[p,this]},Client:function(i,n){if(this.methods=i||{},this.options=n||{},this.id=e.fastXDM._id++,this.client=!0,e.fastXDM.run(this.id),0!==window.name.indexOf("fXD"))throw Error("Wrong window.name property.");this.key=window.name.substr(3),this.caller=window.parent,o[this.key]||(o[this.key]={}),this.methods["%proxy%"]=function(e,t){e&&t&&this.caller.frames["fXD"+t]&&(o[this.key][e]={key:t,frame:{contentWindow:this.caller.frames["fXD"+t]}})}.bind(this),t[this.key]=[p,this],e.fastXDM.on("helper",(function(){e.fastXDM.onClientStart(this)}),this),d((function(e){e.send(this,e.json.stringify(["%init%"]));var t=this.methods;setTimeout((function(){t.onInit&&t.onInit()}),0)}),this)},onMessage:function(e){var o=e.data;if(!o)return!1;if("string"!=typeof o&&!(o instanceof String))return!1;var i=o.substr(0,5);if(t[i]){var n=t[i][1];!n||n.filter&&!n.filter(e.origin)||t[i][0](o.substr(6),n,e.origin)}},setJSON:function(e){n.json=e},getJSON:function(e){if(!e)return n.json;d((function(t){e(t.json)}))},getProxyToServer:function(e,t){return o[e]&&o[e][t]},setEnv:function(e){for(var t in e)n[t]=e[t];l()},_q:{},on:function(e,t,o){this._q[e]||(this._q[e]=[]),-1==this._q[e]?t.apply(o):this._q[e].push([t,o])},run:function(e){for(var t=(this._q[e]||[]).length,o=0;o<t;o++)this._q[e][o][0].apply(this._q[e][o][1]);this._q[e]=-1},waitFor:r},e.fastXDM.Server.prototype.start=function(t,o){if(t.contentWindow)this.caller=t.contentWindow,this.frame=t,e.fastXDM.on("helper",(function(){e.fastXDM.onServerStart(this)}),this);else{var i=this;(o=o||0)<50&&setTimeout((function(){i.start.apply(i,[t,o+1])}),100)}},e.fastXDM.Server.prototype.destroy=function(){delete t[this.key]},e.fastXDM.Server.prototype.append=function(e,t,o){var i=document.createElement("DIV");i.innerHTML='<iframe name="'+this.frameName+'" '+(o||"")+"></iframe>";var n=i.firstChild,r=this;return setTimeout((function(){n.frameBorder="0",t&&u(n,t),e.insertBefore(n,e.firstChild),r.start(n)}),0),n},e.fastXDM.Client.prototype.callMethod=e.fastXDM.Server.prototype.callMethod=function(){for(var t=Array.prototype.slice.call(arguments),o=t.shift(),i=0,n=t.length;i<n;i++)if("function"==typeof t[i]){this.funcsCount=(this.funcsCount||0)+1;var s=t[i],l="_func"+this.funcsCount;this.methods[l]=function(){s.apply(this,arguments),delete this.methods[l]},t[i]={_func:this.funcsCount}}else this.options.safe&&(t[i]=a(t[i],!1));r(this,"caller",(function(){e.fastXDM.on(this.id,(function(){d((function(i){var n=this,r=e.fastXDM.getProxyToServer(this.key,o);r&&(n=r,o=t.shift()),i.send(n,i.json.stringify([o,t]))}),this)}),this)}),this)},e.fastXDM.Client.prototype.isUnsafeMethod=e.fastXDM.Server.prototype.isUnsafeMethod=function(e){return~["%proxy%","%init%"].indexOf(e)||this.options.unsafeMethods&&~this.options.unsafeMethods.indexOf(e)},e.JSON&&"object"==typeof e.JSON&&e.JSON.parse&&e.JSON.stringify&&'{"a":[1,2,3]}'===e.JSON.stringify({a:[1,2,3]}).replace(/ /g,"")?n.json={parse:e.JSON.parse,stringify:e.JSON.stringify}:e.fastXDM._needJSON=!0,e.postMessage?(n.protocol="p",n.send=function(e,t){var o=e.frame?e.frame.contentWindow:e.caller;if(o)try{o.postMessage(e.key+":"+t,"*")}catch(i){window.postMessage.call(o,e.key+":"+t,"*")}},e.addEventListener?e.addEventListener("message",e.fastXDM.onMessage,!1):e.attachEvent("onmessage",e.fastXDM.onMessage),e.fastXDM._needJSON?(e.fastXDM._onlyJSON=!0,s()):l()):s()}function r(e,t,o,i,n){e[t]?o.apply(i):(n=n||0)<1e3&&setTimeout((function(){r(e,t,o,i,n+1)}),0)}function s(t){setTimeout((function(){var o=document.createElement("script");o.type="text/javascript",o.src=t||e.fastXDM.helperUrl,r(document,"body",(function(){document.getElementsByTagName("HEAD")[0].appendChild(o)}))}),0)}function a(e,t){var o;switch(typeof e){case"string":o=t?e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"):e.replace(/&#039;/g,"'").replace(/&quot;/g,'"').replace(/&gt;/g,">").replace(/&lt;/g,"<").replace(/&amp;/g,"&");break;case"object":if("[object Array]"===Object.prototype.toString.apply(e)){o=[];for(var i=0,n=e.length;i<n;i++)o[i]=a(e[i],t)}else for(var r in o={},e)Object.hasOwnProperty.call(e,r)&&(o[r]=a(e[r],t));break;default:o=e}return o}function d(e,t){n.loaded?e.apply(t,[n]):i.push([t,e])}function l(){n.loaded=!0;for(var e=0,t=i.length;e<t;e++)i[e][1].apply(i[e][0],[n])}function p(t,o,i){d((function(n){var r=n.json.parse(t),s=r[0];if(s){if("p"===n.protocol&&o.options.sameOrigin&&i!==e.origin&&!o.isUnsafeMethod(s))throw Error("Insecure method call.");r[1]||(r[1]=[]);for(var d=0,l=r[1].length;d<l;d++)if(r[1][d]&&r[1][d]._func){var p=r[1][d]._func;r[1][d]=function(){var e=Array.prototype.slice.call(arguments);e.unshift("_func"+p),o.callMethod.apply(o,e)}}else o.options.safe&&(r[1][d]=a(r[1][d],!0));setTimeout((function(){if(!o.methods[s])throw Error("fastXDM: Method "+s+" is undefined");o.methods[s].apply(o,r[1])}),0)}}))}function u(e,t){for(var o in t)e[o]&&"object"==typeof e[o]?u(e[o],t[o]):e[o]=t[o]}}(window),window.VK||(window.VK={}),VK.MD5||(VK.MD5=function(e){var t,o=function(e,t){var o=(65535&e)+(65535&t);return(e>>16)+(t>>16)+(o>>16)<<16|65535&o},i=function(e,t,i,n,r,s){return o(function(e,t){return e<<t|e>>>32-t}(o(o(t,e),o(n,s)),r),i)},n=function(e,t,o,n,r,s,a){return i(t&o|~t&n,e,t,r,s,a)},r=function(e,t,o,n,r,s,a){return i(t&n|o&~n,e,t,r,s,a)},s=function(e,t,o,n,r,s,a){return i(t^o^n,e,t,r,s,a)},a=function(e,t,o,n,r,s,a){return i(o^(t|~n),e,t,r,s,a)};return function(e){for(var t,o="0123456789abcdef",i="",n=0,r=e.length;n<r;n++)t=e.charCodeAt(n),i+=o.charAt(t>>>4&15)+o.charAt(15&t);return i}(function(e){for(var t="",o=0,i=32*e.length;o<i;o+=8)t+=String.fromCharCode(e[o>>5]>>>o%32&255);return t}(function(e,t){var i,d,l,p,u=1732584193,c=-271733879,h=-1732584194,f=271733878;e[t>>5]|=128<<t%32,e[14+(t+64>>>9<<4)]=t;for(var g=0,m=e.length;g<m;g+=16)i=u,d=c,l=h,p=f,u=n(u,c,h,f,e[g+0],7,-680876936),f=n(f,u,c,h,e[g+1],12,-389564586),h=n(h,f,u,c,e[g+2],17,606105819),c=n(c,h,f,u,e[g+3],22,-1044525330),u=n(u,c,h,f,e[g+4],7,-176418897),f=n(f,u,c,h,e[g+5],12,1200080426),h=n(h,f,u,c,e[g+6],17,-1473231341),c=n(c,h,f,u,e[g+7],22,-45705983),u=n(u,c,h,f,e[g+8],7,1770035416),f=n(f,u,c,h,e[g+9],12,-1958414417),h=n(h,f,u,c,e[g+10],17,-42063),c=n(c,h,f,u,e[g+11],22,-1990404162),u=n(u,c,h,f,e[g+12],7,1804603682),f=n(f,u,c,h,e[g+13],12,-40341101),h=n(h,f,u,c,e[g+14],17,-1502002290),c=n(c,h,f,u,e[g+15],22,1236535329),u=r(u,c,h,f,e[g+1],5,-165796510),f=r(f,u,c,h,e[g+6],9,-1069501632),h=r(h,f,u,c,e[g+11],14,643717713),c=r(c,h,f,u,e[g+0],20,-373897302),u=r(u,c,h,f,e[g+5],5,-701558691),f=r(f,u,c,h,e[g+10],9,38016083),h=r(h,f,u,c,e[g+15],14,-660478335),c=r(c,h,f,u,e[g+4],20,-405537848),u=r(u,c,h,f,e[g+9],5,568446438),f=r(f,u,c,h,e[g+14],9,-1019803690),h=r(h,f,u,c,e[g+3],14,-187363961),c=r(c,h,f,u,e[g+8],20,1163531501),u=r(u,c,h,f,e[g+13],5,-1444681467),f=r(f,u,c,h,e[g+2],9,-51403784),h=r(h,f,u,c,e[g+7],14,1735328473),c=r(c,h,f,u,e[g+12],20,-1926607734),u=s(u,c,h,f,e[g+5],4,-378558),f=s(f,u,c,h,e[g+8],11,-2022574463),h=s(h,f,u,c,e[g+11],16,1839030562),c=s(c,h,f,u,e[g+14],23,-35309556),u=s(u,c,h,f,e[g+1],4,-1530992060),f=s(f,u,c,h,e[g+4],11,1272893353),h=s(h,f,u,c,e[g+7],16,-155497632),c=s(c,h,f,u,e[g+10],23,-1094730640),u=s(u,c,h,f,e[g+13],4,681279174),f=s(f,u,c,h,e[g+0],11,-358537222),h=s(h,f,u,c,e[g+3],16,-722521979),c=s(c,h,f,u,e[g+6],23,76029189),u=s(u,c,h,f,e[g+9],4,-640364487),f=s(f,u,c,h,e[g+12],11,-421815835),h=s(h,f,u,c,e[g+15],16,530742520),c=s(c,h,f,u,e[g+2],23,-995338651),u=a(u,c,h,f,e[g+0],6,-198630844),f=a(f,u,c,h,e[g+7],10,1126891415),h=a(h,f,u,c,e[g+14],15,-1416354905),c=a(c,h,f,u,e[g+5],21,-57434055),u=a(u,c,h,f,e[g+12],6,1700485571),f=a(f,u,c,h,e[g+3],10,-1894986606),h=a(h,f,u,c,e[g+10],15,-1051523),c=a(c,h,f,u,e[g+1],21,-2054922799),u=a(u,c,h,f,e[g+8],6,1873313359),f=a(f,u,c,h,e[g+15],10,-30611744),h=a(h,f,u,c,e[g+6],15,-1560198380),c=a(c,h,f,u,e[g+13],21,1309151649),u=a(u,c,h,f,e[g+4],6,-145523070),f=a(f,u,c,h,e[g+11],10,-1120210379),h=a(h,f,u,c,e[g+2],15,718787259),c=a(c,h,f,u,e[g+9],21,-343485551),u=o(u,i),c=o(c,d),h=o(h,l),f=o(f,p);return[u,c,h,f]}(function(e){var t,o,i=Array(e.length>>2);for(t=0,o=i.length;t<o;t++)i[t]=0;for(t=0,o=8*e.length;t<o;t+=8)i[t>>5]|=(255&e.charCodeAt(t/8))<<t%32;return i}(t=function(e){for(var t,o,i="",n=-1,r=e.length;++n<r;)t=e.charCodeAt(n),o=n+1<r?e.charCodeAt(n+1):0,55296<=t&&t<=56319&&56320<=o&&o<=57343&&(t=65536+((1023&t)<<10)+(1023&o),n++),t<=127?i+=String.fromCharCode(t):t<=2047?i+=String.fromCharCode(192|t>>>6&31,128|63&t):t<=65535?i+=String.fromCharCode(224|t>>>12&15,128|t>>>6&63,128|63&t):t<=2097151&&(i+=String.fromCharCode(240|t>>>18&7,128|t>>>12&63,128|t>>>6&63,128|63&t));return i}(e)),8*t.length)))}),VK.extend=function(e,t,o){for(var i in t)(o||void 0===e[i])&&(e[i]=t[i]);return e},VK.extend(VK,{_domain:{base:"https://vk.com",login:"https://login.vk.com",main:"https://oauth.vk.com",api:"https://api.vk.com"}},!0),VK.xdConnectionCallbacks)setTimeout((function(){for(var e;e=VK.xdConnectionCallbacks.pop();)e()}),0),VK.Widgets&&!VK.Widgets._constructor&&(VK.Widgets=!1);else{function obj2qs(e){if(!e)return"";var t=[];for(var o in e)e.hasOwnProperty(o)&&t.push(encodeURIComponent(o)+"="+encodeURIComponent(e[o].toString()||""));return t.length?"?"+t.join("&"):""}VK.extend(VK,{version:1,_apiId:null,_session:null,_userStatus:"unknown",_path:{login:"authorize",proxy:"fxdm_oauth_proxy.html"},_rootId:"vk_api_transport",_nameTransportPath:"",xdReady:!1,access:{FRIENDS:2,PHOTOS:4,AUDIO:8,VIDEO:16,MATCHES:32,QUESTIONS:64,WIKI:128}}),VK.init=function(e){var t,o;if(VK._apiId=null,!e.apiId)throw Error("VK.init() called without an apiId");if(VK._apiId=e.apiId,e.onlyWidgets)return!0;e.nameTransportPath&&""!==e.nameTransportPath&&(VK._nameTransportPath=e.nameTransportPath),(o=document.getElementById(VK._rootId))||((o=document.createElement("div")).id=VK._rootId,(t=document.body).insertBefore(o,t.childNodes[0])),o.style.position="absolute",o.style.top="-10000px";var i=VK.Cookie.load();i&&(VK.Auth._loadState="loaded",VK.Auth.setSession(i,i?"connected":"unknown"))},VK.Cookie||(VK.Cookie={_domain:null,load:function(){var e,t=document.cookie.match("\\bvk_app_"+VK._apiId+"=([^;]*)\\b");if(t){if("oauth"!=(e=this.decode(t[1])).secret)return!1;e.expire=parseInt(e.expire,10),VK.Cookie._domain="."+window.location.hostname}return e},setRaw:function(e,t,o,i){var n;n="vk_app_"+VK._apiId+"="+e;var r=i?(new Date).getTime()+1e3*i:1e3*t;n+=e&&0===t?"":"; expires="+new Date(r).toGMTString(),n+="; path=/",n+=o?"; domain=."+o:"",document.cookie=n,this._domain=o},set:function(e,t){e?this.setRaw(this.encode(e),e.expire,window.location.hostname,(t||{}).time):this.clear()},clear:function(){this.setRaw("",0,this._domain,0)},encode:function(e){var t,o=[];for(t in e)"user"!=t&&o.push(encodeURIComponent(t)+"="+encodeURIComponent(e[t]));return o.sort(),o.join("&")},decode:function(e){var t,o,i={},n=e.split("&");for(t=0;t<n.length;t++)(o=n[t].split("=",2))&&o[0]&&(i[decodeURIComponent(o[0])]=decodeURIComponent(o[1]));return i}}),VK.Api||(VK.Api={_headId:null,_callbacks:{},ie6_7:function(){return VK.Api.ieTested||(VK.Api.isIE6_7=navigator.userAgent.match(/MSIE [6|7]/i),VK.Api.ieTested=!0),VK.Api.isIE6_7},supportCORS:function(){return"withCredentials"in new XMLHttpRequest||"undefined"!=typeof XDomainRequest},makeRequest:function(e,t){var o=VK.Api.createRequest("GET",e);return!!o&&(o.onload=function(){var e=o.responseText;if(200===o.status)t(e);else try{console.error("Open api access error",o.response)}catch(e){}},o.onerror=function(){try{console.error("Open api access error")}catch(e){}},o.send(),!0)},createRequest:function(e,t){var o=new XMLHttpRequest;return"withCredentials"in o?(o.open(e,t,!0),o.withCredentials=!0):"undefined"!=typeof XDomainRequest?((o=new XDomainRequest).open(e,t),o.withCredentials=!0):o=null,o},attachScript:function(e){VK.Api._headId||(VK.Api._headId=document.getElementsByTagName("head")[0]);var t=document.createElement("script");t.type="text/javascript",t.setAttribute("encoding","UTF-8"),t.src=e,VK.Api._headId.appendChild(t)},checkMethod:function(e,t,o,i){var n=e.toLowerCase();if("wall.post"===n){var r,s,a,d,l=/(^https?:\/\/)|(^(poll|album|photo|video|doc|audio|page|note)-?\d+_-?\d+)$/,p=[];t.v||(t.v="5.95"),t.attachments=t.attachments||t.attachment||[],"string"==typeof t.attachments&&(t.attachments=t.attachments.split(","));for(var u=0;u<t.attachments.length;u++){var c=t.attachments[u].trim();l.test(c)&&p.push(c)}return t.attachments=p.length?p:"",r="_"+Math.random().toString(16).substr(2),s={act:"wall_post_box",method:n,widget:4,aid:parseInt(VK._apiId,10),text:t.message||"",method_access:r},(s=VK.extend(s,t)).owner_id=parseInt(t.owner_id||0,10),s.publish_date=t.publish_date||"",a=VK._domain.base+"/al_apps.php",a+=obj2qs(s),VK.UI.popup({url:a,width:560,height:304}),d=setInterval((function(){VK.UI.active.closed&&(clearInterval(d),t.method_access=r,VK.Api.call(e,t,o,i))}),500),!1}return"messages.allowmessagesfromgroup"!=n||(r="_"+Math.random().toString(16).substr(2),a=VK._domain.base+"/widget_allow_messages_from_community.php?act=allow_box&group_id="+parseInt(t.group_id,10)+"&app_id="+parseInt(VK._apiId,10)+"&method_access="+r,VK.UI.popup({url:a,width:560,height:304}),d=setInterval((function(){VK.UI.active.closed&&(clearInterval(d),t.method_access=r,VK.Api.call(e,t,o,i))}),500),!1)},call:function(e,t,o,i){var n,r,s=t||{};if("object"!=typeof s||"function"!=typeof o)return!1;if(t.method_access||t.method_force||VK.Api.checkMethod(e,t,o,i)){if(i||(i=0),"loaded"!=VK.Auth._loadState){var a=function(i){i&&i.session&&(VK.Observer.unsubscribe("auth.loginStatus",a),VK.Api.call(e,t,o))};return VK.Observer.subscribe("auth.loginStatus",a),void VK.Auth.getLoginStatus()}if(VK.Api.queryLength(s)<1500&&!VK.Api.ie6_7()){for(var d=!1,l=parseInt(1e7*Math.random(),10);VK.Api._callbacks[l];)l=parseInt(1e7*Math.random(),10);s.callback="VK.Api._callbacks["+l+"]"}else d=!0;VK._session&&VK._session.sid&&(s.access_token=VK._session.sid),n=VK.Cookie.encode(s),r=function(n){if(!n.error||3!=n.error.error_code&&4!=n.error.error_code&&5!=n.error.error_code)o(n);else{if(i>3)return!1;var r=function(n){VK.Observer.unsubscribe("auth.sessionChange",r),delete t.access_token,n.session&&VK.Api.call(e,t,o,i+1)};VK.Observer.subscribe("auth.sessionChange",r),VK.Auth.getLoginStatus()}d||delete VK.Api._callbacks[l]},d?VK.xdReady?VK.XDM.remote.callMethod("apiCall",e,n,r):(VK.Observer.subscribe("xdm.init",(function(){VK.XDM.remote.callMethod("apiCall",e,n,r)})),VK.XDM.init()):(VK.Api._callbacks[l]=r,VK.Api.attachScript(VK._domain.api+"/method/"+e+"?"+n))}},queryLength:function(e){var t,o=100;for(t in e)o+=t.length+encodeURIComponent(e[t]).length+1;return o}},VK.api=function(e,t,o){VK.Api.call(e,t,o)}),VK.Auth||(VK.Auth={popup:null,lsCb:{},setSession:function(e,t,o,i){var n=!VK._session&&e,r=VK._session&&!e,s=VK._session&&e&&VK._session.mid!=e.mid,a=n||r||VK._session&&e&&VK._session.sid!=e.sid,d=t!=VK._userStatus,l={session:e,status:t,settings:o};return VK._session=e,VK._userStatus=t,VK.Cookie.set(e,i),(a||d||s)&&setTimeout((function(){d&&VK.Observer.publish("auth.statusChange",l),(r||s)&&VK.Observer.publish("auth.logout",l),(n||s)&&VK.Observer.publish("auth.login",l),a&&VK.Observer.publish("auth.sessionChange",l)}),0),l},login:function(e,t){if(!VK._apiId)return!1;var o=VK._domain.main+"/"+VK._path.login+"?client_id="+VK._apiId+"&display=popup&redirect_uri=close.html&response_type=token&openapi=1";t&&parseInt(t,10)>0&&(o+="&scope="+t),VK.Observer.unsubscribe("auth.onLogin"),VK.Observer.subscribe("auth.onLogin",e),VK.UI.popup({width:665,height:370,url:o});var i=function(){VK.Auth.getLoginStatus((function(e){VK.Observer.publish("auth.onLogin",e),VK.Observer.unsubscribe("auth.onLogin")}),!0)};VK.UI.popupOpened=!0;var n=function(){if(!VK.UI.popupOpened)return!1;try{if(!VK.UI.active.top||VK.UI.active.closed)return VK.UI.popupOpened=!1,i(),!0}catch(e){return VK.UI.popupOpened=!1,i(),!0}setTimeout(n,100)};setTimeout(n,100)},logout:function(e){VK.Auth.revokeGrants(e)},revokeGrants:function(e){var t=function(o){VK.Observer.unsubscribe("auth.statusChange",t),e&&e(o)};if(VK.Observer.subscribe("auth.statusChange",t),VK._session&&VK._session.sid){var o=VK._domain.login+"?act=openapi&oauth=1&aid="+parseInt(VK._apiId,10)+"&location="+encodeURIComponent(window.location.hostname)+"&do_logout=1&token="+VK._session.sid;if(VK.Api.supportCORS()){VK.Api.makeRequest(o+"&new=1",(function(){VK.Auth.setSession(null,"unknown")}))}else VK.Api.attachScript(o)}VK.Cookie.clear()},getSession:function(){return VK._session},getLoginStatus:function(cb,force){if(VK._apiId){if(cb){if(!force&&"loaded"==VK.Auth._loadState)return void cb({status:VK._userStatus,session:VK._session});VK.Observer.subscribe("auth.loginStatus",cb)}if(force||"loading"!=VK.Auth._loadState){VK.Auth._loadState="loading";var url=VK._domain.login+"?act=openapi&oauth=1&aid="+parseInt(VK._apiId,10)+"&location="+encodeURIComponent(window.location.hostname);if(VK.Api.supportCORS()){var loginCallback=function(response){if(this.JSON||(this.JSON={}),response="function"!=typeof JSON.parse?eval(response):JSON.parse(response),VK.Auth._loadState="loaded",response&&response.auth){var session={mid:response.user.id,sid:response.access_token,sig:response.sig,secret:response.secret,expire:response.expire};force&&(session.user=response.user);var status="connected"}else{var session=null,status=response.user?"not_authorized":"unknown";VK.Cookie.clear()}VK.Auth.setSession(session,status,!1,response),VK.Observer.publish("auth.loginStatus",{session:session,status:status}),VK.Observer.unsubscribe("auth.loginStatus")};VK.Api.makeRequest(url+"&new=1",loginCallback)}else{for(var rnd=parseInt(1e7*Math.random(),10);VK.Auth.lsCb[rnd];)rnd=parseInt(1e7*Math.random(),10);VK.Auth.lsCb[rnd]=function(e){if(delete VK.Auth.lsCb[rnd],VK.Auth._loadState="loaded",e&&e.auth){var t={mid:e.user.id,sid:e.access_token,sig:e.sig,secret:e.secret,expire:e.expire};force&&(t.user=e.user);var o="connected"}else{t=null,o=e.user?"not_authorized":"unknown";VK.Cookie.clear()}VK.Auth.setSession(t,o,!1,e),VK.Observer.publish("auth.loginStatus",{session:t,status:o}),VK.Observer.unsubscribe("auth.loginStatus")},VK.Api.attachScript(url+"&rnd="+rnd)}}}}}),VK.App||(VK.App={_appOpened:!1,_addToGroupPopup:null,open:function(e,t){!VK.App._appOpened&&VK._apiId&&(VK._session?VK.App._openApp(e,t):VK.Auth.login((function(o){o&&o.session&&VK.App._openApp(e,t)})))},_openApp:function(e,t){var o,i,n=[];if(t=t||{},e&&VK._apiId&&!VK.App._appOpened){if("[object Object]"===Object.prototype.toString.call(t.data))try{t.data=JSON.stringify(t.data)}catch(e){t.data=""}for(var r in o=VK._domain.base+"/apps?act=open_external_app_openapi&aid="+VK._apiId,t.aid=VK._apiId,t){var s="";t.hasOwnProperty(r)&&(void 0!==t[r]&&(s=encodeURIComponent(t[r])),n.push(encodeURIComponent(r)+"="+s))}o+="&url="+e,o+="&q="+encodeURIComponent(n.join("&")),i=VK.Util.Box(o,{},{closeExternalApp:function(){VK.App._result?(VK.Observer.publish("app.done",VK.App._result),VK.App._result=null):VK.Observer.publish("app.closed"),i.hide(),VK.App._appOpened=!1},externalAppDone:function(e,t){t?VK.App._result=e:(VK.Observer.publish("app.done",e),i.hide(),VK.App._appOpened=!1,VK.App._result=null)}}),i.show(),VK.App._appOpened=!0,VK.App._result=null}},addToGroup:function(e){this._addToGroupPopup&&!this._addToGroupPopup.closed||(this._onAddToGroupDone&&VK.Util.removeEvent("message",this._onAddToGroupDone,window),this._onAddToGroupDone=function(e){e.origin===VK._domain.base&&"app.addToGroup"===e.data.method&&(VK.Observer.publish("app.addToGroupDone",{app_id:e.data.app_id,group_ids:e.data.group_ids}),VK.Util.removeEvent("message",this._onAddToGroupDone,window),this._onAddToGroupDone=null)}.bind(this),window.postMessage&&VK.Util.addEvent("message",this._onAddToGroupDone,window),this._addToGroupPopup=VK.UI.popup({url:VK._domain.base+"/add_community_app.php?aid="+e,width:560,height:650}))}})}VK.UI||(VK.UI={active:null,_buttons:[],popup:function(e){var t,o=void 0!==window.screenX?window.screenX:window.screenLeft,i=void 0!==window.screenY?window.screenY:window.screenTop,n=void 0!==window.outerWidth?window.outerWidth:document.body.clientWidth,r=void 0!==window.outerHeight?window.outerHeight:document.body.clientHeight-22,s=e.width,a=e.height,d=parseInt(o+(n-s)/2,10),l=parseInt(i+(r-a)/2.5,10);return t="width="+s+",height="+a+",left="+(d=window.screen&&window.screenX&&screen.left&&screen.left>1e3?0:d)+",top="+l,this.active=window.open(e.url,"vk_openapi",t),this.active},button:function(e,t){var o;"string"==typeof e&&(e=document.getElementById(e)),this._buttons.push(e),index=this._buttons.length-1,o='<table cellspacing="0" cellpadding="0" id="openapi_UI_'+index+'" onmouseover="VK.UI._change(1, '+index+');" onmouseout="VK.UI._change(0, '+index+');" onmousedown="VK.UI._change(2, '+index+');" onmouseup="VK.UI._change(1, '+index+');" style="cursor: pointer; border: 0px; font-family: tahoma, arial, verdana, sans-serif, Lucida Sans; font-size: 10px;"><tr style="vertical-align: middle"><td><div style="border: 1px solid #3b6798;border-radius: 2px 0px 0px 2px;-moz-border-radius: 2px 0px 0px 2px;-webkit-border-radius: 2px 0px 0px 2px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 4px 0px 6px;line-height: 13px;">&#1042;&#1086;&#1081;&#1090;&#1080;</div></div></td><td><div style="background: url('+VK._domain.base+'/images/btns.png) 0px -42px no-repeat; width: 21px; height: 21px"></div></td><td><div style="border: 1px solid #3b6798;border-radius: 0px 2px 2px 0px;-moz-border-radius: 0px 2px 2px 0px;-webkit-border-radius: 0px 2px 2px 0px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 6px 0px 4px;line-height: 13px;">&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1077;</div></div></td></tr></table>',e.innerHTML=o,e.style.width=e.childNodes[0].offsetWidth+"px"},_change:function(e,t){for(var o=document.getElementById("openapi_UI_"+t).rows[0],i=[o.cells[0].firstChild.firstChild,o.cells[2].firstChild.firstChild],n=0;n<2;++n){var r=i[n];0===e?(r.style.backgroundColor="#6D8DB1",r.style.borderTopColor="#7E9CBC",r.style.borderLeftColor=r.style.borderRightColor=r.style.borderBottomColor="#5C82AB"):1==e?(r.style.backgroundColor="#7693B6",r.style.borderTopColor="#88A4C4",r.style.borderLeftColor=r.style.borderRightColor=r.style.borderBottomColor="#6088B4"):2==e&&(r.style.backgroundColor="#6688AD",r.style.borderBottomColor="#7495B8",r.style.borderLeftColor=r.style.borderRightColor=r.style.borderTopColor="#51779F")}0===e||2==e?o.cells[2].firstChild.style.backgroundPosition="0px -42px":1==e&&(o.cells[2].firstChild.style.backgroundPosition="0px -63px")}}),VK.XDM||(VK.XDM={remote:null,init:function(){if(this.remote)return!1;var e=VK._domain.api+"/"+VK._path.proxy;this.remote=new fastXDM.Server({onInit:function(){VK.xdReady=!0,VK.Observer.publish("xdm.init")}}),this.remote.append(document.getElementById(VK._rootId),{src:e})},xdHandler:function(code){try{eval("VK."+code)}catch(e){}}}),VK.Observer||(VK.Observer={_subscribers:function(){return this._subscribersMap||(this._subscribersMap={}),this._subscribersMap},publish:function(e){var t,o,i=Array.prototype.slice.call(arguments),n=(e=i.shift(),this._subscribers()[e]);if(n)for(t=0,o=n.length;t<o;t++)null!=n[t]&&n[t].apply(this,i)},subscribe:function(e,t){var o=this._subscribers();if("function"!=typeof t)return!1;o[e]?o[e].push(t):o[e]=[t]},unsubscribe:function(e,t){var o,i,n=this._subscribers()[e];if(!n)return!1;if("function"==typeof t)for(o=0,i=n.length;o<i;o++)n[o]==t&&(n[o]=null);else delete this._subscribers()[e]}}),VK.Widgets||(VK.Widgets={},VK.Widgets.count=0,VK.Widgets.RPC={},VK.Widgets.loading=function(e,t){e.style.background=t?'url("'+VK._domain.base+'/images/upload.gif") center center no-repeat transparent':"none"},VK.Widgets.Comments=function(e,t,o){var i=VK.Util.getPageData();if(!VK._apiId)throw Error("VK not initialized. Please use VK.init");t=VK.Util.parseOptions(t);document.getElementById(e);var n,r={limit:t.limit||10,height:t.height||0,mini:void 0===t.mini?"auto":t.mini,norealtime:t.norealtime?1:0},s=function(){return n.callMethod("mouseUp"),!1},a=function(e){n.callMethod("mouseMove",{screenY:e.screenY})};if(t.browse)r.browse=1,r.replies=t.replies||0;else{var d=t.pageUrl||i.url;"/"==d.substr(0,1)&&(d=location.protocol+"//"+location.host+d),VK.extend(r,{page:o||0,status_publish:void 0===t.autoPublish?0:t.autoPublish,attach:void 0===t.attach?"*":t.attach?t.attach:"",url:d,title:t.pageTitle||i.title,description:t.pageDescription||i.description,image:t.pageImage||i.image})}return t.onChange&&(VK.Observer.subscribe("widgets.comments.new_comment",t.onChange),VK.Observer.subscribe("widgets.comments.delete_comment",t.onChange)),VK.Widgets._constructor("widget_comments.php",e,t,r,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:n}).show()},startDrag:function(){cursorBack=window.document.body.style.cursor,window.document.body.style.cursor="pointer",VK.Util.addEvent("mousemove",a),VK.Util.addEvent("mouseup",s)},stopDrag:function(){window.document.body.style.cursor=cursorBack,VK.Util.removeEvent("mousemove",a),VK.Util.removeEvent("mouseup",s)}},{startHeight:133,minWidth:300},(function(e,t,o){t,n=o}))},VK.Widgets.CommentsBrowse=function(e,t){return(t=VK.Util.parseOptions(t)).browse=1,VK.Widgets.Comments(e,t)},VK.Widgets.Recommended=function(e,t){VK.Util.getPageData();if(!VK._apiId)throw Error("VK not initialized. Please use VK.init");var o={limit:(t=VK.Util.parseOptions(t)).limit||5,max:t.max||0,sort:t.sort||"friend_likes",verb:t.verb||0,period:t.period||"week",target:t.target||"parent"};return VK.Widgets._constructor("widget_recommended.php",e,t,o,{},{startHeight:116+47*o.limit-15,minWidth:150})},VK.Widgets.Post=function(e,t,o,i,n){n=VK.Util.parseOptions(n);document.getElementById(e);var r,s,a={owner_id:t,post_id:o,hash:i||"",from:n?n.from:""};return VK.Widgets._constructor("widget_post.php",e,n,a,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:r}).show()},startDrag:function(){s=window.document.body.style.cursor,window.document.body.style.cursor="pointer"},stopDrag:function(){window.document.body.style.cursor=s}},{startHeight:90,minWidth:250},(function(e,t,o){t,r=o}))},VK.Widgets.TextLive=function(e,t,o,i,n){return n=VK.Util.parseOptions(n),VK.Widgets._constructor("widget_textlive.php",e,n,{textlive_id:t,textpost_id:o,hash:i||""},null,{startHeight:o?176:167,minWidth:320})},VK.Widgets.Like=function(e){if(e)return e;var t=[];return e=function(e,o,i){var n=VK.Util.getPageData();if(!VK._apiId)throw Error("VK not initialized. Please use VK.init");var r,s,a,d,l,p,u={18:43,20:47,22:51,24:55,30:67},c="full"==(o=VK.extend(VK.Util.parseOptions(o),{allowTransparency:!0})).type||"button"==o.type||"vertical"==o.type||"mini"==o.type?o.type:"full",h="auto"===o.width&&("button"==c||"mini"==c),f=parseInt(o.height,10)||22,g=f&&u[f]?f:22,m=h?153:"full"==c?Math.max(200,o.width||350):"button"==c?180:"mini"==c?115:u[g],_="vertical"==c?2*f+7:f,y={page:i||0,url:o.pageUrl||n.url,type:c,verb:1==o.verb?1:0,color:o.color||"",title:o.pageTitle||n.title,description:o.pageDescription||n.description,image:o.pageImage||n.image,text:(o.text||"").substr(0,140),h:f},v=o.ttHere||!1,b=!1,w=null;function V(e){if((b||e)&&l&&d&&l&&("none"==d.style.display||"yes"==d.getAttribute("vkhidden"))){w&&clearTimeout(w),p&&clearTimeout(p);var t=o.getScrollTop?o.getScrollTop():document.body.scrollTop||document.documentElement.scrollTop||0,i=VK.Util.getXY(r,o.fixed),n=v?0:i[1];t>i[1]-120&&"top"!=o.tooltipPos||"vertical"==c||"bottom"==o.tooltipPos?(d.style.top=n+_+2+"px",l.callMethod("show",!1,c+"_"+g)):(d.style.top=n-128+"px",l.callMethod("show",!0,c+"_"+g)),VK.Util.ss(d,{left:(v?0:i[0])-("full"==c||"button"==c?32:2)+"px",display:"block",opacity:1,filter:"none"}),d.setAttribute("vkhidden","no"),b=!0}}function K(e){b&&!e||!l||(l.callMethod("hide"),a.callMethod("hide"),w=setTimeout((function(){d.style.display="none"}),400))}"vertical"!=c&&"button"!=c&&"mini"!=c||delete o.width,h&&(y.auto_width=1);var x=VK.Widgets._constructor("widget_like.php",e,o,y,{initTooltip:function(e){l=new fastXDM.Server({onInit:e?function(){V()}:function(){},proxy:a,showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[t.width,t.height],{proxy:l}).show()}},!1,{safe:!0}),(d=l.append(v?r:document.body,{src:s.src+"&act=a_like_tooltip",scrolling:"no",allowTransparency:!0,id:s.id+"_tt",style:{position:"absolute",padding:0,display:"none",opacity:.01,filter:"alpha(opacity=1)",border:"0",width:"274px",height:"130px",zIndex:5e3,overflow:"hidden"}})).setAttribute("vkhidden","yes"),d.onmouseover=function(){clearTimeout(p),b=!0},d.onmouseout=function(){clearTimeout(p),b=!1,p=setTimeout((function(){K()}),200)}},showTooltip:V,hideTooltip:K,destroy:function(){a.destroy();try{s.src="about: blank;"}catch(e){}if(s.parentNode.removeChild(s),d){try{d.src="about: blank;"}catch(e){}d.parentNode.removeChild(d)}l&&l.destroy()},showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:a}).show()},proxy:function(){l&&l.callMethod.apply(l,arguments)}},{startHeight:_,minWidth:m},(function(e,t,o){a=o,VK.Util.ss(r=e,{height:_+"px",width:m+"px",position:"relative",clear:"both"}),VK.Util.ss(s=t,{height:_+"px",width:m+"px",overflow:"hidden",zIndex:150}),r.onmouseover=function(){clearTimeout(p),b=!0},r.onmouseout=function(){clearTimeout(p),b=!1,p=setTimeout((function(){K()}),200)}}));return t.push(x),x},e.destroyAll=function(){for(var e=null;t[0];)(e=VK.Widgets.RPC[t.pop()])&&e.methods.destroy()},e}(VK.Widgets.Like),VK.Widgets.Poll=function(e,t,o){var i=VK.Util.getPageData();if(!o)throw Error("No poll id passed");var n,r={poll_id:o,url:(t=VK.Util.parseOptions(t)).pageUrl||i.url||location.href,title:t.pageTitle||i.title,description:t.pageDescription||i.description};return t.preview&&(r.is_preview=1,delete t.preview),void 0!==t.share&&(r.share=t.share?1:0),VK.Widgets._constructor("al_widget_poll.php",e,t,r,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:n}).show()}},{startHeight:144,minWidth:300},(function(e,t,o){n=o}))},VK.Widgets.App=function(e,t,o){if(!t)throw Error("No app id passed");o=VK.Util.parseOptions(o);var i,n=void 0,r=void 0,s={aid:t,mode:parseInt(o.mode,10)||1};switch(s.mode){case 1:o.width=144,n=251;break;case 2:o.width=o.width?Math.max(200,Math.min(1e4,parseInt(o.width,10))):200,r=n=193;break;case 3:o.width=o.width?Math.max(50,Math.min(1e4,parseInt(o.width,10))):void 0,r=n=o.height={18:18,20:20,22:22,24:24,30:30}[parseInt(o.height,10)||30]}return i=o.width,VK.Widgets._constructor("widget_app.php",e,o,s,{},{startHeight:n,height:r,minWidth:i})},VK.Widgets.Community=VK.Widgets.Group=function(e,t,o){if(t=VK.Util.parseOptions(t),!(o=parseInt(o,10)))throw Error("No group_id passed");t.mode=parseInt(t.mode,10).toString();var i,n,r={gid:o,mode:t.mode?t.mode:"0"},s=3==t.mode?185:1==t.mode?141:0|t.height||290;function a(){return i.callMethod("mouseUp"),!1}function d(e){return i.callMethod("mouseMove",{screenY:e.screenY}),!1}return t.wall&&(r.wall=t.wall),r.color1=t.color1||"",r.color2=t.color2||"",r.color3=t.color3||"",r.class_name=t.class_name||"",t.no_head&&(r.no_head=1),t.no_cover&&(r.no_cover=1),t.wide&&(r.wide=1,(!t.width||t.width<300)&&(t.width=300)),0|!t.width&&(t.width=200),VK.Widgets._constructor("widget_community.php",e,t,r,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:i}).show()},startDrag:function(){n=window.document.body.style.cursor,window.document.body.style.cursor="pointer",VK.Util.addEvent("mousemove",d),VK.Util.addEvent("mouseup",a)},stopDrag:function(){window.document.body.style.cursor=n,VK.Util.removeEvent("mousemove",d),VK.Util.removeEvent("mouseup",a)},auth:function(){VK.Auth.login(null,1)}},{minWidth:120,startHeight:s},(function(e,t,o){i=o}))},VK.Widgets.Auth=function(e,t){VK.Util.getPageData();if(!VK._apiId)throw Error("VK not initialized. Please use VK.init");return(t=VK.Util.parseOptions(t)).width||(t.width=200),t.type?type=1:type=0,VK.Widgets._constructor("widget_auth.php",e,t,{},{makeAuth:function(e){if(e.session&&(VK.Auth._loadState="loaded",VK.Auth.setSession(e.session,"connected"),VK.Observer.publish("auth.loginStatus",{session:e.session,status:"connected"}),VK.Observer.unsubscribe("auth.loginStatus")),t.onAuth)t.onAuth(e);else{if(t.authUrl)var o=t.authUrl;else o=window.location.href;-1==o.indexOf("?")?o+="?":o+="&";var i=[];for(var n in e)"session"!=n&&i.push(n+"="+decodeURIComponent(e[n]).replace(/&/g,"%26").replace(/\#/g,"%23").replace(/\?/,"%3F"));window.location.href=o+i.join("&")}}},{startHeight:134})},VK.Widgets.Subscribe=function(e,t,o){if(!(o=parseInt(o,10)))throw Error("No owner_id passed");var i,n={oid:o};return(t=VK.Util.parseOptions(t)).mode&&(n.mode=t.mode),t.soft&&(n.soft=t.soft),VK.Widgets._constructor("widget_subscribe.php",e,t,n,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:i}).show()},auth:function(){VK.Auth.login(null,1)}},{minWidth:220,startHeight:22},(function(e,t,o){i=o}))},VK.Widgets.ContactUs=function(e,t,o){if(!(o=parseInt(o,10)))throw Error("No group or user id passed");t=VK.Util.parseOptions(t);var i={oid:o,height:{18:18,20:20,22:22,24:24,30:30}[parseInt(t.height,10)||24],text:(t.text||"").substr(0,140)};return VK.Widgets._constructor("widget_contactus.php",e,t,i,{},{startHeight:i.height,height:i.height},(function(e,t,o){o}))},VK.Widgets.Bookmarks=function(e,t){t=VK.Util.parseOptions(t);var o={height:{18:18,20:20,22:22,24:24,30:30}[parseInt(t.height,10)||30],url:t.url||window.location.href};return VK.Widgets._constructor("widget_bookmarks.php",e,t,o,{},{startHeight:o.height,height:o.height},(function(e,t,o){o}))},VK.Widgets.Playlist=function(e,t,o,i,n){var r,s={oid:parseInt(t,10),pid:parseInt(o,10),hash:i||""};if(!s.oid)throw Error("No owner id passed");if(!s.pid)throw Error("No playlist id passed");return n=VK.Util.parseOptions(n),VK.Widgets._constructor("widget_playlist.php",e,n,s,{showBox:function(e,t){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:r}).show()}},{minWidth:200},(function(e,t,o){r=o}))},VK.Widgets.Ads=function(e,t,o){t=VK.Util.parseOptions(t),o=o||{};var i,n={},r={},s={},a=document.getElementById(e),d={},l={},p={};for(var u in o){var c=-1!=function(e,t,o){for(var i=o||0,n=(e||[]).length;i<n;i++)if(e[i]==t)return i;return-1}(["hash"],u)?u:"ads_"+u;d[c]=o[u]}if(a&&a.getBoundingClientRect){a.style.width="100%",a.style.height="100%";var h=a.getBoundingClientRect();a.style.width="",a.style.height="",d.ads_ad_unit_width_auto=Math.floor(h.right-h.left),d.ads_ad_unit_height_auto=Math.floor(h.bottom-h.top)}return p.ads_ad_unit_width=100,p.ads_ad_unit_height=100,l.ads_ad_unit_width=parseInt(d.ads_ad_unit_width)||"auto"===d.ads_ad_unit_width&&d.ads_ad_unit_width_auto||p.ads_ad_unit_width,l.ads_ad_unit_height=parseInt(d.ads_ad_unit_height)||"auto"===d.ads_ad_unit_height&&d.ads_ad_unit_height_auto||p.ads_ad_unit_height,d.ads_handler&&(l.ads_handler=d.ads_handler),d.ads_handler_empty_html&&(l.ads_handler_empty_html=d.ads_handler_empty_html),delete d.ads_handler,delete d.ads_handler_empty_html,n.act="ads_web",n.url=location.href,VK.extend(n,d),t.noDefaultParams=!0,t.width=l.ads_ad_unit_width,t.allowTransparency=!0,r.startHeight=l.ads_ad_unit_height,r.minWidth=l.ads_ad_unit_width,s.adsOnInit=function(e,o){VK.Widgets.loading(a,!1),function(e){if(!e)return;for(var t in e){var o=e[t];"ads_ad_unit_width"===t||"ads_ad_unit_height"===t?t in d||(l[t]=parseInt(o)||"auto"===o&&d[t+"_auto"]||p[t]):t in l||(l[t]=o)}}(o),t.onAdsReady&&t.onAdsReady.apply(t.onAdsReady,Array.prototype.slice.call(arguments));!function(e){var t=function(e){var t=!1;try{if(!e)return!1;var o=!1;if(d(e))o=e;else if(l(e)){var i=e.split(".");o=window;for(var n=0,r=i.length;n<r&&(o=o[i[n]]);n++);if(!o){"function"===e.substr(0,8)&&(e="return "+e+";");var s=new Function(e)();d(s)?o=s:t=s}}if(o){var a=Array.prototype.slice.call(arguments,1);t=o.apply(o,a)}}catch(e){try{console.error(e)}catch(e){}}return t;function d(e){return"[object Function]"===Object.prototype.toString.call(e)}function l(e){return"[object String]"===Object.prototype.toString.call(e)}}(l.ads_handler,e);if(e<=0&&!0!==t){try{console.log("VK: ad_unit_id = "+d.ads_ad_unit_id,", errorCode = ",e)}catch(e){}!function(e,t,o){if(!e)return;if(!a)return;t=t?t+"px":"",o=o?o+"px":"";var n='<html><head></head><body style="padding: 0; margin: 0;"><div>'+e+"</div></body></html>",r=document.createElement("iframe");function s(){if(!o)try{var e=r.contentWindow.document.body.firstChild.getBoundingClientRect(),t=Math.ceil(e.bottom-e.top);t&&(r.style.height=t,a.style.height=t)}catch(e){}}r.onload=s,r.id=(i?i.id:"vkwidget-"+Math.round(1e6*Math.random()))+"_ads_html_handler",r.src="about:blank",r.width="100%",r.height="100%",r.scrolling="no",r.frameBorder="0",r.allowTransparency=!0,r.style.overflow="hidden",r.style.width=t,r.style.height=o,a.style.width=t,a.style.height=o,a.appendChild(r),r.contentWindow.vk_ads_html_handler=n,r.src='javascript:window["vk_ads_html_handler"]'}(l.ads_handler_empty_html,l.ads_ad_unit_width,l.ads_ad_unit_height)}}(e)},s.newAdsOnInitLoader=function(e){!function(e){if("vk__adsLight"in window)window.vk__adsLight&&vk__adsLight.userHandlers&&vk__adsLight.userHandlers.onInit&&vk__adsLight.userHandlers.onInit(!1);else{window.vk__adsLight=!1;var t=VK.Api&&VK.Api.attachScript||VK.addScript;if(Array.isArray(e))e.forEach((function(e){t(VK._domain.base+e)}));else{var o=parseInt(e);t(VK._domain.base+jsc("/web/ads_light.js?")+o)}}}(JSON.parse(e.replace(/&#039;/g,"'").replace(/&quot;/g,'"').replace(/&gt;/g,">").replace(/&lt;/g,"<").replace(/&amp;/g,"&")))},VK.Widgets._constructor("ads_rotate.php",e,t,n,s,r,(function(e,t,o){a=e,i=t,o}))},VK.Widgets.AllowMessagesFromCommunity=function(e,t,o){if(!(o=parseInt(o,10))||o<0)throw Error("No group id passed");t=VK.Util.parseOptions(t);var i={height:{22:22,24:24,30:30}[parseInt(t.height,10)||24],key:t.key?t.key.substr(0,256):"",group_id:o};return VK.Widgets._constructor("widget_allow_messages_from_community.php",e,t,i,{},{startHeight:i.height,height:i.height},(function(e,t,o){o}))},VK.Widgets.Article=function(e,t,o){var i,n={url:t};return o=VK.Util.parseOptions(o),VK.Widgets._constructor("widget_article.php",e,o,n,{showBox:function(e){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:i}).show()}},{},(function(e,t,o){i=o}))},VK.Widgets.Podcast=function(e,t,o){var i={episode:t};return o=VK.Util.parseOptions(o),VK.Widgets._constructor("widget_podcast.php",e,o,i,{showBox:function(e){VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:rpc}).show()}},{minWidth:300,startHeight:150})},VK.Widgets.CommunityMessages=function(e){if(e)return e;var t={},o={},i={no_button:{width:0,height:0},blue_circle:{width:50,height:50,margin:{bottom:20}}},n={left:{bottom:0,left:20},right:{bottom:0,right:20}};return e=function(r,s,a){(a=VK.Util.parseOptions(a)).width=300,a.height=399,a.expandTimeout=parseInt(a.expandTimeout)||0;var d={gid:s};a.expanded=parseInt(a.expanded)||0,(!a.from_dev&&null!=function(e){if(!window.localStorage)return null;return localStorage.getItem("vk_community_widget_"+e)}("expanded")||a.expanded)&&(a.shown=1),a.shown&&(d.shown=1),a.welcomeScreen||(d.disable_welcome_screen=1),d.ref_source_info=a.ref_source_info,d.ref_source_link=location.href;var l=a.buttonType;-1==Object.keys(i).indexOf(l)&&(l="blue_circle"),"no_button"==l&&(a.disableButtonTooltip=1),a.disableButtonTooltip&&(d.disable_tooltip=1),a.tooltipButtonText&&(d.tooltip_text=a.tooltipButtonText),a.disableNewMessagesSound&&(d.disable_new_messages_sound=1),t[r]&&e.destroy(r),d.domain=document.domain,a.no_loading=1,a.disableNewMessagesSound&&a.disableExpandChatSound||(a.enable_autoplay=1),a.disableExpandChatSound&&(d.disable_expand_chat_sound=1),a.expandTimeout&&(d.expand_timeout=a.expandTimeout),a.__alpha_new_widget&&(d.__alpha_new_widget=1);var p,u,c,h=!1,f=0,g=[0,0];V(a.widgetPosition),d.button_position=a.widgetPosition,window.addEventListener("message",(function(e){var t=document.getElementById(r),o=t.getElementsByTagName("iframe")[0];if(e.data&&"VKReforgedWidgetResize"===e.data.action){var i=e.data.params.width,n=e.data.params.height;o.width=i,o.height=n,t.style.width=i+"px",t.style.height=n+"px",t.style.margin=n>50?"0":"0 0 20px"}e.data&&"VKReforgedWidgetLogout"===e.data.action&&(o.parentNode.removeChild(o),t.style={})}),!1);var m=0,_={};function y(e){clearTimeout(o.titleTimer),o.titleTimer=setTimeout((function(){1==o.changeTitleMode?document.title=o.oldTitle||"":document.title=o.title,o.changeTitleMode=1==o.changeTitleMode?0:1,y()}),e?0:1500)}function v(){a.disableTitleChange||(clearTimeout(o.titleTimer),o.oldTitle?document.title=o.oldTitle:null===o.oldTitle&&(document.title=""),o.title="")}function b(){var e=document.getElementById(r),t=e.getElementsByTagName("iframe")[0];e.style.width=t.width="372px",e.style.height=t.height="399px",e.style.margin="0px 0px 0px 0px"}function w(){var e=document.getElementById(r),t=e.getElementsByTagName("iframe")[0],o=i[l],n=o.width+g[0],s=Math.max(o.height,g[1]);e.style.width=n+"px",e.style.height=s+"px";var a=o.margin?o.margin:{};e.style.margin="0px "+(a.right||0)+"px "+(a.bottom||0)+"px 0px",t&&(t.style.boxShadow="none",t.width=n,t.height=s)}function V(e){p=e,-1==Object.keys(n).indexOf(p)&&(p="right"),K(),x("changeButtonPosition",p)}function K(){var e=document.getElementById(r);if(e){var t=["left","right","top","bottom"];for(var o in t)e.style[t[o]]="";var i=n[p];for(var o in i)e.style[o]=i[o]+"px";m&&(f?b():w())}}function x(){u&&u.callMethod.apply(u,arguments)}function I(e){e&&"[object Object]"===Object.prototype.toString.call(e)||(e={}),null==e.welcomeScreen&&(e.welcomeScreen=a.welcomeScreen);var t=document.getElementById(r).getElementsByTagName("iframe")[0];t&&t.contentWindow.postMessage({handler:"VKReforgedWidgetExpand"},VK._domain.base),clearTimeout(_.showTimer),x("expand",e)}function C(e){x("setSourceData",VK.extend({link:location.href},e))}return t[r]=VK.Widgets._constructor("reforged_widget.php",r,a,d,{onStartLoading:function(){var e=document.getElementById(r);e.style.position="fixed",e.style["z-index"]=1e4,K()},onReady:function(){m=1,a.expandTimeout>0&&!a.shown&&(_.showTimer=setTimeout((function(){I({playSong:!a.disableExpandChatSound,noSaveState:1})}),a.expandTimeout))},showBox:function(e){if(h)try{h.hide();try{h.iframe.src="about: blank;"}catch(e){}h.iframe.parentNode.removeChild(h.iframe)}catch(e){}(h=VK.Util.Box(VK.Util.getAbsUrl(e),[],{proxy:u},{zIndex:10002})).show()},setTooltipSize:function(e){g=e,f||w()},expand:function(e){var t,o;e=e||{},f=1,b(),e.noSaveState||(t="expanded",o=1,window.localStorage&&localStorage.setItem("vk_community_widget_"+t,o))},minimize:function(){setTimeout((function(){var e;f=0,w(),e="expanded",window.localStorage&&localStorage.removeItem("vk_community_widget_"+e)}),120)},canNotWrite:function(e){a.onCanNotWrite&&a.onCanNotWrite(e)},destroy:function(){u.destroy();try{c.src="about: blank;"}catch(e){}try{c.parentNode.removeChild(c)}catch(e){}},fatalError:function(t,o){var i={code:t,widget:2,public_id:o};1903==t&&(i.referrer_domain=document.domain);var n=[];for(var s in i)n.push(s+"="+i[s]);e.destroy(r),VK.Util.Box(VK.Util.getAbsUrl("blank.php?"+n.join("&"))).show()},setPageTitle:function(e){a.disableTitleChange||(v(),o.oldTitle=document.title||null,o.title=e,o.changeTitleMode=0,y(1))},resetPageTitle:function(){v()},newMessage:function(){!document.hasFocus||document.hasFocus()||a.disableNewMessagesSound||x("playNewMsgSong")}},{},(function(e,t,o){u=o,c=t,a.shown?b():w()})),VK.Util.addEvent("popstate",C.bind(this,{}),window),VK.Util.addEvent("hashchange",C.bind(this,{}),window),{expand:I,minimize:function(){x("minimize");var e=document.getElementById(r).getElementsByTagName("iframe")[0];e&&e.contentWindow.postMessage({handler:"VKReforgedWidgetMinimize"},VK._domain.base)},destroy:function(){v();var t=document.getElementById(r).getElementsByTagName("iframe")[0];t&&t.contentWindow.postMessage({handler:"VKReforgedWidgetDestroy"},VK._domain.base),e.destroy(r)},setSourceData:C,changeButtonPosition:V,stopTitleAnimation:v}},e.destroy=function(e){if(t[e]){var o=VK.Widgets.RPC[t[e]];o&&o.methods.destroy(),delete t[e]}},e.expand=function(e){console.log(t[e])},e}(VK.Widgets.CommunityMessages),VK.Widgets._constructor=function(e,t,o,i,n,r,s,a,d){var l=document.getElementById(t);if(a=a||++VK.Widgets.count,!l){if((d=d||0)>10)throw Error("VK.Widgets: object #"+t+" not found.");return setTimeout((function(){VK.Widgets._constructor(e,t,o,i,n,r,s,a,d+1)}),500),a}r=r||{},n=n||{},(o=o||{}).preview&&(i.preview=1,delete o.preview);var p,u,c,h,f,g,m="auto"===o.width?0|(l.clientWidth||l.offsetWidth||r.minWidth):parseInt(o.width||0,10);"silent_code"===i.act?(m="1px",l.style.opacity=0,l.style.display="none",l.style.position="absolute"):m=m?Math.max(r.minWidth||200,Math.min(r.maxWidth||1e4,m))+"px":"100%",l.style.width=m,o.height?(i.height=o.height,l.style.height=o.height+"px"):l.style.height=(r.startHeight||200)+"px","100%"===m&&(i.startWidth=0|(l.clientWidth||l.offsetWidth)),i.url||(i.url=o.pageUrl||location.href.replace(/#.*$/,"")),p=VK._domain.base+"/"+e,u="",o.noDefaultParams||(u+="&app="+(VK._apiId||"0")+"&width="+encodeURIComponent(m)),u+="&_ver="+VK.version,VK._iframeAppWidget&&(i.iframe_app=1);var _=VK.Util.getPageData();for(g in i.url=i.url||_.url||"",i.referrer=i.referrer||document.referrer||"",i.title=i.title||_.title||document.title||"",i){if("title"==g&&i[g].length>80&&(i[g]=i[g].substr(0,80)+"..."),"description"==g&&i[g].length>160&&(i[g]=i[g].substr(0,160)+"..."),"number"==typeof i[g])c=i[g];else try{c=encodeURIComponent(i[g])}catch(e){c=""}u+="&"+g+"="+c}p+="?"+(u+="&"+(+new Date).toString(16)).substr(1),n.onStartLoading&&n.onStartLoading(),o.no_loading||VK.Widgets.loading(l,!0),n.showLoader=function(e){VK.Util.Loader(e)},n.publish=function(){var e=Array.prototype.slice.call(arguments);e.push(a),VK.Observer.publish.apply(VK.Observer,e)},n.onInit=function(){VK.Widgets.loading(l,!1),n.onReady&&n.onReady(),o.onReady&&o.onReady()},n.resize=function(e,t){l.style.height=e+"px";var o=document.getElementById("vkwidget"+a);o&&(o.style.height=e+"px")},n.resizeWidget=function(e,t){e=parseInt(e),t=parseInt(t);var i=document.getElementById("vkwidget"+a);isFinite(e)&&(l.style.width=e+"px",i&&(i.style.width=e+"px")),isFinite(t)&&(l.style.height=t+"px",i&&(i.style.height=t+"px")),o.onResizeWidget&&o.onResizeWidget()},n.updateVersion=function(e){e>1&&VK.Api.attachScript("//vk.com/js/api/openapi_update.js?"+parseInt(e))},h=VK.Widgets.RPC[a]=new fastXDM.Server(n,(function(e){return!e||(e=e.toLowerCase()).match(/(\.|\/)vk\.com($|\/|\?)/)}),{safe:!0});var y={overflow:"hidden"};o.custom_style&&"object"==typeof o.custom_style&&(y=VK.extend(y,o.custom_style));var v="";return o.enable_autoplay&&(v='allow="autoplay"'),f=VK.Widgets.RPC[a].append(l,{src:p,width:-1!=m.indexOf("%")?m:parseInt(m)||m,height:r.startHeight||"100%",scrolling:"no",id:"vkwidget"+a,allowTransparency:o.allowTransparency||!1,style:y},v),s&&setTimeout((function(){s(l,f||l.firstChild,h)}),10),a}),VK.Util||(VK.Util={getPageData:function(){if(!VK._pData){var e,t=document.getElementsByTagName("meta"),o={},i=["description","title","url","image","app_id"];for(var n in t)if(t[n].getAttribute&&t[n].getAttribute&&((e=t[n].getAttribute("name"))||(e=t[n].getAttribute("property"))))for(var r in i)e!=i[r]&&e!="og:"+i[r]&&e!="vk:"+i[r]||(o[i[r]]=t[n].content);o.app_id&&!VK._apiId&&(VK._apiId=o.app_id),o.title=o.title||document.title||"",o.description=o.description||"",o.image=o.image||"",!o.url&&VK._iframeAppWidget&&VK._apiId&&(o.url="/app"+VK._apiId,VK._browserHash&&(o.url+=VK._browserHash));var s=location.href.replace(/#.*$/,"");o.url&&o.url.indexOf(s)||(o.url=s),VK._pData=o}return VK._pData},getStyle:function(e,t){var o,i=document.defaultView||window;if(i.getComputedStyle){t=t.replace(/([A-Z])/g,"-$1").toLowerCase();var n=i.getComputedStyle(e,null);n&&(o=n.getPropertyValue(t))}else if(e.currentStyle){var r=t.replace(/\-(\w)/g,(function(e,t){return t.toUpperCase()}));o=e.currentStyle[t]||e.currentStyle[r]}return o},getAbsUrl:function(e){return VK._domain.base+"/"+e.replace(/^\s*\/?/,"")},parseOptions:function(e){return"[object Object]"!==Object.prototype.toString.call(e)&&(e={}),e.base_domain&&(VK._domain.base=e.base_domain),e.login_domain&&(VK._domain.login=e.login_domain),e},getXY:function(e,t){if(e&&void 0!==e){var o=0,i=0;if(void 0!==e.getBoundingClientRect){var n=e.getBoundingClientRect();o=n.left,i=n.top,t=!0}else if(e.offsetParent)do{o+=e.offsetLeft,i+=e.offsetTop,t&&(o-=e.scrollLeft,i-=e.scrollTop)}while(e=e.offsetParent);return t&&(i+=window.pageYOffset||window.scrollNode&&scrollNode.scrollTop||document.documentElement.scrollTop,o+=window.pageXOffset||window.scrollNode&&scrollNode.scrollLeft||document.documentElement.scrollLeft),[o,i]}},Loader:function e(t){e.loader||((e.loader=document.createElement("DIV")).innerHTML='<style type="text/css">        @-webkit-keyframes VKWidgetsLoaderKeyframes {0%{opacity: 0.2;}30%{opacity: 1;}100%{opacity: 0.2;}}        @keyframes VKWidgetsLoaderKeyframes {0%{opacity: 0.2;}30%{opacity: 1;}100%{opacity: 0.2;}}        .VKWidgetsLoader div {width: 7px;height: 7px;-webkit-border-radius: 50%;-khtml-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;background: #fff;top: 21px;position: absolute;z-index: 2;-o-transition: opacity 350ms linear; transition: opacity 350ms linear;opacity: 0.2;-webkit-animation-duration: 750ms;-o-animation-duration: 750ms;animation-duration: 750ms;-webkit-animation-name: VKWidgetsLoaderKeyframes;-o-animation-name: VKWidgetsLoaderKeyframes;animation-name: VKWidgetsLoaderKeyframes;-webkit-animation-iteration-count: infinite;-o-animation-iteration-count: infinite;animation-iteration-count: infinite;-webkit-transform: translateZ(0);transform: translateZ(0);}</style><div class="VKWidgetsLoader" style="position: fixed;left: 50%;top: 50%;margin: -25px -50px;z-index: 1002;height: 50px;width: 100px;"><div style="left: 36px;-webkit-animation-delay: 0ms;-o-animation-delay: 0ms;animation-delay: 0ms;"></div><div style="left: 47px;-webkit-animation-delay: 180ms;-o-animation-delay: 180ms;animation-delay: 180ms;"></div><div style="left: 58px;-webkit-animation-delay: 360ms;-o-animation-delay: 360ms;animation-delay: 360ms;"></div><span style="display: block;background-color: #000;-webkit-border-radius: 4px;-khtml-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;-webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);-moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);position: absolute;left: 0;top: 0;bottom: 0; right: 0;z-index: 1;opacity: 0.7;"></span></div>',document.body.insertBefore(e.loader,document.body.firstChild)),e.loader.style.display=t?"block":"none"},Box:function(e,t,o,i){o=o||{};var n=document.body.style.overflow;VK.Util.Loader(!0);var r=/(^|\.)(vk\.com|vkontakte\.ru)$/.test(location.hostname),s=new fastXDM.Server(VK.extend(o,{onInit:function(){a.style.background="transparent",a.style.visibility="visible",document.body.style.overflow="hidden",a.setAttribute("allowfullscreen",1),r&&(document.body.className+=" layers_shown"),VK.Util.Loader()},hide:function(){a.style.display="none"},tempHide:function(){a.style.left="-10000px",a.style.top="-10000px",a.style.width="10px",a.style.height="10px",r&&(document.body.className=document.body.className.replace(/\b\s*?layers_shown\s*\b/," ")),document.body.style.overflow=n},destroy:function(){try{a.src="about: blank;"}catch(e){}a.parentNode.removeChild(a),r&&(document.body.className=document.body.className.replace(/\b\s*?layers_shown\s*\b/," ")),document.body.style.overflow=n},resize:function(e,t){}},!0),!1,{safe:!0}),a=s.append(document.body,{src:e.replace(/&amp;/g,"&"),scrolling:"no",allowTransparency:!0,style:{position:"fixed",left:0,top:0,zIndex:i&&i.zIndex||1002,background:VK._domain.base+"/images/upload.gif center center no-repeat transparent",padding:"0",border:"0",width:"100%",height:"100%",overflow:"hidden",visibility:"hidden"}});return{show:function(e,t){a.style.display="block",document.body.style.overflow="hidden"},hide:function(){a.style.display="none",document.body.style.overflow=n},iframe:a,rpc:s}},addEvent:function(e,t,o){(o=o||window.document).addEventListener?o.addEventListener(e,t,!1):o.attachEvent&&o.attachEvent("on"+e,t)},removeEvent:function(e,t,o){(o=o||window.document).removeEventListener?o.removeEventListener(e,t,!1):o.detachEvent&&o.detachEvent("on"+e,t)},ss:function(e,t){VK.extend(e.style,t,!0)}}),VK.Retargeting||(VK.Retargeting={pixelCode:null,Init:function(e){return this.pixelCode=e,this},Event:function(e){if(this.pixelCode)if(IS_BRIDGE_AVAILABLE)_bridgeSend("VKWebAppRetargetingPixel",{pixel_code:this.pixelCode,event:e});else{var t=VK.Util.getPageData(),o=t.url.substr(0,500),i=t.title&&t.title.substr(0,500)||"";(window.Image?new Image:document.createElement("img")).src=VK._domain.base+"/rtrg?p="+this.pixelCode+(e?"&event="+encodeURIComponent(e):"")+(o?"&metatag_url="+encodeURIComponent(o):"")+(i?"&metatag_title="+encodeURIComponent(i):"")}},Hit:function(){this.Event()},Add:function(e){this.pixelCode&&e&&(IS_BRIDGE_AVAILABLE?_bridgeSend("VKWebAppRetargetingPixel",{pixel_code:this.pixelCode,target_group_id:e}):(window.Image?new Image:document.createElement("img")).src=VK._domain.base+"/rtrg?p="+this.pixelCode+"&audience="+encodeURIComponent(e))},ProductEvent:function(e,t,o,i){if(this.pixelCode&&t&&e){var n=!0;void 0!==(i=i||{}).show_errors&&(n=!!i.show_errors);var r="0";void 0!==i.errors_ignore&&(r=i.errors_ignore?"1":"0");var s=VK.Util.getPageData(),a=s.url.substr(0,500),d=s.title&&s.title.substr(0,500)||"",l=VK._domain.base+"/rtrg",p=o?JSON.stringify(o):"",u={p:this.pixelCode,products_event:t,price_list_id:e,e:"1",i:r,metatag_url:a,metatag_title:d};if(p&&(u.products_params=p),IS_BRIDGE_AVAILABLE)_bridgeSend("VKWebAppRetargetingPixel",{pixel_code:this.pixelCode,price_list_id:e,products_event:t,products_params:p});else{var c=l+"?"+Object.keys(u).map((function(e){return encodeURIComponent(e)+"="+encodeURIComponent(u[e])})).join("&");VK.Api.makeRequest(c,this.onDone.bind(this,n))}}},onDone:function(e,t){if(t&&e){var o;try{o=JSON.parse(t)}catch(e){return}o&&o.errors&&this.showErrors(o.errors)}},showErrors:function(e){if(e||e.length){var t="VK Pixel Error ("+this.pixelCode+"): ";if("string"!=typeof e){var o=e.length;if(o)for(var i=0;i<o;i++)console.error(t+e[i])}else console.error(t+e)}}}),VK.Pixel||(VK.Pixel=function(e){if(this.constructor!=VK.Pixel)throw Error("VK.Pixel was called without 'new' operator");return VK.extend(this,VK.Retargeting),this.pixelCode=e,this.Goal=function(t,o){return VK.Goal(t,o,e)},this}),VK.Goal||(VK.Goal=function(e,t,o){var i=o||VK.Retargeting.pixelCode;if(i&&"string"==typeof i){var n=e||"conversion";if("string"==typeof n){var r=(t||{}).value||0;if("string"==typeof r){if(parseFloat(r).toString()!==r)return void console.error("Error argument: parameters.value not a number or valid number string")}else if("number"!=typeof r)return void console.error("Error argument: parameters.value not a number or valid number string");if(IS_BRIDGE_AVAILABLE)_bridgeSend("VKWebAppConversionHit",{pixel_code:i,conversion_event:n,conversion_value:r});else{var s=VK._domain.base+"/rtrg",a={p:i,e:"1",c:n,v:r},d=s+"?"+Object.keys(a).map((function(e){return encodeURIComponent(e)+"="+encodeURIComponent(a[e])})).join("&");VK.Api.makeRequest(d,VK.Retargeting.onDone.bind(VK.Retargeting,!0))}}else console.error("Error argument: conversionName not a string")}else console.error("Error argument: pixelCode not a string. Use VK.Retargeting.Init or VK.Pixel to initialize pixel")}),window.vkAsyncInit&&setTimeout(vkAsyncInit,0),window.vkAsyncInitCallbacks&&vkAsyncInitCallbacks.length&&setTimeout((function(){for(var e;e=vkAsyncInitCallbacks.pop();)try{e()}catch(e){try{console.error(e)}catch(e){}}}),0);try{stManager.done("api/openapi.js")}catch(e){}
+var IS_CLIENT_SIDE = typeof window !== 'undefined';
+var IS_ANDROID_WEBVIEW = Boolean(IS_CLIENT_SIDE && window.AndroidBridge);
+var IS_IOS_WEBVIEW = Boolean(
+  IS_CLIENT_SIDE &&
+  window.webkit &&
+  window.webkit.messageHandlers &&
+  window.webkit.messageHandlers.VKWebAppClose
+);
+
+var IS_WEB = IS_CLIENT_SIDE && !IS_ANDROID_WEBVIEW && !IS_IOS_WEBVIEW;
+
+var androidBridge = IS_CLIENT_SIDE ? window.AndroidBridge : undefined;
+var iosBridge = IS_IOS_WEBVIEW ? window.webkit.messageHandlers : undefined;
+
+function _bridgeSend(method, props) {
+  if (androidBridge && androidBridge[method]) {
+    androidBridge[method](JSON.stringify(props));
+  }
+
+  else if (iosBridge && iosBridge[method] && typeof iosBridge[method].postMessage === 'function') {
+    iosBridge[method].postMessage(props);
+  }
+}
+
+function _bridgeSupports(method) {
+  if (IS_ANDROID_WEBVIEW) {
+    return androidBridge && typeof androidBridge[method] === 'function';
+  } else if (IS_IOS_WEBVIEW) {
+    return iosBridge && iosBridge[method] && typeof iosBridge[method].postMessage === 'function';
+  }
+
+  return false;
+}
+
+var IS_BRIDGE_AVAILABLE = !IS_WEB && _bridgeSupports('VKWebAppConversionHit');
+
+(function(w) {
+  if (w.fastXDM) return;
+
+  var handlers  = {};
+  var proxyToServer = {};
+  var onEnvLoad = [];
+  var env       = {};
+
+  // Key generation
+  function genKey() {
+    var key = '';
+    for (var i = 0; i < 5; i++) {
+      key += Math.ceil(Math.random() * 15).toString(16);
+    }
+    return key;
+  }
+
+  function waitFor(obj, prop, func, self,  count) {
+    if (obj[prop]) {
+      func.apply(self);
+    } else {
+      count = count || 0;
+      if (count < 1000) {
+        setTimeout(function() {
+          waitFor(obj, prop, func, self, count + 1);
+        }, 0);
+      }
+    }
+  }
+
+  function attachScript(url) {
+    setTimeout(function() {
+      var newScript  = document.createElement('script');
+      newScript.type = 'text/javascript';
+      newScript.src  = url || w.fastXDM.helperUrl;
+      waitFor(document, 'body', function() {
+        document.getElementsByTagName('HEAD')[0].appendChild(newScript);
+      });
+    }, 0);
+  }
+
+  function walkVar(value, clean) {
+    var newValue;
+
+    switch (typeof value) {
+      case 'string':
+        if (clean) {
+          newValue = value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        } else {
+          newValue = value.replace(/&#039;/g, '\'').replace(/&quot;/g, '"').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
+        }
+        break;
+      case 'object':
+        if (Object.prototype.toString.apply(value) === '[object Array]') {
+          newValue = [];
+          for (var i = 0, len = value.length; i < len; i++) {
+            newValue[i] = walkVar(value[i], clean);
+          }
+        } else {
+          newValue = {};
+          for (var k in value) {
+            if (Object.hasOwnProperty.call(value, k)) {
+              newValue[k] = walkVar(value[k], clean);
+            }
+          }
+        }
+        break;
+      default:
+        newValue = value;
+        break;
+    }
+
+    return newValue;
+  }
+
+  // Env functions
+  function getEnv(callback, self) {
+    if (env.loaded) {
+      callback.apply(self, [env]);
+    } else {
+      onEnvLoad.push([self, callback]);
+    }
+  }
+
+  function envLoaded() {
+    env.loaded = true;
+
+    for (var i = 0, len = onEnvLoad.length; i < len; i++) {
+      onEnvLoad[i][1].apply(onEnvLoad[i][0], [env]);
+    }
+  }
+
+  function applyMethod(strData, self, origin) {
+    getEnv(function(env) {
+      var data = env.json.parse(strData);
+      var method = data[0];
+
+      if (method) {
+        if (
+          env.protocol === 'p' &&
+          self.options.sameOrigin &&
+          origin !== w.origin &&
+          !self.isUnsafeMethod(method)
+        ) {
+          throw Error('Insecure method call.');
+        }
+
+        if (!data[1]) data[1] = [];
+
+        for (var i = 0, len = data[1].length; i < len; i++) {
+          if (data[1][i] && data[1][i]._func) {
+            var funcNum = data[1][i]._func;
+            data[1][i] = function() {
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift('_func' + funcNum);
+              self.callMethod.apply(self, args);
+            }
+          } else if (self.options.safe) {
+            data[1][i] = walkVar(data[1][i], true);
+          }
+        }
+
+        setTimeout(function() {
+          if (!self.methods[method]) {
+            throw Error('fastXDM: Method ' + method + ' is undefined');
+          }
+          self.methods[method].apply(self, data[1]);
+        }, 0);
+      }
+    });
+  }
+
+  function extend(obj1, obj2) {
+    for (var i in obj2) {
+      if (obj1[i] && typeof(obj1[i]) === 'object') {
+        extend(obj1[i], obj2[i])
+      } else {
+        obj1[i] = obj2[i];
+      }
+    }
+  }
+
+  // XDM object
+  w.fastXDM = {
+    _id: 0,
+    helperUrl: 'https://vk.com/js/api/xdmHelper.js',
+
+    Server: function(methods, filter, options) {
+      this.methods   = methods || {};
+      this.filter    = filter;
+      this.options   = options || {};
+      this.id        = w.fastXDM._id++;
+      this.key       = genKey();
+      this.frameName = 'fXD' + this.key;
+      this.server    = true;
+
+      this.methods['%init%'] = this.methods.__fxdm_i = function() {
+        getEnv(function(env) {
+          for (var method in this.methods) {
+            if (this.methods[method] instanceof w.fastXDM.Server) {
+              var proxyFromServer = this;
+              var proxyToServer = this.methods[method];
+
+              if (env.protocol === 'p') {
+                env.send(proxyFromServer, env.json.stringify(['%proxy%', [method, proxyToServer.key]]));
+              }
+
+              this.methods[method] = function() {
+                this.callMethod.apply(this, arguments);
+              }.bind(proxyToServer)
+            }
+          }
+        }, this);
+
+        w.fastXDM.run(this.id);
+        if (this.methods.onInit) {
+          this.methods.onInit();
+        }
+      };
+
+      handlers[this.key] = [applyMethod, this];
+    },
+
+    Client: function(methods, options) {
+      this.methods = methods || {};
+      this.options = options || {};
+      this.id      = w.fastXDM._id++;
+      this.client  = true;
+
+      w.fastXDM.run(this.id);
+
+      if (window.name.indexOf('fXD') === 0) {
+        this.key = window.name.substr(3);
+      } else {
+        throw Error('Wrong window.name property.');
+      }
+
+      this.caller = window.parent;
+
+      if (!proxyToServer[this.key]) {
+        proxyToServer[this.key] = {};
+      }
+      this.methods['%proxy%'] = function(method, key) {
+        if (method && key && this.caller.frames['fXD' + key]) {
+          proxyToServer[this.key][method] = {
+            key: key,
+            frame: {
+              contentWindow: this.caller.frames['fXD' + key]
+            }
+          };
+        }
+      }.bind(this);
+
+      handlers[this.key] = [applyMethod, this];
+
+      w.fastXDM.on('helper', function() {
+        w.fastXDM.onClientStart(this);
+      }, this);
+
+      getEnv(function(env) {
+        env.send(this, env.json.stringify(['%init%']));
+
+        var methods = this.methods;
+        setTimeout(function() {
+          if (methods.onInit) {
+            methods.onInit();
+          }
+        }, 0);
+      }, this);
+    },
+
+    onMessage: function(e) {
+      var data = e.data;
+      if (!data) {
+        return false;
+      }
+      if (typeof data !== 'string' && !(data instanceof String)) {
+        return false;
+      }
+
+      var key = data.substr(0, 5);
+      if (handlers[key]) {
+        var self = handlers[key][1];
+        if (self && (!self.filter || self.filter(e.origin))) {
+          handlers[key][0](data.substr(6), self, e.origin);
+        }
+      }
+    },
+
+    setJSON: function(json) {
+      env.json = json;
+    },
+
+    getJSON: function(callback) {
+      if (!callback) {
+        return env.json;
+      }
+
+      getEnv(function(env) {
+        callback(env.json);
+      });
+    },
+
+    getProxyToServer: function(key, method) {
+      return proxyToServer[key] && proxyToServer[key][method];
+    },
+
+    setEnv: function(exEnv) {
+      for (var i in exEnv) {
+        env[i] = exEnv[i];
+      }
+
+      envLoaded();
+    },
+
+    _q: {},
+
+    on: function(key, act, self) {
+      if (!this._q[key]) this._q[key] = [];
+
+      if (this._q[key] == -1) {
+        act.apply(self);
+      } else {
+        this._q[key].push([act, self]);
+      }
+    },
+
+    run: function(key) {
+      var len = (this._q[key] || []).length;
+      for (var i = 0; i < len; i++) {
+        this._q[key][i][0].apply(this._q[key][i][1]);
+      }
+
+      this._q[key] = -1;
+    },
+
+    waitFor: waitFor
+  }
+
+  w.fastXDM.Server.prototype.start = function(obj, count) {
+    if (obj.contentWindow) {
+      this.caller = obj.contentWindow;
+      this.frame  = obj;
+
+      w.fastXDM.on('helper', function() {
+        w.fastXDM.onServerStart(this);
+      }, this);
+    } else { // Opera old versions
+      var self = this;
+      count = count || 0;
+      if (count < 50) {
+        setTimeout(function() {
+          self.start.apply(self, [obj, count + 1]);
+        }, 100);
+      }
+    }
+  }
+
+  w.fastXDM.Server.prototype.destroy = function() {
+    delete handlers[this.key];
+  }
+
+  w.fastXDM.Server.prototype.append = function(obj, options, attrs) {
+    var div       = document.createElement('DIV');
+    div.innerHTML = '<iframe name="' + this.frameName + '" ' + (attrs || '') + '></iframe>';
+    var frame     = div.firstChild;
+    var self      = this;
+
+    setTimeout(function() {
+      frame.frameBorder = '0';
+      if (options) extend(frame, options);
+      obj.insertBefore(frame, obj.firstChild);
+      self.start(frame);
+    }, 0);
+
+    return frame;
+  }
+
+  w.fastXDM.Client.prototype.callMethod = w.fastXDM.Server.prototype.callMethod = function() {
+    var args   = Array.prototype.slice.call(arguments);
+    var method = args.shift();
+
+    for (var i = 0, len = args.length; i < len; i++) {
+      if (typeof(args[i]) === 'function') {
+        this.funcsCount = (this.funcsCount || 0) + 1;
+        var func        = args[i];
+        var funcName    = '_func' + this.funcsCount;
+
+        this.methods[funcName] = function() {
+          func.apply(this, arguments);
+          delete this.methods[funcName];
+        }
+
+        args[i] = {_func: this.funcsCount};
+      } else if (this.options.safe) {
+        args[i] = walkVar(args[i], false);
+      }
+    }
+
+    waitFor(this, 'caller', function() {
+      w.fastXDM.on(this.id, function() {
+        getEnv(function(env) {
+          var xdm = this;
+          var proxyToServer = w.fastXDM.getProxyToServer(this.key, method);
+
+          if (proxyToServer) {
+            xdm = proxyToServer;
+            method = args.shift();
+          }
+
+          env.send(xdm, env.json.stringify([method, args]));
+        }, this);
+      }, this);
+    }, this);
+  }
+
+  w.fastXDM.Client.prototype.isUnsafeMethod = w.fastXDM.Server.prototype.isUnsafeMethod = function(method) {
+    return ~['%proxy%', '%init%'].indexOf(method) || this.options.unsafeMethods && ~this.options.unsafeMethods.indexOf(method);
+  }
+
+  if (w.JSON && typeof(w.JSON) === 'object' && w.JSON.parse && w.JSON.stringify && w.JSON.stringify({a:[1,2,3]}).replace(/ /g, '') === '{"a":[1,2,3]}') {
+    env.json = {parse: w.JSON.parse, stringify: w.JSON.stringify};
+  } else {
+    w.fastXDM._needJSON = true;
+  }
+
+  // PostMessage cover
+  if (w.postMessage) {
+    env.protocol = 'p';
+    env.send = function(xdm, strData) {
+      var win = (xdm.frame ? xdm.frame.contentWindow : xdm.caller);
+      if (win) {
+        try {
+          win.postMessage(xdm.key + ':' + strData, "*");
+        } catch(e) {
+          window.postMessage.call(win, xdm.key + ':' + strData, "*");
+        }
+      }
+    }
+
+    if (w.addEventListener) {
+      w.addEventListener("message", w.fastXDM.onMessage, false);
+    } else {
+      w.attachEvent("onmessage", w.fastXDM.onMessage);
+    }
+
+    if (w.fastXDM._needJSON) {
+      w.fastXDM._onlyJSON = true;
+      attachScript();
+    } else {
+      envLoaded();
+    }
+  } else {
+    attachScript();
+  }
+})(window);
+
+if (!window.VK) window.VK = {};
+
+/*
+ * Based on JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+ * Copyright (C) Paul Johnston 1999 - 2009
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ */
+if(!VK.MD5){VK.MD5=function(n){var j=function(o,r){var q=(o&65535)+(r&65535),p=(o>>16)+(r>>16)+(q>>16);return(p<<16)|(q&65535)},g=function(o,p){return(o<<p)|(o>>>(32-p))},k=function(w,r,p,o,v,u){return j(g(j(j(r,w),j(o,u)),v),p)},a=function(q,p,w,v,o,u,r){return k((p&w)|((~p)&v),q,p,o,u,r)},h=function(q,p,w,v,o,u,r){return k((p&v)|(w&(~v)),q,p,o,u,r)},c=function(q,p,w,v,o,u,r){return k(p^w^v,q,p,o,u,r)},m=function(q,p,w,v,o,u,r){return k(w^(p|(~v)),q,p,o,u,r)},b=function(A,u){var z=1732584193,y=-271733879,w=-1732584194,v=271733878,r,q,p,o;A[u>>5]|=128<<((u)%32);A[(((u+64)>>>9)<<4)+14]=u;for(var t=0,s=A.length;t<s;t+=16){r=z;q=y;p=w;o=v;z=a(z,y,w,v,A[t+0],7,-680876936);v=a(v,z,y,w,A[t+1],12,-389564586);w=a(w,v,z,y,A[t+2],17,606105819);y=a(y,w,v,z,A[t+3],22,-1044525330);z=a(z,y,w,v,A[t+4],7,-176418897);v=a(v,z,y,w,A[t+5],12,1200080426);w=a(w,v,z,y,A[t+6],17,-1473231341);y=a(y,w,v,z,A[t+7],22,-45705983);z=a(z,y,w,v,A[t+8],7,1770035416);v=a(v,z,y,w,A[t+9],12,-1958414417);w=a(w,v,z,y,A[t+10],17,-42063);y=a(y,w,v,z,A[t+11],22,-1990404162);z=a(z,y,w,v,A[t+12],7,1804603682);v=a(v,z,y,w,A[t+13],12,-40341101);w=a(w,v,z,y,A[t+14],17,-1502002290);y=a(y,w,v,z,A[t+15],22,1236535329);z=h(z,y,w,v,A[t+1],5,-165796510);v=h(v,z,y,w,A[t+6],9,-1069501632);w=h(w,v,z,y,A[t+11],14,643717713);y=h(y,w,v,z,A[t+0],20,-373897302);z=h(z,y,w,v,A[t+5],5,-701558691);v=h(v,z,y,w,A[t+10],9,38016083);w=h(w,v,z,y,A[t+15],14,-660478335);y=h(y,w,v,z,A[t+4],20,-405537848);z=h(z,y,w,v,A[t+9],5,568446438);v=h(v,z,y,w,A[t+14],9,-1019803690);w=h(w,v,z,y,A[t+3],14,-187363961);y=h(y,w,v,z,A[t+8],20,1163531501);z=h(z,y,w,v,A[t+13],5,-1444681467);v=h(v,z,y,w,A[t+2],9,-51403784);w=h(w,v,z,y,A[t+7],14,1735328473);y=h(y,w,v,z,A[t+12],20,-1926607734);z=c(z,y,w,v,A[t+5],4,-378558);v=c(v,z,y,w,A[t+8],11,-2022574463);w=c(w,v,z,y,A[t+11],16,1839030562);y=c(y,w,v,z,A[t+14],23,-35309556);z=c(z,y,w,v,A[t+1],4,-1530992060);v=c(v,z,y,w,A[t+4],11,1272893353);w=c(w,v,z,y,A[t+7],16,-155497632);y=c(y,w,v,z,A[t+10],23,-1094730640);z=c(z,y,w,v,A[t+13],4,681279174);v=c(v,z,y,w,A[t+0],11,-358537222);w=c(w,v,z,y,A[t+3],16,-722521979);y=c(y,w,v,z,A[t+6],23,76029189);z=c(z,y,w,v,A[t+9],4,-640364487);v=c(v,z,y,w,A[t+12],11,-421815835);w=c(w,v,z,y,A[t+15],16,530742520);y=c(y,w,v,z,A[t+2],23,-995338651);z=m(z,y,w,v,A[t+0],6,-198630844);v=m(v,z,y,w,A[t+7],10,1126891415);w=m(w,v,z,y,A[t+14],15,-1416354905);y=m(y,w,v,z,A[t+5],21,-57434055);z=m(z,y,w,v,A[t+12],6,1700485571);v=m(v,z,y,w,A[t+3],10,-1894986606);w=m(w,v,z,y,A[t+10],15,-1051523);y=m(y,w,v,z,A[t+1],21,-2054922799);z=m(z,y,w,v,A[t+8],6,1873313359);v=m(v,z,y,w,A[t+15],10,-30611744);w=m(w,v,z,y,A[t+6],15,-1560198380);y=m(y,w,v,z,A[t+13],21,1309151649);z=m(z,y,w,v,A[t+4],6,-145523070);v=m(v,z,y,w,A[t+11],10,-1120210379);w=m(w,v,z,y,A[t+2],15,718787259);y=m(y,w,v,z,A[t+9],21,-343485551);z=j(z,r);y=j(y,q);w=j(w,p);v=j(v,o)}return[z,y,w,v]},f=function(r){var q="",s=-1,p=r.length,o,t;while(++s<p){o=r.charCodeAt(s);t=s+1<p?r.charCodeAt(s+1):0;if(55296<=o&&o<=56319&&56320<=t&&t<=57343){o=65536+((o&1023)<<10)+(t&1023);s++}if(o<=127){q+=String.fromCharCode(o)}else{if(o<=2047){q+=String.fromCharCode(192|((o>>>6)&31),128|(o&63))}else{if(o<=65535){q+=String.fromCharCode(224|((o>>>12)&15),128|((o>>>6)&63),128|(o&63))}else{if(o<=2097151){q+=String.fromCharCode(240|((o>>>18)&7),128|((o>>>12)&63),128|((o>>>6)&63),128|(o&63))}}}}}return q},e=function(p){var o=Array(p.length>>2),r,q;for(r=0,q=o.length;r<q;r++){o[r]=0}for(r=0,q=p.length*8;r<q;r+=8){o[r>>5]|=(p.charCodeAt(r/8)&255)<<(r%32)}return o},l=function(p){var o="";for(var r=0,q=p.length*32;r<q;r+=8){o+=String.fromCharCode((p[r>>5]>>>(r%32))&255)}return o},d=function(o){return l(b(e(o),o.length*8))},i=function(q){var t="0123456789abcdef",p="",o;for(var s=0,r=q.length;s<r;s++){o=q.charCodeAt(s);p+=t.charAt((o>>>4)&15)+t.charAt(o&15)}return p};return i(d(f(n)))}}
+
+/*
+ * VKontakte Open API JavaScript library
+ * http://vk.com/
+ */
+
+VK.extend = function(target, source, overwrite) {
+  for (var key in source) {
+    if (overwrite || typeof target[key] === 'undefined') {
+      target[key] = source[key];
+    }
+  }
+  return target;
+};
+
+VK.extend(VK, {
+  _domain: {
+    base: 'https://vk.com',
+    login: 'https://login.vk.com',
+    main: 'https://oauth.vk.com',
+    api: 'https://api.vk.com'
+  }
+}, true);
+
+if (!VK.xdConnectionCallbacks) {
+
+  VK.extend(VK, {
+    version: 1,
+    _apiId: null,
+    _session: null,
+    _userStatus: 'unknown',
+    _path: {
+      login: 'authorize',
+      proxy: 'fxdm_oauth_proxy.html'
+    },
+    _rootId: 'vk_api_transport',
+    _nameTransportPath: '',
+    xdReady: false,
+    access: {
+      FRIENDS:   0x2,
+      PHOTOS:    0x4,
+      AUDIO:     0x8,
+      VIDEO:     0x10,
+      MATCHES:   0x20,
+      QUESTIONS: 0x40,
+      WIKI:      0x80
+    }
+  });
+
+  VK.init = function(options) {
+    var body, root;
+
+    VK._apiId = null;
+    if (!options.apiId) {
+      throw Error('VK.init() called without an apiId');
+    }
+    VK._apiId = options.apiId;
+
+    if (options.onlyWidgets) return true;
+
+    if (options.nameTransportPath && options.nameTransportPath !== '') {
+      VK._nameTransportPath = options.nameTransportPath;
+    }
+
+    root = document.getElementById(VK._rootId);
+    if (!root) {
+      root = document.createElement('div');
+      root.id = VK._rootId;
+      body = document.getElementsByTagName('body')[0];
+      body.insertBefore(root, body.childNodes[0]);
+    }
+    root.style.position = 'absolute';
+    root.style.top = '-10000px';
+
+    var session = VK.Cookie.load();
+    if (session) {
+      VK.Auth._loadState = 'loaded';
+      VK.Auth.setSession(session, session ? 'connected' : 'unknown');
+    }
+  };
+
+  if (!VK.Cookie) {
+    VK.Cookie = {
+      _domain: null,
+      load: function() {
+        var cookie = document.cookie.match('\\bvk_app_' + VK._apiId + '=([^;]*)\\b')
+        var session;
+
+        if (cookie) {
+          session = this.decode(cookie[1]);
+          if (session.secret != 'oauth') {
+            return false;
+          }
+          session.expire = parseInt(session.expire, 10);
+          VK.Cookie._domain = '.' + window.location.hostname;
+        }
+
+        return session;
+      },
+      setRaw: function(val, ts, domain, time) {
+        var rawCookie;
+        rawCookie = 'vk_app_' + VK._apiId + '=' + val + '';
+        var exp = time ? (new Date().getTime() + time * 1000) : ts * 1000;
+        rawCookie += (val && ts === 0 ? '' : '; expires=' + new Date(exp).toGMTString());
+        rawCookie += '; path=/';
+        rawCookie += (domain ? '; domain=.' + domain : '');
+        document.cookie = rawCookie;
+
+        this._domain = domain;
+      },
+      set: function(session, resp) {
+        if (session) {
+          this.setRaw(this.encode(session), session.expire, window.location.hostname, (resp || {}).time);
+        } else {
+          this.clear();
+        }
+      },
+      clear: function() {
+        this.setRaw('', 0, this._domain, 0);
+      },
+      encode: function(params) {
+        var
+            pairs = [],
+            key;
+
+        for (key in params) {
+          if (key != 'user') pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
+        }
+        pairs.sort();
+
+        return pairs.join('&');
+      },
+      decode: function(str) {
+        var
+            params = {},
+            parts = str.split('&'),
+            i,
+            pair;
+
+        for (i=0; i < parts.length; i++) {
+          pair = parts[i].split('=', 2);
+          if (pair && pair[0]) {
+            params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+          }
+        }
+
+        return params;
+      }
+    };
+  }
+
+  function obj2qs(obj) {
+    if (!obj) return '';
+    var qs = [];
+    for (var k in obj) {
+      if (obj.hasOwnProperty(k)) {
+        qs.push(encodeURIComponent(k) + '=' + encodeURIComponent(obj[k].toString() || ''));
+      }
+    }
+    return qs.length ? '?' + qs.join('&') : '';
+  }
+
+  if (!VK.Api) {
+    VK.Api = {
+      _headId: null,
+      _callbacks: {},
+
+      ie6_7: function() {
+        if (!VK.Api.ieTested) {
+          VK.Api.isIE6_7 = navigator.userAgent.match(/MSIE [6|7]/i);
+          VK.Api.ieTested = true;
+        }
+        return VK.Api.isIE6_7;
+      },
+
+      supportCORS: function() {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+          return true;
+        }
+
+        if (typeof XDomainRequest != "undefined") {
+          return true;
+        }
+
+        return false;
+      },
+
+      makeRequest: function(url, cb) {
+        var xhr = VK.Api.createRequest('GET', url);
+        if (!xhr) {
+          return false;
+        }
+
+        xhr.onload = function() {
+          var text = xhr.responseText;
+          if (xhr.status === 200) {
+            cb(text);
+          } else {
+            try {
+              console.error('Open api access error', xhr.response);
+            } catch(e) {
+              //nop
+            }
+          }
+        };
+
+        xhr.onerror = function() {
+          try {
+            console.error('Open api access error');
+          } catch(e) {
+            //nop
+          }
+        };
+
+        xhr.send();
+        return true;
+      },
+
+      createRequest: function(method, url) {
+        var xhr = new XMLHttpRequest();
+
+        if ("withCredentials" in xhr) {
+          // XHR for Chrome/Firefox/Opera/Safari.
+          xhr.open(method, url, true);
+          xhr.withCredentials = true;
+        } else if (typeof XDomainRequest != "undefined") {
+          // XDomainRequest for IE.
+          xhr = new XDomainRequest();
+          xhr.open(method, url);
+          xhr.withCredentials = true;
+        } else {
+          // CORS not supported.
+          xhr = null;
+        }
+
+        return xhr;
+      },
+
+      attachScript: function(url) {
+        if (!VK.Api._headId) VK.Api._headId = document.getElementsByTagName("head")[0];
+        var newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.setAttribute('encoding', 'UTF-8');
+        newScript.src = url;
+        VK.Api._headId.appendChild(newScript);
+      },
+
+      checkMethod: function(method, params, cb, queryTry) {
+        var m = method.toLowerCase();
+
+        if (m === 'wall.post') {
+          var validAttacheRegexp = /(^https?:\/\/)|(^(poll|album|photo|video|doc|audio|page|note)-?\d+_-?\d+)$/,
+              validAttachments = [],
+              methodAccess,
+              queryParams,
+              query,
+              timer;
+
+          if (!params.v) {
+            params.v = '5.95';
+          }
+
+          params.attachments = params.attachments || params.attachment || [];
+          if (typeof params.attachments === 'string') {
+            params.attachments = params.attachments.split(',')
+          }
+
+          for (var i = 0; i < params.attachments.length; i++) {
+            var attach = params.attachments[i].trim();
+            if (validAttacheRegexp.test(attach)) {
+              validAttachments.push(attach);
+            }
+          }
+
+          params.attachments = validAttachments.length ? validAttachments : '';
+          methodAccess = '_' + (Math.random()).toString(16).substr(2);
+          queryParams = {
+            act: 'wall_post_box',
+            method: m,
+            widget: 4,
+            aid: parseInt(VK._apiId, 10),
+            text: params.message || '',
+            method_access: methodAccess
+          };
+
+          queryParams = VK.extend(queryParams, params);
+          queryParams.owner_id = parseInt(params.owner_id || 0, 10);
+          queryParams.publish_date = params.publish_date || '';
+          query = VK._domain.base + '/al_apps.php';
+          query += obj2qs(queryParams);
+
+          VK.UI.popup({
+            url: query,
+            width: 560,
+            height: 304
+          });
+
+          timer = setInterval(function() {
+            if (VK.UI.active.closed) {
+              clearInterval(timer);
+              params.method_access = methodAccess;
+              VK.Api.call(method, params, cb, queryTry);
+            }
+          }, 500);
+          return false;
+        }
+
+        if (m == 'messages.allowmessagesfromgroup') {
+          methodAccess = '_' + (Math.random()).toString(16).substr(2);
+          query = VK._domain.base + '/widget_allow_messages_from_community.php?act=allow_box&group_id=' + parseInt(params.group_id, 10) + '&app_id=' + parseInt(VK._apiId, 10) + '&method_access=' + methodAccess;
+
+          VK.UI.popup({
+            url: query,
+            width: 560,
+            height: 304
+          });
+
+          timer = setInterval(function () {
+            if (VK.UI.active.closed) {
+              clearInterval(timer);
+              params.method_access = methodAccess;
+              VK.Api.call(method, params, cb, queryTry);
+            }
+          }, 500);
+
+          return false;
+        }
+
+        return true;
+      },
+
+      call: function(method, params, cb, queryTry) {
+        var
+            query = params || {},
+            qs,
+            responseCb;
+
+        if (typeof query != 'object' || typeof cb != 'function') {
+          return false;
+        }
+        if (!params.method_access && !params.method_force && !VK.Api.checkMethod(method, params, cb, queryTry)) {
+          return;
+        }
+
+        if (!queryTry) queryTry = 0;
+
+        if (VK.Auth._loadState != 'loaded') {
+          var authFunc = function(result) {
+            if (result && result.session) {
+              VK.Observer.unsubscribe('auth.loginStatus', authFunc);
+              VK.Api.call(method, params, cb);
+            }
+          };
+          VK.Observer.subscribe('auth.loginStatus', authFunc);
+          VK.Auth.getLoginStatus();
+          return;
+        }
+
+        if (VK.Api.queryLength(query) < 1500 && !VK.Api.ie6_7()) {
+          var useXDM = false;
+          var rnd = parseInt(Math.random() * 10000000, 10);
+          while (VK.Api._callbacks[rnd]) {
+            rnd = parseInt(Math.random() * 10000000, 10)
+          }
+          query.callback = 'VK.Api._callbacks['+rnd+']';
+        } else {
+          var useXDM = true;
+        }
+
+        if (VK._session && VK._session.sid) {
+          query.access_token = VK._session.sid;
+        }
+
+        qs = VK.Cookie.encode(query);
+
+        responseCb = function(response) {
+          if (response.error && (response.error.error_code == 3 || response.error.error_code == 4 || response.error.error_code == 5)) {
+            if (queryTry > 3) return false;
+            var repeatCall = function(resp) {
+              VK.Observer.unsubscribe('auth.sessionChange', repeatCall);
+              delete params.access_token;
+              if (resp.session) VK.Api.call(method, params, cb, queryTry + 1);
+            }
+            VK.Observer.subscribe('auth.sessionChange', repeatCall);
+            VK.Auth.getLoginStatus();
+          } else {
+            cb(response);
+          }
+          if (!useXDM) delete VK.Api._callbacks[rnd];
+        };
+
+        if (useXDM) {
+          if (VK.xdReady) {
+            VK.XDM.remote.callMethod('apiCall', method, qs, responseCb);
+          } else {
+            VK.Observer.subscribe('xdm.init', function() {
+              VK.XDM.remote.callMethod('apiCall', method, qs, responseCb);
+            });
+            VK.XDM.init();
+          }
+        } else {
+          VK.Api._callbacks[rnd] = responseCb;
+          VK.Api.attachScript(VK._domain.api + '/method/' + method +'?' + qs);
+        }
+      },
+
+      queryLength: function(query) {
+        var len = 100, i; // sid + sig
+        for (i in query) {
+          len += i.length + encodeURIComponent(query[i]).length + 1;
+        }
+        return len;
+      }
+    };
+
+// Alias
+    VK.api = function(method, params, cb) {VK.Api.call(method, params, cb);}
+  };
+
+  if (!VK.Auth) {
+    VK.Auth = {
+      popup: null,
+      lsCb: {},
+
+      setSession: function(session, status, settings, resp) {
+        var
+            login = !VK._session && session,
+            logout = VK._session && !session,
+            both = VK._session && session && VK._session.mid != session.mid,
+            sessionChange = login || logout || (VK._session && session && VK._session.sid != session.sid),
+            statusChange = status != VK._userStatus,
+            response = {
+              'session': session,
+              'status': status,
+              'settings': settings
+            };
+
+        VK._session = session;
+
+        VK._userStatus = status;
+
+        VK.Cookie.set(session, resp);
+
+        if (sessionChange || statusChange || both) {
+          setTimeout(function() {
+            if (statusChange) {
+              VK.Observer.publish('auth.statusChange', response);
+            }
+
+            if (logout || both) {
+              VK.Observer.publish('auth.logout', response);
+            }
+
+            if (login || both) {
+              VK.Observer.publish('auth.login', response);
+            }
+
+            if (sessionChange) {
+              VK.Observer.publish('auth.sessionChange', response);
+            }
+          }, 0);
+        }
+
+        return response;
+      },
+
+      // Public VK.Auth methods
+      login: function(cb, settings) {
+        if (!VK._apiId) {
+          return false;
+        }
+
+        var url = VK._domain.main + '/' + VK._path.login + '?client_id='+VK._apiId+'&display=popup&redirect_uri=close.html&response_type=token&openapi=1';
+        if (settings && parseInt(settings, 10) > 0) {
+          url += '&scope=' + settings;
+        }
+
+        VK.Observer.unsubscribe('auth.onLogin');
+        VK.Observer.subscribe('auth.onLogin', cb);
+
+        VK.UI.popup({
+          width: 665,
+          height: 370,
+          url: url
+        });
+
+        var authCallback = function() {
+          VK.Auth.getLoginStatus(function(resp) {
+            VK.Observer.publish('auth.onLogin', resp);
+            VK.Observer.unsubscribe('auth.onLogin');
+          }, true);
+        }
+
+        VK.UI.popupOpened = true;
+        var popupCheck = function() {
+          if (!VK.UI.popupOpened) {
+            return false;
+          }
+
+          try {
+            if (!VK.UI.active.top || VK.UI.active.closed) {
+              VK.UI.popupOpened = false;
+              authCallback();
+              return true;
+            }
+          } catch(e) {
+            VK.UI.popupOpened = false;
+            authCallback();
+            return true;
+          }
+          setTimeout(popupCheck, 100);
+        };
+
+        setTimeout(popupCheck, 100);
+      },
+
+      // Logout user from app, vk.com & login.vk.com
+      logout: function(cb) {
+        VK.Auth.revokeGrants(cb);
+      },
+
+      revokeGrants: function(cb) {
+        var onLogout = function(resp) {
+          VK.Observer.unsubscribe('auth.statusChange', onLogout);
+          if (cb) {
+            cb(resp);
+          }
+        }
+
+        VK.Observer.subscribe('auth.statusChange', onLogout);
+        if (VK._session && VK._session.sid) {
+          var url = VK._domain.login + '?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname) + '&do_logout=1&token=' + VK._session.sid;
+          if (VK.Api.supportCORS()) {
+            var logoutCallback = function() {
+              VK.Auth.setSession(null, 'unknown');
+            };
+
+            VK.Api.makeRequest(url + '&new=1', logoutCallback);
+          } else {
+            VK.Api.attachScript(url);
+          }
+        }
+
+        VK.Cookie.clear();
+      },
+
+      // Get current login status from session (sync) (not use on load time)
+      getSession: function() {
+        return VK._session;
+      },
+
+      // Get current login status from vk.com (async)
+      getLoginStatus: function(cb, force) {
+        if (!VK._apiId) {
+          return;
+        }
+
+        if (cb) {
+          if (!force && VK.Auth._loadState == 'loaded') {
+            cb({status: VK._userStatus, session: VK._session});
+            return;
+          } else {
+            VK.Observer.subscribe('auth.loginStatus', cb);
+          }
+        }
+
+        if (!force && VK.Auth._loadState == 'loading') {
+          return;
+        }
+
+        VK.Auth._loadState = 'loading';
+
+        var url = VK._domain.login + '?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname);
+        if (VK.Api.supportCORS()) {
+          var loginCallback = function(response) {
+            if (!this.JSON) {
+              this.JSON = {};
+            }
+
+            if (typeof JSON.parse !== 'function') {
+              //IE6 and IE7
+              response = eval(response);
+            } else {
+              response = JSON.parse(response);
+            }
+
+            VK.Auth._loadState = 'loaded';
+            if (response && response.auth) {
+              var session = {
+                mid: response.user.id,
+                sid: response.access_token,
+                sig: response.sig,
+                secret: response.secret,
+                expire: response.expire
+              };
+
+              if (force) {
+                session.user = response.user;
+              }
+
+              var status = 'connected';
+            } else {
+              var session = null;
+              var status = response.user ? 'not_authorized' : 'unknown';
+              VK.Cookie.clear();
+            }
+
+            VK.Auth.setSession(session, status, false, response);
+            VK.Observer.publish('auth.loginStatus', {session: session, status: status});
+            VK.Observer.unsubscribe('auth.loginStatus');
+          };
+
+          VK.Api.makeRequest(url + '&new=1', loginCallback);
+        } else {
+          var rnd = parseInt(Math.random() * 10000000, 10);
+          while (VK.Auth.lsCb[rnd]) {
+            rnd = parseInt(Math.random() * 10000000, 10);
+          }
+
+          VK.Auth.lsCb[rnd] = function(response) {
+            delete VK.Auth.lsCb[rnd];
+            VK.Auth._loadState = 'loaded';
+            if (response && response.auth) {
+              var session = {
+                mid: response.user.id,
+                sid: response.access_token,
+                sig: response.sig,
+                secret: response.secret,
+                expire: response.expire
+              };
+              if (force) session.user = response.user;
+              var status = 'connected';
+            } else {
+              var session = null;
+              var status = response.user ? 'not_authorized' : 'unknown';
+              VK.Cookie.clear();
+            }
+            VK.Auth.setSession(session, status, false, response);
+            VK.Observer.publish('auth.loginStatus', {session: session, status: status});
+            VK.Observer.unsubscribe('auth.loginStatus');
+          };
+
+            // AttachScript here
+          VK.Api.attachScript(url+'&rnd='+rnd);
+        }
+      }
+    };
+  }
+
+  if (!VK.App) {
+    VK.App = {
+      _appOpened: false,
+      _addToGroupPopup: null,
+
+      open: function (url, params) {
+        if (VK.App._appOpened || !VK._apiId) {
+          return;
+        }
+
+        if (!VK._session) {
+          VK.Auth.login(function(resp) {
+            if (resp && resp.session) {
+              VK.App._openApp(url, params);
+            }
+          });
+        } else {
+          VK.App._openApp(url, params);
+        }
+      },
+
+      _openApp: function (url, params) {
+        var src, box, request = [];
+        params = params || {};
+
+        if (!url || !VK._apiId || VK.App._appOpened) {
+          return;
+
+        }
+
+        if (Object.prototype.toString.call(params.data) === '[object Object]') {
+          try {
+            params.data = JSON.stringify(params.data);
+          } catch (e) {
+            params.data = '';
+          }
+        }
+
+        src = VK._domain.base + '/apps?act=open_external_app_openapi&aid=' + VK._apiId;
+        params['aid'] = VK._apiId;
+
+        for (var arg in params) {
+          var val = '';
+          if (!params.hasOwnProperty(arg)) {
+            continue;
+          }
+          if (params[arg] !== undefined) {
+            val = encodeURIComponent(params[arg]);
+          }
+          request.push(encodeURIComponent(arg) + '=' + val);
+        }
+
+        src += '&url=' + url;
+        src += '&q=' + encodeURIComponent(request.join('&'));
+
+        box = VK.Util.Box(src, {}, {
+          closeExternalApp: function() {
+            if (VK.App._result) {
+              VK.Observer.publish('app.done', VK.App._result);
+              VK.App._result = null;
+            } else {
+              VK.Observer.publish('app.closed');
+            }
+            box.hide();
+            VK.App._appOpened = false;
+          },
+          externalAppDone: function (params, noCloseLayer) {
+            if (noCloseLayer) {
+              VK.App._result = params;
+            } else {
+              VK.Observer.publish('app.done', params);
+              box.hide();
+              VK.App._appOpened = false;
+              VK.App._result = null;
+            }
+          }
+        });
+        box.show();
+        VK.App._appOpened = true;
+        VK.App._result = null;
+      },
+
+      addToGroup: function(appId) {
+        if (this._addToGroupPopup && !this._addToGroupPopup.closed) {
+          return;
+        }
+
+        if (this._onAddToGroupDone) {
+          VK.Util.removeEvent('message', this._onAddToGroupDone, window);
+        }
+
+        this._onAddToGroupDone = function(event) {
+          if (event.origin === VK._domain.base && event.data.method === 'app.addToGroup') {
+            VK.Observer.publish('app.addToGroupDone', {
+              app_id: event.data.app_id,
+              group_ids: event.data.group_ids
+            });
+            VK.Util.removeEvent('message', this._onAddToGroupDone, window);
+            this._onAddToGroupDone = null;
+          }
+        }.bind(this);
+
+        if (window.postMessage) {
+          VK.Util.addEvent('message', this._onAddToGroupDone, window);
+        }
+
+        this._addToGroupPopup = VK.UI.popup({
+          url: VK._domain.base + '/add_community_app.php?aid=' + appId,
+          width: 560,
+          height: 650
+        });
+      }
+    }
+  }
+
+} else { // if VK.xdConnectionCallbacks
+  setTimeout(function() {
+    var callback;
+    while (callback = VK.xdConnectionCallbacks.pop()) {
+      callback();
+    }
+  }, 0);
+  if (VK.Widgets && !VK.Widgets._constructor) {
+    VK.Widgets = false;
+  }
+}
+
+if (!VK.UI) {
+  VK.UI = {
+    active: null,
+    _buttons: [],
+    popup: function(options) {
+      var
+          screenX = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft,
+          screenY = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop,
+          outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth,
+          outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22),
+          width = options.width,
+          height = options.height,
+          left = parseInt(screenX + ((outerWidth - width) / 2), 10),
+          top = parseInt(screenY + ((outerHeight - height) / 2.5), 10),
+          features;
+      left = window.screen && window.screenX && screen.left && screen.left > 1000 ? 0 : left; // FF with 2 monitors fix
+      features = (
+          'width=' + width +
+          ',height=' + height +
+          ',left=' + left +
+          ',top=' + top
+      );
+      this.active = window.open(options.url, 'vk_openapi', features);
+      return this.active;
+    },
+    button: function(el, handler) {
+      var html = '';
+
+      if (typeof el == 'string') {
+        el = document.getElementById(el);
+      }
+
+
+      this._buttons.push(el);
+      index = this._buttons.length - 1;
+
+      html = (
+          '<table cellspacing="0" cellpadding="0" id="openapi_UI_' + index + '" onmouseover="VK.UI._change(1, ' + index + ');" onmouseout="VK.UI._change(0, ' + index + ');" onmousedown="VK.UI._change(2, ' + index + ');" onmouseup="VK.UI._change(1, ' + index + ');" style="cursor: pointer; border: 0px; font-family: tahoma, arial, verdana, sans-serif, Lucida Sans; font-size: 10px;"><tr style="vertical-align: middle">' +
+          '<td><div style="border: 1px solid #3b6798;border-radius: 2px 0px 0px 2px;-moz-border-radius: 2px 0px 0px 2px;-webkit-border-radius: 2px 0px 0px 2px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 4px 0px 6px;line-height: 13px;">&#1042;&#1086;&#1081;&#1090;&#1080;</div></div></td>' +
+          '<td><div style="background: url(' + VK._domain.base + '/images/btns.png) 0px -42px no-repeat; width: 21px; height: 21px"></div></td>' +
+          '<td><div style="border: 1px solid #3b6798;border-radius: 0px 2px 2px 0px;-moz-border-radius: 0px 2px 2px 0px;-webkit-border-radius: 0px 2px 2px 0px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 6px 0px 4px;line-height: 13px;">&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1077;</div></div></td>' +
+          '</tr></table>'
+      );
+      el.innerHTML = html;
+      el.style.width = el.childNodes[0].offsetWidth + 'px';
+    },
+    _change: function(state, index) {
+      var row = document.getElementById('openapi_UI_' + index).rows[0];
+      var elems = [row.cells[0].firstChild.firstChild, row.cells[2].firstChild.firstChild];
+      for (var i = 0; i < 2; ++i) {
+        var elem = elems[i];
+        if (state === 0) {
+          elem.style.backgroundColor = '#6D8DB1';
+          elem.style.borderTopColor = '#7E9CBC';
+          elem.style.borderLeftColor = elem.style.borderRightColor = elem.style.borderBottomColor = '#5C82AB';
+        } else if (state == 1) {
+          elem.style.backgroundColor = '#7693B6';
+          elem.style.borderTopColor = '#88A4C4';
+          elem.style.borderLeftColor = elem.style.borderRightColor = elem.style.borderBottomColor = '#6088B4';
+        } else if (state == 2) {
+          elem.style.backgroundColor = '#6688AD';
+          elem.style.borderBottomColor = '#7495B8';
+          elem.style.borderLeftColor = elem.style.borderRightColor = elem.style.borderTopColor = '#51779F';
+        }
+      }
+      if (state === 0 || state == 2) {
+        row.cells[2].firstChild.style.backgroundPosition = '0px -42px';
+      } else if (state == 1) {
+        row.cells[2].firstChild.style.backgroundPosition = '0px -63px';
+      }
+    }
+  };
+}
+
+if (!VK.XDM) {
+  VK.XDM = {
+    remote: null,
+    init: function() {
+      if (this.remote) return false;
+      var url = VK._domain.api + '/' + VK._path.proxy;
+      this.remote = new fastXDM.Server({
+        onInit: function() {
+          VK.xdReady = true;
+          VK.Observer.publish('xdm.init');
+        }
+      });
+
+      this.remote.append(document.getElementById(VK._rootId), {
+        src: url
+      });
+    },
+    xdHandler: function(code) {
+      try {
+        eval('VK.' + code);
+      } catch(e) {}
+    }
+  };
+}
+
+if (!VK.Observer) {
+  VK.Observer = {
+    _subscribers: function() {
+      if (!this._subscribersMap) {
+        this._subscribersMap = {};
+      }
+      return this._subscribersMap;
+    },
+    publish: function(eventName) {
+      var
+          args = Array.prototype.slice.call(arguments),
+          eventName = args.shift(),
+          subscribers = this._subscribers()[eventName],
+          i, j;
+
+      if (!subscribers) return;
+
+      for (i = 0, j = subscribers.length; i < j; i++) {
+        if (subscribers[i] != null) {
+          subscribers[i].apply(this, args);
+        }
+      }
+    },
+    subscribe: function(eventName, handler) {
+      var
+          subscribers = this._subscribers();
+
+      if (typeof handler != 'function') return false;
+
+      if (!subscribers[eventName]) {
+        subscribers[eventName] = [handler];
+      } else {
+        subscribers[eventName].push(handler);
+      }
+    },
+    unsubscribe: function(eventName, handler) {
+      var
+          subscribers = this._subscribers()[eventName],
+          i, j;
+
+      if (!subscribers) return false;
+      if (typeof handler == 'function') {
+        for (i = 0, j = subscribers.length; i < j; i++) {
+          if (subscribers[i] == handler) {
+            subscribers[i] = null;
+          }
+        }
+      } else {
+        delete this._subscribers()[eventName];
+      }
+    }
+  };
+}
+
+if (!VK.Widgets) {
+  VK.Widgets = {};
+
+  VK.Widgets.count = 0;
+  VK.Widgets.RPC = {};
+
+  VK.Widgets.loading = function(obj, enabled) {
+    obj.style.background = enabled ? 'url("' + VK._domain.base + '/images/upload.gif") center center no-repeat transparent' : 'none';
+  };
+
+  VK.Widgets.Comments = function(objId, options, page) {
+    var pData = VK.Util.getPageData();
+    if (!VK._apiId) throw Error('VK not initialized. Please use VK.init');
+    options = VK.Util.parseOptions(options);
+
+    var obj = document.getElementById(objId),
+      params = {
+        limit: options.limit || 10,
+        height: options.height || 0,
+        mini: options.mini === undefined ? 'auto' : options.mini,
+        norealtime: options.norealtime ? 1 : 0
+      }, mouseup = function() {
+        rpc.callMethod('mouseUp');
+        return false;
+      }, move = function(event) {
+        rpc.callMethod('mouseMove', {screenY: event.screenY});
+      }, iframe, rpc;
+
+    if (options.browse) { // browse all comments
+      params.browse = 1;
+      params.replies = options.replies || 0;
+    } else { // page
+      var url = options.pageUrl || pData.url;
+      if (url.substr(0, 1) == '/') {
+        url = (location.protocol + '//' + location.host) + url;
+      }
+      VK.extend(params, {
+        page: page || 0,
+        status_publish: options.autoPublish === undefined ? 0 : options.autoPublish,
+        attach: options.attach === undefined ? '*' : (options.attach ? options.attach : ''),
+        url: url,
+        title: options.pageTitle || pData.title,
+        description: options.pageDescription || pData.description,
+        image: options.pageImage || pData.image
+      });
+    }
+    if (options.onChange) { // DEPRECATED
+      VK.Observer.subscribe('widgets.comments.new_comment', options.onChange);
+      VK.Observer.subscribe('widgets.comments.delete_comment', options.onChange);
+    }
+
+    return VK.Widgets._constructor('widget_comments.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+      startDrag: function() {
+        cursorBack = window.document.body.style.cursor;
+        window.document.body.style.cursor = 'pointer';
+        VK.Util.addEvent('mousemove', move);
+        VK.Util.addEvent('mouseup', mouseup);
+      },
+      stopDrag: function() {
+        window.document.body.style.cursor = cursorBack;
+        VK.Util.removeEvent('mousemove', move);
+        VK.Util.removeEvent('mouseup', mouseup);
+      }
+    }, {
+      startHeight: 133,
+      minWidth: 300
+    }, function(o, i, r) {iframe = i; rpc = r;});
+  };
+
+  VK.Widgets.CommentsBrowse = function(objId, options) {
+    options = VK.Util.parseOptions(options);
+    options.browse = 1;
+    return VK.Widgets.Comments(objId, options);
+  };
+
+  VK.Widgets.Recommended = function(objId, options) {
+    var pData = VK.Util.getPageData();
+    if (!VK._apiId) throw Error('VK not initialized. Please use VK.init');
+    options = VK.Util.parseOptions(options);
+    var params = {
+      limit: options.limit || 5,
+      max: options.max || 0,
+      sort: options.sort || 'friend_likes',
+      verb: options.verb || 0,
+      period: options.period || 'week',
+      target: options.target || 'parent'
+    };
+    return VK.Widgets._constructor('widget_recommended.php', objId, options, params, {}, {
+      startHeight: (116 + params.limit * 47 - 15),
+      minWidth: 150
+    });
+  };
+
+  VK.Widgets.Post = function(objId, ownerId, postId, hash, options) {
+    options = VK.Util.parseOptions(options);
+    var obj = document.getElementById(objId),
+      params = {
+        owner_id: ownerId,
+        post_id: postId,
+        hash: hash || '',
+        from: options ? options.from : '',
+      }, iframe, rpc, cursorBack;
+    return VK.Widgets._constructor('widget_post.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+      startDrag: function() {
+        cursorBack = window.document.body.style.cursor;
+        window.document.body.style.cursor = 'pointer';
+      },
+      stopDrag: function() {
+        window.document.body.style.cursor = cursorBack;
+      }
+    }, {
+      startHeight: 90,
+      minWidth: 250
+    }, function(o, i, r) {iframe = i; rpc = r;});
+  };
+
+  VK.Widgets.TextLive = function(widgetRootElementId, textLiveId, textPostId, hash, options) {
+    options = VK.Util.parseOptions(options);
+
+    return VK.Widgets._constructor('widget_textlive.php', widgetRootElementId, options, {
+      textlive_id: textLiveId,
+      textpost_id: textPostId,
+      hash: hash || '',
+    }, null, {
+      startHeight: textPostId ? 176 : 167,
+      minWidth: 320
+    });
+  };
+
+  VK.Widgets.Like = (function(Like) {
+    if (Like) return Like;
+
+    var instances = [];
+
+    Like = function(objId, options, page) {
+      var pData = VK.Util.getPageData();
+      if (!VK._apiId) throw Error('VK not initialized. Please use VK.init');
+      options = VK.extend(VK.Util.parseOptions(options), {allowTransparency: true});
+      var verticalBtnHeightWidth = {
+            18: 43,
+            20: 47,
+            22: 51,
+            24: 55,
+            30: 67,
+          },
+          type = (options.type == 'full' || options.type == 'button' || options.type == 'vertical' || options.type == 'mini') ? options.type : 'full',
+          autoWidth = options.width === 'auto' && (type == 'button' || type == 'mini'),
+          btnHeight = parseInt(options.height, 10) || 22,
+          size = btnHeight && verticalBtnHeightWidth[btnHeight] ? btnHeight : 22,
+          width = autoWidth ? 153 : (type == 'full' ? Math.max(200, options.width || 350) : (type == 'button' ? 180 : (type == 'mini' ? 115 : verticalBtnHeightWidth[size]))),
+          height = type == 'vertical' ? (2 * btnHeight + 7) : btnHeight,
+          params = {
+            page: page || 0,
+            url: options.pageUrl || pData.url,
+            type: type,
+            verb: options.verb == 1 ? 1 : 0,
+            color: options.color || '',
+            title: options.pageTitle || pData.title,
+            description: options.pageDescription || pData.description,
+            image: options.pageImage || pData.image,
+            text: (options.text || '').substr(0, 140),
+            h: btnHeight
+          },
+          ttHere = options.ttHere || false,
+          isOver = false,
+          hideTimeout = null,
+          obj, buttonIfr, buttonRpc, tooltipIfr, tooltipRpc, checkTO;
+      if (type == 'vertical' || type == 'button' || type == 'mini') delete options.width;
+      if (autoWidth) params.auto_width = 1;
+      function showTooltip(force) {
+        if ((!isOver && !force) || !tooltipRpc) return;
+        if (!tooltipIfr || !tooltipRpc || tooltipIfr.style.display != 'none' && tooltipIfr.getAttribute('vkhidden') != 'yes') return;
+        hideTimeout && clearTimeout(hideTimeout);
+        checkTO && clearTimeout(checkTO);
+        var scrollTop = options.getScrollTop ? options.getScrollTop() : (document.body.scrollTop || document.documentElement.scrollTop || 0);
+        var objPos = VK.Util.getXY(obj, options.fixed);
+        var startY = ttHere ? 0 : objPos[1];
+        if (scrollTop > objPos[1] - 120 && options.tooltipPos != 'top' || type == 'vertical' || options.tooltipPos == 'bottom') {
+          tooltipIfr.style.top = (startY + height + 2) + 'px';
+          tooltipRpc.callMethod('show', false, type+'_'+size);
+        } else {
+          tooltipIfr.style.top = (startY - 128) + 'px';
+          tooltipRpc.callMethod('show', true, type+'_'+size);
+        }
+        VK.Util.ss(tooltipIfr, {left: (ttHere ? 0 : objPos[0]) - (type == 'full' || type == 'button' ? 32 : 2) + 'px', display: 'block', opacity: 1, filter: 'none'});
+        tooltipIfr.setAttribute('vkhidden', 'no');
+        isOver = true;
+      }
+
+      function hideTooltip(force) {
+        if ((isOver && !force) || !tooltipRpc) return;
+        tooltipRpc.callMethod('hide');
+        buttonRpc.callMethod('hide');
+        hideTimeout = setTimeout(function() {
+          tooltipIfr.style.display = 'none'
+        }, 400);
+      }
+
+      var widgetId = VK.Widgets._constructor('widget_like.php', objId, options, params, {
+        initTooltip: function(counter) {
+          tooltipRpc = new fastXDM.Server({
+            onInit: counter ? function() {
+                showTooltip();
+              } : function() {},
+            proxy: buttonRpc,
+            showBox: function(url, props) {
+              var box = VK.Util.Box(VK.Util.getAbsUrl(url), [props.width, props.height], {
+                proxy: tooltipRpc
+              });
+              box.show();
+            },
+          }, false, {safe: true});
+          tooltipIfr = tooltipRpc.append(ttHere ? obj : document.body, {
+            src: buttonIfr.src + '&act=a_like_tooltip',
+            scrolling: 'no',
+            allowTransparency: true,
+            id: buttonIfr.id + '_tt',
+            style: {position: 'absolute', padding: 0, display: 'none', opacity: 0.01, filter: 'alpha(opacity=1)', border: '0', width: '274px', height: '130px', zIndex: 5000, overflow: 'hidden'}
+          });
+          tooltipIfr.setAttribute('vkhidden', 'yes');
+
+          tooltipIfr.onmouseover = function() {
+            clearTimeout(checkTO);
+            isOver = true;
+          };
+          tooltipIfr.onmouseout = function() {
+            clearTimeout(checkTO);
+            isOver = false;
+            checkTO = setTimeout(function() {hideTooltip(); }, 200);
+          };
+        },
+        showTooltip: showTooltip,
+        hideTooltip: hideTooltip,
+        destroy: function() {
+          buttonRpc.destroy();
+          try {buttonIfr.src = 'about: blank;';} catch (e) {}
+          buttonIfr.parentNode.removeChild(buttonIfr);
+          if (tooltipIfr) {
+            try {tooltipIfr.src = 'about: blank;';} catch (e) {}
+            tooltipIfr.parentNode.removeChild(tooltipIfr);
+          }
+          tooltipRpc && tooltipRpc.destroy();
+        },
+        showBox: function(url, props) {
+          var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+            proxy: buttonRpc
+          });
+          box.show();
+        },
+        proxy: function() {
+          if (tooltipRpc) {
+            tooltipRpc.callMethod.apply(tooltipRpc, arguments);
+          }
+        }
+      }, {
+        startHeight: height,
+        minWidth: width
+      }, function(o, i, r) {
+        buttonRpc = r;
+        VK.Util.ss(obj = o, {height: height + 'px', width: width + 'px', position: 'relative', clear: 'both'});
+        VK.Util.ss(buttonIfr = i, {height: height + 'px', width: width + 'px', overflow: 'hidden', zIndex: 150});
+        obj.onmouseover = function() {
+          clearTimeout(checkTO);
+          isOver = true;
+        };
+        obj.onmouseout = function() {
+          clearTimeout(checkTO);
+          isOver = false;
+          checkTO = setTimeout(function() {hideTooltip(); }, 200);
+        };
+      });
+
+      instances.push(widgetId);
+      return widgetId;
+    };
+
+    Like.destroyAll = function() {
+      var xdm = null;
+      while (instances[0]) {
+        xdm = VK.Widgets.RPC[instances.pop()];
+        xdm && xdm.methods.destroy();
+      }
+    }
+
+    return Like;
+  })(VK.Widgets.Like);
+
+  VK.Widgets.Poll = function(objId, options, pollId) {
+    var pData = VK.Util.getPageData();
+    if (!pollId) throw Error('No poll id passed');
+    options = VK.Util.parseOptions(options);
+    var params = {
+      poll_id: pollId,
+      url: options.pageUrl || pData.url || location.href,
+      title: options.pageTitle || pData.title,
+      description: options.pageDescription || pData.description
+    };
+    if (options.preview) {
+      params.is_preview = 1;
+      delete options['preview'];
+    }
+    if (options.share !== undefined) {
+      params.share = options.share ? 1 : 0;
+    }
+    var rpc;
+    return VK.Widgets._constructor('al_widget_poll.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      }
+    }, {
+      startHeight: 144,
+      minWidth: 300
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.App = function(objId, app_id, options) {
+    if (!app_id) throw Error('No app id passed');
+    options = VK.Util.parseOptions(options);
+    var startHeight = void 0,
+        height = void 0,
+        minWidth = void 0,
+        params = {
+          aid: app_id,
+          mode: parseInt(options.mode, 10) || 1,
+        };
+    switch (params.mode) {
+      case 1:
+        options.width = 144;
+        startHeight = 251;
+        break;
+      case 2:
+        options.width = options.width ? Math.max(200, Math.min(10000, parseInt(options.width, 10))) : 200;
+        height = startHeight = 193;
+        break;
+      case 3:
+        options.width = options.width ? Math.max(50, Math.min(10000, parseInt(options.width, 10))) : void 0;
+        height = startHeight = options.height = ({18: 18, 20: 20, 22: 22, 24: 24, 30: 30})[parseInt(options.height, 10) || 30];
+        break;
+    }
+    minWidth = options.width;
+    return VK.Widgets._constructor('widget_app.php', objId, options, params, {}, {
+      startHeight: startHeight,
+      height: height,
+      minWidth: minWidth
+    });
+  };
+
+  VK.Widgets.Community = VK.Widgets.Group = function(objId, options, gid) {
+    options = VK.Util.parseOptions(options);
+    gid = parseInt(gid, 10);
+    if (!gid) {
+      throw Error('No group_id passed');
+    }
+    options.mode = parseInt(options.mode, 10).toString();
+    var params = {
+        gid: gid,
+        mode: (options.mode) ? options.mode : '0'
+      },
+      startHeight = options.mode == 3 ? 185 : (options.mode == 1 ? 141 : options.height|0 || 290),
+      rpc;
+    if (options.wall) params.wall = options.wall;
+    params.color1 = options.color1 || '';
+    params.color2 = options.color2 || '';
+    params.color3 = options.color3 || '';
+    params.class_name = options.class_name || '';
+    if (options.no_head) params.no_head = 1;
+    if (options.no_cover) params.no_cover = 1;
+    if (options.wide) {
+      params.wide = 1;
+      if (!options.width || options.width < 300) {
+        options.width = 300;
+      }
+    }
+    if (!options.width|0) options.width = 200;
+
+    var cursorBack;
+
+    function mouseup() {
+      rpc.callMethod('mouseUp');
+      return false;
+    }
+
+    function move(event) {
+      rpc.callMethod('mouseMove', {screenY: event.screenY});
+      return false;
+    }
+
+    return VK.Widgets._constructor('widget_community.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+      startDrag: function() {
+        cursorBack = window.document.body.style.cursor;
+        window.document.body.style.cursor = 'pointer';
+        VK.Util.addEvent('mousemove', move);
+        VK.Util.addEvent('mouseup', mouseup);
+      },
+      stopDrag: function() {
+        window.document.body.style.cursor = cursorBack;
+        VK.Util.removeEvent('mousemove', move);
+        VK.Util.removeEvent('mouseup', mouseup);
+      },
+      auth: function() {
+        VK.Auth.login(null, 1);
+      }
+    }, {
+      minWidth: 120,
+      startHeight: startHeight
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Auth = function(objId, options) {
+    var pData = VK.Util.getPageData();
+    if (!VK._apiId) throw Error('VK not initialized. Please use VK.init');
+    options = VK.Util.parseOptions(options);
+    if (!options.width) {
+      options.width = 200;
+    }
+    if (options.type) {
+      type = 1;
+    } else {
+      type = 0;
+    }
+    return VK.Widgets._constructor('widget_auth.php', objId, options, {}, {makeAuth: function(data) {
+      if (data.session) {
+        VK.Auth._loadState = 'loaded';
+        VK.Auth.setSession(data.session, 'connected');
+        VK.Observer.publish('auth.loginStatus', {session: data.session, status: 'connected'});
+        VK.Observer.unsubscribe('auth.loginStatus');
+      }
+      if (options.onAuth) {
+        options.onAuth(data);
+      } else {
+        if (options.authUrl) {
+          var href = options.authUrl;
+        } else {
+          var href = window.location.href;
+        }
+        if (href.indexOf('?') == -1) {
+          href+='?';
+        } else {
+          href+='&';
+        }
+        var vars = [];
+
+        for (var i in data) {
+          if (i != 'session') vars.push(i+'='+decodeURIComponent(data[i]).replace(/&/g, '%26').replace(/\#/g, '%23').replace(/\?/, '%3F'));
+        }
+        window.location.href = href + vars.join('&');
+      }
+    }}, {
+      startHeight: 134
+    });
+  };
+
+  VK.Widgets.Subscribe = function(objId, options, oid) {
+    oid = parseInt(oid, 10);
+    if (!oid) {throw Error('No owner_id passed');}
+    options = VK.Util.parseOptions(options);
+    var params = {
+      oid: oid
+    }, rpc;
+    if (options.mode) {
+      params.mode = options.mode;
+    }
+    if (options.soft) {
+      params.soft = options.soft;
+    }
+
+    return VK.Widgets._constructor('widget_subscribe.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+      auth: function() {
+        VK.Auth.login(null, 1);
+      }
+    }, {
+      minWidth: 220,
+      startHeight: 22
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.ContactUs = function(objId, options, oid) {
+    oid = parseInt(oid, 10);
+    if (!oid) throw Error('No group or user id passed');
+    options = VK.Util.parseOptions(options);
+
+    var params = {
+      oid: oid,
+      height: ({18: 18, 20: 20, 22: 22, 24: 24, 30: 30})[parseInt(options.height, 10) || 24],
+      text: (options.text || '').substr(0, 140)
+    }, rpc;
+
+    return VK.Widgets._constructor('widget_contactus.php', objId, options, params, {}, {
+      startHeight: params.height,
+      height: params.height
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Bookmarks = function(objId, options) {
+    options = VK.Util.parseOptions(options);
+
+    var params = {
+      height: ({18: 18, 20: 20, 22: 22, 24: 24, 30: 30})[parseInt(options.height, 10) || 30],
+      url: options.url || window.location.href
+    }, rpc;
+
+    return VK.Widgets._constructor('widget_bookmarks.php', objId, options, params, {}, {
+      startHeight: params.height,
+      height: params.height
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Playlist = function(objId, ownerId, playlistId, hash, options) {
+    var params = {
+      oid: parseInt(ownerId, 10),
+      pid: parseInt(playlistId, 10),
+      hash: hash || ''
+    }, rpc;
+
+    if (!params.oid) throw Error('No owner id passed');
+    if (!params.pid) throw Error('No playlist id passed');
+    options = VK.Util.parseOptions(options);
+
+    return VK.Widgets._constructor('widget_playlist.php', objId, options, params, {
+      showBox: function(url, props) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      }
+    }, {
+      minWidth: 200
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Ads = function(objId, options, paramsExtra) {
+    options = VK.Util.parseOptions(options);
+    paramsExtra = paramsExtra || {};
+    var params = {};
+    var defaults = {};
+    var funcs = {};
+    var obj = document.getElementById(objId);
+    var iframe;
+    var rpc;
+
+    var adsParams = {};
+    var adsParamsLocal = {};
+    var adsParamsDefault = {};
+    for (var key in paramsExtra) {
+      var keyFix = (inArray(key, ['hash']) ? key : 'ads_' + key);
+      adsParams[keyFix] = paramsExtra[key];
+    }
+
+    if (obj && obj.getBoundingClientRect) {
+      obj.style.width  = '100%';
+      obj.style.height = '100%';
+      var rect = obj.getBoundingClientRect();
+      obj.style.width  = '';
+      obj.style.height = '';
+      adsParams.ads_ad_unit_width_auto  = Math.floor(rect.right - rect.left);
+      adsParams.ads_ad_unit_height_auto = Math.floor(rect.bottom - rect.top);
+    }
+
+    adsParamsDefault.ads_ad_unit_width  = 100;
+    adsParamsDefault.ads_ad_unit_height = 100;
+
+    adsParamsLocal.ads_ad_unit_width  = (parseInt(adsParams.ads_ad_unit_width)  || adsParams.ads_ad_unit_width === 'auto'  && adsParams.ads_ad_unit_width_auto  || adsParamsDefault.ads_ad_unit_width);
+    adsParamsLocal.ads_ad_unit_height = (parseInt(adsParams.ads_ad_unit_height) || adsParams.ads_ad_unit_height === 'auto' && adsParams.ads_ad_unit_height_auto || adsParamsDefault.ads_ad_unit_height);
+    if (adsParams.ads_handler) {
+      adsParamsLocal.ads_handler = adsParams.ads_handler;
+    }
+    if (adsParams.ads_handler_empty_html) {
+      adsParamsLocal.ads_handler_empty_html = adsParams.ads_handler_empty_html;
+    }
+
+    delete adsParams.ads_handler;
+    delete adsParams.ads_handler_empty_html;
+
+    params.act = 'ads_web';
+    params.url = location.href;
+    VK.extend(params, adsParams);
+
+    options.noDefaultParams   = true;
+    options.width             = adsParamsLocal.ads_ad_unit_width;
+    options.allowTransparency = true;
+    defaults.startHeight = adsParamsLocal.ads_ad_unit_height;
+    defaults.minWidth    = adsParamsLocal.ads_ad_unit_width;
+    funcs.adsOnInit       = adsOnInit;
+    funcs.newAdsOnInitLoader = newAdsOnInitLoader;
+
+    return VK.Widgets._constructor('ads_rotate.php', objId, options, params, funcs, defaults, onDone);
+
+    function newAdsOnInitLoader(deps) {
+      // replace's взяты из walkVar
+      var json = JSON.parse(deps.replace(/&#039;/g, '\'').replace(/&quot;/g, '"').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&'));
+      adsAttachScript(json);
+    }
+    function adsOnInit(errorCode, adsParamsExport) {
+      VK.Widgets.loading(obj, false);
+      adsProcessParams(adsParamsExport);
+      if (options.onAdsReady) options.onAdsReady.apply(options.onAdsReady, Array.prototype.slice.call(arguments));
+      adsProcessHandler(errorCode);
+    }
+    function adsAttachScript(adsScriptData) {
+      if (!('vk__adsLight' in window)) {
+        window.vk__adsLight = false;
+        var attachScriptFunc = (VK.Api && VK.Api.attachScript || VK.addScript);
+        if (Array.isArray(adsScriptData)) {
+          adsScriptData.forEach(function(url){
+            attachScriptFunc(VK._domain.base + url)
+          });
+        } else {
+          var adsScriptVersion = parseInt(adsScriptData);
+          attachScriptFunc(VK._domain.base + jsc('/web/ads_light.js?') + adsScriptVersion);
+        }
+      } else if (window.vk__adsLight && vk__adsLight.userHandlers && vk__adsLight.userHandlers.onInit) {
+        vk__adsLight.userHandlers.onInit(false); // false - do not publish initial onInit
+      }
+    }
+    function adsProcessParams(adsParamsExport) {
+      if (!adsParamsExport) {
+        return;
+      }
+      for (var paramName in adsParamsExport) {
+        var paramValue = adsParamsExport[paramName];
+        if (paramName === 'ads_ad_unit_width' || paramName === 'ads_ad_unit_height') {
+          if (!(paramName in adsParams)) {
+            adsParamsLocal[paramName] = (parseInt(paramValue) || paramValue === 'auto' && adsParams[paramName + '_auto'] || adsParamsDefault[paramName]);
+          }
+        } else {
+          if (!(paramName in adsParamsLocal)) {
+            adsParamsLocal[paramName] = paramValue;
+          }
+        }
+      }
+    }
+    function adsProcessHandler(errorCode) {
+      var handlerResult = adsEvalHandler(adsParamsLocal.ads_handler, errorCode);
+      if (errorCode <= 0 && handlerResult !== true) {
+        try { console.log('VK: ad_unit_id = ' + adsParams.ads_ad_unit_id, ', errorCode = ', errorCode); } catch (e) {}
+        adsInsertHtmlHandler(adsParamsLocal.ads_handler_empty_html, adsParamsLocal.ads_ad_unit_width, adsParamsLocal.ads_ad_unit_height);
+      }
+    }
+    function adsEvalHandler(handler) {
+      var result = false;
+      try {
+        if (!handler) {
+          return false;
+        }
+        var func = false;
+        if (isFunction(handler)) {
+          func = handler;
+        } else if (isString(handler)) {
+          var handlerFuncs = handler.split('.');
+          func = window;
+          for (var i = 0, len = handlerFuncs.length; i < len; i++) {
+            func = func[handlerFuncs[i]];
+            if (!func) {
+              break;
+            }
+          }
+          if (!func) {
+            if (handler.substr(0, 8) === 'function') {
+              handler = 'return ' + handler + ';';
+            }
+            var handlerResult = (new Function(handler))();
+            if (isFunction(handlerResult)) {
+              func = handlerResult;
+            } else {
+              result = handlerResult;
+            }
+          }
+        }
+        if (func) {
+          var args = Array.prototype.slice.call(arguments, 1);
+          result = func.apply(func, args);
+        }
+      } catch (e) {
+        try {
+          console.error(e);
+        } catch (e2) {}
+      }
+
+      return result;
+
+      function isFunction(obj) {
+        return Object.prototype.toString.call(obj) === '[object Function]';
+      }
+      function isString(obj) {
+        return Object.prototype.toString.call(obj) === '[object String]';
+      }
+    }
+    function adsInsertHtmlHandler(handlerHtml, width, height) {
+      if (!handlerHtml) {
+        return;
+      }
+      if (!obj) {
+        return;
+      }
+
+      width  = (width  ? width  + 'px' : '');
+      height = (height ? height + 'px' : '');
+
+      var iframeHandlerHtml = '<html><head></head><body style="padding: 0; margin: 0;"><div>' + handlerHtml + '</div></body></html>';
+
+      var iframeHandler = document.createElement('iframe');
+      iframeHandler.onload            = fixIframeHeight;
+      iframeHandler.id                = (iframe ? iframe.id : ('vkwidget-' + Math.round(Math.random() * 1000000))) + '_ads_html_handler';
+      iframeHandler.src               = 'about:blank';
+      iframeHandler.width             = '100%';
+      iframeHandler.height            = '100%';
+      iframeHandler.scrolling         = 'no';
+      iframeHandler.frameBorder       = '0';
+      iframeHandler.allowTransparency = true;
+      iframeHandler.style.overflow    = 'hidden';
+      iframeHandler.style.width       = width;
+      iframeHandler.style.height      = height;
+
+      obj.style.width                 = width;
+      obj.style.height                = height;
+
+      obj.appendChild(iframeHandler);
+
+      iframeHandler.contentWindow.vk_ads_html_handler = iframeHandlerHtml;
+      iframeHandler.src = 'javascript:window["vk_ads_html_handler"]';
+
+      function fixIframeHeight() {
+        if (height) {
+          return;
+        }
+        try {
+          var rect = iframeHandler.contentWindow.document.body.firstChild.getBoundingClientRect();
+          var heightFix = Math.ceil(rect.bottom - rect.top);
+          if (heightFix) {
+            iframeHandler.style.height = heightFix;
+            obj.style.height           = heightFix;
+          }
+        } catch (e) {}
+      }
+    }
+    function indexOf(arr, value, from) {
+      for (var i = from || 0, l = (arr || []).length; i < l; i++) {
+        if (arr[i] == value) return i;
+      }
+      return -1;
+    }
+    function inArray(value, arr) {
+      return indexOf(arr, value) != -1;
+    }
+    function onDone(o, i, r) {
+      obj = o;
+      iframe = i;
+      rpc = r;
+    }
+  };
+
+  VK.Widgets.AllowMessagesFromCommunity = function (objId, options, groupId) {
+    groupId = parseInt(groupId, 10);
+    if (!groupId || groupId < 0) throw Error('No group id passed');
+    options = VK.Util.parseOptions(options);
+
+    var params = {
+      height: ({22: 22, 24: 24, 30: 30})[parseInt(options.height, 10) || 24],
+      key: options.key ? options.key.substr(0, 256) : '',
+      group_id: groupId
+    }, rpc;
+
+    return VK.Widgets._constructor('widget_allow_messages_from_community.php', objId, options, params, {}, {
+      startHeight: params.height,
+      height: params.height
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Article = function(id, url, options) {
+    var params = {
+      url: url
+    };
+
+    options = VK.Util.parseOptions(options);
+
+    var rpc;
+    return VK.Widgets._constructor('widget_article.php', id, options, params, {
+      showBox: function(url) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+    }, {
+    }, function(o, i, r) {
+      rpc = r;
+    });
+  };
+
+  VK.Widgets.Podcast = function(id, episode, options) {
+    var params = {
+      episode: episode,
+    };
+
+    options = VK.Util.parseOptions(options);
+
+    return VK.Widgets._constructor('widget_podcast.php', id, options, params, {
+      showBox: function(url) {
+        var box = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+          proxy: rpc
+        });
+        box.show();
+      },
+    }, {
+      minWidth: 300,
+      startHeight: 150,
+    });
+  };
+
+  VK.Widgets.CommunityMessages = (function(CommunityMessages) {
+    if (CommunityMessages) return CommunityMessages;
+
+    var instances = {}, wCur = {};
+    var BUTTONS_CONF = {
+      no_button: {width: 0, height: 0},
+      blue_circle: {
+        width: 50,
+        height: 50,
+        margin: {
+          bottom: 20
+        }
+      }
+    }, DEFAULT_BUTTON_TYPE = 'blue_circle',
+    BUTTON_POSITIONS = {
+      left: {
+        bottom: 0,
+        left: 20
+      },
+      right: {
+        bottom: 0,
+        right: 20
+      }
+    }, DEFAULT_BUTTON_POSITION = 'right';
+
+    /* options
+      - welcomeScreen
+      - expandTimeout
+      - shown || expended
+      - widgetPosition
+      - buttonType
+      - disableButtonTooltip
+      - tooltipButtonText
+      - disableNewMessagesSound
+      - disableExpandChatSound
+      - disableTitleChange
+    */
+    CommunityMessages = function(objId, gid, options) {
+      options = VK.Util.parseOptions(options);
+
+      options.width = 300;
+      options.height = 399;
+
+      options.expandTimeout = parseInt(options.expandTimeout) || 0;
+
+      var params = {
+        gid: gid
+      };
+
+      options.expanded = parseInt(options.expanded) || 0;
+
+      if (!options.from_dev && lsGet('expanded') != null || options.expanded) {
+        options.shown = 1;
+      }
+
+      if (options.shown) {
+        params.shown = 1;
+      }
+
+      if (!options.welcomeScreen) {
+        params.disable_welcome_screen = 1;
+      }
+
+      params.ref_source_info = options.ref_source_info;
+      params.ref_source_link = location.href;
+
+      var buttonType = options.buttonType;
+      if (Object.keys(BUTTONS_CONF).indexOf(buttonType) == -1) {
+        buttonType = DEFAULT_BUTTON_TYPE;
+      }
+
+      if (buttonType == 'no_button') {
+        options.disableButtonTooltip = 1;
+      }
+
+      if (options.disableButtonTooltip) {
+        params.disable_tooltip = 1;
+      }
+      if (options.tooltipButtonText) {
+        params.tooltip_text = options.tooltipButtonText;
+      }
+
+      if (options.disableNewMessagesSound) {
+        params.disable_new_messages_sound = 1;
+      }
+
+      if (instances[objId]) {
+        CommunityMessages.destroy(objId);
+      }
+
+      params.domain = document.domain;
+
+      options.no_loading = 1;
+      if (!options.disableNewMessagesSound || !options.disableExpandChatSound) {
+        options.enable_autoplay = 1;
+      }
+
+      if (options.disableExpandChatSound) {
+        params.disable_expand_chat_sound = 1
+      }
+
+      if (options.expandTimeout) {
+        params.expand_timeout = options.expandTimeout
+      }
+
+      if(options.__alpha_new_widget) {
+        params.__alpha_new_widget = 1;
+      }
+
+      var curBox = false, expanded = 0;
+      var ttSize = [0, 0], widgetPosition;
+
+      changeWidgetPosition(options.widgetPosition);
+      params.button_position = options.widgetPosition;
+
+       window.addEventListener('message', receiveMessage, false);
+
+      function receiveMessage(event) {
+        var obj = document.getElementById(objId), frame = obj.getElementsByTagName('iframe')[0];
+        if (event.data && event.data.action === 'VKReforgedWidgetResize') {
+          var width = event.data.params.width
+          var height = event.data.params.height
+
+          frame.width = width;
+          frame.height = height;
+
+          obj.style.width = width + 'px';
+          obj.style.height = height + 'px';
+          obj.style.margin = height > 50 ? '0' : '0 0 20px';
+        }
+
+        if(event.data && event.data.action === 'VKReforgedWidgetLogout') {
+          frame.parentNode.removeChild(frame);
+          obj.style = {}
+        }
+      }
+      var chatRpc, chatIfr;
+      var inited = 0, timers = {};
+      instances[objId] = VK.Widgets._constructor('reforged_widget.php', objId, options, params, {
+        onStartLoading: function() {
+          var obj = document.getElementById(objId);
+          obj.style.position = 'fixed';
+          obj.style['z-index'] = 10000;
+          updateWidgetPosition();
+        },
+        onReady: function () {
+          inited = 1;
+          if (options.expandTimeout > 0 && !options.shown) {
+            timers.showTimer = setTimeout(function () {
+              expandChat({
+                playSong: !options.disableExpandChatSound,
+                noSaveState: 1
+              });
+            }, options.expandTimeout);
+          }
+        },
+        showBox: function(url) {
+          if (curBox) {
+            try {
+              curBox.hide();
+              try {
+                curBox.iframe.src = 'about: blank;';
+              } catch (e) {}
+              curBox.iframe.parentNode.removeChild(curBox.iframe);
+            } catch(e) { }
+          }
+          curBox = VK.Util.Box(VK.Util.getAbsUrl(url), [], {
+            proxy: chatRpc
+          }, {
+            zIndex: 10002
+          });
+          curBox.show();
+        },
+        setTooltipSize: function (size) {
+          ttSize = size;
+          if (!expanded) {
+            minimize();
+          }
+        },
+        expand: function(opts) {
+          opts = opts || {};
+          expanded = 1;
+          expand();
+
+          if (!opts.noSaveState) {
+            lsSet('expanded', 1);
+          }
+        },
+        minimize: function() {
+          setTimeout(function() {
+            expanded = 0;
+            minimize(objId);
+            lsRemove('expanded');
+          }, 120);
+        },
+        canNotWrite: function(type) {
+          options.onCanNotWrite && options.onCanNotWrite(type);
+        },
+        destroy: function() {
+          chatRpc.destroy();
+          try {chatIfr.src = 'about: blank;';} catch (e) {}
+          try {
+            chatIfr.parentNode.removeChild(chatIfr);
+          } catch(e) { }
+        },
+        fatalError: function(error_code, public_id) {
+
+          var query = {
+            code: error_code,
+            widget: 2,
+            public_id: public_id,
+          };
+
+          if (error_code == 1903) {
+            query.referrer_domain = document.domain;
+          }
+
+          var query_str = [];
+          for(var i in query) {
+            query_str.push(i+'='+query[i]);
+          }
+
+          CommunityMessages.destroy(objId);
+          var box = VK.Util.Box(VK.Util.getAbsUrl('blank.php?'+query_str.join('&')));
+          box.show();
+        },
+        setPageTitle: function (title) {
+          if (options.disableTitleChange) {
+            return;
+          }
+          stopTitleAnimation();
+          wCur.oldTitle = document.title || null;
+          wCur.title = title;
+          wCur.changeTitleMode = 0;
+          startTitleNotify(1);
+        },
+        resetPageTitle: function () {
+          stopTitleAnimation();
+        },
+        newMessage: function () {
+          if (document.hasFocus && !document.hasFocus() && !options.disableNewMessagesSound) {
+            callRpcMethod('playNewMsgSong');
+          }
+        }
+      }, {}, function(o, i, r) {
+        chatRpc = r;
+        chatIfr = i;
+        if (!options.shown) {
+          minimize();
+        } else {
+          expand();
+        }
+      });
+
+      function startTitleNotify(fast) {
+        clearTimeout(wCur.titleTimer);
+        wCur.titleTimer = setTimeout(function () {
+          if (wCur.changeTitleMode == 1) {
+            document.title = wCur.oldTitle || '';
+          } else {
+            document.title = wCur.title;
+          }
+          wCur.changeTitleMode = wCur.changeTitleMode == 1 ? 0 : 1;
+          startTitleNotify();
+        }, fast ? 0 : 1500);
+      }
+
+      function stopTitleAnimation() {
+        if (options.disableTitleChange) {
+          return;
+        }
+        clearTimeout(wCur.titleTimer);
+        if (wCur.oldTitle) {
+          document.title = wCur.oldTitle;
+        } else if (wCur.oldTitle === null) {
+          document.title = '';
+        }
+        wCur.title = '';
+      }
+
+      function expand() {
+        var obj = document.getElementById(objId), frame = obj.getElementsByTagName('iframe')[0];
+
+        obj.style.width = frame.width = '372px';
+        obj.style.height = frame.height = '399px';
+        obj.style.margin = '0px 0px 0px 0px';
+        //frame.style.boxShadow = '0 0 0 1px rgba(0, 20, 51, .12), 0 20px 40px 0 rgba(0, 0, 0, 0.3)';
+        //frame.style.borderRadius = '6px';
+      }
+
+      function minimize() {
+        var obj = document.getElementById(objId), frame = obj.getElementsByTagName('iframe')[0];
+
+        var btnConf = BUTTONS_CONF[buttonType];
+
+        var w = btnConf.width + ttSize[0];
+        var h = Math.max(btnConf.height, ttSize[1]);
+
+        obj.style.width = w + 'px';
+        obj.style.height = h + 'px';
+
+        var margin = btnConf.margin ? btnConf.margin : {};
+        obj.style.margin = '0px ' + (margin.right || 0) + 'px ' + (margin.bottom || 0) + 'px 0px';
+
+        if (frame) {
+          frame.style.boxShadow = 'none';
+          frame.width = w;
+          frame.height = h;
+        }
+      }
+
+      function changeWidgetPosition(position) {
+        widgetPosition = position;
+        if (Object.keys(BUTTON_POSITIONS).indexOf(widgetPosition) == -1) {
+          widgetPosition = DEFAULT_BUTTON_POSITION;
+        }
+        updateWidgetPosition();
+        callRpcMethod('changeButtonPosition', widgetPosition);
+      }
+
+      function updateWidgetPosition() {
+        var obj = document.getElementById(objId);
+
+        if (!obj) {
+          return;
+        }
+
+        var props = ['left', 'right', 'top', 'bottom'];
+        for(var i in props) {
+          obj.style[props[i]] = '';
+        }
+
+        var conf = BUTTON_POSITIONS[widgetPosition];
+        for(var i in conf) {
+          obj.style[i] = conf[i] + 'px';
+        }
+
+        if (!inited) {
+          return;
+        }
+
+        if (expanded) {
+          expand();
+        } else {
+          minimize();
+        }
+      }
+
+      function callRpcMethod() {
+        chatRpc && chatRpc.callMethod.apply(chatRpc, arguments);
+      }
+
+      /* opts
+        - welcomeScreen
+      */
+      function expandChat(opts) {
+        if (!opts || Object.prototype.toString.call(opts) !== '[object Object]') {
+          opts = {};
+        }
+
+        if (opts.welcomeScreen == undefined) {
+          opts.welcomeScreen = options.welcomeScreen;
+        }
+
+        var frame = document.getElementById(objId).getElementsByTagName('iframe')[0];
+        frame && frame.contentWindow.postMessage({ handler: 'VKReforgedWidgetExpand' }, VK._domain.base);
+
+        clearTimeout(timers.showTimer);
+        callRpcMethod('expand', opts);
+      }
+
+      function minimizeChat() {
+        callRpcMethod('minimize');
+
+        var frame = document.getElementById(objId).getElementsByTagName('iframe')[0];
+        frame && frame.contentWindow.postMessage({ handler: 'VKReforgedWidgetMinimize' }, VK._domain.base);
+      }
+
+      function setSourceData(data) {
+        callRpcMethod('setSourceData', VK.extend({
+          link: location.href,
+        }, data));
+      }
+
+      VK.Util.addEvent('popstate', setSourceData.bind(this, {}), window);
+      VK.Util.addEvent('hashchange', setSourceData.bind(this, {}), window);
+
+      function destroyChat() {
+        stopTitleAnimation();
+        var frame = document.getElementById(objId).getElementsByTagName('iframe')[0];
+        frame && frame.contentWindow.postMessage({ handler: 'VKReforgedWidgetDestroy' }, VK._domain.base);
+        CommunityMessages.destroy(objId);
+      }
+
+      return {
+        expand: expandChat,
+        minimize: minimizeChat,
+        destroy: destroyChat,
+        setSourceData: setSourceData,
+        changeButtonPosition: changeWidgetPosition,
+        stopTitleAnimation: stopTitleAnimation,
+      };
+    };
+
+    function lsGet(key) {
+      if (!window.localStorage) {
+        return null;
+      }
+      return localStorage.getItem('vk_community_widget_' + key);
+    }
+
+    function lsSet(key, value) {
+      window.localStorage && localStorage.setItem('vk_community_widget_' + key, value);
+    }
+
+    function lsRemove(key) {
+      window.localStorage && localStorage.removeItem('vk_community_widget_' + key);
+    }
+
+    CommunityMessages.destroy = function(objId) {
+      if (!instances[objId]) {
+        return;
+      }
+
+      var xdm = VK.Widgets.RPC[instances[objId]];
+      xdm && xdm.methods.destroy();
+
+      delete instances[objId];
+    };
+
+    CommunityMessages.expand = function (objId) {
+      console.log(instances[objId]);
+    };
+
+    return CommunityMessages;
+  })(VK.Widgets.CommunityMessages);
+
+  VK.Widgets._constructor = function(widgetUrl, objId, options, params, funcs, defaults, onDone, widgetId, iter) {
+    var obj = document.getElementById(objId);
+    widgetId = widgetId || (++VK.Widgets.count);
+
+    if (!obj) {
+      iter = iter || 0;
+      if (iter > 10) {
+        throw Error('VK.Widgets: object #' + objId + ' not found.');
+      }
+      setTimeout(function() {
+        VK.Widgets._constructor(widgetUrl, objId, options, params, funcs, defaults, onDone, widgetId, iter + 1);
+      }, 500);
+      return widgetId;
+    }
+
+    options = options || {};
+    defaults = defaults || {};
+    funcs = funcs || {};
+
+    if (options.preview) {
+      params.preview = 1;
+      delete options['preview'];
+    }
+
+    var ifr, url, urlQueryString, encodedParam, rpc, iframe, i,
+      width = options.width === 'auto' ? (obj.clientWidth || obj.offsetWidth || defaults.minWidth) | 0 : parseInt(options.width || 0, 10);
+    if (params.act === 'silent_code') {
+      width = '1px';
+      obj.style.opacity = 0;
+      obj.style.display = 'none';
+      obj.style.position = 'absolute';
+    } else {
+      width = width ? (Math.max(defaults.minWidth || 200, Math.min(defaults.maxWidth || 10000, width)) + 'px') : '100%';
+    }
+    obj.style.width = width;
+
+    if (options.height) {
+      params.height = options.height;
+      obj.style.height = options.height + 'px';
+    } else {
+      obj.style.height = (defaults.startHeight || 200) + 'px';
+    }
+
+    if (width === '100%') params.startWidth = (obj.clientWidth || obj.offsetWidth) | 0;
+    if (!params.url) params.url = options.pageUrl || location.href.replace(/#.*$/, '');
+
+    url = VK._domain.base + '/' + widgetUrl;
+    urlQueryString = '';
+    if (!options.noDefaultParams) {
+      urlQueryString += '&app=' + (VK._apiId || '0') + '&width=' + encodeURIComponent(width)
+    }
+    urlQueryString += '&_ver=' + VK.version
+    if (VK._iframeAppWidget) {
+      params.iframe_app = 1;
+    }
+    var pData = VK.Util.getPageData();
+    params.url      = params.url     || pData.url || "";
+    params.referrer = params.referrer || document.referrer || "";
+    params.title    = params.title   || pData.title  || document.title || "";
+    for (i in params) {
+      if (i == 'title' && params[i].length > 80) params[i] = params[i].substr(0, 80)+'...';
+      if (i == 'description' && params[i].length > 160) params[i] = params[i].substr(0, 160)+'...';
+      if (typeof(params[i]) == 'number') {
+        encodedParam = params[i];
+      } else {
+        try {
+          encodedParam = encodeURIComponent(params[i]);
+        } catch (e) {
+          encodedParam = '';
+        }
+      }
+      urlQueryString += '&' + i + '=' + encodedParam;
+    }
+    urlQueryString += '&' + (+new Date()).toString(16);
+    url += '?' + urlQueryString.substr(1);
+
+    funcs.onStartLoading && funcs.onStartLoading();
+    if (!options.no_loading) {
+      VK.Widgets.loading(obj, true);
+    }
+
+    funcs.showLoader = function(enable) {
+      VK.Util.Loader(enable);
+    };
+    funcs.publish = function() {
+      var args = Array.prototype.slice.call(arguments);
+      args.push(widgetId);
+      VK.Observer.publish.apply(VK.Observer, args);
+    };
+    funcs.onInit = function() {
+      VK.Widgets.loading(obj, false);
+      if (funcs.onReady) funcs.onReady();
+      if (options.onReady) options.onReady();
+    };
+    funcs.resize = function(e, cb) {
+      obj.style.height = e + 'px';
+      var el = document.getElementById('vkwidget' + widgetId);
+      if (el) {
+        el.style.height = e + 'px';
+      }
+    };
+    funcs.resizeWidget = function(newWidth, newHeight) {
+      newWidth  = parseInt(newWidth);
+      newHeight = parseInt(newHeight);
+      var widgetElem = document.getElementById('vkwidget' + widgetId);
+      if (isFinite(newWidth)) {
+        obj.style.width = newWidth + 'px';
+        if (widgetElem) {
+          widgetElem.style.width = newWidth + 'px';
+        }
+      }
+      if (isFinite(newHeight)) {
+        obj.style.height = newHeight + 'px';
+        if (widgetElem) {
+          widgetElem.style.height = newHeight + 'px';
+        }
+      }
+      if (options.onResizeWidget) options.onResizeWidget();
+    };
+    funcs.updateVersion = function(ver) {
+      if (ver > 1) {
+        VK.Api.attachScript('//vk.com/js/api/openapi_update.js?'+parseInt(ver));
+      }
+    };
+    rpc = VK.Widgets.RPC[widgetId] = new fastXDM.Server(funcs, function(origin) {
+      if (!origin) return true;
+      origin = origin.toLowerCase();
+      return (origin.match(/(\.|\/)vk\.com($|\/|\?)/));
+    }, {safe: true});
+    var style = {
+      overflow: 'hidden'
+    };
+    if (options.custom_style && typeof options.custom_style === 'object') {
+      style = VK.extend(style, options.custom_style);
+    }
+    var attrsString = "";
+    if (options.enable_autoplay) {
+      attrsString = 'allow="autoplay"';
+    }
+    iframe = VK.Widgets.RPC[widgetId].append(
+      obj,
+      {
+        src: url,
+        width: (width.indexOf('%') != -1) ? width : (parseInt(width) || width),
+        height: defaults.startHeight || '100%',
+        scrolling: 'no',
+        id: 'vkwidget' + widgetId,
+        allowTransparency: options.allowTransparency || false,
+        style: style,
+      },
+      attrsString
+    );
+    onDone && setTimeout(function() {onDone(obj, iframe || obj.firstChild, rpc);}, 10);
+    return widgetId;
+  };
+}
+
+if (!VK.Util) {
+  VK.Util = {
+    getPageData: function() {
+      if (!VK._pData) {
+        var metas = document.getElementsByTagName('meta'), pData = {}, keys = ['description', 'title', 'url', 'image', 'app_id'], metaName;
+        for (var i in metas) {
+          if (!metas[i].getAttribute) continue;
+          if (metas[i].getAttribute && ((metaName = metas[i].getAttribute('name')) || (metaName = metas[i].getAttribute('property')))) {
+            for (var j in keys) {
+              if (metaName == keys[j] || metaName == 'og:'+keys[j] || metaName == 'vk:'+keys[j]) {
+                pData[keys[j]] = metas[i].content;
+              }
+            }
+          }
+        }
+        if (pData.app_id && !VK._apiId) {
+          VK._apiId = pData.app_id;
+        }
+        pData.title = pData.title || document.title || '';
+        pData.description = pData.description || '';
+        pData.image = pData.image || '';
+        if (!pData.url && VK._iframeAppWidget && VK._apiId) {
+          pData.url = '/app' + VK._apiId;
+          if (VK._browserHash) {
+            pData.url += VK._browserHash
+          }
+        }
+        var loc = location.href.replace(/#.*$/, '');
+        if (!pData.url || !pData.url.indexOf(loc)) {
+          pData.url = loc;
+        }
+        VK._pData = pData;
+      }
+      return VK._pData;
+    },
+
+    getStyle: function(elem, name) {
+      var ret, defaultView = document.defaultView || window;
+      if (defaultView.getComputedStyle) {
+        name = name.replace(/([A-Z])/g, '-$1').toLowerCase();
+        var computedStyle = defaultView.getComputedStyle(elem, null);
+        if (computedStyle) {
+          ret = computedStyle.getPropertyValue(name);
+        }
+      } else if (elem.currentStyle) {
+        var camelCase = name.replace(/\-(\w)/g, function(all, letter){
+          return letter.toUpperCase();
+        });
+        ret = elem.currentStyle[name] || elem.currentStyle[camelCase];
+      }
+
+      return ret;
+    },
+
+    getAbsUrl: function(url) {
+      return VK._domain.base + '/' + url.replace(/^\s*\/?/, '');
+    },
+
+    parseOptions: function(options) {
+      if (Object.prototype.toString.call(options) !== '[object Object]') {
+        options = {};
+      }
+
+      if (options.base_domain) {
+        VK._domain.base = options.base_domain;
+      }
+      if (options.login_domain) {
+        VK._domain.login = options.login_domain;
+      }
+
+      return options;
+    },
+
+    getXY: function(obj, fixed) {
+      if (!obj || obj === undefined) return;
+
+      var left = 0, top = 0;
+      if (obj.getBoundingClientRect !== undefined) {
+        var rect = obj.getBoundingClientRect();
+        left = rect.left;
+        top = rect.top;
+        fixed = true;
+      } else if (obj.offsetParent) {
+        do {
+          left += obj.offsetLeft;
+          top += obj.offsetTop;
+          if (fixed) {
+            left -= obj.scrollLeft;
+            top -= obj.scrollTop;
+          }
+        } while (obj = obj.offsetParent);
+      }
+      if (fixed) {
+        top += window.pageYOffset || window.scrollNode && scrollNode.scrollTop || document.documentElement.scrollTop;
+        left += window.pageXOffset || window.scrollNode && scrollNode.scrollLeft || document.documentElement.scrollLeft;
+      }
+
+      return [left, top];
+    },
+
+    Loader: function self(enable) {
+      if (!self.loader) {
+        self.loader = document.createElement('DIV');
+        self.loader.innerHTML = '<style type="text/css">\
+        @-webkit-keyframes VKWidgetsLoaderKeyframes {0%{opacity: 0.2;}30%{opacity: 1;}100%{opacity: 0.2;}}\
+        @keyframes VKWidgetsLoaderKeyframes {0%{opacity: 0.2;}30%{opacity: 1;}100%{opacity: 0.2;}}\
+        .VKWidgetsLoader div {width: 7px;height: 7px;-webkit-border-radius: 50%;-khtml-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;background: #fff;top: 21px;position: absolute;z-index: 2;-o-transition: opacity 350ms linear; transition: opacity 350ms linear;opacity: 0.2;-webkit-animation-duration: 750ms;-o-animation-duration: 750ms;animation-duration: 750ms;-webkit-animation-name: VKWidgetsLoaderKeyframes;-o-animation-name: VKWidgetsLoaderKeyframes;animation-name: VKWidgetsLoaderKeyframes;-webkit-animation-iteration-count: infinite;-o-animation-iteration-count: infinite;animation-iteration-count: infinite;-webkit-transform: translateZ(0);transform: translateZ(0);}</style><div class="VKWidgetsLoader" style="position: fixed;left: 50%;top: 50%;margin: -25px -50px;z-index: 1002;height: 50px;width: 100px;"><div style="left: 36px;-webkit-animation-delay: 0ms;-o-animation-delay: 0ms;animation-delay: 0ms;"></div><div style="left: 47px;-webkit-animation-delay: 180ms;-o-animation-delay: 180ms;animation-delay: 180ms;"></div><div style="left: 58px;-webkit-animation-delay: 360ms;-o-animation-delay: 360ms;animation-delay: 360ms;"></div><span style="display: block;background-color: #000;-webkit-border-radius: 4px;-khtml-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;-webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);-moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);position: absolute;left: 0;top: 0;bottom: 0; right: 0;z-index: 1;opacity: 0.7;"></span></div>';
+        document.body.insertBefore(self.loader, document.body.firstChild);
+      }
+      self.loader.style.display = enable ? 'block' : 'none';
+    },
+
+    Box: function(src, sizes, fnc, options) {
+      fnc = fnc || {};
+      var overflowB = document.body.style.overflow;
+      VK.Util.Loader(true);
+      var is_vk = /(^|\.)(vk\.com|vkontakte\.ru)$/.test(location.hostname);
+      var rpc = new fastXDM.Server(VK.extend(fnc, {
+            onInit: function() {
+              iframe.style.background = 'transparent';
+              iframe.style.visibility = 'visible';
+              document.body.style.overflow = 'hidden';
+              iframe.setAttribute('allowfullscreen', 1);
+              if (is_vk) document.body.className += ' layers_shown';
+              VK.Util.Loader();
+            },
+            hide: function() {
+              iframe.style.display = 'none';
+            },
+            tempHide: function() {
+              iframe.style.left = '-10000px';
+              iframe.style.top = '-10000px';
+              iframe.style.width = '10px';
+              iframe.style.height = '10px';
+              if (is_vk) document.body.className = document.body.className.replace(/\b\s*?layers_shown\s*\b/, ' ');
+              document.body.style.overflow = overflowB;
+            },
+            destroy: function() {
+              try {
+                iframe.src = 'about: blank;';
+              } catch (e) {}
+              iframe.parentNode.removeChild(iframe);
+              if (is_vk) document.body.className = document.body.className.replace(/\b\s*?layers_shown\s*\b/, ' ');
+              document.body.style.overflow = overflowB;
+            },
+            resize: function(w, h) {
+            }
+          }, true), false, {safe: true}),
+          iframe = rpc.append(document.body, {
+            src: src.replace(/&amp;/g, '&'),
+            scrolling: 'no',
+            allowTransparency: true,
+            style: {
+              position: 'fixed',
+              left: 0,
+              top: 0,
+              zIndex: options && options.zIndex || 1002,
+              background: VK._domain.base + '/images/upload.gif center center no-repeat transparent',
+              padding: '0',
+              border: '0',
+              width: '100%',
+              height: '100%',
+              overflow: 'hidden',
+              visibility: 'hidden'
+            }
+          });
+      return {
+        show: function(scrollTop, height) {
+          iframe.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        },
+        hide: function() {
+          iframe.style.display = 'none';
+          document.body.style.overflow = overflowB;
+        },
+        iframe: iframe,
+        rpc: rpc
+      }
+    },
+
+    addEvent: function(type, func, target) {
+      target = target || window.document;
+      if (target.addEventListener) {
+        target.addEventListener(type, func, false);
+      } else if (target.attachEvent) {
+        target.attachEvent('on'+type, func);
+      }
+    },
+
+    removeEvent: function(type, func, target) {
+      target = target || window.document;
+      if (target.removeEventListener) {
+        target.removeEventListener(type, func, false);
+      } else if (target.detachEvent) {
+        target.detachEvent('on'+type, func);
+      }
+    },
+
+    ss: function(el, styles) {VK.extend(el.style, styles, true);}
+  };
+}
+
+if (!VK.Retargeting) {
+  VK.Retargeting = {
+    pixelCode: null,
+    Init: function (pixelCode) {
+      this.pixelCode = pixelCode;
+      return this;
+    },
+    Event: function (event) {
+      if (!this.pixelCode) {
+        return;
+      }
+
+      if (IS_BRIDGE_AVAILABLE) {
+        _bridgeSend('VKWebAppRetargetingPixel', {
+          pixel_code: this.pixelCode,
+          event: event,
+        });
+        return;
+      }
+
+      var pData = VK.Util.getPageData();
+      var metatagUrl = pData.url.substr(0, 500);
+      var metatagTitle = pData.title && pData.title.substr(0, 500) || '';
+
+      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=' + this.pixelCode +
+        (event ? ('&event=' + encodeURIComponent(event)) : '') +
+        (metatagUrl ? ('&metatag_url=' + encodeURIComponent(metatagUrl)) : '') +
+        (metatagTitle ? ('&metatag_title=' + encodeURIComponent(metatagTitle)) : '');
+    },
+    Hit: function () {
+      this.Event();
+    },
+    Add: function (audienceID) {
+      if (!this.pixelCode || !audienceID) {
+        return;
+      }
+
+      if (IS_BRIDGE_AVAILABLE) {
+        _bridgeSend('VKWebAppRetargetingPixel', {
+          pixel_code: this.pixelCode,
+          target_group_id: audienceID,
+        });
+        return;
+      }
+
+      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=' + this.pixelCode + '&audience=' + encodeURIComponent(audienceID);
+    },
+    ProductEvent: function (priceListID, event, params, opts) {
+      if (!this.pixelCode || !event || !priceListID) {
+        return;
+      }
+
+      opts = opts || {};
+
+      var canShowErrors = true;
+      if (typeof opts.show_errors !== 'undefined') {
+        canShowErrors = opts.show_errors ? true : false;
+      }
+      var errorsIgnore = '0';
+      if (typeof opts.errors_ignore !== 'undefined') {
+        errorsIgnore = opts.errors_ignore ? '1' : '0';
+      }
+
+      var pData = VK.Util.getPageData();
+      var metatagUrl = pData.url.substr(0, 500);
+      var metatagTitle = pData.title && pData.title.substr(0, 500) || '';
+      var url = 'https://vk.com/rtrg';
+      var productParams = params ? JSON.stringify(params) : '';
+      var requestParams = {
+        'p': this.pixelCode,
+        'products_event': event,
+        'price_list_id': priceListID,
+        'e': '1',
+        'i': errorsIgnore,
+        'metatag_url' : metatagUrl,
+        'metatag_title' : metatagTitle
+      };
+      if (productParams) {
+        requestParams.products_params = productParams;
+      }
+
+      if (IS_BRIDGE_AVAILABLE) {
+        _bridgeSend('VKWebAppRetargetingPixel', {
+          pixel_code: this.pixelCode,
+          price_list_id: priceListID,
+          products_event: event,
+          products_params: productParams,
+        });
+        return;
+      }
+
+      var query = Object.keys(requestParams).map(function(key) {
+        var segment = encodeURIComponent(key) + '=' + encodeURIComponent(requestParams[key]);
+        return segment;
+      }).join('&');
+
+      var requestUrl = url + '?' + query;
+
+      VK.Api.makeRequest(requestUrl, this.onDone.bind(this, canShowErrors));
+    },
+    onDone: function(canShowErrors, response) {
+      if (!response || !canShowErrors) {
+        return;
+      }
+
+      var resp;
+      try {
+        resp = JSON.parse(response);
+      } catch (e) {
+        return;
+      }
+
+      if (!resp || !resp.errors) {
+        return;
+      }
+      this.showErrors(resp.errors);
+    },
+    showErrors: function(errors) {
+      if (!errors && !errors.length) {
+        return;
+      }
+
+      var errorBegin = 'VK Pixel Error (' + this.pixelCode + '): ';
+
+      if (typeof errors === 'string') {
+        console.error(errorBegin + errors);
+        return;
+      }
+
+      var errorsLength = errors.length;
+
+      if (!errorsLength) {
+        return;
+      }
+
+      for (var i = 0; i < errorsLength; i++) {
+        console.error(errorBegin + errors[i]);
+      }
+    }
+  };
+}
+
+if (!VK.Pixel) {
+  VK.Pixel = function (pixelCode) {
+    if (this.constructor != VK.Pixel) {
+      throw Error('VK.Pixel was called without \'new\' operator');
+    }
+
+    VK.extend(this, VK.Retargeting);
+    this.pixelCode = pixelCode;
+    this.Goal = function(conversionName, parameters) {
+      return VK.Goal(conversionName, parameters, pixelCode);
+    };
+
+    return this;
+  };
+}
+
+if (!VK.Goal) {
+  /**
+   * @param {String} [conversionName=conversion]
+   * @param {Object} [parameters]
+   * @param {Integer} [parameters.value=0] - conversion amount
+   * @param {String} [pixelCode] - pixel code
+   * @public
+   */
+  VK.Goal = function (conversionName, parameters, pixelCode) {
+    var pixel = pixelCode || VK.Retargeting.pixelCode;
+    if (!pixel || typeof pixel !== 'string') {
+      console.error('Error argument: pixelCode not a string. Use VK.Retargeting.Init or VK.Pixel to initialize pixel');
+      return;
+    }
+
+    var eventName = conversionName || 'conversion';
+    if (typeof eventName !== 'string') {
+      console.error('Error argument: conversionName not a string');
+      return;
+    }
+
+    var value = (parameters || {}).value || 0;
+    if (typeof value === 'string') {
+      if(parseFloat(value).toString() !== value) {
+        console.error('Error argument: parameters.value not a number or valid number string');
+        return;
+      }
+    } else if (typeof value !== 'number') {
+      console.error('Error argument: parameters.value not a number or valid number string');
+      return;
+    }
+
+    if (IS_BRIDGE_AVAILABLE) {
+      _bridgeSend('VKWebAppConversionHit', {
+        pixel_code: pixel,
+        conversion_event: eventName,
+        conversion_value: value,
+      })
+      return;
+    }
+
+    var url = 'https://vk.com/rtrg';
+    var requestParams = {
+      'p': pixel,
+      'e': '1',
+      'c': eventName,
+      'v': value,
+    };
+
+    var query = Object.keys(requestParams).map(function(key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(requestParams[key]);
+    }).join('&');
+
+    var requestUrl = url + '?' + query;
+    VK.Api.makeRequest(requestUrl, VK.Retargeting.onDone.bind(VK.Retargeting, true));
+  };
+}
+
+// Init asynchronous library loading
+window.vkAsyncInit && setTimeout(vkAsyncInit, 0);
+
+if (window.vkAsyncInitCallbacks && vkAsyncInitCallbacks.length) {
+  setTimeout(function() {
+    var callback;
+    while (callback = vkAsyncInitCallbacks.pop()) {
+      try {
+        callback();
+      } catch(e) {
+        try {
+          console.error(e);
+        } catch (e2) {}
+      }
+    }
+  }, 0);
+}
+
+try{stManager.done('api/openapi.js');}catch(e){}
