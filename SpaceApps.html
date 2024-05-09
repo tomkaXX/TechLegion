@@ -29,6 +29,41 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 	}
 </style>
 
+<style>
+.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .accordion:after {
+            content: '\002B'; /* Unicode character for "plus" sign (+) */
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        .active:after {
+            content: "\2212"; /* Unicode character for "minus" sign (-) */
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+
 <style id="wp-block-library-inline-css">
 :root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:#9747ff}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip:auto!important;-webkit-clip-path:none;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
 </style>
@@ -352,73 +387,43 @@ Switzerland 2024</p>		</div>
 				</div>
 
 
+
+	 <button class="accordion">When?</button>
+	 <div class="panel">
+			 <p>Over 48 hours on the 05th and 06th of October 2024.</p>
+	 </div>
+
+	 <button class="accordion">Where?</button>
+	 <div class="panel">
+			 <p>Zurich or ONLINE from all over Switzerland.</p>
+	 </div>
+
+	 <button class="accordion">When can I register?</button>
+	 <div class="panel">
+			 <p>Registration will be available prior to the event and will continue until 05th of October. All individuals who are attending will need to register online on: <a href="https://www.spaceappschallenge.org/" target="_blank">https://www.spaceappschallenge.org/</a></p>
+	 </div>
+
+	 <button class="accordion">Do I need to take my laptop?</button>
+	 <div class="panel">
+			 <p>Everyone can take his/her laptop. There will be some available, but may be not sufficient.</p>
+	 </div>
+
+	 <button class="accordion">Who can participate?</button>
+	 <div class="panel">
+			 <p>Everyone can participate - developers, engineers, technologists, designers, and anyone with a passion and desire to have an immediate impact on the world.</p>
+	 </div>
+
+	 <button class="accordion">How can I contact with a team from other location in the world?</button>
+	 <div class="panel">
+			 <p>You can send an e-mail to the local lead from that location or send an e-mail to community@techlegion.ch titled - SPACE APPS COLLABORATION!</p>
+	 </div>
+
+
 				<div class="pane-content" style="color: #ffffff;">
 
 			<hr>
-			<ul class="faq-list">
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">WHEN?</h3>
-			<div class="faq-description">
-			<p>Over 48 hours on the 05th and 06th of October&nbsp;2024</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">WHERE?</h3>
-			<div class="faq-description">
-			<!--p><span>Zurich or ONLINE from all over Switzerland&nbsp;</span></p>
-			<p><span><span>Burgas,&nbsp;Burgas Free University -&nbsp;ONLINE from all over Bulgaria&nbsp;</span></span></p>
-			<p><span style="font-size: 13.008px;">Ruse, University of Ruse "Angel Kanchev" -&nbsp;ONLINE from all over Bulgaria&nbsp;</span></p-->
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">WHEN CAN I REGISTER?</h3>
-			<div class="faq-description">
-			<p>Registration will be available&nbsp;prior to the event and will continue until 05th of October. All&nbsp;individuals who are attending will need to register online&nbsp;on:&nbsp;<a style="text-decoration: underline; color: #ffffff;" href="https://www.spaceappschallenge.org/">https://www.spaceappschallenge.org/</a></p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">DO I NEED TO TAKE MY LAPTOP?</h3>
-			<div class="faq-description">
-			<p>Everyone can take his/her laptop. There will be some available, but may be not sufficient.</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">WHO CAN PARTICIPATE?</h3>
-			<div class="faq-description">
-			<p>Everyone can participate - developers, engineers, technologists, designers, and anyone with a passion and desire to have an immediate impact on the world. They are open to anyone who has a passion for making a difference and are focused on developing real solutions to global challenges.</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">HOW THE TEAMS &nbsp;CAN BE FORMED?</h3>
-			<div class="faq-description">
-			<p>Each team can be formed by one or more participants, it is recommended up to five members. The international collaboration is highly encouraged.</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">HOW CAN I CONTACT WITH A TEAM FROM OTHER LOCATION IN THE WORLD?</h3>
-			<div class="faq-description">
-			<p>You can send an e-mail to the local lead from that location or send an e-mail to <a style="padding: 0; color: #ffffff; href="mailto:community@techlegion.ch">community@techlegion.ch</a>&nbsp;titled - <strong>SPACE APPS COLLABORATION</strong>!</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">HOW MANY CHALLENGES CAN I WORK ON?</h3>
-			<div class="faq-description">
-			<p>The teams can work on one or more challenges.</p>
-			</div>
-			</li>
-			<li class="faq-element clearfix">
-			<h3 class="faq-title">HOW THE PROJECTS WILL BE SENT?</h3>
-			<div class="faq-description">
-			<p>Each one team will upload the projects through the main website option using the username and password made at registration. This option will be available&nbsp;prior the event.</p>
-			</div>
-			</li>
-			<li class="faq-element faq-element-last clearfix">
-			<h3 class="faq-title">HOW THE PROJECTS WILL BE PRESENTED?</h3>
-			<div class="faq-description">
-			<p>The projects will be defended in front of the local judges. The teams can defend their idea with a presentation.</p>
-			</div>
-			</li>
-			</ul>
+
+
 				</div>
 
 
@@ -426,7 +431,7 @@ Switzerland 2024</p>		</div>
 
 				<div class="elementor-element elementor-element-43c7678 elementor-widget elementor-widget-text-editor" data-id="43c7678" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							<p style="padding: 0; color: #eafe0f; line-height: 0;">The CHALLENGES form is not open yet</p>						</div>
+							<p style="padding: 0; color: #eafe0f; line-height: 0;">The 2024 CHALLENGES form is not announced yet</p>						</div>
 				</div>
 
 				</div>
@@ -541,6 +546,24 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 <script id="wp-i18n-js-after">
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 </script>
+
+<script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
 <script src="./SpaceApps_files/elementor.js" id="qi-addons-for-elementor-elementor-js"></script>
 <script src="./SpaceApps_files/webpack-pro.runtime.min.js" id="elementor-pro-webpack-runtime-js"></script>
 <script id="elementor-pro-frontend-js-before">
