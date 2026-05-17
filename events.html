@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="events.title">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — TechLegion Switzerland</title>
+  <meta name="description" content="Live calendar of TechLegion events across Switzerland — workshops, meetups, hackathons and tech tours. Pulled live from our Google Calendar." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Events — TechLegion Switzerland" />
+  <meta property="og:description" content="Upcoming workshops, meetups, hackathons and tech tours across Switzerland." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="alternate" hreflang="en" href="https://techlegion.ch/events.html?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://techlegion.ch/events.html?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://techlegion.ch/events.html?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://techlegion.ch/events.html?lang=it" />
+  <link rel="alternate" hreflang="uk" href="https://techlegion.ch/events.html?lang=ua" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow" data-i18n="nav.events">Events</span>
+        <h1 data-i18n="events.title">Events</h1>
+        <p data-i18n="events.lead">Live from our Google Calendar — workshops, meetups, hackathons and tech tours across Switzerland.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <a href="calendar.html" class="btn btn-primary btn-lg" data-i18n="events.calendar.title">Full calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <h2 data-i18n="events.cats.title">Event categories</h2>
+      </div>
+      <div class="grid grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3 data-i18n="events.cat.workshop">Workshops</h3>
+          <p data-i18n="home.programs.workshops.desc">Practical sessions on AI, software engineering, cloud, cybersecurity, and living and working in Switzerland.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3 data-i18n="events.cat.hackathon">Hackathons</h3>
+          <p data-i18n="home.programs.hackathons.desc">Including the NASA Space Apps Challenge and community partner hackathons across Switzerland.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏭</div>
+          <h3 data-i18n="events.cat.tour">Tech Tours</h3>
+          <p data-i18n="home.programs.tours.desc">Behind-the-scenes visits to nuclear facilities, Google, NVIDIA, and leading Swiss research labs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3 data-i18n="events.cat.meetup">Meetups</h3>
+          <p>Casual community meetups for networking across the Swiss tech scene.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3 data-i18n="events.cat.coaching">Career Coaching</h3>
+          <p data-i18n="home.programs.coaching.desc">CV reviews, interview prep, and Swiss job-market orientation for career switchers, returners, and newcomers.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛰️</div>
+          <h3 data-i18n="events.cat.space">Space & Drones</h3>
+          <p data-i18n="home.programs.space.desc">Drone pilot A1/A2 certification, space innovation projects, and aerospace technology workshops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="callout fade-in">
+        <h3 data-i18n="events.subscribe.title">Subscribe to our calendar</h3>
+        <p data-i18n="events.subscribe.body">Add the TechLegion calendar to Google Calendar, Outlook or Apple Calendar so you never miss an event.</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="https://calendar.google.com/calendar/u/0?cid=dGVjaGxlZ2lvbi5jaEBnbWFpbC5jb20" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="events.subscribe.btn">Add to calendar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://www.threads.com/@techlegions" target="_blank" rel="noopener" aria-label="Threads">𝕏</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

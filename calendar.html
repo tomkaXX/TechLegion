@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="nav.calendar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar — TechLegion Switzerland</title>
+  <meta name="description" content="The live TechLegion Google Calendar — every upcoming workshop, hackathon, tech tour and meetup across Switzerland." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Calendar — TechLegion Switzerland" />
+  <meta property="og:description" content="Live Google Calendar of TechLegion events." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="alternate" hreflang="en" href="https://techlegion.ch/calendar.html?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://techlegion.ch/calendar.html?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://techlegion.ch/calendar.html?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://techlegion.ch/calendar.html?lang=it" />
+  <link rel="alternate" hreflang="uk" href="https://techlegion.ch/calendar.html?lang=ua" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS (on top of calendar) -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s2"></div>
+    <div class="container" style="position: relative;">
+      <div class="stats fade-in">
+        <div class="stat">
+          <span class="stat-num" data-counter="850" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="home.stats.members">Community members</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-counter="120" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="home.stats.events">Events organized</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-counter="65" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="home.stats.workshops">Workshops conducted</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-counter="14" data-suffix="">0</span>
+          <span class="stat-label" data-i18n="home.stats.hackathons">Hackathons supported</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "What's next" + Upcoming events lead + calendar view -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow" data-i18n="home.events.eyebrow">What's next</span>
+        <h1 data-i18n="home.events.title">Upcoming events</h1>
+        <p data-i18n="home.events.lead">Live calendar pulled directly from our Google Calendar — RSVP for the events you want to join.</p>
+      </div>
+      <div class="calendar-embed fade-in">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=techlegion.ch%40gmail.com&ctz=Europe%2FZurich&bgcolor=%23050816&color=%234d8bff&showTitle=0&showTabs=1&showCalendars=0&showTz=1"
+          title="TechLegion Google Calendar"
+          frameborder="0" scrolling="no" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="callout fade-in">
+        <h3 data-i18n="events.subscribe.title">Subscribe to our calendar</h3>
+        <p data-i18n="events.subscribe.body">Add the TechLegion calendar to Google Calendar, Outlook or Apple Calendar so you never miss an event.</p>
+        <div style="margin-top: 1.25rem; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+          <a href="https://calendar.google.com/calendar/u/0?cid=dGVjaGxlZ2lvbi5jaEBnbWFpbC5jb20" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="events.subscribe.btn">Add to calendar</a>
+          <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="btn btn-whatsapp" data-i18n="common.cta.whatsapp">Join WhatsApp Community</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://www.threads.com/@techlegions" target="_blank" rel="noopener" aria-label="Threads">𝕏</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
