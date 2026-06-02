@@ -459,9 +459,7 @@
           (e.g. https://formspree.io/f/yourId) or another GDPR-compliant form
           service. Add CAPTCHA via reCAPTCHA or hCaptcha. See README for details.
         -->
-        <form class="form" data-form-demo
-              data-success-text="Thanks for applying! Your application is now with the TechLegion board — you'll hear back within 5 working days."
-              method="POST" action="">
+        <form id="membership-form" class="form" method="POST" action="">
 
           <!-- Membership type -->
           <div class="form-section-title">Membership type</div>
@@ -917,6 +915,53 @@
       }
       tierSelect.addEventListener('change', toggle);
       toggle();
+    })();
+
+    // ---- Membership form submission → Google Apps Script ----
+    // 1. Create a Google Sheet, Extensions → Apps Script, paste the code from
+    //    /docs/apps-script.gs (or the snippet in the README/chat).
+    // 2. Deploy → New deployment → Web app → Execute as "Me",
+    //    Access "Anyone". Copy the Web App URL.
+    // 3. Paste it below.
+    var MEMBERSHIP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    (function () {
+      var form = document.getElementById('membership-form');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('[type=submit]');
+        var originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        var showSuccess = function () {
+          form.innerHTML =
+            '<div style="padding:2rem;text-align:center;">' +
+              '<div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div>' +
+              '<h3 style="color:var(--accent-glow);margin-bottom:0.5rem;">Thanks for applying!</h3>' +
+              '<p>Your application is now with the TechLegion board — you\'ll hear back within 5 working days.</p>' +
+            '</div>';
+        };
+        var showError = function () {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('Sorry, something went wrong submitting the form. Please email community@techlegion.ch and we\'ll process your application manually.');
+        };
+
+        if (!MEMBERSHIP_ENDPOINT) {
+          // No backend wired yet → behave like demo, still let the user know it worked locally
+          console.warn('[TechLegion] MEMBERSHIP_ENDPOINT is empty. Set it in membership.html to actually store submissions.');
+          showSuccess();
+          return;
+        }
+
+        fetch(MEMBERSHIP_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors' // Apps Script Web Apps need this; we won't read the response
+        }).then(showSuccess).catch(showError);
+      });
     })();
   </script>
 </body>
