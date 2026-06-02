@@ -12,10 +12,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Membership — TechLegion Switzerland</title>
-  <meta name="description" content="Become an official member of TechLegion Verein. CHF 100 annual fee. Access to events, voting rights at the General Assembly, and an exclusive Swiss tech community." />
+  <meta name="description" content="Become a member of TechLegion Verein. Free certification study groups, fast-track event entry, exclusive tech ambassador dinners, member coaching and more. Association, Corporate, Academic and Patron tiers." />
   <meta name="theme-color" content="#050816" />
   <meta property="og:title" content="Membership — TechLegion Switzerland" />
-  <meta property="og:description" content="Become an official member of TechLegion Verein and help shape the Swiss tech community." />
+  <meta property="og:description" content="Become a member of TechLegion Verein and help shape the Swiss tech community." />
   <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
   <meta property="og:type" content="website" />
   <link rel="alternate" hreflang="en" href="https://techlegion.ch/membership.html?lang=en" />
@@ -28,6 +28,198 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* ===== Membership page specific ===== */
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+    }
+    .benefit-card .b-icon {
+      font-size: 1.9rem;
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.12));
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .benefit-card h4 { margin-bottom: 0.4rem; }
+    .benefit-card p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+
+    /* Tier table */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .tier-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all var(--t);
+    }
+    .tier-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+    .tier-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(77,139,255,0.10), rgba(139,92,246,0.06));
+      box-shadow: var(--shadow-glow);
+    }
+    .tier-card .tier-badge {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+    }
+    .tier-card h3 { font-size: 1.25rem; margin: 0; }
+    .tier-card .tier-price {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .tier-card .tier-price small {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .tier-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .tier-card ul li::before {
+      content: '✓ ';
+      color: var(--accent-glow);
+      font-weight: 700;
+      margin-right: 0.35rem;
+    }
+    .tier-card .tier-note {
+      margin-top: auto;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Corporate fee table */
+    .fee-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 0.92rem;
+    }
+    .fee-table th, .fee-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .fee-table th {
+      background: rgba(77,139,255,0.08);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+    }
+    .fee-table tr:last-child td { border-bottom: none; }
+    .fee-table td:last-child { text-align: right; font-weight: 600; color: var(--white); }
+
+    /* Process steps */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      position: relative;
+    }
+    .step-card .step-num {
+      position: absolute;
+      top: -14px; left: 1.25rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--grad-accent);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border: 2px solid var(--bg);
+    }
+    .step-card h4 { margin: 0.5rem 0 0.4rem; font-size: 1.05rem; }
+    .step-card p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--white);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent-glow);
+      transition: transform var(--t);
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p {
+      margin: 0.75rem 0 0;
+      color: var(--text-dim);
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 880px) {
+      .tier-grid, .step-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .tier-grid, .step-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -64,61 +256,198 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section style="padding-top: 4rem; position: relative; overflow: hidden;">
     <div class="hero-shape s1"></div>
     <div class="hero-shape s3"></div>
     <div class="container" style="position: relative;">
       <div class="section-head fade-in">
         <span class="eyebrow" data-i18n="nav.membership">Membership</span>
-        <h1 data-i18n="membership.title">Membership</h1>
-        <p data-i18n="membership.lead">Become an official member of TechLegion Verein and help shape the Swiss tech community.</p>
+        <h1 data-i18n="membership.title">Join TechLegion — Switzerland's community of innovators</h1>
+        <p data-i18n="membership.lead">Become an official member of TechLegion Verein. Get free access to certification study groups, fast-track entry to our events, exclusive ambassador dinners, peer coaching and a network of people building the next generation of Swiss tech.</p>
+        <div class="hero-actions" style="margin-top: 1.5rem;">
+          <a href="#apply" class="btn btn-primary btn-lg">Apply for membership</a>
+          <a href="#tiers" class="btn btn-ghost btn-lg">See membership tiers</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- WHY JOIN -->
   <section style="padding-top: 0;">
     <div class="container">
-      <div class="section-head fade-in"><h2 data-i18n="membership.benefits.title">Member benefits</h2></div>
-      <div class="grid grid-4 fade-in">
-        <div class="card">
-          <div class="card-icon">🗳️</div>
-          <h4 data-i18n="membership.benefits.1.title">Vote at the General Assembly</h4>
-          <p data-i18n="membership.benefits.1.body">Help decide TechLegion's direction as part of our annual Verein assembly.</p>
+      <div class="section-head fade-in">
+        <span class="tag">⭐ Your benefits</span>
+        <h2>Why become a member</h2>
+        <p>TechLegion membership is built around four things: <strong>learning</strong>, <strong>access</strong>, <strong>community</strong> and <strong>opportunity</strong>. Here's everything that comes with your card.</p>
+      </div>
+
+      <div class="grid grid-3 fade-in">
+        <div class="benefit-card">
+          <div class="b-icon">🎓</div>
+          <h4>Free certification study groups</h4>
+          <p>Members-only preparation cohorts for industry certifications in AI, Robotics, Cloud, Cybersecurity, Data and emerging technologies — facilitated by working professionals, free of charge.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">⭐</div>
-          <h4 data-i18n="membership.benefits.2.title">Priority access to events</h4>
-          <p data-i18n="membership.benefits.2.body">Early registration for hackathons, tech tours and capped-capacity workshops.</p>
+        <div class="benefit-card">
+          <div class="b-icon">⚡</div>
+          <h4>Fast-track event applications</h4>
+          <p>Skip the waitlist. Members get priority registration and reserved seats at our capped-capacity workshops, hackathons, tech tours and offline meetups across Switzerland.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <h4 data-i18n="membership.benefits.3.title">Exclusive member community</h4>
-          <p data-i18n="membership.benefits.3.body">Access to a member-only space for networking, mentorship and collaboration.</p>
+        <div class="benefit-card">
+          <div class="b-icon">🎉</div>
+          <h4>Free Summer Party</h4>
+          <p>Complimentary entry to the official TechLegion Summer Party — our flagship community celebration of the year.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">💸</div>
-          <h4 data-i18n="membership.benefits.4.title">Discounts and free seats</h4>
-          <p data-i18n="membership.benefits.4.body">Free or discounted access to selected certifications, workshops and partner programs.</p>
+        <div class="benefit-card">
+          <div class="b-icon">🍷</div>
+          <h4>Exclusive ambassador dinners</h4>
+          <p>Closed-door dinners and roundtables with tech ambassadors, technology leaders and founders. Limited seats, reserved for active members.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="b-icon">🧭</div>
+          <h4>Member-to-member coaching</h4>
+          <p>Free 1:1 career, technical and founder coaching from senior members — CV review, interview prep, Swiss job-market orientation, startup advice.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="b-icon">💼</div>
+          <h4>Job & opportunity board</h4>
+          <p>Members-first job postings from partner companies, hiring intros to startups in our network, and early access to internships and contract gigs.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="b-icon">🗳️</div>
+          <h4>Vote at the General Assembly</h4>
+          <p>Help shape TechLegion's direction. Members have voting rights at the annual General Assembly under Swiss Verein law.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="b-icon">🤝</div>
+          <h4>Private member community</h4>
+          <p>Access to a member-only Slack / WhatsApp space for networking, mentorship requests, project partnerships and direct peer support.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="b-icon">🚀</div>
+          <h4>Partner perks & discounts</h4>
+          <p>Discounted access to partner conferences, cloud credits, co-working day passes, NASA Space Apps tracks and selected paid certifications.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- TIERS -->
+  <section id="tiers">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag">💎 Tiers</span>
+        <h2>Membership types &amp; fees</h2>
+        <p>Choose the tier that matches your situation. All fees are annual and renew automatically each January.</p>
+      </div>
+
+      <div class="tier-grid fade-in">
+        <div class="tier-card featured">
+          <span class="tier-badge">Most popular</span>
+          <h3>Association member</h3>
+          <div class="tier-price">CHF 100 <small>/ year</small></div>
+          <ul>
+            <li>All benefits, full voting rights</li>
+            <li>Fast-track event applications</li>
+            <li>Ambassador dinners (invite based)</li>
+            <li>Member coaching &amp; job board</li>
+          </ul>
+          <span class="tier-note">For working professionals and freelancers. Standard tier.</span>
+        </div>
+
+        <div class="tier-card">
+          <span class="tier-badge">Company</span>
+          <h3>Corporate member</h3>
+          <div class="tier-price">From CHF 1,000 <small>/ year</small></div>
+          <ul>
+            <li>Tiered by team size</li>
+            <li>Brand presence at events</li>
+            <li>Talent pipeline &amp; hiring partner status</li>
+            <li>5 named employee passes included</li>
+          </ul>
+          <span class="tier-note">SMEs and corporates supporting Swiss tech talent.</span>
+        </div>
+
+        <div class="tier-card">
+          <span class="tier-badge">Academia</span>
+          <h3>Academic member</h3>
+          <div class="tier-price">Free</div>
+          <ul>
+            <li>Universities, ETH labs, research groups</li>
+            <li>Joint student projects &amp; theses</li>
+            <li>Speaking slots and co-hosting</li>
+            <li>Access to our talent network</li>
+          </ul>
+          <span class="tier-note">No fee — we want academia at the table.</span>
+        </div>
+
+        <div class="tier-card">
+          <span class="tier-badge">Patron</span>
+          <h3>Supporting member</h3>
+          <div class="tier-price">Optional contribution</div>
+          <ul>
+            <li>Named patron of TechLegion</li>
+            <li>Logo on all flagship events</li>
+            <li>Annual private dinner with the board</li>
+            <li>Strategic advisory seat</li>
+          </ul>
+          <span class="tier-note">Any amount you choose to support the mission.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag">📝 Process</span>
+        <h2>How to become a member</h2>
+        <p>Four steps, no surprises. Most applications are approved within five working days.</p>
+      </div>
+
+      <div class="step-grid fade-in" style="margin-top: 1.5rem;">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4>Submit the form</h4>
+          <p>Fill in the application below — personal details, the tier you want, and a few words on why you're joining.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4>Board review</h4>
+          <p>The TechLegion board reviews each application against our statutes. We may reach out for a short intro call.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4>Pay the fee</h4>
+          <p>You'll receive an email with your invoice and Swiss bank details (or QR-bill). Membership starts on receipt.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4>Welcome aboard</h4>
+          <p>Get your digital member card, access the private community, and book your first event with priority entry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL CALLOUT -->
   <section>
     <div class="container container-narrow">
       <div class="callout fade-in">
         <span class="tag">⚖️ Legal disclosure</span>
-        <h3 data-i18n="membership.legal.title">Legal disclosure</h3>
-        <p data-i18n="membership.legal.body">Submitting this form legally binds you as a member of TechLegion Verein (registered in Zug, Switzerland) and obligates you to pay the annual membership fee of CHF 100. Membership is open to anyone aged 18 or older who supports our mission and statutes.</p>
+        <h3>What you're signing up for</h3>
+        <p>Submitting this form is an application for membership of <strong>TechLegion Verein</strong>, a non-profit association registered in Zug, Switzerland. Approved applicants are bound by our statutes, the annual membership fee for their tier, and the TechLegion code of conduct. Membership is open to anyone aged 18 or older who supports our mission. You can resign at any time with effect from the end of the calendar year.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- APPLICATION FORM -->
+  <section id="apply">
     <div class="container container-narrow">
       <div class="form-card fade-in">
-        <h3 data-i18n="membership.form.title">Apply for membership</h3>
-        <p class="form-subtitle" data-i18n="membership.form.subtitle">After submitting, you'll receive an email with payment instructions and a copy of our statutes.</p>
+        <h3>Apply for membership</h3>
+        <p class="form-subtitle">Fields marked with <span style="color: var(--accent-glow)">*</span> are mandatory. After submitting, you'll receive an email with payment instructions, our statutes and the code of conduct.</p>
 
         <!--
           INTEGRATION NOTE:
@@ -127,27 +456,41 @@
           service. Add CAPTCHA via reCAPTCHA or hCaptcha. See README for details.
         -->
         <form class="form" data-form-demo
-              data-success-text="Thanks for applying! In production you'll receive an email with payment instructions and our statutes."
+              data-success-text="Thanks for applying! Your application is now with the TechLegion board — you'll hear back within 5 working days."
               method="POST" action="">
 
-          <div class="form-section-title" data-i18n="membership.form.personal">Personal information</div>
+          <!-- Membership type -->
+          <div class="form-section-title">Membership type</div>
+          <div class="form-group">
+            <label>Choose your tier *</label>
+            <select name="membership_type" required>
+              <option value="">— Select a membership type —</option>
+              <option value="association">Association member — CHF 100/year</option>
+              <option value="corporate">Corporate member — From CHF 1,000/year</option>
+              <option value="academic">Academic member — Free</option>
+              <option value="supporting">Supporting / Patron member — Optional contribution</option>
+            </select>
+          </div>
+
+          <!-- Personal -->
+          <div class="form-section-title">Personal information</div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="membership.form.firstname">First name</label>
+              <label>First name *</label>
               <input type="text" name="first_name" required />
             </div>
             <div class="form-group">
-              <label data-i18n="membership.form.lastname">Last name</label>
+              <label>Last name *</label>
               <input type="text" name="last_name" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="membership.form.dob">Date of birth</label>
+              <label>Date of birth</label>
               <input type="date" name="dob" />
             </div>
             <div class="form-group">
-              <label data-i18n="membership.form.gender">Gender (optional)</label>
+              <label>Gender (optional)</label>
               <select name="gender">
                 <option value="">—</option>
                 <option>Female</option>
@@ -158,80 +501,360 @@
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="membership.form.nationality">Nationality</label>
+            <label>Nationality</label>
             <input type="text" name="nationality" />
           </div>
 
-          <div class="form-section-title" data-i18n="membership.form.contact">Contact information</div>
+          <!-- Contact -->
+          <div class="form-section-title">Contact information</div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="membership.form.email">Email</label>
+              <label>Email *</label>
               <input type="email" name="email" required />
             </div>
             <div class="form-group">
-              <label data-i18n="membership.form.phone">Phone number</label>
-              <input type="tel" name="phone" required />
+              <label>Phone number *</label>
+              <input type="tel" name="phone" required placeholder="+41 ..." />
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="membership.form.address">Address</label>
+            <label>Address *</label>
             <input type="text" name="address" required />
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="membership.form.postal">Postal code</label>
+              <label>Postal code *</label>
               <input type="text" name="postal" required />
             </div>
             <div class="form-group">
-              <label data-i18n="membership.form.city">City</label>
+              <label>City *</label>
               <input type="text" name="city" required />
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="membership.form.country">Country</label>
-            <input type="text" name="country" value="Switzerland" required />
+            <label>Country *</label>
+            <select name="country" required>
+              <option value="">— Select a country —</option>
+              <option value="CH" selected>Switzerland</option>
+              <option value="LI">Liechtenstein</option>
+              <option value="AT">Austria</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="IT">Italy</option>
+              <option value="AF">Afghanistan</option>
+              <option value="AL">Albania</option>
+              <option value="DZ">Algeria</option>
+              <option value="AD">Andorra</option>
+              <option value="AO">Angola</option>
+              <option value="AR">Argentina</option>
+              <option value="AM">Armenia</option>
+              <option value="AU">Australia</option>
+              <option value="AZ">Azerbaijan</option>
+              <option value="BS">Bahamas</option>
+              <option value="BH">Bahrain</option>
+              <option value="BD">Bangladesh</option>
+              <option value="BB">Barbados</option>
+              <option value="BY">Belarus</option>
+              <option value="BE">Belgium</option>
+              <option value="BZ">Belize</option>
+              <option value="BJ">Benin</option>
+              <option value="BT">Bhutan</option>
+              <option value="BO">Bolivia</option>
+              <option value="BA">Bosnia and Herzegovina</option>
+              <option value="BW">Botswana</option>
+              <option value="BR">Brazil</option>
+              <option value="BN">Brunei</option>
+              <option value="BG">Bulgaria</option>
+              <option value="BF">Burkina Faso</option>
+              <option value="BI">Burundi</option>
+              <option value="KH">Cambodia</option>
+              <option value="CM">Cameroon</option>
+              <option value="CA">Canada</option>
+              <option value="CV">Cape Verde</option>
+              <option value="CF">Central African Republic</option>
+              <option value="TD">Chad</option>
+              <option value="CL">Chile</option>
+              <option value="CN">China</option>
+              <option value="CO">Colombia</option>
+              <option value="KM">Comoros</option>
+              <option value="CG">Congo</option>
+              <option value="CD">Congo (DRC)</option>
+              <option value="CR">Costa Rica</option>
+              <option value="CI">Côte d'Ivoire</option>
+              <option value="HR">Croatia</option>
+              <option value="CU">Cuba</option>
+              <option value="CY">Cyprus</option>
+              <option value="CZ">Czechia</option>
+              <option value="DK">Denmark</option>
+              <option value="DJ">Djibouti</option>
+              <option value="DM">Dominica</option>
+              <option value="DO">Dominican Republic</option>
+              <option value="EC">Ecuador</option>
+              <option value="EG">Egypt</option>
+              <option value="SV">El Salvador</option>
+              <option value="GQ">Equatorial Guinea</option>
+              <option value="ER">Eritrea</option>
+              <option value="EE">Estonia</option>
+              <option value="SZ">Eswatini</option>
+              <option value="ET">Ethiopia</option>
+              <option value="FJ">Fiji</option>
+              <option value="FI">Finland</option>
+              <option value="GA">Gabon</option>
+              <option value="GM">Gambia</option>
+              <option value="GE">Georgia</option>
+              <option value="GH">Ghana</option>
+              <option value="GR">Greece</option>
+              <option value="GT">Guatemala</option>
+              <option value="GN">Guinea</option>
+              <option value="GW">Guinea-Bissau</option>
+              <option value="GY">Guyana</option>
+              <option value="HT">Haiti</option>
+              <option value="HN">Honduras</option>
+              <option value="HK">Hong Kong</option>
+              <option value="HU">Hungary</option>
+              <option value="IS">Iceland</option>
+              <option value="IN">India</option>
+              <option value="ID">Indonesia</option>
+              <option value="IR">Iran</option>
+              <option value="IQ">Iraq</option>
+              <option value="IE">Ireland</option>
+              <option value="IL">Israel</option>
+              <option value="JM">Jamaica</option>
+              <option value="JP">Japan</option>
+              <option value="JO">Jordan</option>
+              <option value="KZ">Kazakhstan</option>
+              <option value="KE">Kenya</option>
+              <option value="KR">Korea, South</option>
+              <option value="KP">Korea, North</option>
+              <option value="KW">Kuwait</option>
+              <option value="KG">Kyrgyzstan</option>
+              <option value="LA">Laos</option>
+              <option value="LV">Latvia</option>
+              <option value="LB">Lebanon</option>
+              <option value="LS">Lesotho</option>
+              <option value="LR">Liberia</option>
+              <option value="LY">Libya</option>
+              <option value="LT">Lithuania</option>
+              <option value="LU">Luxembourg</option>
+              <option value="MO">Macau</option>
+              <option value="MG">Madagascar</option>
+              <option value="MW">Malawi</option>
+              <option value="MY">Malaysia</option>
+              <option value="MV">Maldives</option>
+              <option value="ML">Mali</option>
+              <option value="MT">Malta</option>
+              <option value="MR">Mauritania</option>
+              <option value="MU">Mauritius</option>
+              <option value="MX">Mexico</option>
+              <option value="MD">Moldova</option>
+              <option value="MC">Monaco</option>
+              <option value="MN">Mongolia</option>
+              <option value="ME">Montenegro</option>
+              <option value="MA">Morocco</option>
+              <option value="MZ">Mozambique</option>
+              <option value="MM">Myanmar</option>
+              <option value="NA">Namibia</option>
+              <option value="NP">Nepal</option>
+              <option value="NL">Netherlands</option>
+              <option value="NZ">New Zealand</option>
+              <option value="NI">Nicaragua</option>
+              <option value="NE">Niger</option>
+              <option value="NG">Nigeria</option>
+              <option value="MK">North Macedonia</option>
+              <option value="NO">Norway</option>
+              <option value="OM">Oman</option>
+              <option value="PK">Pakistan</option>
+              <option value="PS">Palestine</option>
+              <option value="PA">Panama</option>
+              <option value="PG">Papua New Guinea</option>
+              <option value="PY">Paraguay</option>
+              <option value="PE">Peru</option>
+              <option value="PH">Philippines</option>
+              <option value="PL">Poland</option>
+              <option value="PT">Portugal</option>
+              <option value="QA">Qatar</option>
+              <option value="RO">Romania</option>
+              <option value="RU">Russia</option>
+              <option value="RW">Rwanda</option>
+              <option value="SM">San Marino</option>
+              <option value="SA">Saudi Arabia</option>
+              <option value="SN">Senegal</option>
+              <option value="RS">Serbia</option>
+              <option value="SC">Seychelles</option>
+              <option value="SL">Sierra Leone</option>
+              <option value="SG">Singapore</option>
+              <option value="SK">Slovakia</option>
+              <option value="SI">Slovenia</option>
+              <option value="SO">Somalia</option>
+              <option value="ZA">South Africa</option>
+              <option value="SS">South Sudan</option>
+              <option value="ES">Spain</option>
+              <option value="LK">Sri Lanka</option>
+              <option value="SD">Sudan</option>
+              <option value="SR">Suriname</option>
+              <option value="SE">Sweden</option>
+              <option value="SY">Syria</option>
+              <option value="TW">Taiwan</option>
+              <option value="TJ">Tajikistan</option>
+              <option value="TZ">Tanzania</option>
+              <option value="TH">Thailand</option>
+              <option value="TL">Timor-Leste</option>
+              <option value="TG">Togo</option>
+              <option value="TT">Trinidad and Tobago</option>
+              <option value="TN">Tunisia</option>
+              <option value="TR">Turkey</option>
+              <option value="TM">Turkmenistan</option>
+              <option value="UG">Uganda</option>
+              <option value="UA">Ukraine</option>
+              <option value="AE">United Arab Emirates</option>
+              <option value="GB">United Kingdom</option>
+              <option value="US">United States</option>
+              <option value="UY">Uruguay</option>
+              <option value="UZ">Uzbekistan</option>
+              <option value="VE">Venezuela</option>
+              <option value="VN">Vietnam</option>
+              <option value="YE">Yemen</option>
+              <option value="ZM">Zambia</option>
+              <option value="ZW">Zimbabwe</option>
+            </select>
           </div>
 
-          <div class="form-section-title" data-i18n="membership.form.professional">Professional information</div>
+          <!-- Professional -->
+          <div class="form-section-title">Professional information</div>
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="membership.form.occupation">Occupation</label>
-              <input type="text" name="occupation" />
+              <label>Occupation / Role</label>
+              <input type="text" name="occupation" placeholder="e.g. Software Engineer, Founder, PhD candidate" />
             </div>
             <div class="form-group">
-              <label data-i18n="membership.form.company">Company</label>
+              <label>Company / Organisation</label>
               <input type="text" name="company" />
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="membership.form.linkedin">LinkedIn profile (URL)</label>
+            <label>LinkedIn profile</label>
             <input type="url" name="linkedin" placeholder="https://linkedin.com/in/..." />
           </div>
           <div class="form-group">
-            <label data-i18n="membership.form.interests">Areas of interest</label>
-            <input type="text" name="interests" placeholder="e.g. AI, Cloud, Space, Cybersecurity" />
+            <label>Areas of interest</label>
+            <input type="text" name="interests" placeholder="e.g. AI, Robotics, Cloud, Cybersecurity, Space, Quantum" />
           </div>
 
-          <div class="form-section-title" data-i18n="membership.form.consent">Consents</div>
+          <!-- For corporate / academic / institutional only -->
+          <div class="form-section-title">Person responsible for enrolment</div>
+          <p class="form-subtitle" style="margin-top: -0.25rem;">Only required for Corporate, Academic and Supporting members. Association members can skip.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full name</label>
+              <input type="text" name="enrol_name" />
+            </div>
+            <div class="form-group">
+              <label>Role / Title</label>
+              <input type="text" name="enrol_role" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="enrol_email" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" name="enrol_phone" />
+            </div>
+          </div>
+
+          <div class="form-section-title">Other contact person (optional)</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full name</label>
+              <input type="text" name="other_name" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="other_email" />
+            </div>
+          </div>
+
+          <!-- Referral -->
+          <div class="form-section-title">A bit about you</div>
+          <div class="form-group">
+            <label>How did you hear about TechLegion?</label>
+            <select name="referral">
+              <option value="">— Select —</option>
+              <option>An existing member</option>
+              <option>Event or meetup</option>
+              <option>LinkedIn</option>
+              <option>Instagram / Threads</option>
+              <option>WhatsApp community</option>
+              <option>Partner organisation</option>
+              <option>Press / article</option>
+              <option>Search engine</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Why do you want to join? (short note)</label>
+            <textarea name="motivation" rows="4" placeholder="A few lines about what you're hoping to get out of membership, and what you can bring to the community."></textarea>
+          </div>
+
+          <!-- Consents -->
+          <div class="form-section-title">Confirm your application</div>
           <label class="checkbox">
-            <input type="checkbox" name="terms" required />
-            <span data-i18n="membership.form.consent.terms">I accept the Terms & Conditions</span>
+            <input type="checkbox" name="statutes" required />
+            <span>I hereby apply for membership of TechLegion Verein. I accept the statutes, the membership fee for my tier, and the TechLegion code of conduct. *</span>
           </label>
           <label class="checkbox">
             <input type="checkbox" name="privacy" required />
-            <span data-i18n="membership.form.consent.privacy">I accept the Privacy Policy</span>
-          </label>
-          <label class="checkbox">
-            <input type="checkbox" name="fee" required />
-            <span data-i18n="membership.form.consent.fee">I understand that membership obligates me to pay the annual fee of CHF 100</span>
+            <span>I accept the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>. *</span>
           </label>
           <label class="checkbox">
             <input type="checkbox" name="data" required />
-            <span data-i18n="membership.form.consent.data">I consent to TechLegion processing my personal data in line with the Privacy Policy</span>
+            <span>I consent to TechLegion processing my personal data to manage my membership. *</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="newsletter" />
+            <span>Send me the TechLegion newsletter (events, study groups, member opportunities). Optional.</span>
           </label>
 
-          <button type="submit" class="btn btn-primary btn-lg" data-i18n="membership.form.submit">Submit application</button>
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;">Submit application</button>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container container-narrow">
+      <div class="section-head fade-in">
+        <span class="tag">❓ FAQ</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="fade-in">
+        <details class="faq-item">
+          <summary>Do I have to live in Switzerland to be a member?</summary>
+          <p>No. Most of our community is based in Switzerland, but membership is open to anyone working with or interested in the Swiss tech ecosystem.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How are the free study groups organised?</summary>
+          <p>Each cohort is led by a working professional or a senior member. They run for 6 to 10 weeks, mix online sessions and in-person meetups, and prepare you for a specific certification (e.g. AWS, Azure AI, robotics fundamentals). Members get a spot for free; non-members pay per cohort.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does "fast-track event applications" mean in practice?</summary>
+          <p>For any capped event, members get a private registration link 48 hours before public sign-up opens, plus a reserved member quota of seats. You effectively skip the waitlist.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are the tech ambassador dinners really exclusive?</summary>
+          <p>Yes. They're invite-only with limited seats (usually 8–15 people). Active members in good standing are added to a rotating invitation pool so everyone gets a turn.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I cancel my membership?</summary>
+          <p>Anytime, in writing, with effect from the end of the current calendar year. We don't lock people in.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do you handle my data?</summary>
+          <p>We process membership data only for managing your membership, billing and communications you opted into. See our <a href="privacy.html">Privacy Policy</a> for the full breakdown — we follow Swiss FADP and GDPR.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -255,7 +878,7 @@
             <li><a href="about.html" data-i18n="nav.about">About</a></li>
             <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
             <li><a href="events.html" data-i18n="nav.events">Events</a></li>
-          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+            <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
             <li><a href="team.html" data-i18n="nav.team">Team</a></li>
           </ul>
         </div>
@@ -272,7 +895,7 @@
           <h5 data-i18n="footer.legal">Legal</h5>
           <ul>
             <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
-            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
           </ul>
         </div>
       </div>
@@ -287,4 +910,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
