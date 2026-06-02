@@ -30,6 +30,22 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
     /* ===== Membership page specific ===== */
+    /* Tighter vertical rhythm on this page */
+    body section { padding: clamp(1.75rem, 3.5vw, 3rem) 0; }
+
+    /* Centered hero CTAs */
+    .membership-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Conditional form section */
+    .conditional-block { display: none; }
+    .conditional-block.is-visible { display: block; }
+
     .benefit-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -265,7 +281,7 @@
         <span class="eyebrow" data-i18n="nav.membership">Membership</span>
         <h1 data-i18n="membership.title">Join TechLegion — Switzerland's community of innovators</h1>
         <p data-i18n="membership.lead">Become an official member of TechLegion Verein. Get free access to certification study groups, fast-track entry to our events, exclusive ambassador dinners, peer coaching and a network of people building the next generation of Swiss tech.</p>
-        <div class="hero-actions" style="margin-top: 1.5rem;">
+        <div class="membership-hero-actions">
           <a href="#apply" class="btn btn-primary btn-lg">Apply for membership</a>
           <a href="#tiers" class="btn btn-ghost btn-lg">See membership tiers</a>
         </div>
@@ -299,9 +315,9 @@
           <p>Complimentary entry to the official TechLegion Summer Party — our flagship community celebration of the year.</p>
         </div>
         <div class="benefit-card">
-          <div class="b-icon">🍷</div>
-          <h4>Exclusive ambassador dinners</h4>
-          <p>Closed-door dinners and roundtables with tech ambassadors, technology leaders and founders. Limited seats, reserved for active members.</p>
+          <div class="b-icon">🤍</div>
+          <h4>Members-only gatherings</h4>
+          <p>Exclusive, invite-only meetups with tech ambassadors, technology leaders and founders. Limited seats, reserved for active members in good standing.</p>
         </div>
         <div class="benefit-card">
           <div class="b-icon">🧭</div>
@@ -349,7 +365,7 @@
           <ul>
             <li>All benefits, full voting rights</li>
             <li>Fast-track event applications</li>
-            <li>Ambassador dinners (invite based)</li>
+            <li>Members-only gatherings (invite based)</li>
             <li>Member coaching &amp; job board</li>
           </ul>
           <span class="tier-note">For working professionals and freelancers. Standard tier.</span>
@@ -381,18 +397,6 @@
           <span class="tier-note">No fee — we want academia at the table.</span>
         </div>
 
-        <div class="tier-card">
-          <span class="tier-badge">Patron</span>
-          <h3>Supporting member</h3>
-          <div class="tier-price">Optional contribution</div>
-          <ul>
-            <li>Named patron of TechLegion</li>
-            <li>Logo on all flagship events</li>
-            <li>Annual private dinner with the board</li>
-            <li>Strategic advisory seat</li>
-          </ul>
-          <span class="tier-note">Any amount you choose to support the mission.</span>
-        </div>
       </div>
     </div>
   </section>
@@ -468,7 +472,6 @@
               <option value="association">Association member — CHF 100/year</option>
               <option value="corporate">Corporate member — From CHF 1,000/year</option>
               <option value="academic">Academic member — Free</option>
-              <option value="supporting">Supporting / Patron member — Optional contribution</option>
             </select>
           </div>
 
@@ -740,39 +743,29 @@
             <input type="text" name="interests" placeholder="e.g. AI, Robotics, Cloud, Cybersecurity, Space, Quantum" />
           </div>
 
-          <!-- For corporate / academic / institutional only -->
-          <div class="form-section-title">Person responsible for enrolment</div>
-          <p class="form-subtitle" style="margin-top: -0.25rem;">Only required for Corporate, Academic and Supporting members. Association members can skip.</p>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full name</label>
-              <input type="text" name="enrol_name" />
+          <!-- For corporate / academic only -->
+          <div id="enrolment-block" class="conditional-block">
+            <div class="form-section-title">Person responsible for enrolment</div>
+            <p class="form-subtitle" style="margin-top: -0.25rem;">Required for Corporate and Academic members.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full name</label>
+                <input type="text" name="enrol_name" />
+              </div>
+              <div class="form-group">
+                <label>Role / Title</label>
+                <input type="text" name="enrol_role" />
+              </div>
             </div>
-            <div class="form-group">
-              <label>Role / Title</label>
-              <input type="text" name="enrol_role" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="enrol_email" />
-            </div>
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="tel" name="enrol_phone" />
-            </div>
-          </div>
-
-          <div class="form-section-title">Other contact person (optional)</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full name</label>
-              <input type="text" name="other_name" />
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="other_email" />
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="enrol_email" />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="enrol_phone" />
+              </div>
             </div>
           </div>
 
@@ -837,15 +830,15 @@
         </details>
         <details class="faq-item">
           <summary>How are the free study groups organised?</summary>
-          <p>Each cohort is led by a working professional or a senior member. They run for 6 to 10 weeks, mix online sessions and in-person meetups, and prepare you for a specific certification (e.g. AWS, Azure AI, robotics fundamentals). Members get a spot for free; non-members pay per cohort.</p>
+          <p>Each cohort is led by a working professional or a senior member. They usually run for 4 to 10 weeks — sometimes as a short 1–3 day intensive — and mix online sessions with in-person meetups. Groups prepare you for a specific certification (e.g. Anthropic Claude AI Architect, Drone Pilot Open Category A1/A3, and other tech fundamentals courses). Certificates are issued by the official authorising body under your legal name. TechLegion only organises the study group and pre-registers you for the course. Members get a spot for free; non-members cannot join these cohorts.</p>
         </details>
         <details class="faq-item">
           <summary>What does "fast-track event applications" mean in practice?</summary>
           <p>For any capped event, members get a private registration link 48 hours before public sign-up opens, plus a reserved member quota of seats. You effectively skip the waitlist.</p>
         </details>
         <details class="faq-item">
-          <summary>Are the tech ambassador dinners really exclusive?</summary>
-          <p>Yes. They're invite-only with limited seats (usually 8–15 people). Active members in good standing are added to a rotating invitation pool so everyone gets a turn.</p>
+          <summary>How exclusive are the tech ambassador events?</summary>
+          <p>Very. They're invite-only gatherings with limited seats (usually 8–15 people) hosted with tech ambassadors, founders and technology leaders. Active members in good standing are added to a rotating invitation pool so everyone gets a turn over the year.</p>
         </details>
         <details class="faq-item">
           <summary>Can I cancel my membership?</summary>
@@ -908,5 +901,23 @@
 
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // Show enrolment block only for tiers that need it
+    (function () {
+      var tierSelect = document.querySelector('select[name="membership_type"]');
+      var enrolBlock = document.getElementById('enrolment-block');
+      if (!tierSelect || !enrolBlock) return;
+      var tiersWithEnrolment = ['corporate', 'academic'];
+      function toggle() {
+        if (tiersWithEnrolment.indexOf(tierSelect.value) !== -1) {
+          enrolBlock.classList.add('is-visible');
+        } else {
+          enrolBlock.classList.remove('is-visible');
+        }
+      }
+      tierSelect.addEventListener('change', toggle);
+      toggle();
+    })();
+  </script>
 </body>
 </html>
