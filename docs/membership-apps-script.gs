@@ -2,20 +2,23 @@
  * TechLegion → Google Sheet router
  *
  * Routes incoming form submissions to the correct sheet based on `form_type`:
- *   - form_type=membership (default) → "Applications" sheet
- *   - form_type=cohort + cohort=cca-f → "Claude AI" sheet
- *   - form_type=cohort + cohort=uas    → "UAS Drone Pilot" sheet
+ *   - form_type=membership (default)        → "Applications"     sheet
+ *   - form_type=cohort + cohort=cca-f       → "Claude AI"        sheet
+ *   - form_type=cohort + cohort=uas         → "UAS Drone Pilot"  sheet
+ *   - form_type=contact                     → "Contact Messages" sheet
  *
  * Setup:
  *   1. Open the Google Sheet you already use for TechLegion applications.
  *   2. Extensions → Apps Script. Replace the existing code with this file. Save.
  *   3. Deploy → Manage deployments → pencil icon → New version → Deploy.
  *      The Web App URL stays the same.
- *   4. Submit a test from each form — three sheets should be created
- *      automatically on first use: Applications, Claude AI, UAS Drone Pilot.
+ *   4. Submit a test from each form — the four sheets are created
+ *      automatically on first use.
  */
 
 var MEMBERSHIP_SHEET = 'Applications';
+var CONTACT_SHEET    = 'Contact Messages';
+var NEWSLETTER_SHEET = 'Newsletters';
 var COHORT_SHEETS = {
   'cca-f': 'Claude AI',
   'uas':   'UAS Drone Pilot'
@@ -38,14 +41,29 @@ var COHORT_HEADERS = [
   'Motivation / notes'
 ];
 
+var CONTACT_HEADERS = [
+  'Timestamp',
+  'First name', 'Last name',
+  'Email', 'Phone',
+  'Message',
+  'Newsletter opt-in'
+];
+
+var NEWSLETTER_HEADERS = [
+  'Timestamp',
+  'First name', 'Last name',
+  'Email',
+  'Consent'
+];
+
 function doPost(e) {
   try {
     var p = e.parameter || {};
     var formType = (p.form_type || 'membership').toLowerCase();
 
-    if (formType === 'cohort') {
-      return handleCohort(p);
-    }
+    if (formType === 'cohort')     return handleCohort(p);
+    if (formType === 'contact')    return handleContact(p);
+    if (formType === 'newsletter') return handleNewsletter(p);
     return handleMembership(p);
   } catch (err) {
     return jsonOut({ ok: false, error: err.message });
@@ -103,6 +121,34 @@ function handleCohort(p) {
   return jsonOut({ ok: true, type: 'cohort', sheet: sheetName });
 }
 
+function handleNewsletter(p) {
+  var sheet = ensureSheet(NEWSLETTER_SHEET, NEWSLETTER_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.first_name || '',
+    p.last_name || '',
+    p.email || '',
+    yesNo(p.consent)
+  ]);
+  return jsonOut({ ok: true, type: 'newsletter' });
+}
+
+function handleContact(p) {
+  var sheet = ensureSheet(CONTACT_SHEET, CONTACT_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.first_name || '',
+    p.last_name || '',
+    p.email || '',
+    p.phone || '',
+    p.message || '',
+    yesNo(p.newsletter)
+  ]);
+  return jsonOut({ ok: true, type: 'contact' });
+}
+
 function ensureSheet(name, headers) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(name) || ss.insertSheet(name);
@@ -120,10 +166,12 @@ function jsonOut(obj) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-// Run once from the editor to bootstrap all three sheets.
+// Run once from the editor to bootstrap all five sheets.
 function setup() {
   ensureSheet(MEMBERSHIP_SHEET, MEMBERSHIP_HEADERS);
   ensureSheet(COHORT_SHEETS['cca-f'], COHORT_HEADERS);
   ensureSheet(COHORT_SHEETS['uas'], COHORT_HEADERS);
+  ensureSheet(CONTACT_SHEET, CONTACT_HEADERS);
+  ensureSheet(NEWSLETTER_SHEET, NEWSLETTER_HEADERS);
   Logger.log('All sheets ready.');
 }

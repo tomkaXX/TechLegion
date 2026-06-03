@@ -28,6 +28,60 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .form input.invalid,
+    .form textarea.invalid {
+      border-color: #ff5b6e !important;
+      background: rgba(255, 91, 110, 0.06);
+    }
+    .field-error {
+      display: none;
+      font-size: 0.8rem;
+      color: #ff8a96;
+      margin-top: 0.3rem;
+    }
+    .field-error.is-visible { display: block; }
+    .form button[type="submit"]:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: grayscale(0.4);
+    }
+    /* Thank-you modal */
+    .ty-modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 1000; padding: 1rem;
+    }
+    .ty-modal-overlay.is-open { display: flex; }
+    .ty-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      width: 100%; max-width: 480px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .ty-modal .check {
+      font-size: 3rem; margin-bottom: 0.5rem;
+    }
+    .ty-modal h3 { margin: 0 0 0.5rem; color: var(--accent-glow); }
+    .ty-modal p { color: var(--text-dim); margin-bottom: 1.5rem; }
+    .ty-modal .ty-close {
+      position: absolute;
+      top: 0.5rem; right: 0.75rem;
+      background: transparent; border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem; cursor: pointer;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+    }
+    .ty-modal .ty-close:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -76,45 +130,46 @@
       <div class="grid grid-2 fade-in" style="align-items: start;">
         <div class="form-card">
           <h3 data-i18n="contact.form.title">Send us a message</h3>
-          <!--
-            INTEGRATION NOTE:
-            Replace action="" with your Formspree endpoint (e.g.
-            https://formspree.io/f/yourId) or another GDPR-compliant form
-            service that supports CAPTCHA. See README for setup details.
-          -->
-          <form class="form" data-form-demo
-                data-success-text="Thanks! We'll get back to you within a few days."
-                method="POST" action="">
+          <form id="contact-form" class="form" method="POST" action="" novalidate>
+            <input type="hidden" name="form_type" value="contact" />
             <div class="form-row">
               <div class="form-group">
-                <label data-i18n="contact.form.firstname">First name</label>
+                <label data-i18n="contact.form.firstname">First name *</label>
                 <input type="text" name="first_name" required />
+                <span class="field-error" data-error-for="first_name">Please enter your first name.</span>
               </div>
               <div class="form-group">
-                <label data-i18n="contact.form.lastname">Last name</label>
+                <label data-i18n="contact.form.lastname">Last name *</label>
                 <input type="text" name="last_name" required />
+                <span class="field-error" data-error-for="last_name">Please enter your last name.</span>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label data-i18n="contact.form.email">Email</label>
-                <input type="email" name="email" required />
+                <label data-i18n="contact.form.email">Email *</label>
+                <input type="email" name="email" required
+                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" autocomplete="email" />
+                <span class="field-error" data-error-for="email">Please enter a valid email address.</span>
               </div>
               <div class="form-group">
                 <label data-i18n="contact.form.phone">Phone</label>
-                <input type="tel" name="phone" />
+                <input type="tel" name="phone"
+                       inputmode="tel" autocomplete="tel"
+                       pattern="^\+?[0-9\s().\-]{7,20}$" placeholder="+41 ..." />
+                <span class="field-error" data-error-for="phone">Please enter a valid phone number.</span>
               </div>
             </div>
             <div class="form-group">
-              <label data-i18n="contact.form.message">Message</label>
-              <textarea name="message" required></textarea>
+              <label data-i18n="contact.form.message">Message *</label>
+              <textarea name="message" rows="5" required></textarea>
+              <span class="field-error" data-error-for="message">Please write a short message.</span>
             </div>
             <label class="checkbox">
               <input type="checkbox" name="newsletter" />
               <span data-i18n="contact.form.newsletter">Also subscribe me to the newsletter</span>
             </label>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;" data-i18n="contact.form.consent">We are committed to protecting and respecting your privacy. By submitting this form, you consent to allow TechLegion Association to store and process the personal information submitted above.</p>
-            <button type="submit" class="btn btn-primary btn-lg" data-i18n="contact.form.submit">Send message</button>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">We are committed to protecting and respecting your privacy. By submitting this form, you consent to allow TechLegion Association to store and process the personal information submitted above. See our <a href="privacy.html">Privacy Policy</a>.</p>
+            <button type="submit" class="btn btn-primary btn-lg" data-i18n="contact.form.submit" disabled>Send message</button>
           </form>
         </div>
 
@@ -191,7 +246,132 @@ Zug, Switzerland</p>
     </div>
   </footer>
 
+  <!-- Thank-you modal -->
+  <div id="ty-modal" class="ty-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ty-modal">
+      <button type="button" class="ty-close" data-ty-close aria-label="Close">×</button>
+      <div class="check">✅</div>
+      <h3>Thank you for your message!</h3>
+      <p>We've received your note and we'll reach out as soon as we can — usually within a few working days.</p>
+      <button type="button" class="btn btn-primary" data-ty-close>Close</button>
+    </div>
+  </div>
+
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // ---- Contact form → Google Apps Script ----
+    var CONTACT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var modal = document.getElementById('ty-modal');
+
+      function setError(field, show) {
+        var err = form.querySelector('.field-error[data-error-for="' + field.name + '"]');
+        if (err) err.classList.toggle('is-visible', !!show);
+        field.classList.toggle('invalid', !!show);
+      }
+
+      function fieldOk(field) {
+        if (!field) return true;
+        var v = (field.value || '').trim();
+        if (!v && !field.required) return true;
+        if (!v && field.required) return false;
+        if (field.type === 'email') return EMAIL_RE.test(v);
+        if (field.type === 'tel') return PHONE_RE.test(v);
+        return true;
+      }
+
+      function validateField(field) {
+        if (!field || field.type === 'hidden' || field.type === 'checkbox') return true;
+        var ok = fieldOk(field);
+        var v = (field.value || '').trim();
+        // Only show errors after user interacted (don't paint red on fresh load)
+        if (v || field.dataset.touched) setError(field, !ok);
+        return ok;
+      }
+
+      function formAllValid() {
+        var ok = true;
+        form.querySelectorAll('input, textarea').forEach(function (el) {
+          if (el.type === 'hidden' || el.type === 'checkbox') return;
+          if (!fieldOk(el)) ok = false;
+        });
+        return ok;
+      }
+
+      function refreshSubmitState() {
+        submitBtn.disabled = !formAllValid();
+      }
+
+      form.querySelectorAll('input, textarea').forEach(function (el) {
+        el.addEventListener('blur', function () { el.dataset.touched = '1'; validateField(el); refreshSubmitState(); });
+        el.addEventListener('input', function () { validateField(el); refreshSubmitState(); });
+      });
+      refreshSubmitState();
+
+      function openThankYou() {
+        if (!modal) return;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeThankYou() {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      if (modal) {
+        modal.querySelectorAll('[data-ty-close]').forEach(function (b) {
+          b.addEventListener('click', closeThankYou);
+        });
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeThankYou(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && modal.classList.contains('is-open')) closeThankYou();
+        });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formAllValid()) {
+          // Mark every required field as touched so errors paint
+          form.querySelectorAll('input, textarea').forEach(function (el) {
+            el.dataset.touched = '1'; validateField(el);
+          });
+          refreshSubmitState();
+          return;
+        }
+
+        var originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        var done = function () {
+          form.reset();
+          submitBtn.textContent = originalText;
+          refreshSubmitState();
+          openThankYou();
+        };
+
+        fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors'
+        }).then(done).catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          alert('Sorry, something went wrong sending the message. Please email community@techlegion.ch directly.');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
