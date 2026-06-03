@@ -29,6 +29,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
+    /* Tighter vertical rhythm — ~50px between sections */
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
     /* Photo container hosts EITHER an <img> or the fallback initial avatar */
     .team-photo-wrap {
       width: 120px;
@@ -101,9 +105,9 @@
     <div class="hero-shape s1"></div>
     <div class="hero-shape s2"></div>
     <div class="container" style="position: relative;">
-      <div class="section-head fade-in" style="max-width: 820px;">
+      <div class="section-head fade-in" style="max-width: 820px; margin-left: auto; margin-right: auto; text-align: center;">
         <span class="eyebrow">About TechLegion</span>
-        <p style="font-size: 1.05rem; color: var(--text-dim); line-height: 1.65;">
+        <p style="font-size: 1.05rem; color: var(--text-dim); line-height: 1.65; text-align: center;">
           TechLegion is a community of technology enthusiasts, builders, and innovators dedicated to learning, collaboration, and open-source contributions. The community is known for organizing the NASA Space Apps Challenge hackathons in Zurich in 2024 and 2025, bringing together participants from diverse backgrounds to solve real-world challenges. TechLegion also actively supports open-source ecosystems through translation and localization efforts for projects such as PX4 and other technology initiatives, helping make cutting-edge tools more accessible to global communities.
         </p>
       </div>
@@ -207,7 +211,7 @@
           <div class="social-row">
             <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
             <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-            <a href="https://www.threads.com/@techlegions" target="_blank" rel="noopener" aria-label="Threads">𝕏</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
             <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
           </div>
         </div>
