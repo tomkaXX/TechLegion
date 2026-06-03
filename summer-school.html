@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="summerschool.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summer School 2026 — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion Summer School 2026 — free study groups for the Anthropic Claude Certified Architect (CCA-F) and UAS Remote Pilot Open Category A1/A3 certifications. Open to TechLegion members." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Summer School 2026 — TechLegion Switzerland" />
+  <meta property="og:description" content="Free certification study groups for TechLegion members — Claude AI Architect and UAS A1/A3 Drone Pilot." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding: clamp(1.75rem, 3.5vw, 3rem) 0; }
+
+    .ss-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .cohort-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      margin-bottom: 1.75rem;
+      transition: all var(--t);
+    }
+    .cohort-card:hover { border-color: var(--border-strong); }
+    .cohort-card h3 { font-size: 1.5rem; margin: 0.5rem 0 0.5rem; }
+    .cohort-card .cohort-lead { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .cohort-meta {
+      background: rgba(77,139,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      align-self: start;
+    }
+    .cohort-meta .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--border);
+    }
+    .cohort-meta .row:last-child { border-bottom: none; padding-bottom: 0; }
+    .cohort-meta .row .k {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cohort-meta .row .v { color: var(--white); font-weight: 600; text-align: right; }
+    .cohort-meta .row .v small { display: block; color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
+
+    .domain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .domain-list li {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .domain-list li strong { color: var(--white); display: block; margin-bottom: 0.2rem; }
+    .domain-list li .pct {
+      color: var(--accent-glow);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+    .skill-chip {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-glow);
+      background: rgba(77,139,255,0.10);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .scenario-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 0.9rem;
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .scenario-list li::before { content: '▸ '; color: var(--accent-glow); }
+
+    .cohort-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.10));
+      border: 1px solid var(--border-strong);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .crumb {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .crumb span { color: var(--accent-glow); }
+
+    .price-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background: var(--grad-accent);
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .price-badge small { font-weight: 500; font-size: 0.75rem; opacity: 0.85; }
+    .price-free { background: linear-gradient(135deg, #19c47a, #0f9a5d); }
+
+    .partner-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.88rem;
+    }
+    .partner-strip .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+    .partner-strip .val { color: var(--white); font-weight: 600; }
+
+    /* Expandable details */
+    .cohort-details-full { display: none; }
+    .cohort-card.is-expanded .cohort-details-full { display: block; }
+    .toggle-details {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--accent-glow);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .toggle-details:hover { background: rgba(77,139,255,0.08); color: var(--white); }
+    .toggle-details .chev { transition: transform var(--t-fast); }
+    .cohort-card.is-expanded .toggle-details .chev { transform: rotate(180deg); }
+
+    /* Modal */
+    .ss-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .ss-modal-overlay.is-open { display: flex; }
+    .ss-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .ss-modal-close {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      transition: all var(--t-fast);
+    }
+    .ss-modal-close:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+    .ss-modal h3 { margin: 0 0 0.5rem; }
+    .ss-modal .modal-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .ss-modal .choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .ss-modal .choice-row .btn { width: 100%; justify-content: center; }
+    .ss-modal .step { display: none; }
+    .ss-modal .step.is-active { display: block; }
+    .ss-modal .form-group { margin-bottom: 0.85rem; }
+    .ss-modal label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.3rem; }
+    .ss-modal input,
+    .ss-modal textarea,
+    .ss-modal select {
+      width: 100%;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+    .ss-modal input:focus,
+    .ss-modal textarea:focus,
+    .ss-modal select:focus { outline: none; border-color: var(--accent); }
+    .ss-modal input.invalid,
+    .ss-modal select.invalid,
+    .ss-modal textarea.invalid { border-color: #ff5b6e; background: rgba(255,91,110,0.06); }
+    .ss-modal .modal-error { color: #ff8a96; font-size: 0.82rem; margin-top: 0.4rem; display: none; }
+    .ss-modal .modal-error.is-visible { display: block; }
+    .ss-modal .modal-info {
+      background: linear-gradient(135deg, rgba(77,139,255,0.10), rgba(139,92,246,0.06));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .ss-modal .modal-info p {
+      margin: 0;
+      padding: 0.25rem 0;
+    }
+    .ss-modal .modal-info p + p {
+      border-top: 1px dashed var(--border);
+      padding-top: 0.45rem;
+      margin-top: 0.25rem;
+    }
+    .ss-modal .modal-info strong { color: var(--white); }
+    .ss-modal .modal-success {
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    .ss-modal .modal-success .check {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 880px) {
+      .cohort-card { grid-template-columns: 1fr; }
+      .scenario-list { grid-template-columns: 1fr; }
+      .partner-strip { grid-template-columns: 1fr; }
+      .ss-modal .choice-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="summer-school.html">Summer School</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Summer School 2026</span>
+        <h1>TechLegion Summer School 2026</h1>
+        <p>Two cohorts. Two certifications. One summer.<br />Free to TechLegion association members.</p>
+        <div class="ss-hero-actions">
+          <a href="#cca-f" class="btn btn-primary btn-lg">Claude AI Architect cohort</a>
+          <a href="#uas" class="btn btn-ghost btn-lg">Drone Pilot A1/A3 cohort</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO ROW -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="grid grid-4 fade-in">
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h4>Members study free</h4>
+          <p>Study groups are 100% free for TechLegion association members. Non-members cannot join these cohorts.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🪪</div>
+          <h4>Official certificates</h4>
+          <p>Certificates are issued and the exam platform provided by the official authorising body (Anthropic, DAC) — not by TechLegion. An online study platform with courses in English is provided to every participant.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧑‍🏫</div>
+          <h4>Peer-led cohorts</h4>
+          <p>Led by working professionals and senior members. Mix of online sessions, study sprints and in-person meetups.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h4>Support throughout</h4>
+          <p>We support our members with guidance and answer questions along the way — no one walks this journey alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COHORT 1 — CLAUDE -->
+  <section id="cca-f">
+    <div class="container">
+      <div class="cohort-card fade-in" data-cohort="cca-f" data-cohort-label="Claude Certified Architect — Foundations (CCA-F)">
+        <div>
+          <div class="crumb">TechLegion · <span>Summer School 2026</span> · Cohort 1</div>
+          <span class="cohort-tag">🤖 Anthropic · Level 3</span>
+          <h3>Claude Certified Architect — Foundations (CCA-F)</h3>
+          <p class="cohort-lead">Certification study group for Anthropic's official proctored exam. Validates whether a practitioner can design and ship production-grade Claude applications at enterprise scale.</p>
+
+          <div class="skill-chips">
+            <span class="skill-chip">Claude Agent SDK</span>
+            <span class="skill-chip">MCP</span>
+            <span class="skill-chip">Claude Code</span>
+            <span class="skill-chip">Prompt Engineering</span>
+            <span class="skill-chip">Context Management</span>
+            <span class="skill-chip">Multi-Agent</span>
+          </div>
+
+          <div class="cohort-details-full">
+            <h4 style="margin-top: 1rem;">What you'll learn</h4>
+            <ul class="domain-list">
+              <li>
+                <strong>Domain 1 — Agentic Architecture &amp; Orchestration <span class="pct">27%</span></strong>
+                Agent SDK and multi-agent orchestration patterns, hub-and-spoke architectures, lifecycle hooks and agent coordination.
+              </li>
+              <li>
+                <strong>Domain 2 — Tool Design &amp; MCP Integration <span class="pct">18%</span></strong>
+                Building MCP servers, tool boundaries, resources and prompts, designing interoperable agent-tool interfaces.
+              </li>
+              <li>
+                <strong>Domain 3 — Claude Code Configuration &amp; Workflows <span class="pct">20%</span></strong>
+                CLAUDE.md configuration, Agent Skills, plan mode, slash commands, CI/CD integration with Claude Code.
+              </li>
+              <li>
+                <strong>Domain 4 — Prompt Engineering &amp; Structured Output <span class="pct">20%</span></strong>
+                Context engineering, JSON schemas, structured extraction patterns, few-shot prompting and output formatting.
+              </li>
+              <li>
+                <strong>Domain 5 — Context Management &amp; Reliability <span class="pct">15%</span></strong>
+                Long-context handling, multi-agent handoffs, error propagation, escalation patterns, production reliability.
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" class="toggle-details" data-toggle-details>
+            <span class="toggle-label">See more details</span>
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <aside class="cohort-meta">
+          <div class="row">
+            <span class="k">Type</span>
+            <span class="v">Online cohort</span>
+          </div>
+          <div class="row">
+            <span class="k">Format</span>
+            <span class="v">6 weeks preparation</span>
+          </div>
+          <div class="row">
+            <span class="k">Pass score</span>
+            <span class="v">720 / 1,000</span>
+          </div>
+          <div class="row">
+            <span class="k">Prep material</span>
+            <span class="v">13 free courses</span>
+          </div>
+          <div class="row">
+            <span class="k">Credential</span>
+            <span class="v">Anthropic <small>External industry certification</small></span>
+          </div>
+          <div class="row">
+            <span class="k">Course code</span>
+            <span class="v">(CCA-F)</span>
+          </div>
+          <div class="row" style="align-items:center;">
+            <span class="k">Study group</span>
+            <span class="price-badge price-free">FREE <small>for members</small></span>
+          </div>
+          <div class="row" style="align-items:center;">
+            <span class="k">Exam fee</span>
+            <span class="price-badge">$99 <small>per attempt, paid to Anthropic</small></span>
+          </div>
+          <button type="button" class="btn btn-primary" data-join-cohort="cca-f" data-cohort-label="Claude Certified Architect — Foundations (CCA-F)" style="margin-top: 0.5rem;">Join the cohort</button>
+          <a href="membership.html#apply" style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; text-decoration: underline;">Not a member yet? Apply for membership →</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- COHORT 2 — UAS -->
+  <section id="uas">
+    <div class="container">
+      <div class="cohort-card fade-in" data-cohort="uas" data-cohort-label="UAS Remote Pilot — Open Category A1 / A3">
+        <div>
+          <div class="crumb">TechLegion · <span>Summer School 2026</span> · Cohort 2</div>
+          <span class="cohort-tag">🛩️ EUROCONTROL</span>
+          <h3>UAS Remote Pilot — Open Category A1 / A3</h3>
+          <p class="cohort-lead">Online training course and theoretical examination required by EU Regulation 2019/947 for anyone operating a drone in the European UAS Open Category A1 or A3. Developed jointly by the Direction de l'Aviation Civile of Luxembourg and EUROCONTROL.</p>
+
+          <div class="skill-chips">
+            <span class="skill-chip">Air Safety</span>
+            <span class="skill-chip">Airspace Rules</span>
+            <span class="skill-chip">Aviation Regulation</span>
+            <span class="skill-chip">Human Factors</span>
+            <span class="skill-chip">Privacy &amp; GDPR</span>
+          </div>
+
+          <div class="cohort-details-full">
+            <h4 style="margin-top: 1rem;">What you'll learn</h4>
+            <ul class="domain-list">
+              <li><strong>Preparing yourself and your drone for flight</strong>Checklists, weight categories, equipment limits.</li>
+              <li><strong>Deciding when it is safe to fly — and when it is not</strong>Weather, airspace, environment and crowd assessment.</li>
+              <li><strong>Flying in a way that respects the rules</strong>Operational procedures, distance and altitude limits, registration.</li>
+              <li><strong>Reacting to abnormal and emergency situations</strong>In-flight failures, ground emergencies, fly-aways and reporting.</li>
+              <li><strong>Privacy, data protection, insurance and security</strong>Personal data, third-party liability, anti-collision and security duties.</li>
+            </ul>
+
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.75rem;">
+              <strong>Audience:</strong> remote pilots wishing to operate in the European UAS Open Category A1 and/or A3.<br />
+              <strong>Important:</strong> the examination is locked after successful completion. The certificate can be downloaded from your "Remote Pilot Certificates" account.
+            </p>
+          </div>
+
+          <button type="button" class="toggle-details" data-toggle-details>
+            <span class="toggle-label">See more details</span>
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <aside class="cohort-meta">
+          <div class="row">
+            <span class="k">Type</span>
+            <span class="v">Online cohort</span>
+          </div>
+          <div class="row">
+            <span class="k">Format</span>
+            <span class="v">Interactive course + theoretical exam</span>
+          </div>
+          <div class="row">
+            <span class="k">Categories</span>
+            <span class="v">UAS Open A1 + A3</span>
+          </div>
+          <div class="row">
+            <span class="k">Regulation</span>
+            <span class="v">EU 2019/947</span>
+          </div>
+          <div class="row">
+            <span class="k">Credential</span>
+            <span class="v">EUROCONTROL</span>
+          </div>
+          <div class="row" style="align-items:center;">
+            <span class="k">Course &amp; exam</span>
+            <span class="price-badge price-free">FREE</span>
+          </div>
+          <div class="row" style="align-items:center;">
+            <span class="k">Study group</span>
+            <span class="price-badge price-free">FREE <small>for members</small></span>
+          </div>
+          <button type="button" class="btn btn-primary" data-join-cohort="uas" data-cohort-label="UAS Remote Pilot — Open Category A1 / A3" style="margin-top: 0.5rem;">Join the cohort</button>
+          <a href="membership.html#apply" style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; text-decoration: underline;">Not a member yet? Apply for membership →</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag">📝 How it works</span>
+        <h2>How to join a Summer School cohort</h2>
+        <p>Three steps. Study groups are members-only — we organise, you study, the official body certifies.</p>
+      </div>
+      <div class="grid grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon">1️⃣</div>
+          <h4>Become a member</h4>
+          <p>Active TechLegion association members get free access to all Summer School study groups. <a href="membership.html#apply">Apply here</a>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2️⃣</div>
+          <h4>Reserve your seat</h4>
+          <p>If you're already a member, just fill in the form for the specific cohort. TechLegion pre-registers you on the official study platform.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3️⃣</div>
+          <h4>Study and get certified</h4>
+          <p>TechLegion pre-registers you on the online platform — you get a personal cabinet with progress tracking and interactive courses. Complete the basic courses to unlock the exam, attend live group sessions to practise with real cases, and the certificate is issued by the authorising body under your legal name once you pass.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container container-narrow">
+      <div class="callout fade-in">
+        <span class="tag">🎯 Ready to certify?</span>
+        <h3>Two cohorts. Two certifications. One summer.</h3>
+        <p>Unlock new skills with free certification study groups, exclusive learning opportunities, and professional development designed for TechLegion Association members.</p>
+        <div class="ss-hero-actions" style="margin-top: 1rem;">
+          <a href="membership.html#apply" class="btn btn-primary btn-lg">Become a member</a>
+          <a href="mailto:community@techlegion.ch?subject=Summer%20School%202026%20cohort" class="btn btn-ghost btn-lg">Email the team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://www.threads.com/@techlegions" target="_blank" rel="noopener" aria-label="Threads">𝕏</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="summer-school.html">Summer School</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Join cohort modal ===== -->
+  <div id="cohort-modal" class="ss-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ss-modal">
+      <button type="button" class="ss-modal-close" data-modal-close aria-label="Close">×</button>
+
+      <!-- Step 1: are you a member? -->
+      <div class="step is-active" data-step="member-check">
+        <h3>Join the cohort</h3>
+        <p class="modal-sub">Cohort: <strong id="modal-cohort-label">—</strong></p>
+        <p>Study groups are for TechLegion Association members only. Are you already a TechLegion association member?</p>
+        <div class="modal-info">
+          <p><strong>👥 Cohort size:</strong> capped at 10–15 members so we can give every participant the best experience.</p>
+          <p><strong>🎓 Take both programs:</strong> as a member you can join both cohorts — you just need to pre-register separately for each one.</p>
+        </div>
+        <div class="choice-row">
+          <button type="button" class="btn btn-primary" data-answer="yes">Yes, I'm a member</button>
+          <button type="button" class="btn btn-ghost" data-answer="no">Not yet</button>
+        </div>
+      </div>
+
+      <!-- Step 2a: member → cohort interest form -->
+      <div class="step" data-step="member-form">
+        <h3>Reserve your seat</h3>
+        <p class="modal-sub">Cohort: <strong class="modal-cohort-label-echo">—</strong></p>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: -0.5rem; margin-bottom: 1rem;">
+          Want to join the other cohort too? Submit this form once per cohort — seats are limited to 10–15 per group.
+        </p>
+        <form id="cohort-form" novalidate>
+          <input type="hidden" name="form_type" value="cohort" />
+          <input type="hidden" name="cohort" id="cohort-hidden" value="" />
+          <div class="form-group">
+            <label for="cf-fn">First name *</label>
+            <input id="cf-fn" type="text" name="first_name" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-ln">Last name *</label>
+            <input id="cf-ln" type="text" name="last_name" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-em">Email *</label>
+            <input id="cf-em" type="email" name="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+          </div>
+          <div class="form-group">
+            <label for="cf-ph">Phone *</label>
+            <input id="cf-ph" type="tel" name="phone" required pattern="^\+?[0-9\s().\-]{7,20}$" placeholder="+41 ..." />
+          </div>
+          <div class="form-group">
+            <label for="cf-co">Course selection *</label>
+            <select id="cf-co" name="cohort_choice" required>
+              <option value="">— Select cohort —</option>
+              <option value="cca-f">Claude AI Architect (CCA-F)</option>
+              <option value="uas">UAS Drone Pilot A1/A3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-mo">Motivation / notes *</label>
+            <textarea id="cf-mo" name="motivation" rows="3" required placeholder="A few lines about why you want to join this cohort."></textarea>
+          </div>
+          <p class="modal-error" id="cohort-form-error">Please fill in all required fields with a valid email and phone number.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;">Reserve my seat</button>
+        </form>
+      </div>
+
+      <!-- Step 2b: not member → redirect prompt -->
+      <div class="step" data-step="not-member">
+        <h3>Membership first</h3>
+        <p class="modal-sub">Cohort: <strong class="modal-cohort-label-echo">—</strong></p>
+        <p>Summer School cohorts are reserved for active TechLegion association members. Apply for membership first by filling in the form. Most applications are approved within five working days, and you can then book your cohort seat right after.</p>
+        <div class="modal-info">
+          <p><strong>👥 Cohort size:</strong> 10–15 members per group so we can give every participant the best experience.</p>
+        </div>
+        <div class="choice-row">
+          <a href="membership.html#apply" class="btn btn-primary">Apply for membership</a>
+          <button type="button" class="btn btn-ghost" data-modal-close>Maybe later</button>
+        </div>
+      </div>
+
+      <!-- Step 3: success -->
+      <div class="step" data-step="success">
+        <div class="modal-success">
+          <div class="check">✅</div>
+          <h3>Seat reserved</h3>
+          <p>Thanks — we've recorded your interest for this cohort. The TechLegion team will email you with the schedule and pre-registration steps within a few working days.</p>
+          <button type="button" class="btn btn-ghost" data-modal-close style="margin-top: 1rem;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Reuse the same Apps Script endpoint as the membership form
+    var SUMMER_SCHOOL_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    // ----- Expand / collapse cohort details -----
+    document.querySelectorAll('[data-toggle-details]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.cohort-card');
+        if (!card) return;
+        var expanded = card.classList.toggle('is-expanded');
+        btn.querySelector('.toggle-label').textContent = expanded ? 'Hide details' : 'See more details';
+      });
+    });
+
+    // ----- Join cohort modal -----
+    (function () {
+      var modal = document.getElementById('cohort-modal');
+      if (!modal) return;
+      var labelMain = document.getElementById('modal-cohort-label');
+      var labelEchos = modal.querySelectorAll('.modal-cohort-label-echo');
+      var cohortHidden = document.getElementById('cohort-hidden');
+      var cohortSelect = document.getElementById('cf-co');
+      var form = document.getElementById('cohort-form');
+      var errorEl = document.getElementById('cohort-form-error');
+
+      function showStep(name) {
+        modal.querySelectorAll('.step').forEach(function (s) {
+          s.classList.toggle('is-active', s.dataset.step === name);
+        });
+      }
+      function openModal(cohort, label) {
+        labelMain.textContent = label || '—';
+        labelEchos.forEach(function (el) { el.textContent = label || '—'; });
+        cohortHidden.value = cohort || '';
+        if (cohortSelect) cohortSelect.value = cohort || '';
+        showStep('member-check');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-join-cohort]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openModal(btn.dataset.joinCohort, btn.dataset.cohortLabel);
+        });
+      });
+      modal.querySelectorAll('[data-modal-close]').forEach(function (b) {
+        b.addEventListener('click', closeModal);
+      });
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+
+      modal.querySelectorAll('[data-answer]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          showStep(b.dataset.answer === 'yes' ? 'member-form' : 'not-member');
+        });
+      });
+
+      // Cohort form validation + submission
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+      function validateField(field) {
+        if (!field) return true;
+        var v = (field.value || '').trim();
+        var ok = true;
+        if (field.required && !v) ok = false;
+        else if (field.type === 'email' && v) ok = EMAIL_RE.test(v);
+        else if (field.type === 'tel' && v) ok = PHONE_RE.test(v);
+        field.classList.toggle('invalid', !ok);
+        return ok;
+      }
+
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        el.addEventListener('blur', function () { validateField(el); });
+        el.addEventListener('input', function () { if (el.classList.contains('invalid')) validateField(el); });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var allValid = true;
+        form.querySelectorAll('input, select, textarea').forEach(function (el) {
+          if (!validateField(el)) allValid = false;
+        });
+        if (!allValid) {
+          errorEl.classList.add('is-visible');
+          return;
+        }
+        errorEl.classList.remove('is-visible');
+
+        var submitBtn = form.querySelector('[type="submit"]');
+        var originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        fetch(SUMMER_SCHOOL_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors'
+        }).then(function () {
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          showStep('success');
+        }).catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          errorEl.textContent = 'Sorry, something went wrong. Please email community@techlegion.ch instead.';
+          errorEl.classList.add('is-visible');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
