@@ -28,6 +28,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Photo container hosts EITHER an <img> or the fallback initial avatar */
+    .team-photo-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-elev);
+      border: 2px solid var(--border-strong);
+      box-shadow: var(--shadow-glow);
+    }
+    .team-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Juliia's LinkedIn photo has the green #OpenToWork ring — zoom toward the face to crop it out */
+    .team-photo-wrap img[src*="juliia"] {
+      transform: scale(1.6);
+      transform-origin: center 28%;
+    }
+    .team-photo-wrap .fallback {
+      position: absolute; inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .team-photo-wrap.has-image .fallback { display: none; }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -65,7 +101,13 @@
     <div class="hero-shape s1"></div>
     <div class="hero-shape s2"></div>
     <div class="container" style="position: relative;">
-      <div class="section-head fade-in">
+      <div class="section-head fade-in" style="max-width: 820px;">
+        <span class="eyebrow">About TechLegion</span>
+        <p style="font-size: 1.05rem; color: var(--text-dim); line-height: 1.65;">
+          TechLegion is a community of technology enthusiasts, builders, and innovators dedicated to learning, collaboration, and open-source contributions. The community is known for organizing the NASA Space Apps Challenge hackathons in Zurich in 2024 and 2025, bringing together participants from diverse backgrounds to solve real-world challenges. TechLegion also actively supports open-source ecosystems through translation and localization efforts for projects such as PX4 and other technology initiatives, helping make cutting-edge tools more accessible to global communities.
+        </p>
+      </div>
+      <div class="section-head fade-in" style="margin-top: 2.5rem;">
         <span class="eyebrow" data-i18n="nav.team">Team</span>
         <h1 data-i18n="team.title">Team</h1>
         <p data-i18n="team.lead">Meet the volunteers, organizers and operators behind TechLegion Switzerland.</p>
@@ -76,11 +118,22 @@
   <section style="padding-top: 0;">
     <div class="container">
       <div class="team-grid fade-in">
+        <!--
+          Photo files expected at:
+            image/team/tamara.jpg
+            image/team/alper.jpg
+            image/team/juliia.jpg
+          If any file is missing, the gradient-initial avatar shows as a fallback.
+        -->
 
         <!-- 1. Tamara Koliada -->
         <div class="team-card">
-          <!-- To use a real photo, drop assets/img/team/tamara.jpg and replace the avatar div with: <img class="team-photo" src="assets/img/team/tamara.jpg" alt="Tamara Koliada" /> -->
-          <div class="team-avatar" style="background: linear-gradient(135deg, #4d8bff 0%, #00d4ff 100%);">TK</div>
+          <a href="https://www.linkedin.com/in/tomakoliada/" target="_blank" rel="noopener" aria-label="LinkedIn — Tamara Koliada">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/team/tamara.jpg" alt="Tamara Koliada" />
+              <div class="fallback" style="background: linear-gradient(135deg, #4d8bff 0%, #00d4ff 100%);">TK</div>
+            </div>
+          </a>
           <h4>Tamara Koliada</h4>
           <div class="role">Präsidentin</div>
           <p>Leads TechLegion's vision, strategy, and overall direction as President of the Verein.</p>
@@ -92,7 +145,12 @@
 
         <!-- 2. Alper M. Sametoglu -->
         <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, #8b5cf6 0%, #4d8bff 100%);">AS</div>
+          <a href="https://www.linkedin.com/in/alper-sametoglu/" target="_blank" rel="noopener" aria-label="LinkedIn — Alper M. Sametoglu">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/team/alper.jpg" alt="Alper M. Sametoglu" />
+              <div class="fallback" style="background: linear-gradient(135deg, #8b5cf6 0%, #4d8bff 100%);">AS</div>
+            </div>
+          </a>
           <h4>Alper M. Sametoglu</h4>
           <div class="role">Vizepräsident — Business Development</div>
           <p>Drives partnerships, sponsors and business development for TechLegion's programs across Switzerland.</p>
@@ -104,16 +162,20 @@
 
         <!-- 3. Yuliia Yefimenko -->
         <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);">YY</div>
+          <a href="https://www.linkedin.com/in/yuliia-yefimenko/" target="_blank" rel="noopener" aria-label="LinkedIn — Yuliia Yefimenko">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/team/juliia.jpg" alt="Yuliia Yefimenko" />
+              <div class="fallback" style="background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);">YY</div>
+            </div>
+          </a>
           <h4>Yuliia Yefimenko</h4>
-          <div class="role">Vizepräsidentin — PR & Communications</div>
+          <div class="role">Vizepräsidentin — PR &amp; Communications</div>
           <p>Leads PR, communications and community storytelling for TechLegion Switzerland.</p>
           <div class="social">
             <a href="https://www.linkedin.com/in/yuliia-yefimenko/" target="_blank" rel="noopener" aria-label="LinkedIn — Yuliia Yefimenko">in</a>
             <a href="mailto:julia@techlegion.ch" aria-label="Email Yuliia">✉</a>
           </div>
         </div>
-
       </div>
 
       <div style="text-align:center; margin-top: 2rem; padding: 1rem 1.25rem; background: rgba(77, 139, 255, 0.06); border: 1px solid var(--border); border-radius: 12px; max-width: 640px; margin-left: auto; margin-right: auto;">
@@ -171,7 +233,33 @@
           <h5 data-i18n="footer.legal">Legal</h5>
           <ul>
             <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
-            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
           </ul>
         </div>
-      </d
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Show the image only if it actually loads; otherwise leave the gradient-initial fallback visible.
+    document.querySelectorAll('.team-photo-wrap').forEach(function (wrap) {
+      var img = wrap.querySelector('img');
+      if (!img) return;
+      var ok = function () { wrap.classList.add('has-image'); };
+      var fail = function () { img.remove(); };
+      if (img.complete) {
+        if (img.naturalWidth > 0) ok(); else fail();
+      } else {
+        img.addEventListener('load', ok);
+        img.addEventListener('error', fail);
+      }
+    });
+  </script>
+</body>
+</html>
