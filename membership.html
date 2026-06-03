@@ -46,6 +46,26 @@
     .conditional-block { display: none; }
     .conditional-block.is-visible { display: block; }
 
+    /* Validation states */
+    .form input.invalid,
+    .form select.invalid,
+    .form textarea.invalid {
+      border-color: #ff5b6e !important;
+      background: rgba(255, 91, 110, 0.06);
+    }
+    .field-error {
+      display: none;
+      font-size: 0.8rem;
+      color: #ff8a96;
+      margin-top: 0.3rem;
+    }
+    .field-error.is-visible { display: block; }
+    .form button[type="submit"]:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: grayscale(0.4);
+    }
+
     .benefit-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -511,11 +531,16 @@
           <div class="form-row">
             <div class="form-group">
               <label>Email *</label>
-              <input type="email" name="email" required />
+              <input type="email" name="email" required autocomplete="email"
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+              <span class="field-error" data-error-for="email">Please enter a valid email address (e.g. name@example.com).</span>
             </div>
             <div class="form-group">
               <label>Phone number *</label>
-              <input type="tel" name="phone" required placeholder="+41 ..." />
+              <input type="tel" name="phone" required placeholder="+41 ..."
+                     inputmode="tel" autocomplete="tel"
+                     pattern="^\+?[0-9\s().\-]{7,20}$" />
+              <span class="field-error" data-error-for="phone">Please enter a valid phone number (digits, spaces, +, -, ()).</span>
             </div>
           </div>
           <div class="form-group">
@@ -758,11 +783,15 @@
             <div class="form-row">
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="enrol_email" />
+                <input type="email" name="enrol_email"
+                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+                <span class="field-error" data-error-for="enrol_email">Please enter a valid email address.</span>
               </div>
               <div class="form-group">
                 <label>Phone</label>
-                <input type="tel" name="enrol_phone" />
+                <input type="tel" name="enrol_phone"
+                       inputmode="tel" pattern="^\+?[0-9\s().\-]{7,20}$" />
+                <span class="field-error" data-error-for="enrol_phone">Please enter a valid phone number.</span>
               </div>
             </div>
           </div>
@@ -808,7 +837,10 @@
             <span>Send me the TechLegion newsletter (events, study groups, member opportunities). Optional.</span>
           </label>
 
-          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;">Submit application</button>
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;" disabled>Submit application</button>
+          <p id="submit-hint" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;">
+            Tick the three required consents above to enable the submit button.
+          </p>
         </form>
       </div>
     </div>
@@ -925,12 +957,94 @@
     // 3. Paste it below.
     var MEMBERSHIP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
 
+    // ---- Validation + submit gating ----
     (function () {
       var form = document.getElementById('membership-form');
       if (!form) return;
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var submitHint = document.getElementById('submit-hint');
+      var requiredConsents = form.querySelectorAll(
+        'input[name="statutes"], input[name="privacy"], input[name="data"]'
+      );
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+      function showError(field, show) {
+        var err = form.querySelector('.field-error[data-error-for="' + field.name + '"]');
+        if (err) err.classList.toggle('is-visible', !!show);
+        field.classList.toggle('invalid', !!show);
+      }
+
+      function validateField(field) {
+        if (!field) return true;
+        var v = (field.value || '').trim();
+        // Skip empty optional fields
+        if (!v && !field.required) { showError(field, false); return true; }
+        // Required but empty
+        if (!v && field.required) { showError(field, true); return false; }
+        // Email/phone pattern check
+        var ok = true;
+        if (field.type === 'email') ok = EMAIL_RE.test(v);
+        else if (field.type === 'tel') ok = PHONE_RE.test(v);
+        showError(field, !ok);
+        return ok;
+      }
+
+      function allConsentsChecked() {
+        for (var i = 0; i < requiredConsents.length; i++) {
+          if (!requiredConsents[i].checked) return false;
+        }
+        return true;
+      }
+
+      function formIsValid() {
+        if (!allConsentsChecked()) return false;
+        var required = form.querySelectorAll('[required]');
+        for (var i = 0; i < required.length; i++) {
+          var el = required[i];
+          if (el.type === 'checkbox') continue; // handled by consent check
+          if (!validateField(el)) return false;
+        }
+        // Pattern fields even when not required
+        var emailField = form.querySelector('input[name="email"]');
+        var phoneField = form.querySelector('input[name="phone"]');
+        if (emailField && !validateField(emailField)) return false;
+        if (phoneField && !validateField(phoneField)) return false;
+        return true;
+      }
+
+      function refreshSubmitState() {
+        var ok = formIsValid();
+        submitBtn.disabled = !ok;
+        if (submitHint) {
+          if (!allConsentsChecked()) {
+            submitHint.textContent = 'Tick the three required consents above to enable the submit button.';
+            submitHint.style.display = '';
+          } else if (!ok) {
+            submitHint.textContent = 'Please complete all required fields with a valid email and phone number.';
+            submitHint.style.display = '';
+          } else {
+            submitHint.style.display = 'none';
+          }
+        }
+      }
+
+      // Live validation feedback (blur for inputs, change for selects/checkboxes)
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        var evt = (el.tagName === 'SELECT' || el.type === 'checkbox' || el.type === 'date') ? 'change' : 'blur';
+        el.addEventListener(evt, function () { validateField(el); refreshSubmitState(); });
+        el.addEventListener('input', refreshSubmitState);
+      });
+      requiredConsents.forEach(function (c) { c.addEventListener('change', refreshSubmitState); });
+      refreshSubmitState();
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var btn = form.querySelector('[type=submit]');
+        // Final check before send
+        if (!formIsValid()) { refreshSubmitState(); return; }
+        var btn = submitBtn;
         var originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Submitting…';
