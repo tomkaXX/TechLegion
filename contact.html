@@ -29,6 +29,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
+    /* Tighten the gap between the hero and the form */
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
     .form input.invalid,
     .form textarea.invalid {
       border-color: #ff5b6e !important;
@@ -250,7 +254,6 @@ Zug, Switzerland</p>
   <div id="ty-modal" class="ty-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="ty-modal">
       <button type="button" class="ty-close" data-ty-close aria-label="Close">×</button>
-      <div class="check">✅</div>
       <h3>Thank you for your message!</h3>
       <p>We've received your note and we'll reach out as soon as we can — usually within a few working days.</p>
       <button type="button" class="btn btn-primary" data-ty-close>Close</button>
