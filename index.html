@@ -116,49 +116,49 @@
         <p data-i18n="home.programs.lead">Hands-on programs across education, entrepreneurship, and space — designed for the Swiss tech ecosystem.</p>
       </div>
       <div class="grid grid-4 fade-in">
-        <a href="programs.html#workshops" class="card program-card">
+        <a href="summer-school.html#workshops" class="card program-card">
           <div class="card-icon">📚</div>
           <h3 data-i18n="home.programs.workshops.title">Workshops & Webinars</h3>
           <p data-i18n="home.programs.workshops.desc">Practical sessions on AI, software engineering, cloud, cybersecurity, and living and working in Switzerland.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#coaching" class="card program-card">
+        <a href="summer-school.html#coaching" class="card program-card">
           <div class="card-icon">🎯</div>
           <h3 data-i18n="home.programs.coaching.title">Career Coaching</h3>
           <p data-i18n="home.programs.coaching.desc">CV reviews, interview prep, and Swiss job-market orientation for career switchers, returners, and newcomers.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#hackathons" class="card program-card">
+        <a href="summer-school.html#hackathons" class="card program-card">
           <div class="card-icon">⚡</div>
           <h3 data-i18n="home.programs.hackathons.title">Hackathons</h3>
           <p data-i18n="home.programs.hackathons.desc">Including the NASA Space Apps Challenge and community partner hackathons across Switzerland.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#tours" class="card program-card">
+        <a href="summer-school.html#tours" class="card program-card">
           <div class="card-icon">🏭</div>
           <h3 data-i18n="home.programs.tours.title">Tech Tours</h3>
           <p data-i18n="home.programs.tours.desc">Behind-the-scenes visits to nuclear facilities, Google, NVIDIA, and leading Swiss research labs.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#startups" class="card program-card">
+        <a href="summer-school.html#startups" class="card program-card">
           <div class="card-icon">🚀</div>
           <h3 data-i18n="home.programs.startups.title">Startup Activities</h3>
           <p data-i18n="home.programs.startups.desc">MVP development, prototyping, pitch training, fundraising, and VC introductions.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#space" class="card program-card">
+        <a href="summer-school.html#space" class="card program-card">
           <div class="card-icon">🛰️</div>
           <h3 data-i18n="home.programs.space.title">Space & Drone Tech</h3>
           <p data-i18n="home.programs.space.desc">Drone pilot A1/A2 certification, space innovation projects, and aerospace technology workshops.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#certs" class="card program-card">
+        <a href="summer-school.html#certs" class="card program-card">
           <div class="card-icon">🎓</div>
           <h3 data-i18n="home.programs.certs.title">Certifications</h3>
           <p data-i18n="home.programs.certs.desc">Anthropic AI Architect, cloud, data and AI certifications recognized internationally.</p>
           <span class="card-link" data-i18n="common.cta.learn_more">Learn more</span>
         </a>
-        <a href="programs.html#study" class="card program-card">
+        <a href="summer-school.html#study" class="card program-card">
           <div class="card-icon">👥</div>
           <h3 data-i18n="home.programs.study.title">Study Groups</h3>
           <p data-i18n="home.programs.study.desc">Peer-to-peer learning groups for university students and self-taught technologists.</p>
@@ -192,18 +192,256 @@
     </div>
   </section>
 
-  <!-- EVENTS -->
-  <section>
+  <!-- WORK WITH US — 2 components: stylised headline+button, and 100% team-work circle -->
+  <section id="join-us">
+    <style>
+      #join-us {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(4rem, 8vw, 7rem) 0 0;
+        background: #1c2235;
+        min-height: 560px;
+      }
+
+      /* Spinning SVG circle decorators */
+      .join-circle {
+        position: absolute;
+        pointer-events: none;
+        will-change: transform;
+      }
+      .join-circle.c1 {
+        width: 480px; height: 480px;
+        left: -240px; top: 50%;
+        transform: translateY(-50%);
+        animation: jc-spin-cw 67s linear infinite;
+      }
+      .join-circle.c2 {
+        width: 620px; height: 620px;
+        right: -310px; top: 50%;
+        transform: translateY(-50%);
+        animation: jc-spin-ccw 80s linear infinite;
+      }
+      .join-circle.c3 {
+        width: 360px; height: 360px;
+        right: -180px; top: 50%;
+        margin-top: -60px;
+        transform: translateY(-50%);
+        opacity: 0.55;
+        animation: jc-spin-cw 50s linear infinite;
+      }
+      @keyframes jc-spin-cw  { from { transform: translateY(-50%) rotate(0deg);   } to { transform: translateY(-50%) rotate(360deg);  } }
+      @keyframes jc-spin-ccw { from { transform: translateY(-50%) rotate(0deg);   } to { transform: translateY(-50%) rotate(-360deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .join-circle { animation: none !important; }
+      }
+
+      /* Content */
+      #join-us .join-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 1rem;
+      }
+      .join-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.6rem, 6vw, 4.8rem);
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--white);
+        margin: 0 0 1.5rem;
+      }
+      .join-title .hl { color: #51fec0; }
+      .join-title .lc { font-style: italic; }
+      .join-sub {
+        font-family: 'Courier New', Courier, monospace;
+        color: var(--text-dim);
+        font-size: 1rem;
+        max-width: 420px;
+        line-height: 1.65;
+        text-align: center;
+        min-height: 3.5em;
+        margin: 0 auto 2.5rem;
+      }
+      .join-cursor {
+        display: inline-block;
+        color: #51fec0;
+        animation: blink-cursor 0.75s step-end infinite;
+      }
+      @keyframes blink-cursor { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+      /* ECG heartbeat canvas */
+      .join-ecg {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 1;
+        margin-top: 1rem;
+      }
+    </style>
+
+    <!-- Left spinning circle -->
+    <img class="join-circle c1" src="image/_5431.svg" alt="" aria-hidden="true">
+    <!-- Right spinning circles -->
+    <img class="join-circle c2" src="image/_5433.svg" alt="" aria-hidden="true">
+    <img class="join-circle c3" src="image/_5432.svg" alt="" aria-hidden="true">
+
     <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow" data-i18n="home.events.eyebrow">What's next</span>
-        <h2 data-i18n="home.events.title">Upcoming events</h2>
-        <p data-i18n="home.events.lead">Live calendar pulled directly from our Google Calendar — RSVP for the events you want to join.</p>
-      </div>
-      <div style="text-align:center; margin-top: 2rem;">
-        <a href="calendar.html" class="btn btn-primary btn-lg" data-i18n="home.events.view_all">See full calendar</a>
+      <div class="join-inner">
+        <h2 class="join-title">
+          w<span class="lc">O</span>rk in a<br>
+          <span class="hl">sti<span class="lc">M</span>ulating</span> and<br>
+          <span class="hl">in<span class="lc">C</span>lusiv<span class="lc">E</span></span><br>
+          <span class="lc">E</span>nvi<span class="lc">R</span>onment
+        </h2>
+        <p class="join-sub" id="join-typing-text">We are always on the lookout for passionate, dynamic and <span id="join-typed"></span><span class="join-cursor" id="join-cursor">|</span></p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Get in touch</a>
       </div>
     </div>
+
+    <!-- ECG heartbeat animation -->
+    <canvas class="join-ecg" id="join-ecg" height="110"></canvas>
+
+    <script>
+      (function () {
+        /* --- Typing animation --- */
+        var fullText = 'creative minds to join our ranks. Here\'s the positions we currently have open:';
+        var typed = document.getElementById('join-typed');
+        var cursor = document.getElementById('join-cursor');
+        var typingStarted = false;
+
+        function startTyping() {
+          if (typingStarted) return;
+          typingStarted = true;
+          var i = 0;
+          function tick() {
+            if (i <= fullText.length) {
+              typed.textContent = fullText.slice(0, i);
+              i++;
+              setTimeout(tick, 38);
+            }
+          }
+          tick();
+        }
+
+        /* --- ECG canvas animation --- */
+        var canvas = document.getElementById('join-ecg');
+        var ctx = canvas.getContext('2d');
+        var W, H;
+        var xPos = 0;
+        var speed = 2.2;
+        var ecgPhase = 0;
+        var ecgCycle = 0;
+
+        function resizeCanvas() {
+          W = canvas.width = canvas.offsetWidth;
+          H = canvas.height = 110;
+          ctx.clearRect(0, 0, W, H);
+        }
+
+        function ecgY(x) {
+          /* One repeating ECG beat per ~200px */
+          var period = 200;
+          var t = ((x % period) + period) % period;
+          var mid = H * 0.65;
+          if (t < 60)  return mid;                                              // flat
+          if (t < 68)  return mid - (t - 60) / 8 * H * 0.08;                  // tiny bump up
+          if (t < 76)  return mid + (t - 68) / 8 * H * 0.08;                  // tiny bump down
+          if (t < 84)  return mid;                                              // flat
+          if (t < 90)  return mid - (t - 84) / 6 * H * 0.52;                  // sharp spike up
+          if (t < 96)  return mid - H * 0.52 + (t - 90) / 6 * H * 0.78;      // sharp spike down
+          if (t < 102) return mid + H * 0.26 - (t - 96) / 6 * H * 0.3;       // recovery
+          if (t < 120) return mid - (t - 102) / 18 * H * 0.1;                 // S wave to flat
+          if (t < 140) {                                                        // T wave hump
+            var tt = (t - 120) / 20;
+            return mid - H * 0.1 - Math.sin(tt * Math.PI) * H * 0.12;
+          }
+          return mid;
+        }
+
+        var lastX = 0;
+        var lastY = 0;
+        var animStarted = false;
+        var raf;
+
+        function drawEcg() {
+          if (!animStarted) return;
+          ctx.clearRect(0, 0, W, H);
+
+          /* Trailing fade overlay */
+          ctx.fillStyle = '#1c2235';
+          ctx.fillRect(0, 0, W, H);
+
+          /* Draw the ECG path up to xPos */
+          var trailLen = Math.min(W, 520);
+          var startX = Math.max(0, xPos - trailLen);
+
+          ctx.beginPath();
+          ctx.strokeStyle = '#024ef9';
+          ctx.lineWidth = 1.8;
+          ctx.shadowColor = '#4d8bff';
+          ctx.shadowBlur = 6;
+          var first = true;
+          for (var x = startX; x <= xPos; x += 1) {
+            var y = ecgY(x);
+            /* Fade older parts */
+            var alpha = Math.max(0.05, (x - startX) / trailLen);
+            ctx.globalAlpha = alpha * 0.7;
+            if (first) { ctx.moveTo(x, y); first = false; }
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+
+          /* Bright cyan head dot */
+          var headY = ecgY(xPos);
+          ctx.beginPath();
+          ctx.arc(xPos, headY, 3, 0, Math.PI * 2);
+          ctx.fillStyle = '#51fec0';
+          ctx.shadowColor = '#51fec0';
+          ctx.shadowBlur = 12;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          xPos += speed;
+          if (xPos > W + 60) xPos = 0;
+
+          raf = requestAnimationFrame(drawEcg);
+        }
+
+        /* IntersectionObserver to start animations when in view */
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                startTyping();
+                if (!animStarted) {
+                  animStarted = true;
+                  resizeCanvas();
+                  drawEcg();
+                }
+                io.disconnect();
+              }
+            });
+          }, { threshold: 0.15 });
+          io.observe(document.getElementById('join-us'));
+        } else {
+          startTyping();
+          animStarted = true;
+          resizeCanvas();
+          drawEcg();
+        }
+
+        window.addEventListener('resize', function () {
+          resizeCanvas();
+          xPos = 0;
+        });
+      })();
+    </script>
   </section>
 
   <!-- SOCIAL -->
@@ -269,7 +507,7 @@
           <h5 data-i18n="footer.explore">Explore</h5>
           <ul>
             <li><a href="about.html" data-i18n="nav.about">About</a></li>
-            <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
             <li><a href="events.html" data-i18n="nav.events">Events</a></li>
             <li><a href="team.html" data-i18n="nav.team">Team</a></li>
           </ul>
@@ -296,4 +534,10 @@
         <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
       </div>
     </div>
-  <
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

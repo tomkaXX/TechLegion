@@ -171,7 +171,13 @@ section { padding: clamp(3.5rem, 7vw, 6rem) 0; position: relative; }
   color: var(--white);
   letter-spacing: -0.01em;
 }
-.nav-logo img { width: 38px; height: 38px; border-radius: 50%; }
+.nav-logo img {
+  width: 38px; height: 38px;
+  /* Drop the black background of the PNG so the logo appears to float on the page bg.
+     'lighten' returns the lighter of the image pixel and the page background — pure
+     black areas of the source image become the page colour, leaving only the crest. */
+  mix-blend-mode: lighten;
+}
 .nav-logo:hover { color: var(--white); }
 .nav-logo .accent { color: var(--accent-glow); }
 
@@ -816,7 +822,11 @@ section { padding: clamp(3.5rem, 7vw, 6rem) 0; position: relative; }
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 2.5rem;
 }
-.footer-brand img { width: 56px; height: 56px; border-radius: 50%; margin-bottom: 1rem; }
+.footer-brand img {
+  width: 56px; height: 56px;
+  mix-blend-mode: lighten;
+  margin-bottom: 1rem;
+}
 .footer-brand p { color: var(--text-muted); font-size: 0.9rem; max-width: 320px; }
 .footer h5 {
   font-size: 0.85rem;

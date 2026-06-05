@@ -12,7 +12,7 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://techlegion.ch/?lang=ua"/>
   </url>
   <url><loc>https://techlegion.ch/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://techlegion.ch/programs.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://techlegion.ch/summer-school.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://techlegion.ch/events.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://techlegion.ch/calendar.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://techlegion.ch/membership.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>

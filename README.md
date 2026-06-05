@@ -10,7 +10,7 @@ This is a fully static website (HTML, CSS, vanilla JS) deployable to GitHub Page
 | ----------------- | ----------------- | ---------------------------------------------------- |
 | Home              | `index.html`      | Hero, programs, stats, live Google Calendar, social   |
 | About             | `about.html`      | Mission, vision, values, NASA Space Apps, Verein info |
-| Programs          | `programs.html`   | All 8 pillars (workshops, coaching, hackathons, ...)  |
+| Programs          | `summer-school.html`   | All 8 pillars (workshops, coaching, hackathons, ...)  |
 | Events            | `events.html`     | Live Google Calendar embed + categories               |
 | Membership        | `membership.html` | Full application form with CHF 100 / year disclosure  |
 | Team              | `team.html`       | Team cards (Andreas Punter seeded as example)         |
