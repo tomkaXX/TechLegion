@@ -28,6 +28,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding-top: 20px !important; padding-bottom: 20px !important; }
+    body section[style*="padding-top: 4rem"] { padding-top: 4rem !important; }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -66,7 +70,7 @@
       <div class="section-head fade-in">
         <span class="eyebrow" data-i18n="nav.about">About</span>
         <h1 data-i18n="about.title">About TechLegion</h1>
-        <p data-i18n="about.lead">TechLegion is a community-driven Swiss association (Verein) headquartered in Zug. We exist to educate, inspire, and build a legion of innovators shaping the future of technology in Switzerland.</p>
+        <p data-i18n="about.lead">TechLegion is a community of technology enthusiasts, builders, and innovators dedicated to learning, collaboration, and open-source contributions. The community is known for organizing the NASA Space Apps Challenge hackathons in Zurich in 2024 and 2025, bringing together participants from diverse backgrounds to solve real-world challenges. TechLegion also actively supports open-source ecosystems through translation and localization efforts for projects such as PX4 and other technology initiatives, helping make cutting-edge tools more accessible to global communities. As a member of the Anthropic Claude Partner Network, TechLegion is committed to supporting AI transformation in Switzerland and accelerating the adoption of the newest technologies across the Swiss tech ecosystem.</p>
       </div>
     </div>
   </section>
@@ -124,9 +128,9 @@
         <div class="nasa-band-text">
           <span class="tag">🚀 NASA</span>
           <h3 data-i18n="about.nasa.title">Official NASA Space Apps Challenge partner</h3>
-          <p data-i18n="about.nasa.body">TechLegion proudly organizes Switzerland's local edition of the NASA Space Apps Challenge — the world's largest annual space hackathon.</p>
+          <p data-i18n="about.nasa.body">TechLegion proudly organizes Switzerland's local edition of the NASA Space Apps Challenge — the world's largest annual space hackathon. We hosted the Zurich edition in 2024 and 2025, bringing together innovators to tackle real NASA challenges.</p>
           <div style="margin-top: 1.25rem;">
-            <a href="summer-school.html#hackathons" class="btn btn-primary" data-i18n="common.cta.learn_more">Learn more</a>
+            <a href="https://www.spaceappschallenge.org/2025/local-events/zurich/" target="_blank" rel="noopener" class="btn btn-primary">Space Apps Zurich 2025</a>
           </div>
         </div>
         <div class="nasa-band-logo">
@@ -136,10 +140,63 @@
     </div>
   </section>
 
+  <!-- Anthropic Claude Partner Network -->
   <section>
-    <div class="container container-narrow prose fade-in">
-      <h2 data-i18n="about.legal.title">Legal structure</h2>
-      <p data-i18n="about.legal.body">TechLegion is a non-profit association (Verein) registered in Zug, Switzerland. Membership is open to anyone who supports our mission and agrees to our statutes and the annual membership fee.</p>
+    <div class="container">
+      <div class="nasa-band fade-in">
+        <div class="nasa-band-text">
+          <span class="tag">🚀 Claude Partner Network Member</span>
+          <h3>Anthropic Claude Partner Network</h3>
+          <p>TechLegion is a proud member of the Anthropic Claude Partner Network. We are committed to supporting AI transformation across Switzerland — helping individuals, startups, and organisations understand, adopt, and responsibly apply the newest AI technologies to shape a better future.</p>
+          <div style="margin-top: 1.25rem;">
+            <a href="https://www.anthropic.com" target="_blank" rel="noopener" class="btn btn-primary">Learn about Claude</a>
+          </div>
+        </div>
+        <div class="nasa-band-logo">
+          <img src="assets/img/claude-partner-network.png" alt="Anthropic Claude Partner Network" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="stats fade-in">
+        <div class="stat"><span class="stat-num" data-counter="850" data-suffix="+">0</span><span class="stat-label">Joined our events</span></div>
+        <div class="stat"><span class="stat-num" data-counter="120" data-suffix="+">0</span><span class="stat-label">Events and Webinars organized</span></div>
+        <div class="stat"><span class="stat-num" data-counter="15" data-suffix="+">0</span><span class="stat-label">Workshops conducted</span></div>
+        <div class="stat"><span class="stat-num" data-counter="4" data-suffix="">0</span><span class="stat-label">Hackathons supported</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 100% TEAMWORK -->
+  <section id="teamwork-section">
+    <style>
+      #teamwork-section { position: relative; overflow: hidden; background: transparent; padding: clamp(1.25rem,2.5vw,2rem) 0; display: flex; align-items: center; justify-content: center; }
+      .tw-wrap { position: relative; display: flex; align-items: center; justify-content: center; width: min(340px,80vw); height: min(340px,80vw); }
+      .tw-radar { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; animation: tw-spin 22s linear infinite; will-change: transform; }
+      @keyframes tw-spin { to { transform: rotate(360deg); } }
+      @media(prefers-reduced-motion:reduce){ .tw-radar { animation: none !important; } }
+      .tw-circle { position: relative; z-index: 1; width: 66%; height: 66%; background: #1635f5; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 60px rgba(22,53,245,.5); }
+      .tw-pct { font-family: var(--font-display); font-size: clamp(1.1rem,3.5vw,1.6rem); font-weight: 700; color: #fff; line-height: 1; margin-bottom: .08em; }
+      .tw-work { font-family: var(--font-display); font-size: clamp(.85rem,2.5vw,1.1rem); font-weight: 700; color: #fff; letter-spacing: .15em; text-transform: uppercase; line-height: 1; }
+      .tw-link-wrap { display: flex; align-items: center; gap: .5rem; margin-top: .6rem; }
+      .tw-link-line { display: block; width: 28px; height: 1px; background: rgba(255,255,255,.5); }
+      .tw-link { font-family: "Courier New",Courier,monospace; font-size: .6rem; color: rgba(255,255,255,.8); text-decoration: underline; text-underline-offset: 3px; letter-spacing: .04em; white-space: nowrap; transition: color .2s; }
+      .tw-link:hover { color: #51fec0; }
+    </style>
+    <div class="tw-wrap">
+      <img class="tw-radar" src="image/_543.svg" alt="" aria-hidden="true">
+      <div class="tw-circle">
+        <div class="tw-pct">100%</div>
+        <div class="tw-work">team work</div>
+        <div class="tw-link-wrap">
+          <span class="tw-link-line"></span>
+          <a href="team.html" class="tw-link">Get to know the team</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -184,3 +241,13 @@
       </div>
       <div class="footer-bottom">
         <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+                                                                
