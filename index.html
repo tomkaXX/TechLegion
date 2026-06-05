@@ -198,9 +198,9 @@
       #join-us {
         position: relative;
         overflow: hidden;
-        padding: clamp(4rem, 8vw, 7rem) 0 0;
-        background: #1c2235;
-        min-height: 560px;
+        padding: clamp(2rem, 4vw, 3.5rem) 0 0;
+        background: var(--bg-navy);
+        min-height: 0;
       }
 
       /* Spinning SVG circle decorators */
@@ -253,7 +253,7 @@
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: var(--white);
-        margin: 0 0 1.5rem;
+        margin: 0 0 0.75rem;
       }
       .join-title .hl { color: #51fec0; }
       .join-title .lc { font-style: italic; }
@@ -265,7 +265,7 @@
         line-height: 1.65;
         text-align: center;
         min-height: 3.5em;
-        margin: 0 auto 2.5rem;
+        margin: 0 auto 1.25rem;
       }
       .join-cursor {
         display: inline-block;
@@ -280,7 +280,7 @@
         display: block;
         position: relative;
         z-index: 1;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
       }
     </style>
 
@@ -293,7 +293,7 @@
     <div class="container">
       <div class="join-inner">
         <h2 class="join-title">
-          w<span class="lc">O</span>rk in a<br>
+          Tech<span class="lc">L</span>egion is a<br>
           <span class="hl">sti<span class="lc">M</span>ulating</span> and<br>
           <span class="hl">in<span class="lc">C</span>lusiv<span class="lc">E</span></span><br>
           <span class="lc">E</span>nvi<span class="lc">R</span>onment
@@ -309,74 +309,59 @@
     <script>
       (function () {
         /* --- Typing animation --- */
-        var fullText = 'creative minds to join our ranks. Here\'s how you can reach us. Don't hesitate to get in touch! ';
+        var fullText = "creative minds to join our ranks. Here's how you can reach us. Don't hesitate to get in touch!";
         var typed = document.getElementById('join-typed');
-        var cursor = document.getElementById('join-cursor');
         var typingStarted = false;
 
         function startTyping() {
           if (typingStarted) return;
           typingStarted = true;
           var i = 0;
-          function tick() {
-            if (i <= fullText.length) {
-              typed.textContent = fullText.slice(0, i);
-              i++;
-              setTimeout(tick, 38);
-            }
-          }
-          tick();
+          (function tick() {
+            typed.textContent = fullText.slice(0, i);
+            if (i < fullText.length) { i++; setTimeout(tick, 40); }
+          })();
         }
 
         /* --- ECG canvas animation --- */
         var canvas = document.getElementById('join-ecg');
         var ctx = canvas.getContext('2d');
-        var W, H;
+        var W = 0, H = 110;
         var xPos = 0;
-        var speed = 2.2;
-        var ecgPhase = 0;
-        var ecgCycle = 0;
+        var animStarted = false;
 
         function resizeCanvas() {
-          W = canvas.width = canvas.offsetWidth;
+          var w = canvas.getBoundingClientRect().width || canvas.parentElement.offsetWidth;
+          if (w > 0) { W = canvas.width = w; }
           H = canvas.height = 110;
-          ctx.clearRect(0, 0, W, H);
         }
 
         function ecgY(x) {
-          /* One repeating ECG beat per ~200px */
           var period = 200;
           var t = ((x % period) + period) % period;
           var mid = H * 0.65;
-          if (t < 60)  return mid;                                              // flat
-          if (t < 68)  return mid - (t - 60) / 8 * H * 0.08;                  // tiny bump up
-          if (t < 76)  return mid + (t - 68) / 8 * H * 0.08;                  // tiny bump down
-          if (t < 84)  return mid;                                              // flat
-          if (t < 90)  return mid - (t - 84) / 6 * H * 0.52;                  // sharp spike up
-          if (t < 96)  return mid - H * 0.52 + (t - 90) / 6 * H * 0.78;      // sharp spike down
-          if (t < 102) return mid + H * 0.26 - (t - 96) / 6 * H * 0.3;       // recovery
-          if (t < 120) return mid - (t - 102) / 18 * H * 0.1;                 // S wave to flat
-          if (t < 140) {                                                        // T wave hump
-            var tt = (t - 120) / 20;
-            return mid - H * 0.1 - Math.sin(tt * Math.PI) * H * 0.12;
-          }
+          if (t < 60)  return mid;
+          if (t < 68)  return mid - (t - 60) / 8 * H * 0.08;
+          if (t < 76)  return mid + (t - 68) / 8 * H * 0.08;
+          if (t < 84)  return mid;
+          if (t < 90)  return mid - (t - 84) / 6 * H * 0.52;
+          if (t < 96)  return mid - H * 0.52 + (t - 90) / 6 * H * 0.78;
+          if (t < 102) return mid + H * 0.26 - (t - 96) / 6 * H * 0.3;
+          if (t < 120) return mid - (t - 102) / 18 * H * 0.1;
+          if (t < 140) { var tt = (t-120)/20; return mid - H*0.1 - Math.sin(tt*Math.PI)*H*0.12; }
           return mid;
         }
 
-        var lastX = 0;
-        var lastY = 0;
-        var animStarted = false;
-        var raf;
-
         function drawEcg() {
           if (!animStarted) return;
-          ctx.clearRect(0, 0, W, H);
+          /* Re-measure width if it's still 0 (happens during first frame on GitHub Pages) */
+          if (W === 0) { resizeCanvas(); }
+          if (W === 0) { requestAnimationFrame(drawEcg); return; }
 
-          /* Trailing fade overlay */
-          ctx.fillStyle = '#1c2235';
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = '#0a0e2a';
           ctx.fillRect(0, 0, W, H);
 
-          /* Draw the ECG path up to xPos */
           var trailLen = Math.min(W, 520);
           var startX = Math.max(0, xPos - trailLen);
 
@@ -386,18 +371,15 @@
           ctx.shadowColor = '#4d8bff';
           ctx.shadowBlur = 6;
           var first = true;
-          for (var x = startX; x <= xPos; x += 1) {
-            var y = ecgY(x);
-            /* Fade older parts */
+          for (var x = startX; x <= xPos; x++) {
             var alpha = Math.max(0.05, (x - startX) / trailLen);
             ctx.globalAlpha = alpha * 0.7;
-            if (first) { ctx.moveTo(x, y); first = false; }
-            else ctx.lineTo(x, y);
+            var y = ecgY(x);
+            if (first) { ctx.moveTo(x, y); first = false; } else { ctx.lineTo(x, y); }
           }
           ctx.stroke();
           ctx.globalAlpha = 1;
 
-          /* Bright cyan head dot */
           var headY = ecgY(xPos);
           ctx.beginPath();
           ctx.arc(xPos, headY, 3, 0, Math.PI * 2);
@@ -407,69 +389,207 @@
           ctx.fill();
           ctx.shadowBlur = 0;
 
-          xPos += speed;
-          if (xPos > W + 60) xPos = 0;
-
-          raf = requestAnimationFrame(drawEcg);
+          xPos = (xPos + 2.2) % (W + 60);
+          requestAnimationFrame(drawEcg);
         }
 
-        /* IntersectionObserver to start animations when in view */
-        if ('IntersectionObserver' in window) {
-          var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-              if (e.isIntersecting) {
-                startTyping();
-                if (!animStarted) {
-                  animStarted = true;
-                  resizeCanvas();
-                  drawEcg();
-                }
-                io.disconnect();
-              }
+        function launchAnimations() {
+          startTyping();
+          if (!animStarted) {
+            animStarted = true;
+            /* Use rAF to ensure layout is complete before measuring canvas width */
+            requestAnimationFrame(function() {
+              resizeCanvas();
+              requestAnimationFrame(drawEcg);
             });
-          }, { threshold: 0.15 });
+          }
+        }
+
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { launchAnimations(); io.disconnect(); } });
+          }, { threshold: 0.1 });
           io.observe(document.getElementById('join-us'));
         } else {
-          startTyping();
-          animStarted = true;
-          resizeCanvas();
-          drawEcg();
+          window.addEventListener('load', launchAnimations);
         }
 
-        window.addEventListener('resize', function () {
-          resizeCanvas();
-          xPos = 0;
-        });
+        window.addEventListener('resize', function() { resizeCanvas(); xPos = 0; });
       })();
     </script>
   </section>
 
-  <!-- SOCIAL -->
-  <section>
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow" data-i18n="home.social.eyebrow">Stay connected</span>
-        <h2 data-i18n="home.social.title">Follow the legion</h2>
-        <p data-i18n="home.social.lead">Latest posts, behind-the-scenes, and community highlights — across Instagram, LinkedIn and Threads.</p>
+  <!-- 100% TEAMWORK -->
+  <section id="teamwork-section">
+    <style>
+      #teamwork-section {
+        position: relative;
+        overflow: hidden;
+        background: var(--bg-navy);
+        padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .tw-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(340px, 80vw);
+        height: min(340px, 80vw);
+      }
+      /* Spinning radar ring */
+      .tw-radar {
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        animation: tw-spin 22s linear infinite;
+        will-change: transform;
+      }
+      @keyframes tw-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .tw-radar { animation: none !important; } }
+      /* Blue circle */
+      .tw-circle {
+        position: relative;
+        z-index: 1;
+        width: 66%; height: 66%;
+        background: #1635f5;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        box-shadow: 0 0 60px rgba(22, 53, 245, 0.5);
+      }
+      .tw-pct {
+        font-family: var(--font-display);
+        font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 0.08em;
+      }
+      .tw-work {
+        font-family: var(--font-display);
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      .tw-link-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+      }
+      .tw-link-line {
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: rgba(255,255,255,0.5);
+      }
+      .tw-link {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.6rem;
+        color: rgba(255,255,255,0.8);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        transition: color 0.2s;
+      }
+      .tw-link:hover { color: #51fec0; }
+
+    </style>
+
+    <div class="tw-wrap">
+      <!-- Spinning radar ring -->
+      <img class="tw-radar" src="image/_543.svg" alt="" aria-hidden="true">
+      <!-- Solid blue circle -->
+      <div class="tw-circle">
+        <div class="tw-pct">100%</div>
+        <div class="tw-work">team work</div>
+        <div class="tw-link-wrap">
+          <span class="tw-link-line"></span>
+          <a href="team.html" class="tw-link">Get to know the team</a>
+        </div>
       </div>
-      <div class="grid grid-3 fade-in">
-        <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" class="card">
-          <div class="card-icon">📷</div>
-          <h3>Instagram</h3>
-          <p>@techlegions — photos from hackathons, workshops and the community.</p>
-          <span class="card-link">Open Instagram</span>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section id="social-section">
+    <style>
+      #social-section {
+        padding: 0.75rem 0;
+      }
+      .social-head {
+        text-align: center;
+        margin-bottom: 0.75rem;
+      }
+      .social-head .eyebrow { display: block; margin-bottom: 0.4rem; }
+      .social-head h2 { margin: 0 0 0.5rem; font-size: clamp(1.4rem, 3vw, 2rem); }
+      .social-head p { color: var(--text-dim); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: clamp(1.2rem, 4vw, 3rem);
+        flex-wrap: wrap;
+      }
+      .social-icon-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: var(--text-dim);
+        transition: color 0.2s, transform 0.2s;
+      }
+      .social-icon-link:hover { color: #51fec0; transform: translateY(-3px); }
+      .social-icon-btn {
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: rgba(77, 139, 255, 0.1);
+        border: 1px solid rgba(255,255,255,0.1);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .social-icon-link:hover .social-icon-btn {
+        background: rgba(81, 254, 192, 0.12);
+        border-color: rgba(81, 254, 192, 0.35);
+      }
+      .social-icon-label {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    </style>
+    <div class="container">
+      <div class="social-head fade-in">
+        <span class="eyebrow">Stay connected</span>
+        <h2>Follow the legion</h2>
+        <p>Latest posts, behind-the-scenes, and community highlights — across Instagram, LinkedIn and WhatsApp.</p>
+      </div>
+      <div class="social-icons fade-in">
+        <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" class="social-icon-link" aria-label="Instagram">
+          <div class="social-icon-btn">📷</div>
+          <span class="social-icon-label">Instagram</span>
         </a>
-        <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" class="card">
-          <div class="card-icon">💼</div>
-          <h3>LinkedIn</h3>
-          <p>Career news, partner announcements, and thoughtful posts from the team.</p>
-          <span class="card-link">Open LinkedIn</span>
+        <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" class="social-icon-link" aria-label="LinkedIn">
+          <div class="social-icon-btn">💼</div>
+          <span class="social-icon-label">LinkedIn</span>
         </a>
-        <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="card">
-          <div class="card-icon">💬</div>
-          <h3>WhatsApp</h3>
-          <p>Join our main WhatsApp community — announcements, chat and meetups.</p>
-          <span class="card-link">Open WhatsApp</span>
+        <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="social-icon-link" aria-label="WhatsApp">
+          <div class="social-icon-btn">💬</div>
+          <span class="social-icon-label">WhatsApp</span>
         </a>
       </div>
     </div>
@@ -526,7 +646,7 @@
           <h5 data-i18n="footer.legal">Legal</h5>
           <ul>
             <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
-            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
           </ul>
         </div>
       </div>
