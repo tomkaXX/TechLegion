@@ -523,88 +523,17 @@
   </section>
 
   <!-- SOCIAL -->
-  <section id="social-section">
-    <style>
-      #social-section {
-        padding: 0.75rem 0;
-      }
-      .social-head {
-        text-align: center;
-        margin-bottom: 0.75rem;
-      }
-      .social-head .eyebrow { display: block; margin-bottom: 0.4rem; }
-      .social-head h2 { margin: 0 0 0.5rem; font-size: clamp(1.4rem, 3vw, 2rem); }
-      .social-head p { color: var(--text-dim); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: clamp(1.2rem, 4vw, 3rem);
-        flex-wrap: wrap;
-      }
-      .social-icon-link {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--text-dim);
-        transition: color 0.2s, transform 0.2s;
-      }
-      .social-icon-link:hover { color: #51fec0; transform: translateY(-3px); }
-      .social-icon-btn {
-        width: 56px; height: 56px;
-        border-radius: 50%;
-        background: rgba(77, 139, 255, 0.1);
-        border: 1px solid rgba(255,255,255,0.1);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem;
-        transition: background 0.2s, border-color 0.2s;
-      }
-      .social-icon-link:hover .social-icon-btn {
-        background: rgba(81, 254, 192, 0.12);
-        border-color: rgba(81, 254, 192, 0.35);
-      }
-      .social-icon-label {
-        font-family: var(--font-display);
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-    </style>
-    <div class="container">
-      <div class="social-head fade-in">
-        <span class="eyebrow">Stay connected</span>
-        <h2>Follow the legion</h2>
-        <p>Latest posts, behind-the-scenes, and community highlights — across Instagram, LinkedIn and WhatsApp.</p>
-      </div>
-      <div class="social-icons fade-in">
-        <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" class="social-icon-link" aria-label="Instagram">
-          <div class="social-icon-btn">📷</div>
-          <span class="social-icon-label">Instagram</span>
-        </a>
-        <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" class="social-icon-link" aria-label="LinkedIn">
-          <div class="social-icon-btn">💼</div>
-          <span class="social-icon-label">LinkedIn</span>
-        </a>
-        <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="social-icon-link" aria-label="WhatsApp">
-          <div class="social-icon-btn">💬</div>
-          <span class="social-icon-label">WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- FINAL CTA -->
-  <section>
+  <section style="padding: clamp(1rem, 2vw, 1.5rem) 0;">
     <div class="container">
       <div class="callout fade-in">
-        <h3 data-i18n="home.cta.title">Ready to join the legion?</h3>
-        <p data-i18n="home.cta.lead">Become a member, volunteer for an event, or just sign up for our newsletter to follow what we're building.</p>
-        <div style="display:flex; flex-wrap:wrap; gap:0.85rem; justify-content:center; margin-top:1.5rem;">
-          <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" class="btn btn-ghost" data-i18n="common.cta.join">Join our Whatsapp Chat</a>
-          <a href="membership.html" class="btn btn-primary" data-i18n="common.cta.join">Become offical TechLegion Member</a>
-          <a href="newsletter.html" class="btn btn-ghost" data-i18n="common.cta.subscribe">Subscribe</a>
+        <h3>Ready to join the legion?</h3>
+        <p>Become a TechLegion member, Ambassador or volunteer for our events, follow us on LinkedIn or just sign up for our newsletter to follow what we're building.<br>Latest posts, behind-the-scenes, and community highlights all here.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.85rem; justify-content:center; margin-top:1.25rem;">
+          <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="btn btn-ghost">Join the Community</a>
+          <a href="membership.html" class="btn btn-primary">Become Member</a>
+          <a href="newsletter.html" class="btn btn-ghost">Subscribe</a>
+          <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" class="btn btn-ghost">Follow us on LinkedIn</a>
         </div>
       </div>
     </div>
