@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="content.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Content Rules — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion community rules — chat access, content quality, privacy, language, respect, and moderation. A shared space built on respect, quality and trust." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Community Content Rules — TechLegion Switzerland" />
+  <meta property="og:description" content="A shared space built on respect, quality, and trust. Read before participating." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Tighter vertical rhythm to match other content pages */
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
+    .rule-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.25rem, 2.5vw, 2rem);
+      transition: all var(--t);
+    }
+    .rule-card:hover { border-color: var(--border-strong); border-left-color: var(--accent-glow); }
+    .rule-card + .rule-card { margin-top: 1.25rem; }
+
+    .rule-card.accent-green  { border-left-color: #19c47a; }
+    .rule-card.accent-blue   { border-left-color: #4d8bff; }
+    .rule-card.accent-red    { border-left-color: #ff5b6e; }
+    .rule-card.accent-purple { border-left-color: #8b5cf6; }
+    .rule-card.accent-orange { border-left-color: #ff9f43; }
+    .rule-card.accent-teal   { border-left-color: #1abc9c; }
+    .rule-card.accent-gold   { border-left-color: #f1c40f; }
+
+    .rule-card .rc-icon {
+      font-size: 1.7rem;
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.10));
+      border: 1px solid var(--border);
+      margin-bottom: 0.85rem;
+    }
+    .rule-card h2 {
+      font-size: 0.95rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      margin: 0 0 0.85rem;
+    }
+    .rule-card p { color: var(--text-dim); font-size: 0.95rem; margin: 0 0 0.85rem; }
+    .rule-card p:last-child { margin-bottom: 0; }
+
+    .rule-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.93rem;
+      color: var(--text-dim);
+    }
+    .rule-list li .icon { flex-shrink: 0; font-size: 1.05rem; line-height: 1.4; }
+
+    .access-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .access-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .access-tag.open   { background: rgba(25, 196, 122, 0.10); color: #6be1a8; border-color: rgba(25, 196, 122, 0.35); }
+    .access-tag.member { background: rgba(77, 139, 255, 0.10); color: #9bbcff; border-color: rgba(77, 139, 255, 0.35); }
+    .access-tag.cohort { background: rgba(255, 159, 67, 0.10); color: #ffc183; border-color: rgba(255, 159, 67, 0.35); }
+
+    .swiss-note {
+      background: linear-gradient(135deg, rgba(255, 91, 110, 0.10), rgba(255, 159, 67, 0.06));
+      border: 1px solid rgba(255, 91, 110, 0.25);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .closing-card {
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.10));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      text-align: center;
+      box-shadow: var(--shadow-glow);
+    }
+    .closing-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .closing-card p { color: var(--text-dim); max-width: 560px; margin: 0 auto 0.5rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <span class="eyebrow">🌐 Community guidelines</span>
+        <h1>Community Content Rules</h1>
+        <p>A shared space built on respect, quality, and trust. Please read before participating.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container container-narrow">
+
+      <!-- 1. Chat Access -->
+      <div class="rule-card accent-green fade-in">
+        <div class="rc-icon">💬</div>
+        <h2>Chat Access</h2>
+        <p>Our WhatsApp community has different spaces for different levels of engagement:</p>
+        <div class="access-row">
+          <span class="access-tag open">🔓 Open Chat — free, no membership required. Everyone is welcome.</span>
+        </div>
+        <div class="access-row">
+          <span class="access-tag member">🔐 Member Chats — exclusive spaces for active TechLegion association members.</span>
+        </div>
+        <div class="access-row">
+          <span class="access-tag cohort">📚 Study &amp; Tour Groups — closed groups for specific cohorts and programmes.</span>
+        </div>
+      </div>
+
+      <!-- 2. Content Quality -->
+      <div class="rule-card accent-blue fade-in">
+        <div class="rc-icon">✍️</div>
+        <h2>Content Quality</h2>
+        <p>Every message you send represents you in front of the whole group. Make it count.</p>
+        <ul class="rule-list">
+          <li><span class="icon">✅</span> Share content that is relevant to the chat's topic.</li>
+          <li><span class="icon">🚫</span> No spam — do not send repeated, off-topic, or promotional messages.</li>
+          <li><span class="icon">🚫</span> No flooding — avoid sending many short messages in quick succession.</li>
+          <li><span class="icon">🚫</span> Do not forward unrelated content from other chats or external sources into group chats.</li>
+        </ul>
+      </div>
+
+      <!-- 3. Privacy & Confidentiality -->
+      <div class="rule-card accent-red fade-in">
+        <div class="rc-icon">🔒</div>
+        <h2>Privacy &amp; Confidentiality</h2>
+        <p>All chats are treated as <strong>private spaces</strong>, protected under Swiss privacy law.</p>
+        <ul class="rule-list">
+          <li><span class="icon">🚫</span> Do not reshare messages, media, or content from private chats to outside groups or public platforms.</li>
+          <li><span class="icon">🚫</span> <strong>Never take screenshots</strong> of private conversations and share them elsewhere. This is a serious breach of trust and may violate the law.</li>
+          <li><span class="icon">✅</span> The <strong>Announcement channel</strong> is the only space whose content may be shared externally.</li>
+        </ul>
+        <div class="swiss-note">
+          🇨🇭 Our community chats are considered private communications under Swiss law. Please treat them accordingly.
+        </div>
+      </div>
+
+      <!-- 4. Language -->
+      <div class="rule-card accent-purple fade-in">
+        <div class="rc-icon">🗣️</div>
+        <h2>Language</h2>
+        <p>The <strong>official language of all chats is English</strong>. This keeps conversations accessible and inclusive for everyone in our international community.</p>
+        <ul class="rule-list">
+          <li><span class="icon">✅</span> Please write in English in all general and topic chats.</li>
+          <li><span class="icon">🌍</span> Exceptions exist — for example, the dedicated Ukrainian chat — where a different language is appropriate by design.</li>
+          <li><span class="icon">💡</span> If your English isn't perfect, don't worry — ours isn't either. What matters is the effort to communicate clearly and inclusively.</li>
+        </ul>
+      </div>
+
+      <!-- 5. Respect & Tone -->
+      <div class="rule-card accent-orange fade-in">
+        <div class="rc-icon">🤝</div>
+        <h2>Respect &amp; Tone</h2>
+        <p>How you write shapes how others perceive you — even people who don't know you yet.</p>
+        <ul class="rule-list">
+          <li><span class="icon">✅</span> Be respectful and kind in all interactions.</li>
+          <li><span class="icon">🚫</span> No personal insults, offensive language, or attacks on other members.</li>
+          <li><span class="icon">🚫</span> No discussions of politics, religion, or other divisive topics unrelated to the chat's subject.</li>
+          <li><span class="icon">💬</span> If you have something personal or sensitive to say — write privately. But when you write in a group chat, remember that many people are reading and forming an impression of you.</li>
+        </ul>
+      </div>
+
+      <!-- 6. Moderation -->
+      <div class="rule-card accent-teal fade-in">
+        <div class="rc-icon">⚖️</div>
+        <h2>Moderation</h2>
+        <p>We moderate our community to protect its quality and the experience of every member.</p>
+        <ul class="rule-list">
+          <li><span class="icon">⚠️</span> Violations of these rules may result in a warning, removal from specific chats, or loss of membership privileges.</li>
+          <li><span class="icon">🚫</span> Serious violations — such as sharing private content externally — may lead to immediate removal without warning.</li>
+          <li><span class="icon">🛡️</span> Moderators aim to be fair and consistent. If you have a concern, raise it privately with an admin.</li>
+        </ul>
+      </div>
+
+      <!-- 7. Growing Together -->
+      <div class="rule-card accent-gold fade-in">
+        <div class="rc-icon">🌱</div>
+        <h2>Growing Together</h2>
+        <p>We are all learning, growing, and making mistakes along the way — and that is absolutely fine.</p>
+        <p>We define our community by <strong>quality, curiosity, and empowerment</strong>. The rules exist not to restrict you, but to protect the space that makes this community worth being part of.</p>
+      </div>
+
+      <!-- Closing -->
+      <div class="closing-card fade-in" style="margin-top: 1.5rem;">
+        <h2>Let's build this together 💙</h2>
+        <p>We want to be proud of what we've created — a vibrant, welcoming, and high-quality community.</p>
+        <p>That starts with each of us. Thank you for being here and for doing your part.</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="contact.html" class="btn btn-ghost">Questions? Contact us</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="content.html">Community Rules</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
