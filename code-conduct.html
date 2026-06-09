@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="conduct.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code of Conduct — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion Switzerland Code of Conduct — the shared values, rights and responsibilities of every member, ambassador, board director, team member and contributor." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Code of Conduct — TechLegion Switzerland" />
+  <meta property="og:description" content="The shared values and responsibilities of every TechLegion member, ambassador, board director, team member and contributor." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
+    .conduct-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.25rem, 2.5vw, 1.85rem);
+    }
+    .conduct-block + .conduct-block { margin-top: 1rem; }
+    .conduct-block h2 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      margin: 0 0 0.75rem;
+    }
+    .conduct-block p { color: var(--text-dim); margin: 0 0 0.6rem; font-size: 0.95rem; }
+    .conduct-block p:last-child { margin: 0; }
+    .conduct-block.accent-green  { border-left-color: #19c47a; }
+    .conduct-block.accent-red    { border-left-color: #ff5b6e; }
+    .conduct-block.accent-purple { border-left-color: #8b5cf6; }
+    .conduct-block.accent-orange { border-left-color: #ff9f43; }
+    .conduct-block.accent-teal   { border-left-color: #1abc9c; }
+    .conduct-block.accent-gold   { border-left-color: #f1c40f; }
+
+    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 0.5rem; }
+    .value-pill {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .value-pill strong { display: block; color: var(--white); margin-bottom: 0.2rem; font-size: 0.92rem; }
+    @media (max-width: 720px) { .value-grid { grid-template-columns: 1fr; } }
+
+    .twocol-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    .twocol-list .col {
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+    }
+    .twocol-list .col.do  { background: rgba(25,196,122,0.08); border: 1px solid rgba(25,196,122,0.25); }
+    .twocol-list .col.no  { background: rgba(255,91,110,0.08); border: 1px solid rgba(255,91,110,0.25); }
+    .twocol-list .col h4 { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 0.5rem; }
+    .twocol-list .col.do h4 { color: #6be1a8; }
+    .twocol-list .col.no h4 { color: #ff8a96; }
+    .twocol-list ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-dim); }
+    .twocol-list ul li::before { content: '— '; color: var(--text-muted); }
+    @media (max-width: 720px) { .twocol-list { grid-template-columns: 1fr; } }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .role-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+    .role-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      margin: 0 0 0.4rem;
+    }
+    .role-card p { font-size: 0.88rem; color: var(--text-dim); margin: 0; }
+    @media (max-width: 720px) { .role-grid { grid-template-columns: 1fr; } }
+
+    .quick-rule {
+      background: linear-gradient(135deg, rgba(255,159,67,0.10), rgba(241,196,15,0.06));
+      border: 1px solid rgba(255,159,67,0.30);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      margin-top: 0.85rem;
+      font-size: 0.92rem;
+      color: var(--text-dim);
+    }
+    .quick-rule strong { color: var(--white); }
+
+    .report-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+    .report-row .r {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .report-row .r strong { display: block; color: var(--white); margin-bottom: 0.2rem; }
+    @media (max-width: 720px) { .report-row { grid-template-columns: 1fr; } }
+
+    .closing-card {
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.10));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 2.25rem);
+      text-align: center;
+      box-shadow: var(--shadow-glow);
+      margin-top: 1.5rem;
+    }
+    .closing-card h2 { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); margin: 0 0 0.5rem; }
+    .closing-card p { color: var(--text-dim); max-width: 580px; margin: 0 auto 0.75rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <span class="eyebrow">⚖️ Governance · v1.0 · 2026 · Baar, Zug</span>
+        <h1>Code of Conduct</h1>
+        <p>The shared contract of every TechLegion member, ambassador, board director, team member and contributor. <em>Educate · Empower · Transform.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container container-narrow">
+
+      <!-- Mission + Values -->
+      <div class="conduct-block accent-green fade-in">
+        <h2>Who we are</h2>
+        <p>TechLegion Switzerland is a non-profit association (<em>Verein</em> under Swiss law) dedicated to democratising access to technology education. We run workshops, hackathons, mentoring and community events for everyone — regardless of background — to thrive in the 21st century.</p>
+        <div class="value-grid">
+          <div class="value-pill"><strong>🎓 Education first</strong>Learning is at the centre of every decision.</div>
+          <div class="value-pill"><strong>🤝 Inclusion &amp; diversity</strong>Tech belongs to everyone.</div>
+          <div class="value-pill"><strong>🔍 Transparency</strong>Open governance and open numbers.</div>
+          <div class="value-pill"><strong>🛡️ Integrity</strong>We do what we say.</div>
+          <div class="value-pill"><strong>🌍 Community impact</strong>Lives and careers, not vanity metrics.</div>
+          <div class="value-pill"><strong>⚙️ Innovation</strong>New tech and new pedagogy, in service of the community.</div>
+        </div>
+      </div>
+
+      <!-- Scope -->
+      <div class="conduct-block fade-in">
+        <h2>Who this applies to</h2>
+        <p>This Code applies to every <strong>member, ambassador, board director, team member and contributor</strong> — at all TechLegion events (online, hybrid, in person), on all TechLegion platforms (Slack, WhatsApp, GitHub, social media, email), and any external setting where you represent TechLegion. No exceptions.</p>
+      </div>
+
+      <!-- Respect -->
+      <div class="conduct-block accent-purple fade-in">
+        <h2>Respect &amp; dignity</h2>
+        <p>Every person is treated with respect. We are diverse — united by curiosity, not by background.</p>
+        <div class="twocol-list">
+          <div class="col do">
+            <h4>Expected</h4>
+            <ul>
+              <li>Use welcoming, inclusive, professional language</li>
+              <li>Assume good intent; address misunderstandings with generosity</li>
+              <li>Listen actively; make space for less-heard voices</li>
+              <li>Respect differing opinions and approaches</li>
+              <li>Give credit to contributors and sources</li>
+              <li>Be constructive and solutions-oriented</li>
+            </ul>
+          </div>
+          <div class="col no">
+            <h4>Not acceptable</h4>
+            <ul>
+              <li>Harassment, intimidation, bullying or threats</li>
+              <li>Discrimination on any protected ground</li>
+              <li>Sexist, racist, ableist or exclusionary jokes</li>
+              <li>Deliberate misgendering or name misuse</li>
+              <li>Unwelcome contact after a request to stop</li>
+              <li>Public shaming, pile-ons or call-outs to humiliate</li>
+            </ul>
+          </div>
+        </div>
+        <div class="quick-rule">⚡ <strong>Quick rule:</strong> if you would be uncomfortable seeing your action in a screenshot sent to the Board, reconsider the action.</div>
+      </div>
+
+      <!-- Roles -->
+      <div class="conduct-block accent-teal fade-in">
+        <h2>Roles &amp; responsibilities</h2>
+        <p>Everyone follows this Code. Some roles carry extra responsibilities.</p>
+        <div class="role-grid">
+          <div class="role-card">
+            <h4>Members</h4>
+            <p>Acknowledge the Code annually. Participate constructively. Vote when eligible. Uphold TechLegion's reputation.</p>
+          </div>
+          <div class="role-card">
+            <h4>Ambassadors</h4>
+            <p>Represent TechLegion positively. Disclose your role in public communications. Get Board approval before committing TechLegion to partnerships.</p>
+          </div>
+          <div class="role-card">
+            <h4>Board directors</h4>
+            <p>Act in the association's best interests. Disclose conflicts; recuse when relevant. Follow Swiss association law (ZGB Art. 60–79). No paid Board service beyond approved expense reimbursement.</p>
+          </div>
+          <div class="role-card">
+            <h4>Team members</h4>
+            <p>Fulfil your role professionally. Keep operational, financial and personal data confidential. Don't use TechLegion resources for personal purposes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conflicts -->
+      <div class="conduct-block accent-orange fade-in">
+        <h2>Conflicts of interest</h2>
+        <p>A conflict arises when a personal, professional or financial interest could influence a decision made on behalf of TechLegion. When that happens: <strong>declare it immediately</strong>, do not participate in the discussion or vote, and have the recusal documented in minutes.</p>
+        <p><strong>Swiss standard:</strong> when in doubt, disclose. Swiss law and TechLegion's non-profit status require that the association's resources and decisions serve the community — not private interests.</p>
+      </div>
+
+      <!-- Resources & Data -->
+      <div class="conduct-block fade-in">
+        <h2>Resources, data &amp; IP</h2>
+        <p>TechLegion's funds, equipment, platforms, brand, contact lists and member data exist to serve our educational mission. Do not use them for personal businesses, unrelated projects or commercial offers. Personal data is processed under Swiss revDSG/nDSG and GDPR where applicable — collect only what's needed, store only on authorised systems, never share without explicit consent, report any potential breach to the Board immediately.</p>
+        <p>Respect intellectual property — open-source licences, attributions, and the TechLegion name/logo (no unauthorised use).</p>
+      </div>
+
+      <!-- External rep -->
+      <div class="conduct-block accent-gold fade-in">
+        <h2>Speaking on behalf of TechLegion</h2>
+        <p>Only the Board Chair, designated directors, the Executive Director (if applicable) and Ambassadors within their brief are authorised to speak for TechLegion. Members and team members may share TechLegion content and describe their personal involvement, but must make clear they are not speaking for the organisation. Media and press enquiries go to the Board Chair or designated communications lead.</p>
+      </div>
+
+      <!-- Financial -->
+      <div class="conduct-block accent-green fade-in">
+        <h2>Financial integrity</h2>
+        <p>Funds are used exclusively to advance the educational mission. All expenditures are documented, approved against the budget and recorded transparently. No one personally benefits from TechLegion funds beyond approved, documented reimbursements or contracted compensation. Sponsorship agreements are Board-approved and must never compromise editorial independence.</p>
+      </div>
+
+      <!-- Reporting -->
+      <div class="conduct-block accent-red fade-in">
+        <h2>Reporting &amp; enforcement</h2>
+        <p>Concerns are taken seriously, addressed promptly and fairly. Retaliation against anyone who raises a concern in good faith is itself a serious breach.</p>
+        <div class="report-row">
+          <div class="r"><strong>Primary</strong>Any Board director you trust, contacted directly.</div>
+          <div class="r"><strong>Confidential email</strong><a href="mailto:conduct@techlegion.ch">conduct@techlegion.ch</a> — monitored by Board Chair + one Board member.</div>
+          <div class="r"><strong>Anonymous</strong>Written reports may be submitted anonymously; investigated where sufficient detail is provided.</div>
+        </div>
+        <p style="margin-top: 0.75rem;"><strong>Process:</strong> acknowledgement within 5 working days → designated investigation lead (Board directors not implicated) → both sides heard → conclusions communicated in writing → records retained securely.</p>
+        <p><strong>Consequences</strong> are proportionate: written warning · temporary suspension from platforms or events · removal of a role (Ambassador, team, Board seat) · termination of membership · referral to Swiss law enforcement in cases of criminal conduct.</p>
+      </div>
+
+      <!-- Acknowledgement -->
+      <div class="conduct-block fade-in">
+        <h2>Annual acknowledgement</h2>
+        <p>Every member, ambassador, board director, team member and contributor confirms understanding and commitment to this Code each year — as part of membership renewal, appointment confirmation or employment agreement. New participants acknowledge it on joining. This is a living document, reviewed annually by the Board; suggestions go to <a href="mailto:conduct@techlegion.ch">conduct@techlegion.ch</a> or the General Assembly.</p>
+      </div>
+
+      <!-- Closing -->
+      <div class="closing-card fade-in">
+        <h2>Read · embrace · hold each other accountable</h2>
+        <p>That is how TechLegion grows from a community into a movement. — The TechLegion Switzerland Board of Directors</p>
+        <div style="margin-top: 1rem;">
+          <a href="mailto:conduct@techlegion.ch" class="btn btn-primary">conduct@techlegion.ch</a>
+          <a href="content.html" class="btn btn-ghost" style="margin-left: 0.5rem;">Community content rules →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
