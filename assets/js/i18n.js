@@ -271,6 +271,60 @@ window.TL_I18N = {
     "blog.title": "Blog & News",
     "blog.lead": "Stories, recaps and announcements from the TechLegion community.",
     "blog.coming_soon": "Posts coming soon — subscribe to our newsletter to be the first to know.",
+    /* ---------- About / Anthropic section ---------- */
+    "about.anthropic.tag": "🚀 Claude Partner Network Member",
+    "about.anthropic.title": "Anthropic Claude Partner Network",
+    "about.anthropic.body": "TechLegion is a proud member of the Anthropic Claude Partner Network. We are committed to supporting AI transformation across Switzerland — helping individuals, startups, and organisations understand, adopt, and responsibly apply the newest AI technologies to shape a better future.",
+    "about.anthropic.btn": "Learn about Claude",
+
+    /* ---------- About / NASA updated body ---------- */
+    "about.nasa.body": "TechLegion proudly organises Switzerland's local edition of the NASA Space Apps Challenge — the world's largest annual space hackathon. We hosted the Zurich edition in 2024 and 2025, bringing together innovators to tackle real NASA challenges.",
+
+    /* ---------- About / Stats ---------- */
+    "about.stats.events_joined": "Joined our events",
+    "about.stats.events_webinars": "Events and Webinars organized",
+    "about.stats.workshops": "Workshops conducted",
+    "about.stats.hackathons": "Hackathons supported",
+
+    /* ---------- About / updated lead ---------- */
+    "about.lead": "TechLegion is a community of technology enthusiasts, builders, and innovators dedicated to learning, collaboration, and open-source contributions. The community is known for organising the NASA Space Apps Challenge hackathons in Zurich in 2024 and 2025, bringing together participants from diverse backgrounds to solve real-world challenges. TechLegion also actively supports open-source ecosystems through translation and localisation efforts for projects such as PX4 and other technology initiatives, helping make cutting-edge tools more accessible to global communities. As a member of the Anthropic Claude Partner Network, TechLegion is committed to supporting AI transformation in Switzerland and accelerating the adoption of the newest technologies across the Swiss tech ecosystem.",
+
+    /* ---------- Teamwork section ---------- */
+    "tw.pct": "100%",
+    "tw.work": "team work",
+    "tw.link": "Get to know the team",
+
+    /* ---------- Join-us section ---------- */
+    "join.title.line1": "TechLegion is a",
+    "join.title.line2": "stiMulating and",
+    "join.title.line3": "inClusivE",
+    "join.title.line4": "EnviRonment",
+    "join.sub": "We are always on the lookout for passionate, dynamic and",
+    "join.typed": "creative minds to join our ranks. Here's how you can reach us. Don't hesitate to get in touch!",
+    "join.btn": "Get in touch",
+
+    /* ---------- Home / CTA updated lead ---------- */
+    "home.cta.lead": "Become a TechLegion member, Ambassador or volunteer for our events, follow us on LinkedIn or just sign up for our newsletter to follow what we're building. Latest posts, behind-the-scenes, and community highlights all here.",
+
+    /* ---------- Events / WhatsApp communities ---------- */
+    "events.whatsapp.tag": "💬 Open community",
+    "events.whatsapp.title": "Join our WhatsApp community",
+    "events.whatsapp.lead": "Anyone interested can join our community and chats — no TechLegion membership required. Connect with fellow tech enthusiasts from Switzerland and across Europe.",
+    "events.whatsapp.note": "We also run free virtual coworking sessions every month where you can meet other builders, talk about work, startups and what's changing in technology — always free, always open.",
+    "events.wa.main.title": "Main community",
+    "events.wa.main.desc": "The main TechLegion group — announcements, news and general chat.",
+    "events.wa.intro.title": "Intro chat",
+    "events.wa.intro.desc": "New to the community? Drop in here to say hello and meet people.",
+    "events.wa.cowork.title": "Virtual coworking",
+    "events.wa.cowork.desc": "Monthly free coworking sessions — work alongside other tech folks online.",
+    "events.wa.drone.title": "Drone & Space",
+    "events.wa.drone.desc": "For drone pilots, aerospace enthusiasts and space-tech tinkerers.",
+    "events.wa.startups.title": "Startups & Business",
+    "events.wa.startups.desc": "Founders, freelancers and operators talking startups and business.",
+    "events.wa.work.title": "Work chat",
+    "events.wa.work.desc": "Jobs, gigs, hiring and Swiss job-market discussions.",
+    "events.wa.ua.title": "Ukrainian chat",
+    "events.wa.ua.desc": "TechLegion Ukrainian community — networking, support and tech talk.",
   },
 
   /* ===================================================================== */
@@ -511,6 +565,60 @@ window.TL_I18N = {
     "blog.title": "Blog & News",
     "blog.lead": "Geschichten, Rückblicke und Ankündigungen aus der TechLegion-Community.",
     "blog.coming_soon": "Beiträge folgen in Kürze — abonniere unseren Newsletter, um nichts zu verpassen.",
+    /* ---------- About / Anthropic ---------- */
+    "about.anthropic.tag": "🚀 Claude Partner Network Mitglied",
+    "about.anthropic.title": "Anthropic Claude Partner Network",
+    "about.anthropic.body": "TechLegion ist stolzes Mitglied des Anthropic Claude Partner Network. Wir unterstützen die KI-Transformation in der Schweiz — und helfen Einzelpersonen, Startups und Organisationen dabei, die neuesten KI-Technologien zu verstehen, zu adaptieren und verantwortungsvoll einzusetzen.",
+    "about.anthropic.btn": "Mehr über Claude erfahren",
+
+    /* ---------- About / NASA updated body ---------- */
+    "about.nasa.body": "TechLegion organisiert stolz die Schweizer Ausgabe der NASA Space Apps Challenge — der weltweit grössten jährlichen Raumfahrt-Hackathon. Wir haben die Zürcher Ausgabe in 2024 und 2025 ausgerichtet und Innovator:innen zusammengebracht, um echte NASA-Challenges zu lösen.",
+
+    /* ---------- About / Stats ---------- */
+    "about.stats.events_joined": "Haben unsere Events besucht",
+    "about.stats.events_webinars": "Events und Webinare organisiert",
+    "about.stats.workshops": "Durchgeführte Workshops",
+    "about.stats.hackathons": "Unterstützte Hackathons",
+
+    /* ---------- About / updated lead ---------- */
+    "about.lead": "TechLegion ist eine Gemeinschaft von Technologie-Enthusiasten, Entwickler:innen und Innovator:innen, die sich dem Lernen, der Zusammenarbeit und Open-Source-Beiträgen widmen. Die Community ist bekannt für die Organisation der NASA Space Apps Challenge Hackathons in Zürich 2024 und 2025. TechLegion unterstützt aktiv Open-Source-Projekte wie PX4 durch Übersetzungs- und Lokalisierungsarbeit. Als Mitglied des Anthropic Claude Partner Network fördert TechLegion die KI-Transformation in der Schweiz.",
+
+    /* ---------- Teamwork section ---------- */
+    "tw.pct": "100%",
+    "tw.work": "Teamarbeit",
+    "tw.link": "Lerne das Team kennen",
+
+    /* ---------- Join-us section ---------- */
+    "join.title.line1": "TechLegion ist ein",
+    "join.title.line2": "sTiMulierendes und",
+    "join.title.line3": "inKlusives",
+    "join.title.line4": "Umfeld",
+    "join.sub": "Wir suchen immer leidenschaftliche, dynamische und",
+    "join.typed": "kreative Köpfe, die unsere Reihen verstärken. Hier erfahrt ihr, wie ihr uns erreicht. Zögert nicht, Kontakt aufzunehmen!",
+    "join.btn": "Kontakt aufnehmen",
+
+    /* ---------- Home / CTA updated lead ---------- */
+    "home.cta.lead": "Werde Mitglied, Ambassador oder Freiwillige:r bei unseren Events, folge uns auf LinkedIn oder abonniere einfach unseren Newsletter. Neueste Posts, Behind-the-Scenes und Community-Highlights hier.",
+
+    /* ---------- Events / WhatsApp communities ---------- */
+    "events.whatsapp.tag": "💬 Offene Community",
+    "events.whatsapp.title": "Tritt unserer WhatsApp-Community bei",
+    "events.whatsapp.lead": "Jede:r kann unserer Community beitreten — keine TechLegion-Mitgliedschaft erforderlich. Verbinde dich mit Tech-Enthusiasten aus der Schweiz und ganz Europa.",
+    "events.whatsapp.note": "Wir veranstalten auch monatliche kostenlose virtuelle Coworking-Sessions, bei denen du andere Builder:innen treffen und über Arbeit, Startups und Technologie sprechen kannst — immer kostenlos, immer offen.",
+    "events.wa.main.title": "Haupt-Community",
+    "events.wa.main.desc": "Die Haupt-TechLegion-Gruppe — Ankündigungen, News und allgemeiner Chat.",
+    "events.wa.intro.title": "Intro-Chat",
+    "events.wa.intro.desc": "Neu in der Community? Schau hier vorbei, um Hallo zu sagen und Leute kennenzulernen.",
+    "events.wa.cowork.title": "Virtuelles Coworking",
+    "events.wa.cowork.desc": "Monatliche kostenlose Coworking-Sessions — online mit anderen Tech-Leuten arbeiten.",
+    "events.wa.drone.title": "Drohnen & Raumfahrt",
+    "events.wa.drone.desc": "Für Drohnenpilot:innen, Aerospace-Fans und Raumfahrt-Tüftler:innen.",
+    "events.wa.startups.title": "Startups & Business",
+    "events.wa.startups.desc": "Gründer:innen, Freelancer:innen und Operator:innen sprechen über Startups und Business.",
+    "events.wa.work.title": "Job-Chat",
+    "events.wa.work.desc": "Jobs, Aufträge, Hiring und Diskussionen zum Schweizer Arbeitsmarkt.",
+    "events.wa.ua.title": "Ukrainischer Chat",
+    "events.wa.ua.desc": "Ukrainische TechLegion-Community — Networking, Support und Tech-Gespräche.",
   },
 
   /* ===================================================================== */
@@ -751,6 +859,60 @@ window.TL_I18N = {
     "blog.title": "Blog & actualités",
     "blog.lead": "Récits, retours et annonces de la communauté TechLegion.",
     "blog.coming_soon": "Articles à venir — abonnez-vous à la newsletter pour être informé·e.",
+    /* ---------- About / Anthropic ---------- */
+    "about.anthropic.tag": "🚀 Membre du réseau partenaire Claude",
+    "about.anthropic.title": "Réseau partenaire Anthropic Claude",
+    "about.anthropic.body": "TechLegion est fièrement membre du réseau partenaire Anthropic Claude. Nous sommes engagés à soutenir la transformation par l'IA en Suisse — en aidant les individus, les startups et les organisations à comprendre, adopter et utiliser de façon responsable les technologies IA les plus récentes.",
+    "about.anthropic.btn": "En savoir plus sur Claude",
+
+    /* ---------- About / NASA updated body ---------- */
+    "about.nasa.body": "TechLegion organise fièrement l'édition suisse du NASA Space Apps Challenge — le plus grand hackathon spatial annuel au monde. Nous avons accueilli l'édition zurichoise en 2024 et 2025, réunissant des innovateurs pour relever de vrais défis NASA.",
+
+    /* ---------- About / Stats ---------- */
+    "about.stats.events_joined": "Ont participé à nos événements",
+    "about.stats.events_webinars": "Événements et webinaires organisés",
+    "about.stats.workshops": "Ateliers réalisés",
+    "about.stats.hackathons": "Hackathons soutenus",
+
+    /* ---------- About / updated lead ---------- */
+    "about.lead": "TechLegion est une communauté d'enthousiastes de la technologie, de créateurs et d'innovateurs dédiés à l'apprentissage, à la collaboration et aux contributions open source. La communauté est reconnue pour l'organisation des hackathons NASA Space Apps Challenge à Zurich en 2024 et 2025. TechLegion soutient activement des projets open source comme PX4 via des efforts de traduction et de localisation. En tant que membre du réseau partenaire Anthropic Claude, TechLegion s'engage à soutenir la transformation IA en Suisse.",
+
+    /* ---------- Teamwork section ---------- */
+    "tw.pct": "100%",
+    "tw.work": "travail d'équipe",
+    "tw.link": "Rencontrez l'équipe",
+
+    /* ---------- Join-us section ---------- */
+    "join.title.line1": "TechLegion est un",
+    "join.title.line2": "sTiMulant et",
+    "join.title.line3": "inClusif",
+    "join.title.line4": "Environnement",
+    "join.sub": "Nous sommes toujours à la recherche de personnes passionnées, dynamiques et",
+    "join.typed": "créatives pour rejoindre nos rangs. Voici comment nous contacter. N'hésitez pas à prendre contact !",
+    "join.btn": "Prendre contact",
+
+    /* ---------- Home / CTA updated lead ---------- */
+    "home.cta.lead": "Devenez membre, ambassadeur ou bénévole pour nos événements, suivez-nous sur LinkedIn ou inscrivez-vous simplement à notre newsletter. Derniers posts, coulisses et moments forts de la communauté ici.",
+
+    /* ---------- Events / WhatsApp communities ---------- */
+    "events.whatsapp.tag": "💬 Communauté ouverte",
+    "events.whatsapp.title": "Rejoignez notre communauté WhatsApp",
+    "events.whatsapp.lead": "Toute personne intéressée peut rejoindre notre communauté — aucune adhésion à TechLegion requise. Connectez-vous avec des passionnés de tech en Suisse et à travers l'Europe.",
+    "events.whatsapp.note": "Nous organisons aussi des sessions de coworking virtuel gratuites chaque mois — toujours gratuites, toujours ouvertes.",
+    "events.wa.main.title": "Communauté principale",
+    "events.wa.main.desc": "Le groupe principal TechLegion — annonces, actualités et discussions générales.",
+    "events.wa.intro.title": "Chat d'introduction",
+    "events.wa.intro.desc": "Nouveau dans la communauté ? Passez ici pour vous présenter et rencontrer des gens.",
+    "events.wa.cowork.title": "Coworking virtuel",
+    "events.wa.cowork.desc": "Sessions de coworking gratuites mensuelles — travaillez en ligne avec d'autres passionnés de tech.",
+    "events.wa.drone.title": "Drones & spatial",
+    "events.wa.drone.desc": "Pour les pilotes de drone, passionnés d'aérospatial et bricoleurs de space-tech.",
+    "events.wa.startups.title": "Startups & business",
+    "events.wa.startups.desc": "Fondateurs, freelances et opérateurs parlant startups et business.",
+    "events.wa.work.title": "Chat emploi",
+    "events.wa.work.desc": "Emplois, missions, recrutement et discussions sur le marché du travail suisse.",
+    "events.wa.ua.title": "Chat ukrainien",
+    "events.wa.ua.desc": "Communauté ukrainienne TechLegion — networking, entraide et tech.",
   },
 
   /* ===================================================================== */
@@ -991,6 +1153,60 @@ window.TL_I18N = {
     "blog.title": "Blog & news",
     "blog.lead": "Storie, recap e annunci dalla community TechLegion.",
     "blog.coming_soon": "Articoli in arrivo — iscriviti alla newsletter per essere il primo a saperlo.",
+    /* ---------- About / Anthropic ---------- */
+    "about.anthropic.tag": "🚀 Membro del Claude Partner Network",
+    "about.anthropic.title": "Anthropic Claude Partner Network",
+    "about.anthropic.body": "TechLegion è un membro orgoglioso dell'Anthropic Claude Partner Network. Siamo impegnati a sostenere la trasformazione IA in Svizzera — aiutando individui, startup e organizzazioni a comprendere, adottare e applicare responsabilmente le più recenti tecnologie IA.",
+    "about.anthropic.btn": "Scopri Claude",
+
+    /* ---------- About / NASA updated body ---------- */
+    "about.nasa.body": "TechLegion organizza con orgoglio l'edizione svizzera del NASA Space Apps Challenge — il più grande hackathon spaziale annuale al mondo. Abbiamo ospitato l'edizione di Zurigo nel 2024 e 2025, riunendo innovatori per affrontare vere sfide NASA.",
+
+    /* ---------- About / Stats ---------- */
+    "about.stats.events_joined": "Hanno partecipato ai nostri eventi",
+    "about.stats.events_webinars": "Eventi e webinar organizzati",
+    "about.stats.workshops": "Workshop tenuti",
+    "about.stats.hackathons": "Hackathon supportati",
+
+    /* ---------- About / updated lead ---------- */
+    "about.lead": "TechLegion è una comunità di appassionati di tecnologia, sviluppatori e innovatori dediti all'apprendimento, alla collaborazione e ai contributi open source. La comunità è nota per l'organizzazione degli hackathon NASA Space Apps Challenge a Zurigo nel 2024 e 2025. TechLegion supporta attivamente progetti open source come PX4 attraverso sforzi di traduzione e localizzazione. In quanto membro dell'Anthropic Claude Partner Network, TechLegion si impegna a sostenere la trasformazione IA in Svizzera.",
+
+    /* ---------- Teamwork section ---------- */
+    "tw.pct": "100%",
+    "tw.work": "lavoro di squadra",
+    "tw.link": "Scopri il team",
+
+    /* ---------- Join-us section ---------- */
+    "join.title.line1": "TechLegion è un",
+    "join.title.line2": "sTiMolante e",
+    "join.title.line3": "inClusivo",
+    "join.title.line4": "Ambiente",
+    "join.sub": "Siamo sempre alla ricerca di persone appassionate, dinamiche e",
+    "join.typed": "menti creative per unirsi a noi. Ecco come puoi contattarci. Non esitare a scriverci!",
+    "join.btn": "Mettiti in contatto",
+
+    /* ---------- Home / CTA updated lead ---------- */
+    "home.cta.lead": "Diventa membro, ambasciatore o volontario per i nostri eventi, seguici su LinkedIn o iscriviti alla nostra newsletter. Ultimi post, dietro le quinte e highlight della community qui.",
+
+    /* ---------- Events / WhatsApp communities ---------- */
+    "events.whatsapp.tag": "💬 Community aperta",
+    "events.whatsapp.title": "Unisciti alla nostra community WhatsApp",
+    "events.whatsapp.lead": "Chiunque può unirsi alla nostra community — nessuna iscrizione a TechLegion richiesta. Connettiti con appassionati di tech in Svizzera e in tutta Europa.",
+    "events.whatsapp.note": "Organizziamo anche sessioni mensili gratuite di coworking virtuale — sempre gratuite, sempre aperte.",
+    "events.wa.main.title": "Community principale",
+    "events.wa.main.desc": "Il gruppo principale TechLegion — annunci, notizie e chat generale.",
+    "events.wa.intro.title": "Chat introduttiva",
+    "events.wa.intro.desc": "Nuovo nella community? Passa qui per presentarti e incontrare persone.",
+    "events.wa.cowork.title": "Coworking virtuale",
+    "events.wa.cowork.desc": "Sessioni mensili gratuite di coworking — lavora online con altri appassionati di tech.",
+    "events.wa.drone.title": "Droni & spazio",
+    "events.wa.drone.desc": "Per piloti di droni, appassionati di aerospazio e sperimentatori di space-tech.",
+    "events.wa.startups.title": "Startup & business",
+    "events.wa.startups.desc": "Fondatori, freelance e operatori che parlano di startup e business.",
+    "events.wa.work.title": "Chat lavoro",
+    "events.wa.work.desc": "Lavori, incarichi, assunzioni e discussioni sul mercato del lavoro svizzero.",
+    "events.wa.ua.title": "Chat ucraina",
+    "events.wa.ua.desc": "Community ucraina TechLegion — networking, supporto e tech.",
   },
 
   /* ===================================================================== */
@@ -1231,6 +1447,60 @@ window.TL_I18N = {
     "blog.title": "Блог і новини",
     "blog.lead": "Історії, рекапи та анонси спільноти TechLegion.",
     "blog.coming_soon": "Дописи скоро — підпишіться на розсилку, щоб не пропустити.",
+    /* ---------- About / Anthropic ---------- */
+    "about.anthropic.tag": "🚀 Член мережі партнерів Claude",
+    "about.anthropic.title": "Мережа партнерів Anthropic Claude",
+    "about.anthropic.body": "TechLegion є гордим членом мережі партнерів Anthropic Claude. Ми прагнемо підтримувати ШІ-трансформацію в Швейцарії — допомагаючи особам, стартапам і організаціям зрозуміти, впровадити та відповідально застосовувати найновіші технології ШІ.",
+    "about.anthropic.btn": "Дізнатися про Claude",
+
+    /* ---------- About / NASA updated body ---------- */
+    "about.nasa.body": "TechLegion з гордістю організовує швейцарську локальну версію NASA Space Apps Challenge — найбільшого щорічного космічного хакатону у світі. Ми провели цюрихське видання у 2024 та 2025 роках, зібравши інноваторів для вирішення реальних завдань NASA.",
+
+    /* ---------- About / Stats ---------- */
+    "about.stats.events_joined": "Взяли участь у наших подіях",
+    "about.stats.events_webinars": "Проведених подій та вебінарів",
+    "about.stats.workshops": "Проведених воркшопів",
+    "about.stats.hackathons": "Підтриманих хакатонів",
+
+    /* ---------- About / updated lead ---------- */
+    "about.lead": "TechLegion — спільнота технологічних ентузіастів, розробників та інноваторів, відданих навчанню, співпраці та внеску у відкритий код. Спільнота відома організацією хакатонів NASA Space Apps Challenge у Цюріху у 2024 та 2025 роках. TechLegion активно підтримує Open Source проєкти, зокрема PX4, через переклад і локалізацію. Як член мережі партнерів Anthropic Claude, TechLegion підтримує ШІ-трансформацію у Швейцарії.",
+
+    /* ---------- Teamwork section ---------- */
+    "tw.pct": "100%",
+    "tw.work": "командна робота",
+    "tw.link": "Познайомтеся з командою",
+
+    /* ---------- Join-us section ---------- */
+    "join.title.line1": "TechLegion — це",
+    "join.title.line2": "сТиМулююче та",
+    "join.title.line3": "інКлюзивне",
+    "join.title.line4": "Середовище",
+    "join.sub": "Ми завжди шукаємо пристрасних, динамічних і",
+    "join.typed": "творчих людей, щоб поповнити наші ряди. Ось як з нами зв'язатися. Не зволікайте — пишіть!",
+    "join.btn": "Зв'язатися",
+
+    /* ---------- Home / CTA updated lead ---------- */
+    "home.cta.lead": "Станьте членом, амбасадором або волонтером на наших подіях, слідкуйте за нами в LinkedIn або просто підпишіться на розсилку. Свіжі пости, закулісся та хайлайти спільноти тут.",
+
+    /* ---------- Events / WhatsApp communities ---------- */
+    "events.whatsapp.tag": "💬 Відкрита спільнота",
+    "events.whatsapp.title": "Приєднайтеся до нашої WhatsApp-спільноти",
+    "events.whatsapp.lead": "Будь-хто може приєднатися до нашої спільноти — членство в TechLegion не потрібне. Знайомтеся з tech-ентузіастами зі Швейцарії та Європи.",
+    "events.whatsapp.note": "Ми також проводимо безкоштовні щомісячні сесії віртуального коворкінгу — завжди безкоштовно, завжди відкрито.",
+    "events.wa.main.title": "Головна спільнота",
+    "events.wa.main.desc": "Основна група TechLegion — анонси, новини та загальне спілкування.",
+    "events.wa.intro.title": "Знайомчий чат",
+    "events.wa.intro.desc": "Нові в спільноті? Заходьте, щоб привітатися і познайомитися.",
+    "events.wa.cowork.title": "Віртуальний коворкінг",
+    "events.wa.cowork.desc": "Щомісячні безкоштовні сесії коворкінгу — працюйте онлайн поряд з іншими tech-спеціалістами.",
+    "events.wa.drone.title": "Дрони і космос",
+    "events.wa.drone.desc": "Для пілотів дронів, аерокосмічних ентузіастів і тінкерерів.",
+    "events.wa.startups.title": "Стартапи і бізнес",
+    "events.wa.startups.desc": "Засновники, фрілансери й оператори говорять про стартапи і бізнес.",
+    "events.wa.work.title": "Робочий чат",
+    "events.wa.work.desc": "Вакансії, проєкти, найм і обговорення швейцарського ринку праці.",
+    "events.wa.ua.title": "Українська спільнота",
+    "events.wa.ua.desc": "Українська спільнота TechLegion — нетворкінг, підтримка і tech-розмови.",
   }
 };
 
