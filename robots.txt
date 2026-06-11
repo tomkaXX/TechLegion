@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /archive/
+Disallow: /old/
 
 Sitemap: https://techlegion.ch/sitemap.xml
