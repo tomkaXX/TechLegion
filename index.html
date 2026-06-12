@@ -14,6 +14,7 @@
   <title>TechLegion Switzerland — Connect • Learn • Build • Explore</title>
   <meta name="description" content="TechLegion is a community-driven Swiss tech association educating, inspiring, and building a legion of innovators shaping the future of technology in Switzerland." />
   <meta name="theme-color" content="#050816" />
+  <link rel="canonical" href="https://techlegion.ch/" />
 
   <!-- OpenGraph -->
   <meta property="og:title" content="TechLegion Switzerland" />
@@ -36,6 +37,71 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- ================== Structured data for Google ==================
+       Helps Google understand the site so sitelinks (the indented sub-page
+       links under the main search result) become eligible. Sitelinks are
+       algorithmic — Google chooses when to show them — but Organization +
+       WebSite + SiteNavigationElement signals make eligibility much higher.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TechLegion",
+    "alternateName": "TechLegion Switzerland",
+    "url": "https://techlegion.ch/",
+    "logo": "https://techlegion.ch/assets/img/logo.png",
+    "description": "TechLegion is a community-driven Swiss tech association educating, inspiring, and connecting innovators across Switzerland — from AI and cybersecurity to space and deep technologies.",
+    "foundingLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Zug",
+        "addressCountry": "CH"
+      }
+    },
+    "areaServed": "CH",
+    "email": "community@techlegion.ch",
+    "sameAs": [
+      "https://www.linkedin.com/company/tech-legion-ch",
+      "https://www.instagram.com/techlegions/",
+      "https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TechLegion",
+    "url": "https://techlegion.ch/",
+    "inLanguage": ["en", "de", "fr", "it", "uk"],
+    "publisher": { "@type": "Organization", "name": "TechLegion" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://techlegion.ch/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "SiteNavigationElement", "name": "Home",          "url": "https://techlegion.ch/" },
+      { "@type": "SiteNavigationElement", "name": "About",         "url": "https://techlegion.ch/about.html" },
+      { "@type": "SiteNavigationElement", "name": "Programs",      "url": "https://techlegion.ch/programs.html" },
+      { "@type": "SiteNavigationElement", "name": "Summer School", "url": "https://techlegion.ch/summer-school.html" },
+      { "@type": "SiteNavigationElement", "name": "Events",        "url": "https://techlegion.ch/events.html" },
+      { "@type": "SiteNavigationElement", "name": "Membership",    "url": "https://techlegion.ch/membership.html" },
+      { "@type": "SiteNavigationElement", "name": "Team",            "url": "https://techlegion.ch/team.html" },
+      { "@type": "SiteNavigationElement", "name": "Contact",         "url": "https://techlegion.ch/contact.html" },
+      { "@type": "SiteNavigationElement", "name": "Code of Conduct", "url": "https://techlegion.ch/code-conduct.html" },
+      { "@type": "SiteNavigationElement", "name": "Content Policy",  "url": "https://techlegion.ch/content.html" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- NAV -->
@@ -171,13 +237,13 @@
     <div class="container">
       <div class="join-inner">
         <h2 class="join-title">
-          Tech<span class="lc">L</span>egion is a<br>
-          <span class="hl">sti<span class="lc">M</span>ulating</span> and<br>
-          <span class="hl">in<span class="lc">C</span>lusiv<span class="lc">E</span></span><br>
-          <span class="lc">E</span>nvi<span class="lc">R</span>onment
+          <span data-i18n="join.title.line1">TechLegion is a</span><br>
+          <span class="hl" data-i18n="join.title.line2">stiMulating and</span><br>
+          <span class="hl" data-i18n="join.title.line3">inClusivE</span><br>
+          <span data-i18n="join.title.line4">EnviRonment</span>
         </h2>
-        <p class="join-sub" id="join-typing-text">We are always on the lookout for passionate, dynamic and <span id="join-typed"></span><span class="join-cursor" id="join-cursor">|</span></p>
-        <a href="contact.html" class="btn btn-primary btn-lg">Get in touch</a>
+        <p class="join-sub" id="join-typing-text"><span data-i18n="join.sub">We are always on the lookout for passionate, dynamic and</span> <span id="join-typed"></span><span class="join-cursor" id="join-cursor">|</span></p>
+        <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="join.btn">Get in touch</a>
       </div>
     </div>
 
@@ -187,18 +253,42 @@
     <script>
       (function () {
         /* --- Typing animation --- */
-        var fullText = "creative minds to join our ranks. Here's how you can reach us. Don't hesitate to get in touch!";
         var typed = document.getElementById('join-typed');
+        var typingTimer = null;
         var typingStarted = false;
+
+        function getTypedText() {
+          var langCode = (document.documentElement.lang || 'en');
+          langCode = langCode === 'uk' ? 'ua' : langCode;
+          var dict = (window.TL_I18N && window.TL_I18N[langCode]) || {};
+          var fallback = (window.TL_I18N && window.TL_I18N['en']) || {};
+          return dict['join.typed'] || fallback['join.typed'] || "creative minds to join our ranks. Here's how you can reach us. Don't hesitate to get in touch!";
+        }
 
         function startTyping() {
           if (typingStarted) return;
           typingStarted = true;
+          runTyping();
+        }
+
+        function runTyping() {
+          clearTimeout(typingTimer);
+          typed.textContent = '';
+          var fullText = getTypedText();
           var i = 0;
           (function tick() {
             typed.textContent = fullText.slice(0, i);
-            if (i < fullText.length) { i++; setTimeout(tick, 40); }
+            if (i < fullText.length) { i++; typingTimer = setTimeout(tick, 40); }
           })();
+        }
+
+        /* Re-run typing when language changes */
+        if ('MutationObserver' in window) {
+          new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+              if (m.attributeName === 'lang' && typingStarted) { runTyping(); }
+            });
+          }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
         }
 
         /* --- ECG canvas animation --- */
@@ -399,8 +489,8 @@
   <section style="padding: clamp(1rem, 2vw, 1.5rem) 0;">
     <div class="container">
       <div class="callout fade-in">
-        <h3>Ready to join the legion?</h3>
-        <p>Become a TechLegion member, Ambassador or volunteer for our events, follow us on LinkedIn or just sign up for our newsletter to follow what we're building.<br>Latest posts, behind-the-scenes, and community highlights all here.</p>
+        <h3 data-i18n="home.cta.title">Ready to join the legion?</h3>
+        <p data-i18n="home.cta.lead">Become a TechLegion member, Ambassador or volunteer for our events, follow us on LinkedIn or just sign up for our newsletter to follow what we're building.<br>Latest posts, behind-the-scenes, and community highlights all here.</p>
         <div style="display:flex; flex-wrap:wrap; gap:0.85rem; justify-content:center; margin-top:1.25rem;">
           <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="btn btn-ghost">Join the Community</a>
           <a href="membership.html" class="btn btn-primary">Become Member</a>
@@ -446,6 +536,8 @@
           <ul>
             <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
             <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
           </ul>
         </div>
       </div>
