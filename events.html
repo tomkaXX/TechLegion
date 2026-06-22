@@ -338,9 +338,6 @@
           style="border:0; width:100%; height:600px; display:block; background:#050816;"
           frameborder="0" scrolling="no" loading="lazy"></iframe>
       </div>
-      <div style="text-align:center; margin-top: 1.25rem;" class="fade-in">
-        <a href="https://calendar.google.com/calendar/u/0?cid=dGVjaGxlZ2lvbi5jaEBnbWFpbC5jb20" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="events.calendar.title">Open full calendar</a>
-      </div>
     </div>
   </section>
 
@@ -349,8 +346,9 @@
       <div class="callout fade-in">
         <h3 data-i18n="events.subscribe.title">Subscribe to our calendar</h3>
         <p data-i18n="events.subscribe.body">Add the TechLegion calendar to Google Calendar, Outlook or Apple Calendar so you never miss an event.</p>
-        <div style="margin-top: 1.25rem;">
+        <div style="margin-top: 1.25rem; display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center;">
           <a href="https://calendar.google.com/calendar/u/0?cid=dGVjaGxlZ2lvbi5jaEBnbWFpbC5jb20" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="events.subscribe.btn">Add to calendar</a>
+          <a href="https://calendar.google.com/calendar/u/0?cid=dGVjaGxlZ2lvbi5jaEBnbWFpbC5jb20" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="events.calendar.title">See all events in calendar</a>
         </div>
       </div>
     </div>
@@ -415,13 +413,11 @@
       <button type="button" id="tour-ty-close" style="
         position:absolute;top:0.5rem;right:0.75rem;background:transparent;border:none;
         color:var(--text-muted);font-size:1.6rem;cursor:pointer;width:36px;height:36px;border-radius:50%;">×</button>
-      <div style="font-size:2.5rem;margin-bottom:0.75rem; text-align:center;">✅</div>
       <h3 style="color:var(--accent-glow);margin:0 0 1rem; text-align:center;">Registration received!</h3>
 
       <p style="color:var(--text-dim);margin-bottom:0.75rem;">Hi <strong id="ty-first-name" style="color:var(--text);"></strong>,</p>
       <p style="color:var(--text-dim);margin-bottom:1rem;">Thank you for registering your interest in our study tour (<strong id="ty-tour-name" style="color:var(--text);"></strong>).</p>
 
-      <p style="color:var(--text-dim);margin-bottom:0.5rem;">We've noted your registration. Here's what to expect:</p>
       <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.5rem;color:var(--text-dim);font-size:0.92rem;">
         <li>📋 We'll confirm your spot once the final date and priority tickets are issued.</li>
         <li>⭐ TechLegion association members have priority — if you're not yet a member, you can apply at <a href="membership.html" style="color:var(--accent-glow);">techlegion.ch/membership</a>.</li>
@@ -453,7 +449,7 @@
     // Human-readable tour labels for the confirmation modal
     var TOUR_LABELS = {
       'gosgen-25-jul-2026':  'Kernkraftwerk Gösgen-Däniken — 25 July 2026',
-      'cern-18-jul-2026':    'CERN — 18 July 2026'
+      'cern-18-jul-2026':    'tour to CERN on 18 July 2026'
     };
 
     (function () {
