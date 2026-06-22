@@ -92,6 +92,153 @@
     </div>
   </section>
 
+  <!-- ===== STUDY TOURS ===== -->
+  <section id="study-tours">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag">🏭 Study Tours</span>
+        <h2>Study Tours</h2>
+        <p>Behind-the-scenes visits to leading technology facilities across Switzerland and Europe — exclusively for TechLegion members and friends. Priority registration for association members.</p>
+      </div>
+
+      <div class="grid grid-2 fade-in" style="margin-top: 1.5rem;">
+
+        <!-- Beznau & Zwillag — COMPLETED -->
+        <div class="card" style="position:relative; overflow:hidden;">
+          <span style="
+            position:absolute; top:1rem; right:1rem;
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.45);
+            color: #4ade80;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;">✓ Completed</span>
+          <div class="card-icon">⚛️</div>
+          <h4>Kernkraftwerk Beznau &amp; Zwillag — Axpo</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <strong style="color:var(--text);">19 June 2026</strong> · Döttingen, Aargau
+          </p>
+          <p>An exclusive behind-the-scenes visit to Switzerland's oldest nuclear power station (KKB) and the adjacent Zwillag low- and intermediate-level radioactive waste facility, hosted by Axpo. Our group toured the control room mock-up, turbine hall and waste conditioning plant — a rare look at Switzerland's nuclear energy infrastructure.</p>
+          <!-- Tour photo -->
+          <figure style="margin: 1.25rem 0 0; border-radius: 10px; overflow:hidden; border: 1px solid var(--border);">
+            <img
+              src="assets/img/beznau-visit-jun2026.jpeg"
+              alt="TechLegion group at Kernkraftwerk Beznau, Axpo — June 2026"
+              style="width:100%; display:block; object-fit:cover; max-height: 280px;"
+              loading="lazy"
+            />
+            <figcaption style="
+              background: rgba(5,8,22,0.72);
+              color: var(--text-muted);
+              font-size: 0.8rem;
+              padding: 0.5rem 0.85rem;
+              text-align: center;">
+              TechLegion community visit to Kernkraftwerk Beznau &amp; Zwillag, hosted by Axpo · 19 June 2026
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- CERN — UPCOMING -->
+        <div class="card" style="position:relative; overflow:hidden; border-color: var(--border-strong);">
+          <span style="
+            position:absolute; top:1rem; right:1rem;
+            background: rgba(77,139,255,0.15);
+            border: 1px solid rgba(77,139,255,0.45);
+            color: var(--accent-glow);
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;">Registration open</span>
+          <div class="card-icon">🔬</div>
+          <h4>CERN — European Organisation for Nuclear Research</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <strong style="color:var(--text);">July 2026, date TBD</strong> · Meyrin, Geneva
+          </p>
+          <p>Join us for a guided visit to CERN, the world's largest particle physics laboratory and home of the Large Hadron Collider. We'll explore the accelerator complex, visit a detector experiment, and hear from researchers working at the frontier of science.</p>
+          <ul style="list-style:none; padding:0; margin: 1rem 0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem; color: var(--text-dim);">
+            <li>👥 <strong style="color:var(--text);">Group size:</strong> 15 people max</li>
+            <li>⭐ <strong style="color:var(--text);">Priority:</strong> TechLegion association members</li>
+            <li>📅 <strong style="color:var(--text);">Date:</strong> July 2026 — exact date to be confirmed</li>
+          </ul>
+          <a href="#tour-register" class="btn btn-primary" style="margin-top:0.5rem;">Register interest →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STUDY TOUR REGISTRATION FORM ===== -->
+  <section id="tour-register" style="padding-top:0;">
+    <div class="container container-narrow">
+      <div class="form-card fade-in">
+        <h3>Study Tour — Register your interest</h3>
+        <p class="form-subtitle">Fill in the form below to register for an upcoming study tour. Members get priority access. We'll confirm your spot by email once the date is finalised.</p>
+
+        <form id="tour-form" class="form" method="POST" action="" novalidate>
+          <input type="hidden" name="form_type" value="study_tour" />
+
+          <div class="form-group">
+            <label>Which tour are you registering for? *</label>
+            <select name="tour_choice" required>
+              <option value="">— Select a tour —</option>
+              <option value="cern-jul-2026">CERN — July 2026 (date TBD)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First name *</label>
+              <input type="text" name="first_name" required />
+              <span class="field-error" data-error-for="first_name">Please enter your first name.</span>
+            </div>
+            <div class="form-group">
+              <label>Last name *</label>
+              <input type="text" name="last_name" required />
+              <span class="field-error" data-error-for="last_name">Please enter your last name.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" autocomplete="email" />
+              <span class="field-error" data-error-for="email">Please enter a valid email address.</span>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     pattern="^\+?[0-9\s().\-]{7,20}$" placeholder="+41 ..." />
+              <span class="field-error" data-error-for="phone">Please enter a valid phone number.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Are you a TechLegion association member?</label>
+            <select name="is_member">
+              <option value="">— Select —</option>
+              <option value="yes">Yes, I am a member</option>
+              <option value="no">Not yet — I'd like to join</option>
+              <option value="applying">I have a pending application</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Why do you want to join this tour? *</label>
+            <textarea name="notes" rows="3" required placeholder="Tell us a little about your interest in this visit and what you hope to learn."></textarea>
+            <span class="field-error" data-error-for="notes">Please share your motivation for joining.</span>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <span>I accept the <a href="privacy.html">Privacy Policy</a> and consent to TechLegion processing my data for tour coordination. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top:1rem;" disabled>Submit registration</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- WhatsApp communities — open to everyone, no membership required -->
   <section id="whatsapp">
     <div class="container">
@@ -203,7 +350,119 @@
     </div>
   </footer>
 
+  <!-- Thank-you modal (study tour) -->
+  <div id="tour-ty-modal" class="ty-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" style="
+    position:fixed;inset:0;background:rgba(5,8,22,0.78);backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;z-index:1000;padding:1rem;">
+    <div style="
+      background:var(--bg-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
+      width:100%;max-width:480px;padding:2rem 1.75rem;text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,0.4);position:relative;">
+      <button type="button" id="tour-ty-close" style="
+        position:absolute;top:0.5rem;right:0.75rem;background:transparent;border:none;
+        color:var(--text-muted);font-size:1.6rem;cursor:pointer;width:36px;height:36px;border-radius:50%;">×</button>
+      <div style="font-size:3rem;margin-bottom:0.5rem;">✅</div>
+      <h3 style="color:var(--accent-glow);margin:0 0 0.5rem;">Registration received!</h3>
+      <p style="color:var(--text-dim);margin-bottom:1.5rem;">Thanks for registering — we've noted your interest and you'll receive a confirmation email shortly. We'll be in touch as soon as the tour date is confirmed.</p>
+      <button type="button" class="btn btn-primary" id="tour-ty-close-btn">Close</button>
+    </div>
+  </div>
+
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // ---- Study Tour registration form ----
+    var TOUR_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    (function () {
+      var form = document.getElementById('tour-form');
+      if (!form) return;
+
+      var modal = document.getElementById('tour-ty-modal');
+      var closeBtn = document.getElementById('tour-ty-close');
+      var closeBtnMain = document.getElementById('tour-ty-close-btn');
+      var submitBtn = form.querySelector('button[type="submit"]');
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+      function setError(field, show) {
+        var err = form.querySelector('.field-error[data-error-for="' + field.name + '"]');
+        if (err) err.classList.toggle('is-visible', !!show);
+        if (field.classList) field.classList.toggle('invalid', !!show);
+      }
+
+      function fieldOk(field) {
+        var v = (field.value || '').trim();
+        if (!v && !field.required) return true;
+        if (!v && field.required) return false;
+        if (field.type === 'email') return EMAIL_RE.test(v);
+        if (field.type === 'tel' && v) return PHONE_RE.test(v);
+        return true;
+      }
+
+      function formValid() {
+        var privacyCb = form.querySelector('input[name="privacy"]');
+        if (!privacyCb || !privacyCb.checked) return false;
+        var ok = true;
+        form.querySelectorAll('input[required], select[required], textarea[required]').forEach(function (el) {
+          if (el.type === 'checkbox') return;
+          if (!fieldOk(el)) ok = false;
+        });
+        return ok;
+      }
+
+      function refresh() { submitBtn.disabled = !formValid(); }
+
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        el.addEventListener('blur', function () { setError(el, !fieldOk(el)); refresh(); });
+        el.addEventListener('input', refresh);
+        el.addEventListener('change', refresh);
+      });
+      refresh();
+
+      function openModal() {
+        if (!modal) return;
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        if (!modal) return;
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (closeBtnMain) closeBtnMain.addEventListener('click', closeModal);
+      if (modal) {
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formValid()) return;
+        var orig = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        fetch(TOUR_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors'
+        }).then(function () {
+          form.reset();
+          submitBtn.textContent = orig;
+          refresh();
+          openModal();
+        }).catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = orig;
+          alert('Something went wrong. Please email community@techlegion.ch to register manually.');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
