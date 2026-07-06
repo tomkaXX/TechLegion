@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambassadors — TechLegion Switzerland</title>
+  <meta name="description" content="Meet the TechLegion Ambassadors — technology leaders and innovators promoting the Swiss tech ecosystem across industries and borders." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Ambassadors — TechLegion Switzerland" />
+  <meta property="og:description" content="Meet the technology leaders and innovators carrying TechLegion's mission forward." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
+    /* ── Domain filter bar ─────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--t);
+      font-family: var(--font-display);
+      letter-spacing: 0.03em;
+    }
+    .filter-btn:hover { border-color: var(--border-strong); color: var(--white); }
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* ── Ambassador grid ───────────────────────────────────────── */
+    .amb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) { .amb-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .amb-grid { grid-template-columns: 1fr; } }
+
+    .amb-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color var(--t), transform var(--t), background var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .amb-card:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .amb-card.is-open {
+      border-color: var(--accent);
+      background: linear-gradient(160deg, rgba(77,139,255,0.06) 0%, rgba(139,92,246,0.04) 100%);
+    }
+    .amb-card[hidden] { display: none; }
+
+    /* Photo */
+    .amb-photo-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.1rem;
+      position: relative;
+      border: 3px solid var(--border-strong);
+      box-shadow: 0 0 0 4px rgba(77,139,255,0.12), var(--shadow-glow);
+      background: var(--bg-elev);
+      flex-shrink: 0;
+    }
+    .amb-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .amb-photo-wrap .amb-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--white);
+    }
+    .amb-photo-wrap.has-img .amb-fallback { display: none; }
+
+    /* Country badge on avatar */
+    .amb-country-flag {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--bg-card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    .amb-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0 0 0.2rem;
+      text-align: center;
+    }
+    .amb-role {
+      font-size: 0.83rem;
+      color: var(--accent-glow);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.15rem;
+      line-height: 1.4;
+    }
+    .amb-country-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Domain tags */
+    .amb-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .domain-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+    /* Domain colour palette */
+    .domain-ai        { color: #60a5fa; border-color: rgba(96,165,250,0.35); background: rgba(96,165,250,0.08); }
+    .domain-cloud     { color: #a78bfa; border-color: rgba(167,139,250,0.35); background: rgba(167,139,250,0.08); }
+    .domain-cyber     { color: #f87171; border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); }
+    .domain-space     { color: #818cf8; border-color: rgba(129,140,248,0.35); background: rgba(129,140,248,0.08); }
+    .domain-fintech   { color: #34d399; border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.08); }
+    .domain-robotics  { color: #fb923c; border-color: rgba(251,146,60,0.35); background: rgba(251,146,60,0.08); }
+    .domain-data      { color: #22d3ee; border-color: rgba(34,211,238,0.35); background: rgba(34,211,238,0.08); }
+    .domain-hardware  { color: #a3a3a3; border-color: rgba(163,163,163,0.35); background: rgba(163,163,163,0.08); }
+    .domain-web3      { color: #facc15; border-color: rgba(250,204,21,0.35); background: rgba(250,204,21,0.08); }
+    .domain-hr        { color: #f472b6; border-color: rgba(244,114,182,0.35); background: rgba(244,114,182,0.08); }
+    .domain-energy    { color: #4ade80; border-color: rgba(74,222,128,0.35); background: rgba(74,222,128,0.08); }
+
+    /* Bio excerpt (collapsed) */
+    .amb-bio-short {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .amb-card.is-open .amb-bio-short {
+      display: block;
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+
+    /* Expanded section */
+    .amb-expanded {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.38s ease;
+    }
+    .amb-card.is-open .amb-expanded {
+      max-height: 600px;
+    }
+    .amb-expanded-inner {
+      padding-top: 1.1rem;
+    }
+    .amb-motivation {
+      margin: 1rem 0 1.1rem;
+      padding: 0.9rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(77,139,255,0.07);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .amb-motivation strong {
+      display: block;
+      font-style: normal;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-glow);
+      margin-bottom: 0.4rem;
+    }
+    .amb-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--accent-glow);
+      text-decoration: none;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(77,139,255,0.4);
+      border-radius: 8px;
+      background: rgba(77,139,255,0.07);
+      transition: all var(--t);
+    }
+    .amb-linkedin:hover {
+      background: rgba(77,139,255,0.15);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* Toggle button */
+    .amb-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--accent-glow);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font-body);
+      transition: color var(--t);
+    }
+    .amb-toggle:hover { color: var(--white); }
+    .amb-toggle svg {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .amb-card.is-open .amb-toggle svg { transform: rotate(180deg); }
+
+    /* Become ambassador CTA */
+    .amb-cta {
+      background: linear-gradient(135deg, rgba(77,139,255,0.10) 0%, rgba(139,92,246,0.08) 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 5vw, 3rem);
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .amb-cta h3 { margin-bottom: 0.5rem; }
+    .amb-cta p { color: var(--text-dim); max-width: 820px; margin: 0 auto 1.5rem; line-height: 1.7; }
+
+    /* Hero intro — wide enough not to squeeze three paragraphs into a tall column */
+    .amb-hero {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .amb-hero p { max-width: none; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="ambassadors.html" class="nav-active">Ambassadors</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in amb-hero">
+        <span class="eyebrow">Community</span>
+        <h1>TechLegion <span class="accent">Ambassadors</span></h1>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dim);">
+          TechLegion Ambassadors are technology professionals, researchers and innovators who carry our mission beyond Switzerland's borders. They bridge communities, open doors to world-class facilities, bring global perspectives into the Swiss tech ecosystem — and inspire the next generation of builders through their expertise and example.
+        </p>
+        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);">
+          Every ambassador represents a different domain, country and career path — but they share one conviction: that open, cross-border collaboration is how breakthrough technology gets built. By connecting TechLegion members to their networks, mentoring emerging talent, and co-creating events and programs, our ambassadors are the human infrastructure that makes the community thrive.
+        </p>
+        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);">
+          Our ambassadors excel in their professional fields, and we're proud to have them with us — the high standards they hold themselves to help define the standards of our community as well.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="grid grid-3 fade-in" style="gap: 1rem;">
+        <div class="card" style="text-align:center; padding: 1.25rem;">
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white);">🌍</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Across multiple countries</div>
+        </div>
+        <div class="card" style="text-align:center; padding: 1.25rem;">
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--accent-glow);">10+</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Domains of expertise</div>
+        </div>
+        <div class="card" style="text-align:center; padding: 1.25rem;">
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white);">🤝</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Volunteering their expertise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMBASSADOR GRID -->
+  <section id="ambassadors">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag">🏅 Our ambassadors</span>
+        <h2>Meet the ambassadors</h2>
+        <p>Click any card to read a full profile, including their motivation for joining the TechLegion ambassador programme.</p>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar fade-in" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">🤖 AI</button>
+        <button class="filter-btn" data-filter="cloud">☁️ Cloud</button>
+        <button class="filter-btn" data-filter="cyber">🔐 Cybersecurity</button>
+        <button class="filter-btn" data-filter="data">📊 Data</button>
+        <button class="filter-btn" data-filter="energy">⚡ Energy</button>
+        <button class="filter-btn" data-filter="fintech">💳 Fintech</button>
+        <button class="filter-btn" data-filter="hardware">🔩 Hardware</button>
+        <button class="filter-btn" data-filter="robotics">🦾 Robotics</button>
+        <button class="filter-btn" data-filter="space">🛰️ Space</button>
+        <button class="filter-btn" data-filter="web3">🔗 Web3</button>
+        <button class="filter-btn" data-filter="hr">🧩 People &amp; HR</button>
+      </div>
+
+      <!-- Ambassador cards -->
+      <div class="amb-grid fade-in" id="amb-grid">
+
+        <!--
+        ════════════════════════════════════════════════════════════════
+        HOW TO ADD AN AMBASSADOR
+        ─────────────────────────────────────────────────────────────
+        1. Copy one <article> block below.
+        2. Fill in: name, role, company, country flag + label,
+           domain-tag classes (see palette in <style>), photo src,
+           fallback initials, bio-short, bio-full, motivation, linkedin URL.
+        3. Set data-domains="ai,cloud" to match the domain tags used
+           (controls the filter bar above).
+        ════════════════════════════════════════════════════════════════
+        -->
+
+        <!-- ── AMBASSADOR 1 ── -->
+        <article class="amb-card" data-domains="ai,cloud,hr">
+          <div class="amb-photo-wrap has-img" style="position:relative;">
+            <img src="image/ambassador/profile.jpg" alt="Ambassador Name" />
+            <div class="amb-fallback" style="background: linear-gradient(135deg,#4d8bff,#8b5cf6);">AN</div>
+            <span class="amb-country-flag" title="Switzerland">🇨🇭</span>
+          </div>
+
+          <h3 class="amb-name">Ambassador Name</h3>
+          <div class="amb-role">Position · Company Name</div>
+          <div class="amb-country-label">📍 Switzerland</div>
+
+          <div class="amb-tags">
+            <span class="domain-tag domain-ai">AI</span>
+            <span class="domain-tag domain-cloud">Cloud</span>
+            <span class="domain-tag domain-hr">People &amp; HR</span>
+          </div>
+
+          <p class="amb-bio-short">
+            [Short bio — 2–3 sentences introducing this ambassador. Their background, current role and what makes them a great fit for the TechLegion community. Visible by default before expanding.]
+          </p>
+
+          <!-- Expanded content -->
+          <div class="amb-expanded" aria-hidden="true">
+            <div class="amb-expanded-inner">
+              <p style="font-size:0.88rem; color:var(--text-dim); line-height:1.65; margin:0 0 0.75rem;">
+                [Full bio — 3–5 sentences. This is the extended version that appears when the card is expanded. Include career highlights, expertise, relevant projects and community contributions.]
+              </p>
+
+              <div class="amb-motivation">
+                <strong>💬 Why I became an ambassador</strong>
+                "[Motivation — a personal quote from the ambassador explaining why they wanted to join the TechLegion ambassador programme and what they hope to contribute.]"
+              </div>
+
+              <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                View LinkedIn profile
+              </a>
+            </div>
+          </div>
+
+          <button class="amb-toggle" aria-expanded="false">
+            Read full profile
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </article>
+
+        <!-- ── AMBASSADOR 2 — placeholder ── -->
+        <article class="amb-card" data-domains="energy,data">
+          <div class="amb-photo-wrap" style="position:relative;">
+            <div class="amb-fallback" style="background: linear-gradient(135deg,#34d399,#4d8bff);">AB</div>
+            <span class="amb-country-flag" title="Germany">🇩🇪</span>
+          </div>
+
+          <h3 class="amb-name">Ambassador Name</h3>
+          <div class="amb-role">Position · Company Name</div>
+          <div class="amb-country-label">📍 Germany</div>
+
+          <div class="amb-tags">
+            <span class="domain-tag domain-energy">Energy</span>
+            <span class="domain-tag domain-data">Data</span>
+          </div>
+
+          <p class="amb-bio-short">
+            [Short bio — 2–3 sentences introducing this ambassador.]
+          </p>
+
+          <div class="amb-expanded" aria-hidden="true">
+            <div class="amb-expanded-inner">
+              <p style="font-size:0.88rem; color:var(--text-dim); line-height:1.65; margin:0 0 0.75rem;">
+                [Full bio.]
+              </p>
+              <div class="amb-motivation">
+                <strong>💬 Why I became an ambassador</strong>
+                "[Motivation quote.]"
+              </div>
+              <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                View LinkedIn profile
+              </a>
+            </div>
+          </div>
+
+          <button class="amb-toggle" aria-expanded="false">
+            Read full profile
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </article>
+
+        <!-- ── AMBASSADOR 3 — placeholder ── -->
+        <article class="amb-card" data-domains="space,robotics,ai">
+          <div class="amb-photo-wrap" style="position:relative;">
+            <div class="amb-fallback" style="background: linear-gradient(135deg,#818cf8,#fb923c);">CD</div>
+            <span class="amb-country-flag" title="Ukraine">🇺🇦</span>
+          </div>
+
+          <h3 class="amb-name">Ambassador Name</h3>
+          <div class="amb-role">Position · Company Name</div>
+          <div class="amb-country-label">📍 Ukraine</div>
+
+          <div class="amb-tags">
+            <span class="domain-tag domain-space">Space</span>
+            <span class="domain-tag domain-robotics">Robotics</span>
+            <span class="domain-tag domain-ai">AI</span>
+          </div>
+
+          <p class="amb-bio-short">
+            [Short bio — 2–3 sentences introducing this ambassador.]
+          </p>
+
+          <div class="amb-expanded" aria-hidden="true">
+            <div class="amb-expanded-inner">
+              <p style="font-size:0.88rem; color:var(--text-dim); line-height:1.65; margin:0 0 0.75rem;">
+                [Full bio.]
+              </p>
+              <div class="amb-motivation">
+                <strong>💬 Why I became an ambassador</strong>
+                "[Motivation quote.]"
+              </div>
+              <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                View LinkedIn profile
+              </a>
+            </div>
+          </div>
+
+          <button class="amb-toggle" aria-expanded="false">
+            Read full profile
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </article>
+
+      </div><!-- /amb-grid -->
+
+      <!-- Become an ambassador CTA -->
+      <div class="amb-cta fade-in">
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🌟</div>
+        <h3>Become a TechLegion Ambassador</h3>
+        <p>Are you a technology professional, researcher, or innovator who believes in the power of community and cross-border collaboration? We're always looking for passionate people to join our ambassador programme. This call for ambassadors is ongoing and not limited in time. If you feel this is something you want and have the time for it — we expect ambassadors to be actively involved in TechLegion communications, projects and mentorship sessions.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center;">
+          <a href="contact.html" class="btn btn-primary btn-lg">Apply to become an ambassador</a>
+          <a href="membership.html" class="btn btn-ghost btn-lg">Explore membership first</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ── Expand / collapse ambassador cards ──────────────────────────────
+    document.querySelectorAll('.amb-card').forEach(function (card) {
+      var toggle = card.querySelector('.amb-toggle');
+      var expanded = card.querySelector('.amb-expanded');
+      if (!toggle || !expanded) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = card.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        expanded.setAttribute('aria-hidden', !isOpen);
+        toggle.querySelector('span') && (toggle.querySelector('span').textContent = isOpen ? 'Show less' : 'Read full profile');
+        // Update text node directly
+        toggle.childNodes.forEach(function(n) {
+          if (n.nodeType === 3) n.textContent = isOpen ? 'Show less ' : 'Read full profile ';
+        });
+      });
+    });
+
+    // ── Domain filter ───────────────────────────────────────────────────
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var cards      = document.querySelectorAll('.amb-card');
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.dataset.filter;
+
+        // Toggle active state
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        // Show / hide cards
+        cards.forEach(function (card) {
+          if (f === 'all') {
+            card.removeAttribute('hidden');
+            return;
+          }
+          var domains = (card.dataset.domains || '').split(',');
+          if (domains.indexOf(f) !== -1) {
+            card.removeAttribute('hidden');
+          } else {
+            card.setAttribute('hidden', '');
+            // Collapse if open
+            card.classList.remove('is-open');
+            var t = card.querySelector('.amb-toggle');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

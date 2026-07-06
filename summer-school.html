@@ -314,6 +314,90 @@
       .partner-strip { grid-template-columns: 1fr; }
       .ss-modal .choice-row { grid-template-columns: 1fr; }
     }
+
+    /* ===== Claude exam promo ===== */
+    .promo-callout {
+      border-color: rgba(25,196,122,0.45);
+      background: linear-gradient(135deg, rgba(25,196,122,0.10), rgba(77,139,255,0.06));
+    }
+    .promo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, rgba(25,196,122,0.14), rgba(25,196,122,0.05));
+      border: 1px solid rgba(25,196,122,0.4);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.9rem;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+    }
+    .promo-row .promo-label { color: var(--white); font-weight: 700; }
+    .promo-row .promo-sub { color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 0.1rem; }
+    #promo-form-note {
+      display: none;
+      background: rgba(25,196,122,0.10);
+      border: 1px solid rgba(25,196,122,0.4);
+      border-radius: var(--radius);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      margin: 0 0 1rem;
+    }
+    #promo-form-note.is-visible { display: block; }
+
+    .modal-warning {
+      background: rgba(255, 176, 32, 0.10);
+      border: 1px solid rgba(255, 176, 32, 0.4);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .modal-warning p { margin: 0; }
+    .modal-warning strong { color: var(--white); }
+
+    .step-list { display: flex; flex-direction: column; gap: 0.65rem; margin: 0.5rem 0 0.25rem; }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.9rem;
+    }
+    .step-item .step-num {
+      flex: none;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--bg-elev);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .step-item .step-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .step-item .step-body strong { color: var(--white); font-size: 0.9rem; }
+    .step-item .step-body span { color: var(--text-muted); font-size: 0.78rem; }
+    .step-item .btn { flex: none; padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+    .btn-step-green {
+      background: linear-gradient(135deg, #19c47a, #0f9a5d);
+      color: #fff;
+      border: none;
+    }
+    /* Step states — nothing is ever locked; the recommended next step is just highlighted */
+    .step-item.is-current { border-color: rgba(25,196,122,0.45); background: rgba(25,196,122,0.08); }
+    .step-item.is-current .step-num { background: linear-gradient(135deg, #19c47a, #0f9a5d); color: #fff; }
+    .step-item.is-done { border-color: rgba(25,196,122,0.3); background: rgba(25,196,122,0.04); }
+    .step-item.is-done .step-num { background: linear-gradient(135deg, #19c47a, #0f9a5d); color: #fff; }
+    @media (max-width: 480px) {
+      .step-item { flex-wrap: wrap; }
+      .step-item .btn { margin-left: calc(26px + 0.75rem); }
+    }
   </style>
 </head>
 <body>
@@ -360,6 +444,22 @@
         <div class="ss-hero-actions">
           <a href="#cca-f" class="btn btn-primary btn-lg">Claude AI Architect cohort</a>
           <a href="#uas" class="btn btn-ghost btn-lg">Drone Pilot A1/A3 cohort</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE EXAM PROMO -->
+  <section id="claude-promo" style="padding-top: 0;">
+    <div class="container container-narrow">
+      <div class="callout promo-callout fade-in">
+        <span class="tag">🎁 Limited-time promo</span>
+        <h3>Pass the Claude exam, get a free TechLegion membership for 2026</h3>
+        <p>Thanks to our partners and <strong>Anthropic Claude Partner Network</strong>, anyone who registers for the Claude AI Architect cohort below and <strong>successfully passes the official Claude exam by 1 September 2026</strong> gets a <strong>complimentary Personal membership through 31 December 2026</strong> — normally <strong>CHF 100/year</strong>. That's full access to the entire Summer School, no membership fee.</p>
+        <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.85rem;">Claiming the offer requires signing our <a href="complimentary-agreement.html" target="_blank" rel="noopener">Complimentary Membership Agreement</a>, which supplements the standard TechLegion Membership Agreement.</p>
+        <div class="ss-hero-actions" style="margin-top: 1rem;">
+          <a href="#cca-f" class="btn btn-primary btn-lg">Join the Claude cohort</a>
+          <a href="complimentary-agreement.html" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Read the agreement</a>
         </div>
       </div>
     </div>
@@ -475,10 +575,12 @@
           </div>
           <div class="row" style="align-items:center;">
             <span class="k">Exam fee</span>
-            <span class="price-badge">$99 <small>per attempt, paid to Anthropic</small></span>
+            <span class="price-badge">$125 <small>per attempt, paid to Anthropic</small></span>
+          </div>
+          <div class="promo-row">
+            <span><span class="promo-label">🎁 Pass by 1 Sep 2026</span><span class="promo-sub">Get free TechLegion membership for 2026</span></span>
           </div>
           <button type="button" class="btn btn-primary" data-join-cohort="cca-f" data-cohort-label="Claude Certified Architect — Foundations (CCA-F)" style="margin-top: 0.5rem;">Join the cohort</button>
-          <a href="membership.html#apply" style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; text-decoration: underline;">Not a member yet? Apply for membership →</a>
         </aside>
       </div>
     </div>
@@ -554,7 +656,6 @@
             <span class="price-badge price-free">FREE <small>for members</small></span>
           </div>
           <button type="button" class="btn btn-primary" data-join-cohort="uas" data-cohort-label="UAS Remote Pilot — Open Category A1 / A3" style="margin-top: 0.5rem;">Join the cohort</button>
-          <a href="membership.html#apply" style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; text-decoration: underline;">Not a member yet? Apply for membership →</a>
         </aside>
       </div>
     </div>
@@ -572,7 +673,7 @@
         <div class="card">
           <div class="card-icon">1️⃣</div>
           <h4>Become a member</h4>
-          <p>Active TechLegion association members get free access to all Summer School study groups. <a href="membership.html#apply">Apply here</a>.</p>
+          <p>Active TechLegion association members get free access to all Summer School study groups. <a href="membership.html#apply">Apply here</a> — or pass the Claude exam by 1 Sept 2026 to get membership <a href="#claude-promo">free for 2026</a>.</p>
         </div>
         <div class="card">
           <div class="card-icon">2️⃣</div>
@@ -629,8 +730,8 @@
           <h5 data-i18n="footer.community">Community</h5>
           <ul>
             <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
             <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
-            <li><a href="newsletter.html" data-i18n="nav.newsletter">Newsletter</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
@@ -641,6 +742,7 @@
             <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
             <li><a href="code-conduct.html">Code of Conduct</a></li>
             <li><a href="content.html">Content Policy</a></li>
+            <li><a href="complimentary-agreement.html">Complimentary Agreement</a></li>
           </ul>
         </div>
       </div>
@@ -656,8 +758,34 @@
     <div class="ss-modal">
       <button type="button" class="ss-modal-close" data-modal-close aria-label="Close">×</button>
 
-      <!-- Step 1: are you a member? -->
-      <div class="step is-active" data-step="member-check">
+      <!-- Step 1 (Claude/CCA-F cohort): mandatory 3-step registration -->
+      <div class="step is-active" data-step="member-check-claude">
+        <h3>Join the Claude cohort</h3>
+        <p class="modal-sub">Cohort: <strong class="modal-cohort-label-echo">—</strong></p>
+        <div class="modal-warning">
+          <p>⚠️ <strong>All 3 steps below are mandatory</strong> to complete your registration for the Claude AI Architect cohort. Follow them in order — the next one is highlighted in green.</p>
+        </div>
+        <div class="step-list" id="claude-step-list">
+          <div class="step-item" data-step-id="1">
+            <span class="step-num">1</span>
+            <span class="step-body"><strong>Fill form for Claude cohort</strong><span>Reserve your seat with your details and motivation.</span></span>
+            <button type="button" class="btn" data-step-goto="member-form" data-step-id="1">Start</button>
+          </div>
+          <div class="step-item" data-step-id="2">
+            <span class="step-num">2</span>
+            <span class="step-body"><strong>Read and sign Complimentary promo agreement</strong><span>Confirms your free 2026 membership once you pass the exam.</span></span>
+            <button type="button" class="btn" data-step-goto="promo" data-step-id="2">Open</button>
+          </div>
+          <div class="step-item" data-step-id="3">
+            <span class="step-num">3</span>
+            <span class="step-body"><strong>Apply for TechLegion membership</strong><span>Submit the membership application form.</span></span>
+            <a href="https://techlegion.ch/membership.html#apply" target="_blank" rel="noopener" class="btn" data-step-id="3">Apply</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1 (Drone/UAS cohort): original member check, unchanged -->
+      <div class="step" data-step="member-check-drone">
         <h3>Join the cohort</h3>
         <p class="modal-sub">Cohort: <strong id="modal-cohort-label">—</strong></p>
         <p>Study groups are for TechLegion Association members only. Are you already a TechLegion association member?</p>
@@ -671,16 +799,35 @@
         </div>
       </div>
 
+      <!-- Step 2 of the Claude flow: promo agreement -->
+      <div class="step" data-step="promo">
+        <h3>🎁 Claude exam promo — free 2026 membership</h3>
+        <p class="modal-sub">Cohort: <strong class="modal-cohort-label-echo">—</strong></p>
+        <p id="promo-step1-done-note" style="display:none; background: rgba(25,196,122,0.10); border: 1px solid rgba(25,196,122,0.4); border-radius: var(--radius); padding: 0.6rem 0.9rem; font-size: 0.85rem;">✅ <strong>Step 1 done</strong> — your seat request was recorded. Now read and sign below to unlock Step 3.</p>
+        <p>Thanks to our partners in the Anthropic Claude Partner Network, TechLegion can offer a <strong>complimentary Personal membership for 2026</strong> (normally CHF 100) to anyone who registers for the Claude AI Architect cohort now and <strong>successfully passes the official Claude exam by 1 September 2026</strong>.</p>
+        <div class="modal-info">
+          <p><strong>✅ What you get:</strong> full access to the entire Summer School 2026 — both the Claude AI Architect and Drone Pilot A1/A3 cohorts — with no membership fee for 2026.</p>
+          <p><strong>📄 What's required:</strong> pass the Claude exam by 1 September 2026 and sign the Complimentary Membership Agreement, which supplements our standard Membership Agreement.</p>
+        </div>
+        <label class="checkbox" style="display:flex; gap: 0.5rem; align-items: flex-start; margin: 1rem 0; font-size: 0.88rem; color: var(--text-dim);">
+          <input type="checkbox" id="promo-agree" style="margin-top: 0.2rem;" />
+          <span>I've read and agree to sign the <a href="complimentary-agreement.html" target="_blank" rel="noopener">Complimentary Membership Agreement</a> once I pass the exam by 1 September 2026.</span>
+        </label>
+        <button type="button" class="btn btn-primary" id="promo-confirm-btn" disabled style="width:100%; justify-content:center;">Confirm &amp; continue to Step 3</button>
+      </div>
+
       <!-- Step 2a: member → cohort interest form -->
       <div class="step" data-step="member-form">
         <h3>Reserve your seat</h3>
         <p class="modal-sub">Cohort: <strong class="modal-cohort-label-echo">—</strong></p>
+        <p id="promo-form-note">🎯 <strong>Step 1 of 3</strong> — after you submit, you'll continue to sign the Complimentary Agreement (step 2) and apply for TechLegion membership (step 3).</p>
         <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: -0.5rem; margin-bottom: 1rem;">
           Want to join the other cohort too? Submit this form once per cohort — seats are limited to 10–15 per group.
         </p>
         <form id="cohort-form" novalidate>
           <input type="hidden" name="form_type" value="cohort" />
           <input type="hidden" name="cohort" id="cohort-hidden" value="" />
+          <input type="hidden" name="promo" id="promo-hidden" value="" />
           <div class="form-group">
             <label for="cf-fn">First name *</label>
             <input id="cf-fn" type="text" name="first_name" required />
@@ -728,7 +875,7 @@
         </div>
       </div>
 
-      <!-- Step 3: success -->
+      <!-- Step 3: success (Drone/UAS + generic "yes, member" flow — unchanged) -->
       <div class="step" data-step="success">
         <div class="modal-success">
           <div class="check">✅</div>
@@ -737,6 +884,7 @@
           <button type="button" class="btn btn-ghost" data-modal-close style="margin-top: 1rem;">Close</button>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -766,6 +914,39 @@
       var cohortSelect = document.getElementById('cf-co');
       var form = document.getElementById('cohort-form');
       var errorEl = document.getElementById('cohort-form-error');
+      var promoHidden = document.getElementById('promo-hidden');
+      var promoNote = document.getElementById('promo-form-note');
+      var promoAgree = document.getElementById('promo-agree');
+      var promoConfirmBtn = document.getElementById('promo-confirm-btn');
+      var promoStep1Note = document.getElementById('promo-step1-done-note');
+      var claudeStepList = document.getElementById('claude-step-list');
+
+      // Sequential progress for the mandatory Claude 3-step flow.
+      // Persists for the browsing session so re-opening the modal keeps progress.
+      var claudeProgress = { '1': false, '2': false, '3': false };
+
+      function refreshClaudeSteps() {
+        if (!claudeStepList) return;
+        // Nothing is ever locked — every step stays clickable. We just highlight
+        // the first not-yet-done step in green as "start here", and check off done ones.
+        var nextFound = false;
+        claudeStepList.querySelectorAll('.step-item').forEach(function (item) {
+          var id = item.dataset.stepId;
+          var done = !!claudeProgress[id];
+          var isNext = !done && !nextFound;
+          if (isNext) nextFound = true;
+          item.classList.toggle('is-done', done);
+          item.classList.toggle('is-current', isNext);
+          var action = item.querySelector('button, a');
+          if (action) {
+            action.classList.remove('btn-step-green', 'btn-ghost');
+            action.classList.add(isNext ? 'btn-step-green' : 'btn-ghost');
+            action.textContent = done ? '✓ Done' : (id === '1' ? 'Start' : (id === '2' ? 'Open' : 'Apply'));
+          }
+          var numEl = item.querySelector('.step-num');
+          if (numEl) numEl.textContent = done ? '✓' : id;
+        });
+      }
 
       function showStep(name) {
         modal.querySelectorAll('.step').forEach(function (s) {
@@ -777,7 +958,18 @@
         labelEchos.forEach(function (el) { el.textContent = label || '—'; });
         cohortHidden.value = cohort || '';
         if (cohortSelect) cohortSelect.value = cohort || '';
-        showStep('member-check');
+        if (promoAgree) promoAgree.checked = false;
+        if (promoConfirmBtn) promoConfirmBtn.disabled = true;
+        if (promoStep1Note) promoStep1Note.style.display = 'none';
+        if (cohort === 'cca-f') {
+          if (promoHidden) promoHidden.value = 'claude-exam-2026-promo-flow';
+          if (promoNote) promoNote.classList.add('is-visible');
+          refreshClaudeSteps();
+        } else {
+          if (promoHidden) promoHidden.value = '';
+          if (promoNote) promoNote.classList.remove('is-visible');
+        }
+        showStep(cohort === 'cca-f' ? 'member-check-claude' : 'member-check-drone');
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -805,9 +997,44 @@
 
       modal.querySelectorAll('[data-answer]').forEach(function (b) {
         b.addEventListener('click', function () {
-          showStep(b.dataset.answer === 'yes' ? 'member-form' : 'not-member');
+          var answer = b.dataset.answer;
+          if (answer === 'yes') {
+            showStep('member-form');
+          } else {
+            showStep('not-member');
+          }
         });
       });
+
+      // Claude cohort's 3-step checklist — every step stays clickable, in any order
+      claudeStepList && claudeStepList.querySelectorAll('button[data-step-goto]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.dataset.stepGoto === 'promo' && promoStep1Note) {
+            promoStep1Note.style.display = 'none';
+          }
+          showStep(b.dataset.stepGoto);
+        });
+      });
+      var claudeStep3Link = claudeStepList ? claudeStepList.querySelector('a[data-step-id="3"]') : null;
+      if (claudeStep3Link) {
+        claudeStep3Link.addEventListener('click', function () {
+          claudeProgress['3'] = true;
+          refreshClaudeSteps();
+        });
+      }
+
+      // Step 2 — promo checkbox gates the confirm button; confirming marks Step 2 done
+      if (promoAgree && promoConfirmBtn) {
+        promoAgree.addEventListener('change', function () {
+          promoConfirmBtn.disabled = !promoAgree.checked;
+        });
+        promoConfirmBtn.addEventListener('click', function () {
+          if (!promoAgree.checked) return;
+          claudeProgress['2'] = true;
+          refreshClaudeSteps();
+          showStep('member-check-claude');
+        });
+      }
 
       // Cohort form validation + submission
       var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -829,6 +1056,28 @@
         el.addEventListener('input', function () { if (el.classList.contains('invalid')) validateField(el); });
       });
 
+      // Gate the submit button until every mandatory field is filled in and valid
+      var cohortSubmitBtn = form.querySelector('[type="submit"]');
+      function cohortFormIsValid() {
+        var ok = true;
+        form.querySelectorAll('[required]').forEach(function (el) {
+          var v = (el.value || '').trim();
+          if (!v) { ok = false; return; }
+          if (el.type === 'email' && !EMAIL_RE.test(v)) ok = false;
+          if (el.type === 'tel' && !PHONE_RE.test(v)) ok = false;
+        });
+        return ok;
+      }
+      function refreshCohortSubmitState() {
+        cohortSubmitBtn.disabled = !cohortFormIsValid();
+      }
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        el.addEventListener('input', refreshCohortSubmitState);
+        el.addEventListener('change', refreshCohortSubmitState);
+        el.addEventListener('blur', refreshCohortSubmitState);
+      });
+      refreshCohortSubmitState();
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var allValid = true;
@@ -841,8 +1090,9 @@
         }
         errorEl.classList.remove('is-visible');
 
-        var submitBtn = form.querySelector('[type="submit"]');
+        var submitBtn = cohortSubmitBtn;
         var originalText = submitBtn.textContent;
+        var wasClaudeFlow = cohortHidden.value === 'cca-f';
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
 
@@ -852,9 +1102,16 @@
           mode: 'no-cors'
         }).then(function () {
           form.reset();
-          submitBtn.disabled = false;
           submitBtn.textContent = originalText;
-          showStep('success');
+          refreshCohortSubmitState();
+          if (wasClaudeFlow) {
+            claudeProgress['1'] = true;
+            refreshClaudeSteps();
+            if (promoStep1Note) promoStep1Note.style.display = 'block';
+            showStep('promo');
+          } else {
+            showStep('success');
+          }
         }).catch(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = originalText;
