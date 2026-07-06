@@ -361,6 +361,8 @@ window.TL_I18N = {
     "membership.faq6.a": "Membership fees fund the basic running costs of the association — IT infrastructure, payment processing, printed materials and member swag, the annual Summer Party, and the day-to-day operational costs of running TechLegion. They also let us keep our study groups and members-only events free for everyone in the association. Every franc is reinvested in the community.",
     "membership.faq7.q": "How do you handle my data?",
     "membership.faq7.a": "We process membership data only for managing your membership, billing and communications you opted into. See our <a href=\"privacy.html\">Privacy Policy</a> for the full breakdown — we follow Swiss FADP and GDPR.",
+    "membership.faq8.q": "What happens if I don't pass the Claude exam by 1 September?",
+    "membership.faq8.a": "Under the Complimentary Membership Agreement, TechLegion only waives your CHF 100 Personal membership fee for 2026 if you pass the official Claude exam by 1 September 2026. If you don't pass, never register for the exam, or withdraw from the cohort, entitlement to the free membership lapses and the standard CHF 100 Personal membership fee automatically becomes due — payable in full within 30 days, by 1 October 2026. See the <a href=\"complimentary-agreement.html\">Complimentary Agreement</a> for the full terms.",
 
     /* ---------- Team ---------- */
     "team.title": "Team",
@@ -1049,6 +1051,8 @@ window.TL_I18N = {
     "membership.faq6.a": "Die Mitgliedsbeiträge finanzieren die Grundbetriebskosten des Vereins — IT-Infrastruktur, Zahlungsabwicklung, Druckmaterialien und Mitglieder-Swag, die jährliche Summer Party und die laufenden Betriebskosten von TechLegion. Sie ermöglichen es uns ausserdem, unsere Lerngruppen und Events nur für Mitglieder für alle im Verein kostenlos zu halten. Jeder Franken fliesst zurück in die Community.",
     "membership.faq7.q": "Wie geht ihr mit meinen Daten um?",
     "membership.faq7.a": "Wir verarbeiten Mitgliedsdaten ausschliesslich zur Verwaltung deiner Mitgliedschaft, für die Abrechnung und für Kommunikation, der du zugestimmt hast. Die vollständige Aufschlüsselung findest du in unserer <a href=\"privacy.html\">Datenschutzerklärung</a> — wir folgen dem Schweizer DSG und der DSGVO.",
+    "membership.faq8.q": "Was passiert, wenn ich die Claude-Prüfung nicht bis zum 1. September bestehe?",
+    "membership.faq8.a": "Gemäss der Ergänzungsvereinbarung zur kostenlosen Mitgliedschaft erlässt dir TechLegion den Jahresbeitrag von CHF 100 für 2026 nur, wenn du die offizielle Claude-Prüfung bis zum 1. September 2026 bestehst. Bestehst du die Prüfung nicht, meldest du dich nie dafür an oder trittst du aus dem Cohort zurück, entfällt der Anspruch auf die kostenlose Mitgliedschaft und der ordentliche Jahresbeitrag von CHF 100 wird automatisch fällig — zahlbar vollständig innert 30 Tagen, spätestens bis zum 1. Oktober 2026. Die vollständigen Bedingungen findest du in der <a href=\"complimentary-agreement.html\">Ergänzungsvereinbarung</a>.",
 
     "team.title": "Team",
     "team.lead": "Lerne die Freiwilligen, Organisator:innen und Operator:innen hinter TechLegion Schweiz kennen.",
@@ -1728,6 +1732,8 @@ window.TL_I18N = {
     "membership.faq6.a": "Les cotisations financent les coûts de fonctionnement de base de l'association — infrastructure informatique, traitement des paiements, supports imprimés et goodies pour les membres, la Summer Party annuelle et les coûts opérationnels courants de TechLegion. Elles nous permettent aussi de garder nos groupes d'étude et nos événements réservés aux membres gratuits pour tous au sein de l'association. Chaque franc est réinvesti dans la communauté.",
     "membership.faq7.q": "Comment gérez-vous mes données ?",
     "membership.faq7.a": "Nous traitons les données d'adhésion uniquement pour gérer votre adhésion, la facturation et les communications auxquelles vous avez consenti. Consultez notre <a href=\"privacy.html\">Politique de confidentialité</a> pour le détail complet — nous respectons la LPD suisse et le RGPD.",
+    "membership.faq8.q": "Que se passe-t-il si je ne réussis pas l'examen Claude avant le 1er septembre ?",
+    "membership.faq8.a": "Selon l'Accord complémentaire d'adhésion gratuite, TechLegion ne renonce à votre cotisation annuelle de CHF 100 pour 2026 que si vous réussissez l'examen Claude officiel avant le 1er septembre 2026. Si vous ne le réussissez pas, ne vous inscrivez jamais à l'examen, ou vous retirez de la cohorte, le droit à l'adhésion gratuite s'éteint et la cotisation annuelle standard de CHF 100 devient automatiquement exigible — payable intégralement sous 30 jours, au plus tard le 1er octobre 2026. Consultez l'<a href=\"complimentary-agreement.html\">Accord complémentaire</a> pour les conditions complètes.",
 
     "team.title": "Équipe",
     "team.lead": "Rencontrez les bénévoles, organisateurs et opérateurs derrière TechLegion Suisse.",
@@ -2407,6 +2413,8 @@ window.TL_I18N = {
     "membership.faq6.a": "Le quote associative finanziano i costi di gestione di base dell'associazione — infrastruttura IT, elaborazione dei pagamenti, materiali stampati e gadget per i membri, la Summer Party annuale e i costi operativi quotidiani di TechLegion. Ci permettono inoltre di mantenere gratuiti i gruppi di studio e gli eventi riservati ai membri per tutti nell'associazione. Ogni franco viene reinvestito nella community.",
     "membership.faq7.q": "Come gestite i miei dati?",
     "membership.faq7.a": "Trattiamo i dati di iscrizione solo per gestire la tua iscrizione, la fatturazione e le comunicazioni a cui hai aderito. Consulta la nostra <a href=\"privacy.html\">Privacy Policy</a> per il dettaglio completo — seguiamo la LPD svizzera e il GDPR.",
+    "membership.faq8.q": "Cosa succede se non supero l'esame Claude entro il 1° settembre?",
+    "membership.faq8.a": "Secondo l'Accordo complementare di iscrizione gratuita, TechLegion rinuncia alla tua quota associativa annuale di CHF 100 per il 2026 solo se superi l'esame ufficiale Claude entro il 1° settembre 2026. Se non lo superi, non ti iscrivi mai all'esame o ti ritiri dalla coorte, il diritto all'iscrizione gratuita decade e la quota associativa standard di CHF 100 diventa automaticamente dovuta — pagabile per intero entro 30 giorni, al più tardi entro il 1° ottobre 2026. Consulta l'<a href=\"complimentary-agreement.html\">Accordo complementare</a> per i termini completi.",
 
     "team.title": "Team",
     "team.lead": "Incontra i volontari, gli organizzatori e gli operatori dietro TechLegion Svizzera.",
@@ -3086,6 +3094,8 @@ window.TL_I18N = {
     "membership.faq6.a": "Членські внески фінансують базові операційні витрати асоціації — ІТ-інфраструктуру, обробку платежів, друковані матеріали та мерч для членів, щорічну Summer Party та щоденні операційні витрати TechLegion. Вони також дозволяють нам тримати навчальні групи та події лише для членів безкоштовними для всіх в асоціації. Кожен франк реінвестується у спільноту.",
     "membership.faq7.q": "Як ви обробляєте мої дані?",
     "membership.faq7.a": "Ми обробляємо дані про членство лише для управління вашим членством, виставлення рахунків і комунікацій, на які ви погодилися. Повний опис дивіться в нашій <a href=\"privacy.html\">Політиці приватності</a> — ми дотримуємося швейцарського FADP і GDPR.",
+    "membership.faq8.q": "Що станеться, якщо я не складу іспит Claude до 1 вересня?",
+    "membership.faq8.a": "Згідно з Додатковою угодою про безкоштовне членство, TechLegion скасовує ваш річний членський внесок CHF 100 за 2026 рік лише якщо ви складете офіційний іспит Claude до 1 вересня 2026 року. Якщо ви не складете іспит, ніколи не зареєструєтеся на нього або вийдете з когорти, право на безкоштовне членство втрачається, і стандартний річний внесок CHF 100 автоматично стає належним до сплати — повністю протягом 30 днів, не пізніше 1 жовтня 2026 року. Повні умови дивіться в <a href=\"complimentary-agreement.html\">Додатковій угоді</a>.",
 
     "team.title": "Команда",
     "team.lead": "Познайомтеся з волонтерами, організаторами й операторами TechLegion Switzerland.",
