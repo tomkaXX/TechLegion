@@ -289,7 +289,7 @@
 
     /* Hero intro — wide enough not to squeeze three paragraphs into a tall column */
     .amb-hero {
-      max-width: 900px;
+      max-width: 820px;
       margin: 0 auto;
       text-align: center;
     }
@@ -335,15 +335,15 @@
     <div class="hero-shape s3"></div>
     <div class="container" style="position: relative;">
       <div class="section-head fade-in amb-hero">
-        <span class="eyebrow">Community</span>
-        <h1>TechLegion <span class="accent">Ambassadors</span></h1>
-        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dim);">
+        <span class="eyebrow" data-i18n="amb.eyebrow">Community</span>
+        <h1>TechLegion <span class="accent" data-i18n="amb.title.word">Ambassadors</span></h1>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dim);" data-i18n="amb.hero.p1">
           TechLegion Ambassadors are technology professionals, researchers and innovators who carry our mission beyond Switzerland's borders. They bridge communities, open doors to world-class facilities, bring global perspectives into the Swiss tech ecosystem — and inspire the next generation of builders through their expertise and example.
         </p>
-        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);">
+        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);" data-i18n="amb.hero.p2">
           Every ambassador represents a different domain, country and career path — but they share one conviction: that open, cross-border collaboration is how breakthrough technology gets built. By connecting TechLegion members to their networks, mentoring emerging talent, and co-creating events and programs, our ambassadors are the human infrastructure that makes the community thrive.
         </p>
-        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);">
+        <p style="margin-top: 0.85rem; line-height: 1.7; color: var(--text-dim);" data-i18n="amb.hero.p3">
           Our ambassadors excel in their professional fields, and we're proud to have them with us — the high standards they hold themselves to help define the standards of our community as well.
         </p>
       </div>
@@ -356,15 +356,15 @@
       <div class="grid grid-3 fade-in" style="gap: 1rem;">
         <div class="card" style="text-align:center; padding: 1.25rem;">
           <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white);">🌍</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Across multiple countries</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="amb.stats.countries">Across multiple countries</div>
         </div>
         <div class="card" style="text-align:center; padding: 1.25rem;">
           <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--accent-glow);">10+</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Domains of expertise</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="amb.stats.domains">Domains of expertise</div>
         </div>
         <div class="card" style="text-align:center; padding: 1.25rem;">
           <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white);">🤝</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Volunteering their expertise</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="amb.stats.volunteering">Volunteering their expertise</div>
         </div>
       </div>
     </div>
@@ -374,25 +374,25 @@
   <section id="ambassadors">
     <div class="container">
       <div class="section-head fade-in">
-        <span class="tag">🏅 Our ambassadors</span>
-        <h2>Meet the ambassadors</h2>
-        <p>Click any card to read a full profile, including their motivation for joining the TechLegion ambassador programme.</p>
+        <span class="tag" data-i18n="amb.grid.tag">🏅 Our ambassadors</span>
+        <h2 data-i18n="amb.grid.title">Meet the ambassadors</h2>
+        <p data-i18n="amb.grid.lead">Click any card to read a full profile, including their motivation for joining the TechLegion ambassador programme.</p>
       </div>
 
       <!-- Filter bar -->
       <div class="filter-bar fade-in" id="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">🤖 AI</button>
-        <button class="filter-btn" data-filter="cloud">☁️ Cloud</button>
-        <button class="filter-btn" data-filter="cyber">🔐 Cybersecurity</button>
-        <button class="filter-btn" data-filter="data">📊 Data</button>
-        <button class="filter-btn" data-filter="energy">⚡ Energy</button>
-        <button class="filter-btn" data-filter="fintech">💳 Fintech</button>
-        <button class="filter-btn" data-filter="hardware">🔩 Hardware</button>
-        <button class="filter-btn" data-filter="robotics">🦾 Robotics</button>
-        <button class="filter-btn" data-filter="space">🛰️ Space</button>
-        <button class="filter-btn" data-filter="web3">🔗 Web3</button>
-        <button class="filter-btn" data-filter="hr">🧩 People &amp; HR</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="amb.filter.all">All</button>
+        <button class="filter-btn" data-filter="ai" data-i18n="amb.filter.ai">🤖 AI</button>
+        <button class="filter-btn" data-filter="cloud" data-i18n="amb.filter.cloud">☁️ Cloud</button>
+        <button class="filter-btn" data-filter="cyber" data-i18n="amb.filter.cyber">🔐 Cybersecurity</button>
+        <button class="filter-btn" data-filter="data" data-i18n="amb.filter.data">📊 Data</button>
+        <button class="filter-btn" data-filter="energy" data-i18n="amb.filter.energy">⚡ Energy</button>
+        <button class="filter-btn" data-filter="fintech" data-i18n="amb.filter.fintech">💳 Fintech</button>
+        <button class="filter-btn" data-filter="hardware" data-i18n="amb.filter.hardware">🔩 Hardware</button>
+        <button class="filter-btn" data-filter="robotics" data-i18n="amb.filter.robotics">🦾 Robotics</button>
+        <button class="filter-btn" data-filter="space" data-i18n="amb.filter.space">🛰️ Space</button>
+        <button class="filter-btn" data-filter="web3" data-i18n="amb.filter.web3">🔗 Web3</button>
+        <button class="filter-btn" data-filter="hr" data-i18n="amb.filter.hr">🧩 People &amp; HR</button>
       </div>
 
       <!-- Ambassador cards -->
@@ -447,12 +447,12 @@
 
               <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                View LinkedIn profile
+                <span data-i18n="amb.card.linkedin">View LinkedIn profile</span>
               </a>
             </div>
           </div>
 
-          <button class="amb-toggle" aria-expanded="false">
+          <button class="amb-toggle" aria-expanded="false" data-i18n="amb.card.readmore">
             Read full profile
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -489,12 +489,12 @@
               </div>
               <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                View LinkedIn profile
+                <span data-i18n="amb.card.linkedin">View LinkedIn profile</span>
               </a>
             </div>
           </div>
 
-          <button class="amb-toggle" aria-expanded="false">
+          <button class="amb-toggle" aria-expanded="false" data-i18n="amb.card.readmore">
             Read full profile
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -532,12 +532,12 @@
               </div>
               <a href="https://linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener" class="amb-linkedin">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                View LinkedIn profile
+                <span data-i18n="amb.card.linkedin">View LinkedIn profile</span>
               </a>
             </div>
           </div>
 
-          <button class="amb-toggle" aria-expanded="false">
+          <button class="amb-toggle" aria-expanded="false" data-i18n="amb.card.readmore">
             Read full profile
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -548,11 +548,11 @@
       <!-- Become an ambassador CTA -->
       <div class="amb-cta fade-in">
         <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🌟</div>
-        <h3>Become a TechLegion Ambassador</h3>
-        <p>Are you a technology professional, researcher, or innovator who believes in the power of community and cross-border collaboration? We're always looking for passionate people to join our ambassador programme. This call for ambassadors is ongoing and not limited in time. If you feel this is something you want and have the time for it — we expect ambassadors to be actively involved in TechLegion communications, projects and mentorship sessions.</p>
+        <h3 data-i18n="amb.cta.title">Become a TechLegion Ambassador</h3>
+        <p data-i18n="amb.cta.body">Are you a technology professional, researcher, or innovator who believes in the power of community and cross-border collaboration? We're always looking for passionate people to join our ambassador programme. This call for ambassadors is ongoing and not limited in time. If you feel this is something you want and have the time for it — we expect ambassadors to be actively involved in TechLegion communications, projects and mentorship sessions.</p>
         <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center;">
-          <a href="contact.html" class="btn btn-primary btn-lg">Apply to become an ambassador</a>
-          <a href="membership.html" class="btn btn-ghost btn-lg">Explore membership first</a>
+          <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="amb.cta.apply">Apply to become an ambassador</a>
+          <a href="membership.html" class="btn btn-ghost btn-lg" data-i18n="amb.cta.explore">Explore membership first</a>
         </div>
       </div>
 
@@ -620,10 +620,15 @@
         var isOpen = card.classList.toggle('is-open');
         toggle.setAttribute('aria-expanded', isOpen);
         expanded.setAttribute('aria-hidden', !isOpen);
-        toggle.querySelector('span') && (toggle.querySelector('span').textContent = isOpen ? 'Show less' : 'Read full profile');
+        var lang = (document.documentElement.lang === 'uk' ? 'ua' : document.documentElement.lang) || 'en';
+        var dict = (window.TL_I18N && window.TL_I18N[lang]) || (window.TL_I18N && window.TL_I18N.en) || {};
+        var fallback = (window.TL_I18N && window.TL_I18N.en) || {};
+        var label = isOpen
+          ? (dict['amb.card.showless'] || fallback['amb.card.showless'] || 'Show less')
+          : (dict['amb.card.readmore'] || fallback['amb.card.readmore'] || 'Read full profile');
         // Update text node directly
         toggle.childNodes.forEach(function(n) {
-          if (n.nodeType === 3) n.textContent = isOpen ? 'Show less ' : 'Read full profile ';
+          if (n.nodeType === 3) n.textContent = label + ' ';
         });
       });
     });

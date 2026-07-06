@@ -56,6 +56,13 @@
       }
     });
 
+    // rich text (paragraphs with inline <strong>/<a> markup that need real HTML)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const val = dict[key] || fallback[key];
+      if (val !== undefined) el.innerHTML = val;
+    });
+
     // attributes (placeholder, title, aria-label, value)
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
