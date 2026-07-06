@@ -18,6 +18,7 @@
   <meta property="og:description" content="Our mission, vision and values — a community-driven Swiss tech association." />
   <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
   <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/about.html" />
   <link rel="alternate" hreflang="en" href="https://techlegion.ch/about.html?lang=en" />
   <link rel="alternate" hreflang="de" href="https://techlegion.ch/about.html?lang=de" />
   <link rel="alternate" hreflang="fr" href="https://techlegion.ch/about.html?lang=fr" />
@@ -31,6 +32,11 @@
   <style>
     body section { padding-top: 20px !important; padding-bottom: 20px !important; }
     body section[style*="padding-top: 4rem"] { padding-top: 4rem !important; }
+    .about-hero { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .about-hero p { max-width: none; }
+    @media (max-width: 640px) {
+      .about-hero { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -67,7 +73,7 @@
 
   <section style="padding-top: 4rem;">
     <div class="container">
-      <div class="section-head fade-in">
+      <div class="section-head about-hero fade-in">
         <span class="eyebrow" data-i18n="nav.about">About</span>
         <h1 data-i18n="about.title">About TechLegion</h1>
         <p data-i18n="about.lead">TechLegion is a community of technology enthusiasts, builders, and innovators dedicated to learning, collaboration, and open-source contributions. The community is known for organizing the NASA Space Apps Challenge hackathons in Zurich in 2024 and 2025, bringing together participants from diverse backgrounds to solve real-world challenges. TechLegion also actively supports open-source ecosystems through translation and localization efforts for projects such as PX4 and other technology initiatives, helping make cutting-edge tools more accessible to global communities. As a member of the Anthropic Claude Partner Network, TechLegion is committed to supporting AI transformation in Switzerland and accelerating the adoption of the newest technologies across the Swiss tech ecosystem.</p>
