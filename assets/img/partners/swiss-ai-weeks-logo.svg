@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <linearGradient id="saw-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4136"/>
+      <stop offset="45%" stop-color="#c22aa0"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="saw-badge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="400" fill="url(#saw-bg)"/>
+  <rect x="335" y="70" width="230" height="260" rx="60" fill="url(#saw-badge)"/>
+  <text x="450" y="215" font-family="'Space Grotesk', Arial, sans-serif" font-size="52" font-weight="500" fill="#ffffff" text-anchor="middle">Swiss<tspan font-weight="700">{ai}</tspan>Weeks</text>
+</svg>
