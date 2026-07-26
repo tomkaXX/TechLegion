@@ -86,7 +86,36 @@
         <p data-i18n="events.tours.lead">Behind-the-scenes visits to leading technology facilities across Switzerland and Europe — exclusively for TechLegion members and friends. Priority registration for association members.</p>
       </div>
 
-      <div class="grid grid-3 fade-in" style="margin-top: 1.5rem;">
+      <div class="h-gallery fade-in">
+
+        <!-- Limmern Pumped-Storage — NEW / APPLICATIONS OPEN -->
+        <div class="card card-highlight" style="position:relative; overflow:hidden;">
+          <span style="
+            position:absolute; top:1rem; right:1rem;
+            background: rgba(77,139,255,0.15);
+            border: 1px solid rgba(77,139,255,0.5);
+            color: var(--accent-glow);
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.tour4.badge">🆕 New · Applications open</span>
+          <div class="card-icon">💧</div>
+          <h4>Limmern Pumped-Storage Power Station – Hike and Guided Tour</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <strong style="color:var(--text);">29 August 2026</strong> · Linthal / Tierfehd, Glarus
+          </p>
+          <p data-i18n="events.tour4.body1">Wanna hike and go on a tour? Join us for a scenic hike followed by a guided visit to the Limmern Pumped-Storage Power Station, one of Switzerland's most impressive engineering achievements.</p>
+          <p style="margin-top:0.6rem;" data-i18n="events.tour4.body2">During the tour, we'll explore the underground power station and learn how the facility stores energy by pumping water from Lake Limmern to Lake Mutt, located 630 metres higher. This innovative pumped-storage system enables electricity to be generated on demand, helping to balance the power grid and support the integration of renewable energy sources.</p>
+          <p style="margin-top:0.6rem;" data-i18n="events.tour4.body3">Tours begin and end in Tierfehd.</p>
+          <ul style="list-style:none; padding:0; margin: 1rem 0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem; color: var(--text-dim);">
+            <li data-i18n-html="events.tour4.li1">🥾 <strong style="color:var(--text);">Hike:</strong> Moderate difficulty</li>
+            <li data-i18n-html="events.tour4.li2">👥 <strong style="color:var(--text);">Minimum group:</strong> 6 people</li>
+            <li data-i18n-html="events.tour4.li3">💰 <strong style="color:var(--text);">Cost:</strong> CHF 20 per person (paid to Axpo)</li>
+            <li data-i18n-html="events.tour4.li4">🚡 <strong style="color:var(--text);">Gondola:</strong> CHF 15 per person (additional)</li>
+          </ul>
+          <div style="margin-top: 1.25rem;">
+            <a href="#tour-register" class="btn btn-primary" data-preselect-tour="limmern-29-aug-2026" data-i18n="events.tourform.registernow">Register now</a>
+          </div>
+        </div>
 
         <!-- Beznau & Zwillag — COMPLETED -->
         <div class="card" style="position:relative; overflow:hidden;">
@@ -211,6 +240,7 @@
             <label data-i18n="events.tourform.tourlabel">Which tour are you registering for? *</label>
             <select name="tour_choice" required>
               <option value="" data-i18n="events.tourform.tourplaceholder">— Select a tour —</option>
+              <option value="limmern-29-aug-2026" data-i18n="events.tour4.optlabel">Limmern Pumped-Storage Power Station — 29 August 2026</option>
             </select>
           </div>
 
@@ -442,7 +472,22 @@
     var TOUR_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
 
     // Human-readable tour labels for the confirmation modal
-    var TOUR_LABELS = {};
+    var TOUR_LABELS = {
+      'limmern-29-aug-2026': 'Limmern Pumped-Storage Power Station tour on 29 August 2026'
+    };
+
+    // Generic "Register now" preselect — any tour card can add
+    // data-preselect-tour="<option-value>" to its CTA and this will
+    // jump to the form with that tour pre-selected, so future tours
+    // stay reachable without extra wiring.
+    document.querySelectorAll('[data-preselect-tour]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var sel = document.querySelector('select[name="tour_choice"]');
+        if (!sel) return;
+        sel.value = el.getAttribute('data-preselect-tour');
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
 
     (function () {
       var form = document.getElementById('tour-form');

@@ -475,6 +475,34 @@ section { padding: clamp(3.5rem, 7vw, 6rem) 0; position: relative; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
+/* Horizontal scrolling gallery — used for Study Tours so new tours are
+   simply appended and stay reachable by scrolling, instead of squeezing
+   a fixed-column grid every time a new tour is added. */
+.h-gallery {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 0.25rem 0.25rem 1.25rem;
+  margin: 1.5rem -0.25rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.h-gallery::-webkit-scrollbar { height: 8px; }
+.h-gallery::-webkit-scrollbar-track { background: transparent; }
+.h-gallery::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+.h-gallery > .card {
+  flex: 0 0 min(360px, 85vw);
+  scroll-snap-align: start;
+}
+.h-gallery > .card.card-highlight {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 32px rgba(77, 139, 255, 0.35);
+}
+@media (max-width: 720px) {
+  .h-gallery { scroll-snap-type: x mandatory; }
+}
+
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
