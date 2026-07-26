@@ -55,7 +55,7 @@ var COHORT_HEADERS = [
 var CONTACT_HEADERS = [
   'Timestamp',
   'First name', 'Last name',
-  'Email', 'Phone',
+  'Email', 'Phone', 'LinkedIn',
   'Message',
   'Newsletter opt-in'
 ];
@@ -158,6 +158,7 @@ function handleContact(p) {
     p.last_name || '',
     p.email || '',
     p.phone || '',
+    p.linkedin || '',
     p.message || '',
     yesNo(p.newsletter)
   ]);
