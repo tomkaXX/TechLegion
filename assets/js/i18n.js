@@ -600,7 +600,10 @@ window.TL_I18N = {
     "ss.promo.title": "Pass the Claude exam, get a free TechLegion membership for 2026",
     "ss.promo.body": "Thanks to our partners and <strong>Anthropic Claude Partner Network</strong>, anyone who registers for the Claude AI Architect cohort below and <strong>successfully passes the official Claude exam by 1 September 2026</strong> gets a <strong>complimentary Personal membership through 31 December 2026</strong> — normally <strong>CHF 100/year</strong>. That's full access to the entire Summer School, no membership fee.",
     "ss.promo.note": "Claiming the offer requires signing our <a href=\"complimentary-agreement.html\" target=\"_blank\" rel=\"noopener\">Complimentary Membership Agreement</a>, which supplements the standard TechLegion Membership Agreement.",
-    "ss.promo.btn.join": "Join the Claude cohort",
+    "ss.promo.btn.join": "See cohort details",
+    "ss.c1.closed.badge": "🔒 Applications closed",
+    "ss.c1.closed.btn": "Applications closed",
+    "ss.c1.closed.note": "We are not accepting new applications for the Claude AI Architect cohort at this time.",
     "ss.promo.btn.read": "Read the agreement",
 
     /* ---------- Summer School — intro cards ---------- */
@@ -1293,7 +1296,10 @@ window.TL_I18N = {
     "ss.promo.title": "Bestehe die Claude-Prüfung und erhalte eine kostenlose TechLegion-Mitgliedschaft für 2026",
     "ss.promo.body": "Dank unserer Partner und des <strong>Anthropic Claude Partner Network</strong> erhält jede Person, die sich unten für die Claude AI Architect-Kohorte anmeldet und <strong>die offizielle Claude-Prüfung bis zum 1. September 2026 erfolgreich besteht</strong>, eine <strong>kostenlose Personal-Mitgliedschaft bis zum 31. Dezember 2026</strong> — normalerweise <strong>CHF 100/Jahr</strong>. Das bedeutet vollen Zugang zur gesamten Summer School, ohne Mitgliedsbeitrag.",
     "ss.promo.note": "Um das Angebot zu beanspruchen, musst du unsere <a href=\"complimentary-agreement.html\" target=\"_blank\" rel=\"noopener\">Ergänzende Mitgliedschaftsvereinbarung</a> unterzeichnen, welche die reguläre TechLegion-Mitgliedschaftsvereinbarung ergänzt.",
-    "ss.promo.btn.join": "Der Claude-Kohorte beitreten",
+    "ss.promo.btn.join": "Kohorten-Details ansehen",
+    "ss.c1.closed.badge": "🔒 Anmeldung geschlossen",
+    "ss.c1.closed.btn": "Anmeldung geschlossen",
+    "ss.c1.closed.note": "Wir nehmen derzeit keine neuen Anmeldungen für die Claude AI Architect-Kohorte an.",
     "ss.promo.btn.read": "Vereinbarung lesen",
 
     /* ---------- Summer School — intro cards ---------- */
@@ -1986,7 +1992,10 @@ window.TL_I18N = {
     "ss.promo.title": "Réussissez l'examen Claude, obtenez une adhésion TechLegion gratuite pour 2026",
     "ss.promo.body": "Grâce à nos partenaires et au <strong>Anthropic Claude Partner Network</strong>, toute personne qui s'inscrit à la cohorte Claude AI Architect ci-dessous et <strong>réussit l'examen officiel Claude avant le 1er septembre 2026</strong> obtient une <strong>adhésion Personal gratuite jusqu'au 31 décembre 2026</strong> — normalement <strong>CHF 100/an</strong>. Cela signifie un accès complet à toute la Summer School, sans frais d'adhésion.",
     "ss.promo.note": "Pour bénéficier de l'offre, vous devez signer notre <a href=\"complimentary-agreement.html\" target=\"_blank\" rel=\"noopener\">accord complémentaire d'adhésion</a>, qui complète l'accord d'adhésion standard de TechLegion.",
-    "ss.promo.btn.join": "Rejoindre la cohorte Claude",
+    "ss.promo.btn.join": "Voir les détails de la cohorte",
+    "ss.c1.closed.badge": "🔒 Inscriptions closes",
+    "ss.c1.closed.btn": "Inscriptions closes",
+    "ss.c1.closed.note": "Nous n'acceptons pas de nouvelles candidatures pour la cohorte Claude AI Architect pour le moment.",
     "ss.promo.btn.read": "Lire l'accord",
 
     /* ---------- Summer School — intro cards ---------- */
@@ -2679,7 +2688,10 @@ window.TL_I18N = {
     "ss.promo.title": "Supera l'esame Claude e ottieni un'iscrizione TechLegion gratuita per il 2026",
     "ss.promo.body": "Grazie ai nostri partner e all'<strong>Anthropic Claude Partner Network</strong>, chiunque si iscriva alla coorte Claude AI Architect qui sotto e <strong>superi con successo l'esame ufficiale Claude entro il 1° settembre 2026</strong> ottiene un'<strong>iscrizione Personal gratuita fino al 31 dicembre 2026</strong> — normalmente <strong>CHF 100/anno</strong>. Questo significa accesso completo a tutta la Summer School, senza quota di iscrizione.",
     "ss.promo.note": "Per ottenere l'offerta è necessario firmare il nostro <a href=\"complimentary-agreement.html\" target=\"_blank\" rel=\"noopener\">accordo complementare di iscrizione</a>, che integra l'accordo di iscrizione standard di TechLegion.",
-    "ss.promo.btn.join": "Unisciti alla coorte Claude",
+    "ss.promo.btn.join": "Vedi i dettagli della coorte",
+    "ss.c1.closed.badge": "🔒 Iscrizioni chiuse",
+    "ss.c1.closed.btn": "Iscrizioni chiuse",
+    "ss.c1.closed.note": "Al momento non accettiamo nuove iscrizioni per la coorte Claude AI Architect.",
     "ss.promo.btn.read": "Leggi l'accordo",
 
     /* ---------- Summer School — intro cards ---------- */
@@ -3372,7 +3384,10 @@ window.TL_I18N = {
     "ss.promo.title": "Складіть іспит Claude і отримайте безкоштовне членство TechLegion на 2026 рік",
     "ss.promo.body": "Завдяки нашим партнерам і <strong>Anthropic Claude Partner Network</strong>, будь-хто, хто зареєструється на когорту Claude AI Architect нижче та <strong>успішно складе офіційний іспит Claude до 1 вересня 2026 року</strong>, отримує <strong>безкоштовне членство Personal до 31 грудня 2026 року</strong> — зазвичай <strong>CHF 100/рік</strong>. Це повний доступ до всієї Summer School без членського внеску.",
     "ss.promo.note": "Щоб скористатися пропозицією, потрібно підписати нашу <a href=\"complimentary-agreement.html\" target=\"_blank\" rel=\"noopener\">Додаткову угоду про членство</a>, яка доповнює стандартну угоду про членство TechLegion.",
-    "ss.promo.btn.join": "Приєднатися до когорти Claude",
+    "ss.promo.btn.join": "Переглянути деталі когорти",
+    "ss.c1.closed.badge": "🔒 Реєстрацію закрито",
+    "ss.c1.closed.btn": "Реєстрацію закрито",
+    "ss.c1.closed.note": "Наразі ми не приймаємо нові заявки на когорту Claude AI Architect.",
     "ss.promo.btn.read": "Прочитати угоду",
 
     /* ---------- Summer School — intro cards ---------- */
