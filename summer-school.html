@@ -459,7 +459,7 @@
         <p data-i18n-html="ss.promo.body">Thanks to our partners and <strong>Anthropic Claude Partner Network</strong>, anyone who registers for the Claude AI Architect cohort below and <strong>successfully passes the official Claude exam by 1 September 2026</strong> gets a <strong>complimentary Personal membership through 31 December 2026</strong> — normally <strong>CHF 100/year</strong>. That's full access to the entire Summer School, no membership fee.</p>
         <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.85rem;" data-i18n-html="ss.promo.note">Claiming the offer requires signing our <a href="complimentary-agreement.html" target="_blank" rel="noopener">Complimentary Membership Agreement</a>, which supplements the standard TechLegion Membership Agreement.</p>
         <div class="ss-hero-actions" style="margin-top: 1rem;">
-          <a href="#cca-f" class="btn btn-primary btn-lg" data-i18n="ss.promo.btn.join">See cohort details</a>
+          <a href="#cca-f" class="btn btn-primary btn-lg" data-i18n="ss.promo.btn.join">Join the Claude cohort</a>
           <a href="complimentary-agreement.html" target="_blank" rel="noopener" class="btn btn-ghost btn-lg" data-i18n="ss.promo.btn.read">Read the agreement</a>
         </div>
       </div>
@@ -501,7 +501,6 @@
         <div>
           <div class="crumb" data-i18n-html="ss.c1.crumb">TechLegion · <span>Summer School 2026</span> · Cohort 1</div>
           <span class="cohort-tag" data-i18n="ss.c1.tag">🤖 Anthropic · Level 3</span>
-          <span class="cohort-tag" style="background: rgba(150,150,150,0.15); border-color: rgba(150,150,150,0.4); color:#9ca3af;" data-i18n="ss.c1.closed.badge">🔒 Applications closed</span>
           <h3>Claude Certified Architect — Foundations (CCA-F)</h3>
           <p class="cohort-lead" data-i18n="ss.c1.lead">Certification study group for Anthropic's official proctored exam. Validates whether a practitioner can design and ship production-grade Claude applications at enterprise scale.</p>
 
@@ -582,8 +581,7 @@
           <div class="promo-row">
             <span><span class="promo-label" data-i18n="ss.promo.row.label">🎁 Pass by 1 Sep 2026</span><span class="promo-sub" data-i18n="ss.promo.row.sub">Get free TechLegion membership for 2026</span></span>
           </div>
-          <button type="button" class="btn btn-primary" disabled style="margin-top: 0.5rem; opacity:0.5; cursor:not-allowed;" data-i18n="ss.c1.closed.btn">Applications closed</button>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="ss.c1.closed.note">We are not accepting new applications for the Claude AI Architect cohort at this time.</p>
+          <button type="button" class="btn btn-primary" data-join-cohort="cca-f" data-cohort-label="Claude Certified Architect — Foundations (CCA-F)" style="margin-top: 0.5rem;" data-i18n="ss.btn.joincohort">Join the cohort</button>
         </aside>
       </div>
     </div>
@@ -851,6 +849,7 @@
             <label for="cf-co" data-i18n="ss.modal.form.course">Course selection *</label>
             <select id="cf-co" name="cohort_choice" required>
               <option value="" data-i18n="ss.modal.form.course.placeholder">— Select cohort —</option>
+              <option value="cca-f" data-i18n="ss.modal.form.course.opt1">Claude AI Architect (CCA-F)</option>
               <option value="uas" data-i18n="ss.modal.form.course.opt2">UAS Drone Pilot A1/A3</option>
             </select>
           </div>
