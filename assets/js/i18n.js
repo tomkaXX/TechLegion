@@ -430,6 +430,17 @@ window.TL_I18N = {
     "about.anthropic.body": "TechLegion is a proud member of the Anthropic Claude Partner Network. We are committed to supporting AI transformation across Switzerland — helping individuals, startups, and organisations understand, adopt, and responsibly apply the newest AI technologies to shape a better future.",
     "about.anthropic.btn": "Learn about Claude",
 
+    /* ---------- About / Ukraine partnership ---------- */
+    "about.ukraine.tag": "🇺🇦 Ukraine Partnership",
+    "about.ukraine.title": "Standing with Ukraine's tech community",
+    "about.ukraine.lead": "Since 2023, TechLegion has worked directly with Ukrainian developers, communities, and institutions — combining our focus on open technology and education with a lasting commitment to Ukraine's tech ecosystem and the people rebuilding it.",
+    "about.ukraine.item1.title": "Open-source translation: PX4 Autopilot",
+    "about.ukraine.item1.body": "In 2023, our team fully translated the PX4 Autopilot flight-control software into Ukrainian, making one of the world's leading open-source drone platforms accessible to Ukrainian developers, operators, and educators.",
+    "about.ukraine.item2.title": "Workforce integration & education",
+    "about.ukraine.item2.body": "We help Ukrainians build careers in the Swiss tech sector — combining hands-on technology education with mentorship and practical support to integrate into the Swiss workforce.",
+    "about.ukraine.item3.title": "Community & institutional partnerships",
+    "about.ukraine.item3.body": "We've built lasting collaborations with Ukrainian tech and social-impact communities, including Ukrainian Hub and Digitalizing Space, acting as a community partner that helps bring technology into social and education projects across Ukraine.",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion proudly organises Switzerland's local edition of the NASA Space Apps Challenge — the world's largest annual space hackathon. We hosted the Zurich edition in 2024 and 2025, bringing together innovators to tackle real NASA challenges.",
 
@@ -1122,6 +1133,17 @@ window.TL_I18N = {
     "about.anthropic.title": "Anthropic Claude Partner Network",
     "about.anthropic.body": "TechLegion ist stolzes Mitglied des Anthropic Claude Partner Network. Wir unterstützen die KI-Transformation in der Schweiz — und helfen Einzelpersonen, Startups und Organisationen dabei, die neuesten KI-Technologien zu verstehen, zu adaptieren und verantwortungsvoll einzusetzen.",
     "about.anthropic.btn": "Mehr über Claude erfahren",
+
+    /* ---------- About / Ukraine-Partnerschaft ---------- */
+    "about.ukraine.tag": "🇺🇦 Ukraine-Partnerschaft",
+    "about.ukraine.title": "Solidarität mit der ukrainischen Tech-Community",
+    "about.ukraine.lead": "Seit 2023 arbeitet TechLegion direkt mit ukrainischen Entwickler:innen, Communities und Institutionen zusammen — wir verbinden unseren Fokus auf offene Technologie und Bildung mit einem dauerhaften Engagement für das ukrainische Tech-Ökosystem und die Menschen, die es wiederaufbauen.",
+    "about.ukraine.item1.title": "Open-Source-Übersetzung: PX4 Autopilot",
+    "about.ukraine.item1.body": "2023 hat unser Team die Flugsteuerungssoftware PX4 Autopilot vollständig ins Ukrainische übersetzt und damit eine der weltweit führenden Open-Source-Drohnenplattformen für ukrainische Entwickler:innen, Betreiber:innen und Ausbilder:innen zugänglich gemacht.",
+    "about.ukraine.item2.title": "Integration in den Arbeitsmarkt & Bildung",
+    "about.ukraine.item2.body": "Wir helfen Ukrainer:innen dabei, im Schweizer Tech-Sektor Fuss zu fassen — mit praxisnaher Technologiebildung, Mentoring und konkreter Unterstützung bei der Integration in den Schweizer Arbeitsmarkt.",
+    "about.ukraine.item3.title": "Community- und institutionelle Partnerschaften",
+    "about.ukraine.item3.body": "Wir haben dauerhafte Kooperationen mit ukrainischen Tech- und Social-Impact-Communities aufgebaut, darunter Ukrainian Hub und Digitalizing Space, und wirken als Community-Partner mit, um Technologie in soziale und Bildungsprojekte in der Ukraine einzubringen.",
 
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organisiert stolz die Schweizer Ausgabe der NASA Space Apps Challenge — der weltweit grössten jährlichen Raumfahrt-Hackathon. Wir haben die Zürcher Ausgabe in 2024 und 2025 ausgerichtet und Innovator:innen zusammengebracht, um echte NASA-Challenges zu lösen.",
@@ -1816,6 +1838,17 @@ window.TL_I18N = {
     "about.anthropic.body": "TechLegion est fièrement membre du réseau partenaire Anthropic Claude. Nous sommes engagés à soutenir la transformation par l'IA en Suisse — en aidant les individus, les startups et les organisations à comprendre, adopter et utiliser de façon responsable les technologies IA les plus récentes.",
     "about.anthropic.btn": "En savoir plus sur Claude",
 
+    /* ---------- About / Partenariat avec l'Ukraine ---------- */
+    "about.ukraine.tag": "🇺🇦 Partenariat avec l'Ukraine",
+    "about.ukraine.title": "Aux côtés de la communauté tech ukrainienne",
+    "about.ukraine.lead": "Depuis 2023, TechLegion collabore directement avec des développeurs, des communautés et des institutions ukrainiennes — en combinant notre engagement pour la technologie ouverte et l'éducation avec un soutien durable à l'écosystème tech ukrainien et à celles et ceux qui le reconstruisent.",
+    "about.ukraine.item1.title": "Traduction open source : PX4 Autopilot",
+    "about.ukraine.item1.body": "En 2023, notre équipe a entièrement traduit en ukrainien le logiciel de pilotage automatique PX4 Autopilot, rendant ainsi l'une des principales plateformes de drones open source au monde accessible aux développeurs, opérateurs et formateurs ukrainiens.",
+    "about.ukraine.item2.title": "Intégration professionnelle & éducation",
+    "about.ukraine.item2.body": "Nous aidons les Ukrainiens à construire leur carrière dans le secteur technologique suisse — en combinant formation technologique pratique, mentorat et accompagnement concret pour s'intégrer sur le marché du travail suisse.",
+    "about.ukraine.item3.title": "Partenariats communautaires et institutionnels",
+    "about.ukraine.item3.body": "Nous avons noué des collaborations durables avec des communautés tech et à impact social ukrainiennes, dont Ukrainian Hub et Digitalizing Space, en agissant comme partenaire communautaire pour intégrer la technologie dans des projets sociaux et éducatifs à travers l'Ukraine.",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organise fièrement l'édition suisse du NASA Space Apps Challenge — le plus grand hackathon spatial annuel au monde. Nous avons accueilli l'édition zurichoise en 2024 et 2025, réunissant des innovateurs pour relever de vrais défis NASA.",
 
@@ -2509,6 +2542,17 @@ window.TL_I18N = {
     "about.anthropic.body": "TechLegion è un membro orgoglioso dell'Anthropic Claude Partner Network. Siamo impegnati a sostenere la trasformazione IA in Svizzera — aiutando individui, startup e organizzazioni a comprendere, adottare e applicare responsabilmente le più recenti tecnologie IA.",
     "about.anthropic.btn": "Scopri Claude",
 
+    /* ---------- About / Partnership con l'Ucraina ---------- */
+    "about.ukraine.tag": "🇺🇦 Partnership con l'Ucraina",
+    "about.ukraine.title": "Al fianco della comunità tech ucraina",
+    "about.ukraine.lead": "Dal 2023, TechLegion collabora direttamente con sviluppatori, comunità e istituzioni ucraine — unendo il nostro impegno per la tecnologia aperta e l'istruzione a un sostegno duraturo per l'ecosistema tech ucraino e per chi lo sta ricostruendo.",
+    "about.ukraine.item1.title": "Traduzione open source: PX4 Autopilot",
+    "about.ukraine.item1.body": "Nel 2023 il nostro team ha tradotto integralmente in ucraino il software di pilotaggio automatico PX4 Autopilot, rendendo una delle principali piattaforme open source per droni al mondo accessibile a sviluppatori, operatori e formatori ucraini.",
+    "about.ukraine.item2.title": "Integrazione lavorativa e istruzione",
+    "about.ukraine.item2.body": "Aiutiamo gli ucraini a costruire una carriera nel settore tecnologico svizzero — unendo formazione tecnologica pratica, mentorship e supporto concreto per l'integrazione nel mercato del lavoro svizzero.",
+    "about.ukraine.item3.title": "Partnership comunitarie e istituzionali",
+    "about.ukraine.item3.body": "Abbiamo costruito collaborazioni durature con comunità tech e a impatto sociale ucraine, tra cui Ukrainian Hub e Digitalizing Space, agendo come partner comunitario per portare la tecnologia in progetti sociali ed educativi in tutta l'Ucraina.",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organizza con orgoglio l'edizione svizzera del NASA Space Apps Challenge — il più grande hackathon spaziale annuale al mondo. Abbiamo ospitato l'edizione di Zurigo nel 2024 e 2025, riunendo innovatori per affrontare vere sfide NASA.",
 
@@ -3201,6 +3245,17 @@ window.TL_I18N = {
     "about.anthropic.title": "Мережа партнерів Anthropic Claude",
     "about.anthropic.body": "TechLegion є гордим членом мережі партнерів Anthropic Claude. Ми прагнемо підтримувати ШІ-трансформацію в Швейцарії — допомагаючи особам, стартапам і організаціям зрозуміти, впровадити та відповідально застосовувати найновіші технології ШІ.",
     "about.anthropic.btn": "Дізнатися про Claude",
+
+    /* ---------- About / Партнерство з Україною ---------- */
+    "about.ukraine.tag": "🇺🇦 Партнерство з Україною",
+    "about.ukraine.title": "Разом з українською тех-спільнотою",
+    "about.ukraine.lead": "З 2023 року TechLegion безпосередньо співпрацює з українськими розробниками, спільнотами та інституціями — поєднуючи наш фокус на відкритих технологіях і освіті з тривалою підтримкою української тех-екосистеми та людей, які її відбудовують.",
+    "about.ukraine.item1.title": "Переклад відкритого коду: PX4 Autopilot",
+    "about.ukraine.item1.body": "У 2023 році наша команда повністю переклала українською мовою програмне забезпечення автопілота PX4 Autopilot, зробивши одну з провідних у світі відкритих платформ для дронів доступною для українських розробників, операторів та викладачів.",
+    "about.ukraine.item2.title": "Інтеграція на ринок праці та освіта",
+    "about.ukraine.item2.body": "Ми допомагаємо українцям будувати кар'єру в швейцарському технологічному секторі — поєднуючи практичну технологічну освіту з менторством і конкретною підтримкою інтеграції у швейцарський ринок праці.",
+    "about.ukraine.item3.title": "Партнерства зі спільнотами та інституціями",
+    "about.ukraine.item3.body": "Ми побудували тривалу співпрацю з українськими тех- та соціально орієнтованими спільнотами, зокрема Ukrainian Hub і Digitalizing Space, виступаючи партнером спільноти, який допомагає впроваджувати технології в соціальні та освітні проєкти по всій Україні.",
 
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion з гордістю організовує швейцарську локальну версію NASA Space Apps Challenge — найбільшого щорічного космічного хакатону у світі. Ми провели цюрихське видання у 2024 та 2025 роках, зібравши інноваторів для вирішення реальних завдань NASA.",
