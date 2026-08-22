@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="cohort2026.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 Cohort — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion's 2026 cohort: success rate and members certified in Claude Certified Architect Foundations (CCA-F)." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="2026 Cohort — TechLegion Switzerland" />
+  <meta property="og:description" content="Meet TechLegion's 2026 cohort and see who's earned Claude Certified Architect Foundations (CCA-F) certification." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/cohort-2026.html" />
+  <link rel="alternate" hreflang="en" href="https://techlegion.ch/cohort-2026.html?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://techlegion.ch/cohort-2026.html?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://techlegion.ch/cohort-2026.html?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://techlegion.ch/cohort-2026.html?lang=it" />
+  <link rel="alternate" hreflang="uk" href="https://techlegion.ch/cohort-2026.html?lang=ua" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Tighter vertical rhythm, matching team.html */
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+
+    /* 3-stat row (site's .stats component is a 4-col grid; this page only has 3 figures) */
+    .cohort-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .cohort-stats .stat { text-align: center; }
+    @media (max-width: 900px) { .cohort-stats { grid-template-columns: 1fr; } }
+
+    /* Photo container hosts EITHER an <img> or the fallback initial avatar (same as team.html) */
+    .team-photo-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-elev);
+      border: 2px solid var(--border-strong);
+      box-shadow: var(--shadow-glow);
+    }
+    .team-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .team-photo-wrap .fallback {
+      position: absolute; inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .team-photo-wrap.has-image .fallback { display: none; }
+
+    .team-card .location {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .cert-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(81, 254, 192, 0.12);
+      border: 1px solid rgba(81, 254, 192, 0.35);
+      color: #51fec0;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s2"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in" style="max-width: 820px; margin-left: auto; margin-right: auto; text-align: center;">
+        <span class="eyebrow" data-i18n="cohort2026.eyebrow">2026 Cohort</span>
+        <h1 data-i18n="cohort2026.title">TechLegion 2026 Cohort</h1>
+        <p data-i18n="cohort2026.lead">Our 2026 cohort brings together professionals working toward Claude Certified Architect Foundations (CCA-F) certification — building real fluency with Claude and AI-assisted architecture through TechLegion's community-driven learning track.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success rate stats -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="cohort-stats fade-in">
+        <div class="stat">
+          <span class="stat-num" data-counter="70" data-suffix="%">0</span>
+          <span class="stat-label" data-i18n="cohort2026.stats.success_rate">Cohort success rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-counter="3" data-suffix="">0</span>
+          <span class="stat-label" data-i18n="cohort2026.stats.certified">Certified so far</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" style="font-size: clamp(1.3rem, 2.6vw, 1.9rem);">CCA-F</span>
+          <span class="stat-label" data-i18n="cohort2026.stats.certification">Claude Certified Architect Foundations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certified members grid -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow" data-i18n="cohort2026.members.eyebrow">Certified members</span>
+        <h2 data-i18n="cohort2026.members.title">Meet the cohort members who passed CCA-F</h2>
+        <p data-i18n="cohort2026.members.lead">More members are completing certification every cohort cycle — this grid grows as they do.</p>
+      </div>
+      <div class="team-grid fade-in">
+        <!--
+          Photo files expected at:
+            image/cohort-2026/yuriy-fuksenko.jpg
+            image/cohort-2026/deenar-toraskar.jpg
+            image/cohort-2026/samuel-leung.jpg
+          If any file is missing, the gradient-initial avatar shows as a fallback.
+        -->
+
+        <!-- 1. Yuriy Fuksenko -->
+        <div class="team-card">
+          <a href="https://www.linkedin.com/in/yfuksenko/" target="_blank" rel="noopener" aria-label="LinkedIn — Yuriy Fuksenko">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/cohort-2026/yuriy-fuksenko.jpg" alt="Yuriy Fuksenko" />
+              <div class="fallback" style="background: linear-gradient(135deg, #4d8bff 0%, #00d4ff 100%);">YF</div>
+            </div>
+          </a>
+          <h4>Yuriy Fuksenko</h4>
+          <div class="role">Software Architect</div>
+          <p>Software Engineer by nature. Java, distributed systems, cloud platforms, and AI-assisted development.</p>
+          <div class="location">Washington DC-Baltimore Area</div>
+          <span class="cert-badge">✓ CCA-F Certified</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/yfuksenko/" target="_blank" rel="noopener" aria-label="LinkedIn — Yuriy Fuksenko">in</a>
+          </div>
+        </div>
+
+        <!-- 2. Deenar Toraskar -->
+        <div class="team-card">
+          <a href="https://www.linkedin.com/in/deenartoraskar/" target="_blank" rel="noopener" aria-label="LinkedIn — Deenar Toraskar">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/cohort-2026/deenar-toraskar.jpg" alt="Deenar Toraskar" />
+              <div class="fallback" style="background: linear-gradient(135deg, #8b5cf6 0%, #4d8bff 100%);">DT</div>
+            </div>
+          </a>
+          <h4>Deenar Toraskar</h4>
+          <div class="role">Data, Cloud &amp; Risk Analytics</div>
+          <p>Data, Cloud, Risk, Analytics and Cloud Economics. J.P. Morgan.</p>
+          <div class="location">London Area, United Kingdom</div>
+          <span class="cert-badge">✓ CCA-F Certified</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/deenartoraskar/" target="_blank" rel="noopener" aria-label="LinkedIn — Deenar Toraskar">in</a>
+          </div>
+        </div>
+
+        <!-- 3. Samuel Leung -->
+        <div class="team-card">
+          <a href="https://www.linkedin.com/in/samuel-leung/" target="_blank" rel="noopener" aria-label="LinkedIn — Samuel Leung">
+            <div class="team-photo-wrap" data-photo>
+              <img src="image/cohort-2026/samuel-leung.jpg" alt="Samuel Leung" />
+              <div class="fallback" style="background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);">SL</div>
+            </div>
+          </a>
+          <h4>Samuel Leung</h4>
+          <div class="role">Investment Professional</div>
+          <p>Infrastructure &amp; Energy Transition. Cambridge MBA '25. Ex-GE. EverPower Ltd.</p>
+          <div class="location">Dublin, County Dublin, Ireland</div>
+          <span class="cert-badge">✓ CCA-F Certified</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/samuel-leung/" target="_blank" rel="noopener" aria-label="LinkedIn — Samuel Leung">in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="callout fade-in">
+        <h3 data-i18n="cohort2026.join.title">Want to join the next cohort?</h3>
+        <p data-i18n="cohort2026.join.body">Learn more about TechLegion's programs and how to get started on your own CCA-F certification path.</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="summer-school.html" class="btn btn-primary" data-i18n="nav.programs">Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="cohort-2026.html" data-i18n="cohort2026.nav_label">2026 Cohort</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Show the image only if it actually loads; otherwise leave the gradient-initial fallback visible.
+    document.querySelectorAll('.team-photo-wrap').forEach(function (wrap) {
+      var img = wrap.querySelector('img');
+      if (!img) return;
+      var ok = function () { wrap.classList.add('has-image'); };
+      var fail = function () { img.remove(); };
+      if (img.complete) {
+        if (img.naturalWidth > 0) ok(); else fail();
+      } else {
+        img.addEventListener('load', ok);
+        img.addEventListener('error', fail);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -441,6 +441,20 @@ window.TL_I18N = {
     "about.ukraine.item3.title": "Community & institutional partnerships",
     "about.ukraine.item3.body": "We've built lasting collaborations with Ukrainian tech and social-impact communities, including Ukrainian Hub and Digitalizing Space, acting as a community partner that helps bring technology into social and education projects across Ukraine.",
 
+    /* ---------- Cohort 2026 ---------- */
+    "cohort2026.eyebrow": "2026 Cohort",
+    "cohort2026.title": "TechLegion 2026 Cohort",
+    "cohort2026.lead": "Our 2026 cohort brings together professionals working toward Claude Certified Architect Foundations (CCA-F) certification — building real fluency with Claude and AI-assisted architecture through TechLegion's community-driven learning track.",
+    "cohort2026.stats.success_rate": "Cohort success rate",
+    "cohort2026.stats.certified": "Certified so far",
+    "cohort2026.stats.certification": "Claude Certified Architect Foundations",
+    "cohort2026.members.eyebrow": "Certified members",
+    "cohort2026.members.title": "Meet the cohort members who passed CCA-F",
+    "cohort2026.members.lead": "More members are completing certification every cohort cycle — this grid grows as they do.",
+    "cohort2026.join.title": "Want to join the next cohort?",
+    "cohort2026.join.body": "Learn more about TechLegion's programs and how to get started on your own CCA-F certification path.",
+    "cohort2026.nav_label": "2026 Cohort",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion proudly organises Switzerland's local edition of the NASA Space Apps Challenge — the world's largest annual space hackathon. We hosted the Zurich edition in 2024 and 2025, bringing together innovators to tackle real NASA challenges.",
 
@@ -1144,6 +1158,20 @@ window.TL_I18N = {
     "about.ukraine.item2.body": "Wir helfen Ukrainer:innen dabei, im Schweizer Tech-Sektor Fuss zu fassen — mit praxisnaher Technologiebildung, Mentoring und konkreter Unterstützung bei der Integration in den Schweizer Arbeitsmarkt.",
     "about.ukraine.item3.title": "Community- und institutionelle Partnerschaften",
     "about.ukraine.item3.body": "Wir haben dauerhafte Kooperationen mit ukrainischen Tech- und Social-Impact-Communities aufgebaut, darunter Ukrainian Hub und Digitalizing Space, und wirken als Community-Partner mit, um Technologie in soziale und Bildungsprojekte in der Ukraine einzubringen.",
+
+    /* ---------- Jahrgang 2026 ---------- */
+    "cohort2026.eyebrow": "Jahrgang 2026",
+    "cohort2026.title": "TechLegion Jahrgang 2026",
+    "cohort2026.lead": "Unser Jahrgang 2026 vereint Fachleute auf dem Weg zur Zertifizierung Claude Certified Architect Foundations (CCA-F) — echte Kompetenz im Umgang mit Claude und KI-gestützter Architektur, aufgebaut durch TechLegions gemeinschaftsgetriebenen Lernpfad.",
+    "cohort2026.stats.success_rate": "Erfolgsquote des Jahrgangs",
+    "cohort2026.stats.certified": "Bisher zertifiziert",
+    "cohort2026.stats.certification": "Claude Certified Architect Foundations",
+    "cohort2026.members.eyebrow": "Zertifizierte Mitglieder",
+    "cohort2026.members.title": "Lerne die Jahrgangsmitglieder kennen, die CCA-F bestanden haben",
+    "cohort2026.members.lead": "Mit jedem Jahrgang schliessen weitere Mitglieder die Zertifizierung ab — dieses Raster wächst entsprechend.",
+    "cohort2026.join.title": "Willst du beim nächsten Jahrgang dabei sein?",
+    "cohort2026.join.body": "Erfahre mehr über TechLegions Programme und wie du deinen eigenen Weg zur CCA-F-Zertifizierung startest.",
+    "cohort2026.nav_label": "Jahrgang 2026",
 
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organisiert stolz die Schweizer Ausgabe der NASA Space Apps Challenge — der weltweit grössten jährlichen Raumfahrt-Hackathon. Wir haben die Zürcher Ausgabe in 2024 und 2025 ausgerichtet und Innovator:innen zusammengebracht, um echte NASA-Challenges zu lösen.",
@@ -1849,6 +1877,20 @@ window.TL_I18N = {
     "about.ukraine.item3.title": "Partenariats communautaires et institutionnels",
     "about.ukraine.item3.body": "Nous avons noué des collaborations durables avec des communautés tech et à impact social ukrainiennes, dont Ukrainian Hub et Digitalizing Space, en agissant comme partenaire communautaire pour intégrer la technologie dans des projets sociaux et éducatifs à travers l'Ukraine.",
 
+    /* ---------- Cohorte 2026 ---------- */
+    "cohort2026.eyebrow": "Cohorte 2026",
+    "cohort2026.title": "Cohorte TechLegion 2026",
+    "cohort2026.lead": "Notre cohorte 2026 réunit des professionnels en voie de certification Claude Certified Architect Foundations (CCA-F) — développant une réelle maîtrise de Claude et de l'architecture assistée par IA grâce au parcours d'apprentissage communautaire de TechLegion.",
+    "cohort2026.stats.success_rate": "Taux de réussite de la cohorte",
+    "cohort2026.stats.certified": "Certifiés à ce jour",
+    "cohort2026.stats.certification": "Claude Certified Architect Foundations",
+    "cohort2026.members.eyebrow": "Membres certifiés",
+    "cohort2026.members.title": "Découvrez les membres de la cohorte ayant réussi la CCA-F",
+    "cohort2026.members.lead": "De nouveaux membres terminent leur certification à chaque cycle de cohorte — cette grille s'agrandit en conséquence.",
+    "cohort2026.join.title": "Envie de rejoindre la prochaine cohorte ?",
+    "cohort2026.join.body": "Découvrez les programmes de TechLegion et comment démarrer votre propre parcours de certification CCA-F.",
+    "cohort2026.nav_label": "Cohorte 2026",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organise fièrement l'édition suisse du NASA Space Apps Challenge — le plus grand hackathon spatial annuel au monde. Nous avons accueilli l'édition zurichoise en 2024 et 2025, réunissant des innovateurs pour relever de vrais défis NASA.",
 
@@ -2553,6 +2595,20 @@ window.TL_I18N = {
     "about.ukraine.item3.title": "Partnership comunitarie e istituzionali",
     "about.ukraine.item3.body": "Abbiamo costruito collaborazioni durature con comunità tech e a impatto sociale ucraine, tra cui Ukrainian Hub e Digitalizing Space, agendo come partner comunitario per portare la tecnologia in progetti sociali ed educativi in tutta l'Ucraina.",
 
+    /* ---------- Coorte 2026 ---------- */
+    "cohort2026.eyebrow": "Coorte 2026",
+    "cohort2026.title": "Coorte TechLegion 2026",
+    "cohort2026.lead": "La nostra coorte 2026 riunisce professionisti in cammino verso la certificazione Claude Certified Architect Foundations (CCA-F) — costruendo una reale padronanza di Claude e dell'architettura assistita dall'IA attraverso il percorso di apprendimento comunitario di TechLegion.",
+    "cohort2026.stats.success_rate": "Tasso di successo della coorte",
+    "cohort2026.stats.certified": "Certificati finora",
+    "cohort2026.stats.certification": "Claude Certified Architect Foundations",
+    "cohort2026.members.eyebrow": "Membri certificati",
+    "cohort2026.members.title": "Conosci i membri della coorte che hanno superato la CCA-F",
+    "cohort2026.members.lead": "Ad ogni ciclo altri membri completano la certificazione — questa griglia cresce di conseguenza.",
+    "cohort2026.join.title": "Vuoi unirti alla prossima coorte?",
+    "cohort2026.join.body": "Scopri i programmi di TechLegion e come iniziare il tuo percorso verso la certificazione CCA-F.",
+    "cohort2026.nav_label": "Coorte 2026",
+
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion organizza con orgoglio l'edizione svizzera del NASA Space Apps Challenge — il più grande hackathon spaziale annuale al mondo. Abbiamo ospitato l'edizione di Zurigo nel 2024 e 2025, riunendo innovatori per affrontare vere sfide NASA.",
 
@@ -3256,6 +3312,20 @@ window.TL_I18N = {
     "about.ukraine.item2.body": "Ми допомагаємо українцям будувати кар'єру в швейцарському технологічному секторі — поєднуючи практичну технологічну освіту з менторством і конкретною підтримкою інтеграції у швейцарський ринок праці.",
     "about.ukraine.item3.title": "Партнерства зі спільнотами та інституціями",
     "about.ukraine.item3.body": "Ми побудували тривалу співпрацю з українськими тех- та соціально орієнтованими спільнотами, зокрема Ukrainian Hub і Digitalizing Space, виступаючи партнером спільноти, який допомагає впроваджувати технології в соціальні та освітні проєкти по всій Україні.",
+
+    /* ---------- Когорта 2026 ---------- */
+    "cohort2026.eyebrow": "Когорта 2026",
+    "cohort2026.title": "Когорта TechLegion 2026",
+    "cohort2026.lead": "Наша когорта 2026 року об'єднує фахівців, які прямують до сертифікації Claude Certified Architect Foundations (CCA-F) — здобуваючи справжню впевненість у роботі з Claude та архітектурою за участі ШІ через спільнотний освітній шлях TechLegion.",
+    "cohort2026.stats.success_rate": "Рівень успішності когорти",
+    "cohort2026.stats.certified": "Сертифіковано наразі",
+    "cohort2026.stats.certification": "Claude Certified Architect Foundations",
+    "cohort2026.members.eyebrow": "Сертифіковані учасники",
+    "cohort2026.members.title": "Знайомтеся з учасниками когорти, які склали CCA-F",
+    "cohort2026.members.lead": "З кожним циклом когорти дедалі більше учасників завершують сертифікацію — ця добірка зростатиме разом з ними.",
+    "cohort2026.join.title": "Хочете приєднатися до наступної когорти?",
+    "cohort2026.join.body": "Дізнайтеся більше про програми TechLegion і як розпочати власний шлях до сертифікації CCA-F.",
+    "cohort2026.nav_label": "Когорта 2026",
 
     /* ---------- About / NASA updated body ---------- */
     "about.nasa.body": "TechLegion з гордістю організовує швейцарську локальну версію NASA Space Apps Challenge — найбільшого щорічного космічного хакатону у світі. Ми провели цюрихське видання у 2024 та 2025 роках, зібравши інноваторів для вирішення реальних завдань NASA.",
