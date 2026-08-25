@@ -8,6 +8,8 @@
  *   - form_type=contact                     → "Contact Messages"          sheet
  *   - form_type=newsletter                  → "Newsletters"               sheet
  *   - form_type=study_tour                  → "Study Tour Registrations"  sheet
+ *   - form_type=nomination                  → "Dinner Nominations"       sheet
+ *   - form_type=dinner_pledge                → "Dinner Pledges"           sheet
  *
  * For EVERY submission, an acknowledgement email is automatically sent to
  * the submitter's email address confirming receipt.
@@ -24,6 +26,8 @@ var MEMBERSHIP_SHEET    = 'Applications';
 var CONTACT_SHEET       = 'Contact Messages';
 var NEWSLETTER_SHEET    = 'Newsletters';
 var STUDY_TOUR_SHEET    = 'Study Tour Registrations';
+var NOMINATION_SHEET    = 'Dinner Nominations';
+var DINNER_PLEDGE_SHEET = 'Dinner Pledges';
 var COHORT_SHEETS = {
   'cca-f': 'Claude AI',
   'uas':   'UAS Drone Pilot'
@@ -75,6 +79,21 @@ var STUDY_TOUR_HEADERS = [
   'Notes / requirements'
 ];
 
+var NOMINATION_HEADERS = [
+  'Timestamp',
+  'Nominator name', 'Nominator email',
+  'Nominee name', 'Nominee LinkedIn', 'Nominee company / role',
+  'Reason',
+  'Consent to contact nominee', 'Accepted privacy'
+];
+
+var DINNER_PLEDGE_HEADERS = [
+  'Timestamp',
+  'Pledger name', 'Pledger email',
+  'Nominee', 'Pledge amount (CHF)', 'Message',
+  'Accepted privacy'
+];
+
 // ─── Router ──────────────────────────────────────────────────────────────────
 
 function doPost(e) {
@@ -82,10 +101,12 @@ function doPost(e) {
     var p = e.parameter || {};
     var formType = (p.form_type || 'membership').toLowerCase();
 
-    if (formType === 'cohort')      return handleCohort(p);
-    if (formType === 'contact')     return handleContact(p);
-    if (formType === 'newsletter')  return handleNewsletter(p);
-    if (formType === 'study_tour')  return handleStudyTour(p);
+    if (formType === 'cohort')         return handleCohort(p);
+    if (formType === 'contact')        return handleContact(p);
+    if (formType === 'newsletter')     return handleNewsletter(p);
+    if (formType === 'study_tour')     return handleStudyTour(p);
+    if (formType === 'nomination')     return handleNomination(p);
+    if (formType === 'dinner_pledge')  return handleDinnerPledge(p);
     return handleMembership(p);
   } catch (err) {
     return jsonOut({ ok: false, error: err.message });
@@ -199,6 +220,42 @@ function handleStudyTour(p) {
   return jsonOut({ ok: true, type: 'study_tour' });
 }
 
+function handleNomination(p) {
+  var sheet = ensureSheet(NOMINATION_SHEET, NOMINATION_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.nominator_name || '',
+    p.nominator_email || '',
+    p.nominee_name || '',
+    p.nominee_linkedin || '',
+    p.nominee_role || '',
+    p.reason || '',
+    yesNo(p.consent_contact),
+    yesNo(p.privacy)
+  ]);
+
+  sendAcknowledgement(p.nominator_email, p.nominator_name, 'nomination', p.nominee_name);
+  return jsonOut({ ok: true, type: 'nomination' });
+}
+
+function handleDinnerPledge(p) {
+  var sheet = ensureSheet(DINNER_PLEDGE_SHEET, DINNER_PLEDGE_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.pledger_name || '',
+    p.pledger_email || '',
+    p.nominee_choice || '',
+    p.pledge_amount || '',
+    p.message || '',
+    yesNo(p.privacy)
+  ]);
+
+  sendAcknowledgement(p.pledger_email, p.pledger_name, 'dinner_pledge', p.pledge_amount);
+  return jsonOut({ ok: true, type: 'dinner_pledge' });
+}
+
 // ─── Acknowledgement emails ───────────────────────────────────────────────────
 
 /**
@@ -206,7 +263,7 @@ function handleStudyTour(p) {
  *
  * @param {string} toEmail     - Recipient address
  * @param {string} firstName   - Recipient first name (may be empty)
- * @param {string} formType    - One of: membership | cohort | contact | newsletter | study_tour
+ * @param {string} formType    - One of: membership | cohort | contact | newsletter | study_tour | nomination | dinner_pledge
  * @param {string} [extra]     - Optional extra context (e.g. tour name)
  */
 function sendAcknowledgement(toEmail, firstName, formType, extra) {
@@ -281,6 +338,31 @@ function sendAcknowledgement(toEmail, firstName, formType, extra) {
         WEBSITE_URL;
       break;
 
+    case 'nomination':
+      subject = 'TechLegion — nomination received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for nominating ' + (extra || 'someone') + ' for a TechLegion community dinner.\n\n' +
+        'Here\'s what happens next:\n' +
+        '  1. We\'ll reach out to the nominee to confirm their details.\n' +
+        '  2. We\'ll ask for their explicit consent before publishing anything about them.\n' +
+        '  3. If they agree, they\'ll appear on ' + WEBSITE_URL + '/nominate.html for the community to pledge toward.\n\n' +
+        'If you have any questions in the meantime, just reply to this email.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
+    case 'dinner_pledge':
+      subject = 'TechLegion — pledge received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for pledging CHF ' + (extra || '') + ' toward a TechLegion community dinner.\n\n' +
+        'A pledge is not an automatic charge — we\'ll only contact you with payment details (invoice or QR-bill) once a dinner is actually confirmed with the nominee. If a dinner never happens, no payment is requested.\n\n' +
+        'Proceeds beyond the dinner cost go toward our Robotics & Drone Zone workshops in Zug.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
     default:
       subject = 'TechLegion — acknowledgement of receipt';
       body =
@@ -333,5 +415,7 @@ function setup() {
   ensureSheet(CONTACT_SHEET, CONTACT_HEADERS);
   ensureSheet(NEWSLETTER_SHEET, NEWSLETTER_HEADERS);
   ensureSheet(STUDY_TOUR_SHEET, STUDY_TOUR_HEADERS);
+  ensureSheet(NOMINATION_SHEET, NOMINATION_HEADERS);
+  ensureSheet(DINNER_PLEDGE_SHEET, DINNER_PLEDGE_HEADERS);
   Logger.log('All sheets ready.');
 }
