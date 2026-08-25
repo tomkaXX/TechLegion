@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="nominate.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nominate a Dinner Guest — TechLegion Switzerland</title>
+  <meta name="description" content="Nominate someone from the TechLegion partner network for a community-funded dinner. Pledges fund the Robotics & Drone Zone workshops in Zug." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Nominate a Dinner Guest — TechLegion Switzerland" />
+  <meta property="og:description" content="Nominate someone for a community-funded dinner. Proceeds fund Robotics & Drone Zone workshops in Zug." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/nominate.html" />
+  <link rel="alternate" hreflang="en" href="https://techlegion.ch/nominate.html?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://techlegion.ch/nominate.html?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://techlegion.ch/nominate.html?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://techlegion.ch/nominate.html?lang=it" />
+  <link rel="alternate" hreflang="uk" href="https://techlegion.ch/nominate.html?lang=ua" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* ===== Nominate page specific ===== */
+    body section { padding: clamp(1.75rem, 3.5vw, 3rem) 0; }
+
+    .nominate-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Validation states (shared pattern with membership/events forms) */
+    .form input.invalid,
+    .form select.invalid,
+    .form textarea.invalid {
+      border-color: #ff5b6e !important;
+      background: rgba(255, 91, 110, 0.06);
+    }
+    .field-error {
+      display: none;
+      font-size: 0.8rem;
+      color: #ff8a96;
+      margin-top: 0.3rem;
+    }
+    .field-error.is-visible { display: block; }
+    .form button[type="submit"]:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: grayscale(0.4);
+    }
+
+    /* Process steps */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      position: relative;
+    }
+    .step-card .step-num {
+      position: absolute;
+      top: -14px; left: 1.25rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--grad-accent);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border: 2px solid var(--bg);
+    }
+    .step-card h4 { margin: 0.5rem 0 0.4rem; font-size: 1.05rem; }
+    .step-card p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    /* Empty-state nominees card */
+    .nominees-empty {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .nominees-empty .n-icon { font-size: 2.4rem; margin-bottom: 0.75rem; }
+    .nominees-empty h3 { margin-bottom: 0.5rem; }
+    .nominees-empty p { color: var(--text-muted); max-width: 480px; margin: 0 auto; }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--white);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent-glow);
+      transition: transform var(--t);
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p {
+      margin: 0.75rem 0 0;
+      color: var(--text-dim);
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 880px) {
+      .step-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .step-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <span class="eyebrow" data-i18n="nominate.eyebrow">🍽️ Community Dinners</span>
+        <h1 data-i18n="nominate.title">Nominate someone worth a dinner</h1>
+        <p data-i18n="nominate.lead">Is there someone in our partner network you'd love to sit down with? Nominate them, and the TechLegion community can pledge toward covering a dinner together at a restaurant in our partner network in Switzerland. Every franc raised beyond the dinner itself funds our Robotics &amp; Drone Zone workshops in Zug.</p>
+        <div class="nominate-hero-actions">
+          <a href="#nominate-form" class="btn btn-primary btn-lg" data-i18n="nominate.cta.nominate">Nominate someone</a>
+          <a href="#pledge-form" class="btn btn-ghost btn-lg" data-i18n="nominate.cta.pledge">Make a pledge</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="nominate.how.tag">📝 Process</span>
+        <h2 data-i18n="nominate.how.title">How it works</h2>
+        <p data-i18n="nominate.how.lead">From nomination to dinner table, in four steps.</p>
+      </div>
+
+      <div class="step-grid fade-in" style="margin-top: 1.5rem;">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4 data-i18n="nominate.step1.title">Nominate</h4>
+          <p data-i18n="nominate.step1.body">Share the LinkedIn profile of someone from our partner network you'd love to have dinner with, and tell us why.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4 data-i18n="nominate.step2.title">We verify</h4>
+          <p data-i18n="nominate.step2.body">TechLegion reaches out to the nominee to confirm their details and get their consent before anything is published.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4 data-i18n="nominate.step3.title">Community pledges</h4>
+          <p data-i18n="nominate.step3.body">Once approved, the nominee is added below. Anyone can pledge toward the dinner, starting at CHF 200 and rising in CHF 50 steps.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4 data-i18n="nominate.step4.title">Dinner &amp; impact</h4>
+          <p data-i18n="nominate.step4.body">When pledges cover the dinner, we organise it at a partner restaurant. Everything raised beyond the dinner cost funds Robotics &amp; Drone Zone workshops in Zug.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING EXPLAINER -->
+  <section>
+    <div class="container container-narrow">
+      <div class="callout fade-in">
+        <span class="tag" data-i18n="nominate.fund.tag">🤖 Robotics &amp; Drone Zone</span>
+        <h3 data-i18n="nominate.fund.title">Funding hands-on tech education in Zug</h3>
+        <p data-i18n="nominate.fund.body">Pledges don't just buy a dinner — they fund the Robotics &amp; Drone Zone, a space in Zug where anyone can come learn robotics and fast prototyping, hands-on. Every dinner we host helps keep these workshops free and open to the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLEDGE RULES -->
+  <section>
+    <div class="container container-narrow">
+      <div class="callout fade-in">
+        <span class="tag" data-i18n="nominate.rules.tag">💶 How pledging works</span>
+        <h3 data-i18n="nominate.rules.title">Minimum CHF 200, in CHF 50 steps</h3>
+        <p data-i18n="nominate.rules.body">Pledges start at CHF 200 and increase in CHF 50 increments. A pledge is a commitment to contribute once a dinner is confirmed — not an automatic charge. We'll only contact you with payment details (invoice or QR-bill) once a dinner has actually been scheduled.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOMINEES -->
+  <section id="nominees">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="nominate.nominees.tag">👤 Nominees</span>
+        <h2 data-i18n="nominate.nominees.title">Current nominees</h2>
+        <p data-i18n="nominate.nominees.lead">Verified nominees the community can pledge toward. Check back — this list grows as nominations are reviewed.</p>
+      </div>
+
+      <div class="nominees-empty fade-in">
+        <div class="n-icon">🍽️</div>
+        <h3 data-i18n="nominate.nominees.empty.title">No nominees yet</h3>
+        <p data-i18n="nominate.nominees.empty.body">Be the first to nominate someone below. Once we've confirmed their details and consent, they'll appear here for the community to pledge toward.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOMINATION FORM -->
+  <section id="nominate-form">
+    <div class="container container-narrow">
+      <div class="form-card fade-in">
+        <h3 data-i18n="nominate.nform.title">Nominate someone</h3>
+        <p class="form-subtitle" data-i18n-html="nominate.nform.subtitle">Fields marked with <span style="color: var(--accent-glow)">*</span> are mandatory. We'll reach out to the nominee to confirm their details and get their consent before publishing anything about them.</p>
+
+        <form id="nomination-form" class="form" method="POST" action="" novalidate>
+          <input type="hidden" name="form_type" value="nomination" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="nominate.nf.yourname">Your name *</label>
+              <input type="text" name="nominator_name" required />
+              <span class="field-error" data-error-for="nominator_name" data-i18n="nominate.nf.yourname.error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="nominate.nf.youremail">Your email *</label>
+              <input type="email" name="nominator_email" required autocomplete="email"
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+              <span class="field-error" data-error-for="nominator_email" data-i18n="nominate.nf.youremail.error">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.nf.nomineename">Nominee's full name *</label>
+            <input type="text" name="nominee_name" required />
+            <span class="field-error" data-error-for="nominee_name" data-i18n="nominate.nf.nomineename.error">Please enter the nominee's name.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.nf.nomineelinkedin">Nominee's LinkedIn profile URL *</label>
+            <input type="url" name="nominee_linkedin" required placeholder="https://www.linkedin.com/in/..." />
+            <span class="field-error" data-error-for="nominee_linkedin" data-i18n="nominate.nf.nomineelinkedin.error">Please enter a valid LinkedIn profile URL.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.nf.nomineerole">Nominee's company / role (optional)</label>
+            <input type="text" name="nominee_role" />
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.nf.reason">Why do you want to have dinner with them? *</label>
+            <textarea name="reason" rows="4" required placeholder="Tell us why this person deserves a TechLegion dinner." data-i18n-placeholder="nominate.nf.reason.placeholder"></textarea>
+            <span class="field-error" data-error-for="reason" data-i18n="nominate.nf.reason.error">Please share your reason for nominating them.</span>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="consent_contact" required />
+            <span data-i18n="nominate.nf.consent1">I understand TechLegion will contact the nominee to confirm their details and request their consent before publishing any information about them. *</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <span data-i18n-html="nominate.nf.consent2">I accept the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;" disabled data-i18n="nominate.nf.submit">Submit nomination</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLEDGE FORM -->
+  <section id="pledge-form">
+    <div class="container container-narrow">
+      <div class="form-card fade-in">
+        <h3 data-i18n="nominate.pform.title">Make a pledge</h3>
+        <p class="form-subtitle" data-i18n-html="nominate.pform.subtitle">Fields marked with <span style="color: var(--accent-glow)">*</span> are mandatory. A pledge is not an automatic charge — we'll contact you once a dinner is confirmed.</p>
+
+        <form id="pledge-form-el" class="form" method="POST" action="" novalidate>
+          <input type="hidden" name="form_type" value="dinner_pledge" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="nominate.pf.yourname">Your name *</label>
+              <input type="text" name="pledger_name" required />
+              <span class="field-error" data-error-for="pledger_name" data-i18n="nominate.pf.yourname.error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="nominate.pf.youremail">Your email *</label>
+              <input type="email" name="pledger_email" required autocomplete="email"
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+              <span class="field-error" data-error-for="pledger_email" data-i18n="nominate.pf.youremail.error">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.pf.nominee">Nominee *</label>
+            <select name="nominee_choice" required>
+              <option value="" data-i18n="nominate.pf.nominee.placeholder">— Select a nominee —</option>
+              <option value="general" data-i18n="nominate.pf.nominee.general">General Dinner Fund (support the next confirmed dinner)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.pf.amount">Pledge amount (CHF) *</label>
+            <input type="number" name="pledge_amount" required min="200" step="50" value="200" />
+            <span class="field-error" data-error-for="pledge_amount" data-i18n="nominate.pf.amount.error">Minimum pledge is CHF 200, in steps of CHF 50.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="nominate.pf.message">Message (optional)</label>
+            <textarea name="message" rows="3" placeholder="Anything you'd like us to know." data-i18n-placeholder="nominate.pf.message.placeholder"></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <span data-i18n-html="nominate.pf.consent">I accept the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>, and understand this pledge is not an automatic charge. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;" disabled data-i18n="nominate.pf.submit">Submit pledge</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container container-narrow">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="nominate.faq.tag">❓ FAQ</span>
+        <h2 data-i18n="nominate.faq.title">Frequently asked questions</h2>
+      </div>
+      <div class="fade-in">
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq1.q">Why do you need a LinkedIn profile link?</summary>
+          <p data-i18n="nominate.faq1.a">To identify exactly who's being nominated and reach out to them. We don't scrape or auto-import any data — our team reviews every nomination by hand before contacting the nominee.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq2.q">Does the nominee have to agree to be listed?</summary>
+          <p data-i18n="nominate.faq2.a">Yes. We contact every nominee and get their explicit consent before publishing their name, photo, company or role, in line with the Swiss FADP and GDPR.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq3.q">Is my pledge charged immediately?</summary>
+          <p data-i18n="nominate.faq3.a">No. A pledge is a statement of intent, not a payment. We only request payment once a dinner date is confirmed with the nominee, and you'll receive an invoice or QR-bill at that point.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq4.q">What if a dinner doesn't happen?</summary>
+          <p data-i18n="nominate.faq4.a">If a nominee never confirms or a dinner isn't organised, no payment is requested and your pledge simply lapses.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq5.q">Can I nominate myself?</summary>
+          <p data-i18n="nominate.faq5.a">We'd rather you nominate someone else — the idea is to celebrate people across our partner network in Switzerland.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="nominate.faq6.q">Where exactly does the money go?</summary>
+          <p data-i18n="nominate.faq6.a">First, it covers the dinner itself at a partner restaurant. Everything raised beyond that funds Robotics &amp; Drone Zone workshops in Zug, where anyone can learn robotics and fast prototyping.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="nominate.html" data-i18n="nav.nominate">Nominate</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ---- Nominate & Pledge forms → Google Apps Script ----
+    var NOMINATE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function tlDict() {
+      var lang = (document.documentElement.lang === 'uk' ? 'ua' : document.documentElement.lang) || 'en';
+      var fallback = (window.TL_I18N && window.TL_I18N.en) || {};
+      var dict = (window.TL_I18N && window.TL_I18N[lang]) || fallback;
+      return function (key, fallbackText) {
+        return dict[key] || fallback[key] || fallbackText;
+      };
+    }
+
+    // Wires up validation + submit for a form, given the required-consent checkbox names.
+    function wireForm(formId, endpoint, consentNames, successKey, successFallback) {
+      var form = document.getElementById(formId);
+      if (!form) return;
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var requiredConsents = [];
+      consentNames.forEach(function (name) {
+        var el = form.querySelector('input[name="' + name + '"]');
+        if (el) requiredConsents.push(el);
+      });
+
+      function showError(field, show) {
+        var err = form.querySelector('.field-error[data-error-for="' + field.name + '"]');
+        if (err) err.classList.toggle('is-visible', !!show);
+        field.classList.toggle('invalid', !!show);
+      }
+
+      function validateField(field) {
+        if (!field) return true;
+        var v = (field.value || '').trim();
+        if (!v && !field.required) { showError(field, false); return true; }
+        if (!v && field.required) { showError(field, true); return false; }
+        var ok = true;
+        if (field.type === 'email') ok = EMAIL_RE.test(v);
+        if (field.type === 'number') ok = Number(v) >= Number(field.min || 0) && ((Number(v) - Number(field.min || 0)) % Number(field.step || 1) === 0);
+        showError(field, !ok);
+        return ok;
+      }
+
+      function allConsentsChecked() {
+        for (var i = 0; i < requiredConsents.length; i++) {
+          if (!requiredConsents[i].checked) return false;
+        }
+        return true;
+      }
+
+      function formIsValid() {
+        if (!allConsentsChecked()) return false;
+        var required = form.querySelectorAll('[required]');
+        for (var i = 0; i < required.length; i++) {
+          var el = required[i];
+          if (el.type === 'checkbox') continue;
+          if (!validateField(el)) return false;
+        }
+        return true;
+      }
+
+      function refreshSubmitState() {
+        submitBtn.disabled = !formIsValid();
+      }
+
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        var evt = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'blur';
+        el.addEventListener(evt, function () { validateField(el); refreshSubmitState(); });
+        el.addEventListener('input', refreshSubmitState);
+      });
+      requiredConsents.forEach(function (c) { c.addEventListener('change', refreshSubmitState); });
+      refreshSubmitState();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formIsValid()) { refreshSubmitState(); return; }
+        var t = tlDict();
+        var originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = t('nominate.f.submitting', 'Submitting…');
+
+        var showSuccess = function () {
+          var successTitle = t(successKey + '.title', successFallback.title);
+          var successBody = t(successKey + '.body', successFallback.body);
+          form.innerHTML =
+            '<div style="padding:2rem;text-align:center;">' +
+              '<div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div>' +
+              '<h3 style="color:var(--accent-glow);margin-bottom:0.5rem;">' + successTitle + '</h3>' +
+              '<p>' + successBody + '</p>' +
+            '</div>';
+        };
+        var showFail = function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          alert(t('nominate.f.error.alert', 'Sorry, something went wrong submitting the form. Please email community@techlegion.ch and we\'ll process it manually.'));
+        };
+
+        if (!endpoint) {
+          showSuccess();
+          return;
+        }
+
+        fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors'
+        }).then(showSuccess).catch(showFail);
+      });
+    }
+
+    wireForm(
+      'nomination-form',
+      NOMINATE_ENDPOINT,
+      ['consent_contact', 'privacy'],
+      'nominate.nf.success',
+      { title: 'Thanks for the nomination!', body: 'We\'ll reach out to the nominee to confirm their details and consent — approved nominees appear on this page.' }
+    );
+
+    wireForm(
+      'pledge-form-el',
+      NOMINATE_ENDPOINT,
+      ['privacy'],
+      'nominate.pf.success',
+      { title: 'Thanks for your pledge!', body: 'We\'ll be in touch once a dinner is confirmed — pledges are only collected at that point.' }
+    );
+  </script>
+</body>
+</html>
