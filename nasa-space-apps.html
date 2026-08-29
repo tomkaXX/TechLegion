@@ -758,9 +758,16 @@
         var showSuccess = function () {
           var successTitle = t(successKey + '.title', successFallback.title);
           var successBody = t(successKey + '.body', successFallback.body);
+          var modalBox = form.closest('.ss-modal');
+          if (modalBox) {
+            var modalTitle = modalBox.querySelector('h3');
+            var modalSubtitle = modalBox.querySelector('.form-subtitle');
+            if (modalTitle) modalTitle.style.display = 'none';
+            if (modalSubtitle) modalSubtitle.style.display = 'none';
+          }
           form.innerHTML =
             '<div style="padding:2rem;text-align:center;">' +
-              '<div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div>' +
+              '<div style="font-size:2.5rem;margin-bottom:0.5rem;">🚀</div>' +
               '<h3 style="color:var(--accent-glow);margin-bottom:0.5rem;">' + successTitle + '</h3>' +
               '<p>' + successBody + '</p>' +
             '</div>';
