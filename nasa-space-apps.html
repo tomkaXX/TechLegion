@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="spaceapps.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASA Space Apps Challenge — Zurich | TechLegion Switzerland</title>
+  <meta name="description" content="NASA Space Apps Challenge Zurich — registration for the 2026 edition (14-15 November 2026) is open. TechLegion's local community for the world's largest annual hackathon." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="NASA Space Apps Challenge — Zurich | TechLegion Switzerland" />
+  <meta property="og:description" content="Registration for the 2026 NASA Space Apps Challenge is open. Join the Zurich local event on 14-15 November 2026." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/spaceapps-zurich.png" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/nasa-space-apps.html" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* ===== NASA Space Apps page specific ===== */
+    body section { padding: clamp(1.75rem, 3.5vw, 3rem) 0; }
+
+    .spaceapps-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .status-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      color: var(--text-dim);
+      background: var(--bg-card);
+    }
+    .status-pill.is-open {
+      color: #4ade80;
+      border-color: rgba(34,197,94,0.45);
+      background: rgba(34,197,94,0.12);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      position: relative;
+    }
+    .step-card .step-num {
+      position: absolute;
+      top: -14px; left: 1.25rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--grad-accent);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border: 2px solid var(--bg);
+    }
+    .step-card h4 { margin: 0.5rem 0 0.4rem; font-size: 1.05rem; }
+    .step-card p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    .role-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all var(--t);
+    }
+    .role-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+    .role-card .r-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .role-card h4 { margin-bottom: 0.4rem; }
+    .role-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+    .gallery-figure {
+      margin: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .gallery-figure img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+    .gallery-figure figcaption {
+      padding: 0.65rem 0.9rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .gallery-figure.is-wide { grid-column: span 2; }
+    .gallery-figure.is-wide img { aspect-ratio: 16 / 9; }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--white);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent-glow);
+      transition: transform var(--t);
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p {
+      margin: 0.75rem 0 0;
+      color: var(--text-dim);
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 880px) {
+      .step-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .gallery-figure.is-wide { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .step-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <img src="assets/img/spaceapps-zurich.png" alt="NASA Space Apps Zurich logo" style="width: 140px; max-width: 40vw; margin: 0 auto 1.25rem; display: block; filter: drop-shadow(0 12px 32px rgba(213, 43, 30, 0.3));" />
+        <span class="eyebrow" data-i18n="spaceapps.eyebrow">🚀 Hackathon · NASA Space Apps</span>
+        <h1 data-i18n="spaceapps.title">NASA Space Apps Challenge — Zurich</h1>
+        <p data-i18n="spaceapps.lead">Registration for the 2026 NASA Space Apps Challenge is open! Be part of the largest annual global hackathon, taking place worldwide on 14-15 November 2026 — with TechLegion proud to be part of the Zurich, Switzerland community.</p>
+        <div class="spaceapps-hero-actions">
+          <a href="https://www.spaceappschallenge.org/2026/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="spaceapps.cta.register">Register today!</a>
+          <a href="#gallery" class="btn btn-ghost btn-lg" data-i18n="spaceapps.cta.gallery">See past highlights</a>
+        </div>
+        <div class="status-pills">
+          <span class="status-pill" data-i18n="spaceapps.pill.dates">📅 14-15 November 2026</span>
+          <span class="status-pill" data-i18n="spaceapps.pill.location">📍 Zurich, Switzerland</span>
+          <span class="status-pill" data-i18n="spaceapps.pill.format">💻 Virtual &amp; In-Person</span>
+          <span class="status-pill is-open" data-i18n="spaceapps.pill.status">✓ Accepting participants</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="container container-narrow">
+      <div class="callout fade-in">
+        <span class="tag" data-i18n="spaceapps.about.tag">🛰️ What is it?</span>
+        <h3 data-i18n="spaceapps.about.title">The world's largest annual global hackathon</h3>
+        <p data-i18n="spaceapps.about.body">NASA Space Apps Challenge is a hackathon for coders, scientists, designers, storytellers, makers, builders, technologists and innovators from around the world. Over one weekend, participants use free and open data from NASA and its Space Agency Partners to build solutions to real challenges on Earth and in space. It's free to take part, and no prior space or coding experience is required to join a team.</p>
+        <p style="margin-top: 0.75rem;" data-i18n="spaceapps.about.zurich">Zurich has hosted a local edition since 2024, run by a community of volunteer organizers, mentors and judges — TechLegion is proud to support and take part in the Zurich community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO PARTICIPATE -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="spaceapps.how.tag">📝 Getting started</span>
+        <h2 data-i18n="spaceapps.how.title">How to take part</h2>
+        <p data-i18n="spaceapps.how.lead">Registration happens on the official NASA Space Apps website — here's the quick version.</p>
+      </div>
+
+      <div class="step-grid fade-in" style="margin-top: 1.5rem;">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4 data-i18n="spaceapps.step1.title">Register</h4>
+          <p data-i18n="spaceapps.step1.body">Create your account at spaceappschallenge.org and register for the 2026 challenge.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4 data-i18n="spaceapps.step2.title">Choose Zurich</h4>
+          <p data-i18n="spaceapps.step2.body">Search the local events map and select the Zurich, Switzerland local event to join its participant pool.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4 data-i18n="spaceapps.step3.title">Form a team</h4>
+          <p data-i18n="spaceapps.step3.body">Join or form a team, and pick one of the official global challenges to tackle together.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4 data-i18n="spaceapps.step4.title">Build &amp; submit</h4>
+          <p data-i18n="spaceapps.step4.body">Hack over the weekend of 14-15 November 2026, then submit your project before judging begins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="spaceapps.roles.tag">🙋 Get involved</span>
+        <h2 data-i18n="spaceapps.roles.title">Ways to participate</h2>
+      </div>
+
+      <div class="grid grid-3 fade-in" style="margin-top: 1.5rem;">
+        <div class="role-card">
+          <div class="r-icon">💻</div>
+          <h4 data-i18n="spaceapps.role1.title">Participants</h4>
+          <p data-i18n="spaceapps.role1.body">Hackers of any background — register, log in at spaceappschallenge.org, find the Zurich local event page, and join or form a team.</p>
+        </div>
+        <div class="role-card">
+          <div class="r-icon">🧭</div>
+          <h4 data-i18n="spaceapps.role2.title">Mentors</h4>
+          <p data-i18n="spaceapps.role2.body">Guide teams on ideas, technical setups and challenge selection. Mentor applications for the Zurich event open on the official local event page.</p>
+        </div>
+        <div class="role-card">
+          <div class="r-icon">⚖️</div>
+          <h4 data-i18n="spaceapps.role3.title">Judges</h4>
+          <p data-i18n="spaceapps.role3.body">Evaluate submissions and help choose Zurich's nominees for global judging. Judge applications open closer to the event on the local event page.</p>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;" data-i18n="spaceapps.roles.note">Venue, schedule and volunteer sign-ups for Zurich 2026 will be published on the official local event page as the date approaches — follow TechLegion's channels for updates.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="spaceapps.gallery.tag">📸 Past highlights</span>
+        <h2 data-i18n="spaceapps.gallery.title">TechLegion at NASA Space Apps Challenge Zurich</h2>
+        <p data-i18n="spaceapps.gallery.lead">A look back at the 2025 Zurich edition, where a TechLegion-affiliated team was named a Global Nominee.</p>
+      </div>
+
+      <div class="grid grid-2 fade-in" style="margin-top: 1.5rem; gap: 1.5rem;">
+        <figure class="gallery-figure is-wide">
+          <img src="assets/img/spaceapps/zurich-sponsors-2025.jpg" alt="Welcome to Zürich, Switzerland — NASA Space Apps Challenge Zurich 2025 sponsor screen" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap1">Welcome to Zürich — the 2025 edition's sponsor and partner line-up.</figcaption>
+        </figure>
+        <figure class="gallery-figure">
+          <img src="assets/img/spaceapps/zurich-hackathon-1.jpg" alt="Teams hacking at NASA Space Apps Challenge Zurich" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap2">Teams heads-down during the hackathon weekend.</figcaption>
+        </figure>
+        <figure class="gallery-figure">
+          <img src="assets/img/spaceapps/zurich-audience-2025.jpg" alt="Audience at NASA Space Apps Challenge Zurich opening session" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap3">The Zurich community at the opening session.</figcaption>
+        </figure>
+        <figure class="gallery-figure">
+          <img src="assets/img/spaceapps/zurich-hackathon-2.jpg" alt="Participants working together at NASA Space Apps Challenge Zurich" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap4">A packed house of builders, all weekend long.</figcaption>
+        </figure>
+        <figure class="gallery-figure is-wide">
+          <img src="assets/img/spaceapps/zurich-global-nominee-2025.jpg" alt="Team receiving their Global Nominee launch certificate at NASA Space Apps Challenge Zurich 2025" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap5">Celebrating a Global Nominee launch certificate — Zurich 2025.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container container-narrow">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="spaceapps.faq.tag">❓ FAQ</span>
+        <h2 data-i18n="spaceapps.faq.title">Frequently asked questions</h2>
+      </div>
+      <div class="fade-in">
+        <details class="faq-item">
+          <summary data-i18n="spaceapps.faq1.q">Is it free to take part?</summary>
+          <p data-i18n="spaceapps.faq1.a">Yes. NASA Space Apps Challenge has no participation fees — registration and entry are free worldwide, including at the Zurich local event.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="spaceapps.faq2.q">Do I need to be a TechLegion member to join?</summary>
+          <p data-i18n="spaceapps.faq2.a">No. NASA Space Apps Challenge Zurich is open to anyone — you register directly through spaceappschallenge.org. TechLegion is a community partner and supporter of the Zurich event, not a gatekeeper for entry.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="spaceapps.faq3.q">What's the difference between Virtual and In-Person?</summary>
+          <p data-i18n="spaceapps.faq3.a">Local events are typically hybrid: some participants attend a physical venue, others join and collaborate remotely. Exact venue and format details for Zurich 2026 are published on the official local event page.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="spaceapps.faq4.q">How do I sign up specifically for the Zurich event?</summary>
+          <p data-i18n-html="spaceapps.faq4.a">Register at <a href="https://www.spaceappschallenge.org/2026/" target="_blank" rel="noopener">spaceappschallenge.org/2026</a>, then search the local events map and select <strong>Zurich, Switzerland</strong> as your local event before joining or forming a team.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="spaceapps.faq5.q">Do I need coding experience?</summary>
+          <p data-i18n="spaceapps.faq5.a">No. Teams are made up of coders, designers, scientists, storytellers and builders of all kinds — non-technical skills like communication, research and design are just as valuable to a team.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="nominate.html" data-i18n="nav.nominate">Nominate</a></li>
+            <li><a href="nasa-space-apps.html" data-i18n="nav.spaceapps">NASA Space Apps</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
