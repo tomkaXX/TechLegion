@@ -155,6 +155,46 @@
       font-size: 0.93rem;
     }
 
+    /* Modal (matches summer-school.html's cohort modal pattern) */
+    .ss-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .ss-modal-overlay.is-open { display: flex; }
+    .ss-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .ss-modal-close {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      transition: all var(--t-fast);
+    }
+    .ss-modal-close:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+    .ss-modal h3 { margin: 0 0 0.5rem; }
+
     @media (max-width: 880px) {
       .step-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -281,30 +321,191 @@
           <div class="r-icon">💻</div>
           <h4 data-i18n="spaceapps.role1.title">Participants</h4>
           <p data-i18n="spaceapps.role1.body">Hackers of any background — register, log in at spaceappschallenge.org, find the Zurich local event page, and join or form a team.</p>
+          <a href="https://www.spaceappschallenge.org/2026/local-events/zurich/" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 1rem;" data-i18n="spaceapps.role1.cta">Apply to participate</a>
         </div>
         <div class="role-card">
           <div class="r-icon">🧭</div>
           <h4 data-i18n="spaceapps.role2.title">Mentors</h4>
           <p data-i18n="spaceapps.role2.body">Guide teams on ideas, technical setups and challenge selection. Mentor applications for the Zurich event open on the official local event page.</p>
+          <button type="button" class="btn btn-ghost" style="margin-top: 1rem;" data-open-modal="mentor-modal" data-i18n="spaceapps.role2.cta">Apply to be a mentor</button>
         </div>
         <div class="role-card">
           <div class="r-icon">⚖️</div>
           <h4 data-i18n="spaceapps.role3.title">Judges</h4>
           <p data-i18n="spaceapps.role3.body">Evaluate submissions and help choose Zurich's nominees for global judging. Judge applications open closer to the event on the local event page.</p>
+          <button type="button" class="btn btn-ghost" style="margin-top: 1rem;" data-open-modal="judge-modal" data-i18n="spaceapps.role3.cta">Apply to be a judge</button>
         </div>
       </div>
 
-      <p style="text-align:center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;" data-i18n="spaceapps.roles.note">Venue, schedule and volunteer sign-ups for Zurich 2026 will be published on the official local event page as the date approaches — follow TechLegion's channels for updates.</p>
+      <p style="text-align:center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;" data-i18n="spaceapps.roles.note">Venue and schedule details for Zurich 2026 will be published on the official local event page as the date approaches — follow TechLegion's channels for updates.</p>
     </div>
   </section>
+
+  <!-- MENTOR APPLICATION MODAL -->
+  <div id="mentor-modal" class="ss-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ss-modal">
+      <button type="button" class="ss-modal-close" data-modal-close aria-label="Close">×</button>
+      <h3 data-i18n="spaceapps.mentor.title">Apply to be a mentor</h3>
+      <p class="form-subtitle" data-i18n-html="spaceapps.mentor.subtitle">Fields marked with <span style="color: var(--accent-glow)">*</span> are mandatory. TechLegion will pass mentor applications on to the NASA Space Apps Challenge Zurich organizing team.</p>
+
+        <form id="mentor-application-form" class="form" method="POST" action="" novalidate>
+          <input type="hidden" name="form_type" value="spaceapps_mentor" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="spaceapps.mf.name">Full name *</label>
+              <input type="text" name="full_name" required />
+              <span class="field-error" data-error-for="full_name" data-i18n="spaceapps.mf.name.error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="spaceapps.mf.email">Email *</label>
+              <input type="email" name="email" required autocomplete="email"
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+              <span class="field-error" data-error-for="email" data-i18n="spaceapps.mf.email.error">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="spaceapps.mf.phone">Phone (optional)</label>
+              <input type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     pattern="^\+?[0-9\s().\-]{7,20}$" placeholder="+41 ..." />
+              <span class="field-error" data-error-for="phone" data-i18n="spaceapps.mf.phone.error">Please enter a valid phone number.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="spaceapps.mf.linkedin">LinkedIn profile (optional)</label>
+              <input type="url" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.mf.expertise">Area(s) you can mentor *</label>
+            <input type="text" name="expertise" required placeholder="e.g. AI/ML, hardware, data science, UX/design, pitching, business" data-i18n-placeholder="spaceapps.mf.expertise.placeholder" />
+            <span class="field-error" data-error-for="expertise" data-i18n="spaceapps.mf.expertise.error">Please share your area(s) of expertise.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.mf.experience">Relevant experience *</label>
+            <textarea name="experience" rows="3" required placeholder="Professional background, prior mentoring or hackathon experience." data-i18n-placeholder="spaceapps.mf.experience.placeholder"></textarea>
+            <span class="field-error" data-error-for="experience" data-i18n="spaceapps.mf.experience.error">Please share your relevant experience.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.mf.availability">Availability *</label>
+            <select name="availability" required>
+              <option value="" data-i18n="spaceapps.mf.availability.placeholder">— Select —</option>
+              <option value="in-person" data-i18n="spaceapps.mf.availability.opt1">In-person only</option>
+              <option value="virtual" data-i18n="spaceapps.mf.availability.opt2">Virtual only</option>
+              <option value="both" data-i18n="spaceapps.mf.availability.opt3">Both in-person and virtual</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.mf.priorexp">Have you taken part in NASA Space Apps before?</label>
+            <input type="text" name="prior_experience" placeholder="e.g. No / Yes, participant 2024 / Yes, mentor 2025" data-i18n-placeholder="spaceapps.mf.priorexp.placeholder" />
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.mf.notes">Anything else? (optional)</label>
+            <textarea name="notes" rows="3"></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <span data-i18n-html="spaceapps.mf.consent">I accept the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem; width: 100%;" disabled data-i18n="spaceapps.mf.submit">Submit mentor application</button>
+        </form>
+    </div>
+  </div>
+
+  <!-- JUDGE APPLICATION MODAL -->
+  <div id="judge-modal" class="ss-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ss-modal">
+      <button type="button" class="ss-modal-close" data-modal-close aria-label="Close">×</button>
+      <h3 data-i18n="spaceapps.judge.title">Apply to be a judge</h3>
+      <p class="form-subtitle" data-i18n-html="spaceapps.judge.subtitle">Fields marked with <span style="color: var(--accent-glow)">*</span> are mandatory. TechLegion will pass judge applications on to the NASA Space Apps Challenge Zurich organizing team.</p>
+
+        <form id="judge-application-form" class="form" method="POST" action="" novalidate>
+          <input type="hidden" name="form_type" value="spaceapps_judge" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="spaceapps.jf.name">Full name *</label>
+              <input type="text" name="full_name" required />
+              <span class="field-error" data-error-for="full_name" data-i18n="spaceapps.jf.name.error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="spaceapps.jf.email">Email *</label>
+              <input type="email" name="email" required autocomplete="email"
+                     pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+              <span class="field-error" data-error-for="email" data-i18n="spaceapps.jf.email.error">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="spaceapps.jf.phone">Phone (optional)</label>
+              <input type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     pattern="^\+?[0-9\s().\-]{7,20}$" placeholder="+41 ..." />
+              <span class="field-error" data-error-for="phone" data-i18n="spaceapps.jf.phone.error">Please enter a valid phone number.</span>
+            </div>
+            <div class="form-group">
+              <label data-i18n="spaceapps.jf.linkedin">LinkedIn profile (optional)</label>
+              <input type="url" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.jf.expertise">Judging area(s) of expertise *</label>
+            <input type="text" name="expertise" required placeholder="e.g. technical feasibility, science validity, design, storytelling, business viability" data-i18n-placeholder="spaceapps.jf.expertise.placeholder" />
+            <span class="field-error" data-error-for="expertise" data-i18n="spaceapps.jf.expertise.error">Please share your area(s) of expertise.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.jf.experience">Relevant experience *</label>
+            <textarea name="experience" rows="3" required placeholder="Professional background, prior judging, research or industry experience." data-i18n-placeholder="spaceapps.jf.experience.placeholder"></textarea>
+            <span class="field-error" data-error-for="experience" data-i18n="spaceapps.jf.experience.error">Please share your relevant experience.</span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.jf.availability">Availability *</label>
+            <select name="availability" required>
+              <option value="" data-i18n="spaceapps.jf.availability.placeholder">— Select —</option>
+              <option value="in-person" data-i18n="spaceapps.jf.availability.opt1">In-person only</option>
+              <option value="virtual" data-i18n="spaceapps.jf.availability.opt2">Virtual only</option>
+              <option value="both" data-i18n="spaceapps.jf.availability.opt3">Both in-person and virtual</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.jf.priorexp">Have you judged or taken part in NASA Space Apps before?</label>
+            <input type="text" name="prior_experience" placeholder="e.g. No / Yes, participant 2024 / Yes, judge 2025" data-i18n-placeholder="spaceapps.jf.priorexp.placeholder" />
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="spaceapps.jf.notes">Anything else? (optional)</label>
+            <textarea name="notes" rows="3"></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <span data-i18n-html="spaceapps.jf.consent">I accept the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem; width: 100%;" disabled data-i18n="spaceapps.jf.submit">Submit judge application</button>
+        </form>
+    </div>
+  </div>
 
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
       <div class="section-head fade-in">
         <span class="tag" data-i18n="spaceapps.gallery.tag">📸 Past highlights</span>
-        <h2 data-i18n="spaceapps.gallery.title">TechLegion at NASA Space Apps Challenge Zurich</h2>
-        <p data-i18n="spaceapps.gallery.lead">A look back at the 2025 Zurich edition, where a TechLegion-affiliated team was named a Global Nominee.</p>
+        <h2 data-i18n="spaceapps.gallery.title">NASA Space Apps Challenge Zurich — 2025 edition</h2>
+        <p data-i18n="spaceapps.gallery.lead">Some highlights from last year's event and our vibrant community.</p>
       </div>
 
       <div class="grid grid-2 fade-in" style="margin-top: 1.5rem; gap: 1.5rem;">
@@ -327,6 +528,18 @@
         <figure class="gallery-figure is-wide">
           <img src="assets/img/spaceapps/zurich-global-nominee-2025.jpg" alt="Team receiving their Global Nominee launch certificate at NASA Space Apps Challenge Zurich 2025" loading="lazy" />
           <figcaption data-i18n="spaceapps.gallery.cap5">Celebrating a Global Nominee launch certificate — Zurich 2025.</figcaption>
+        </figure>
+        <figure class="gallery-figure is-wide">
+          <img src="assets/img/spaceapps/zurich-screen-2025.jpg" alt="NASA Space Apps Challenge 2025 Zurich branding screen at the venue" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap6">The official NASA Space Apps Challenge 2025 Zurich screen at the venue.</figcaption>
+        </figure>
+        <figure class="gallery-figure">
+          <img src="assets/img/spaceapps/zurich-hackathon-3.jpg" alt="Participants hacking together at NASA Space Apps Challenge Zurich" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap7">More teams deep in focus during the hackathon.</figcaption>
+        </figure>
+        <figure class="gallery-figure">
+          <img src="assets/img/spaceapps/zurich-networking-2025.jpg" alt="Participants networking over food at NASA Space Apps Challenge Zurich 2025" loading="lazy" />
+          <figcaption data-i18n="spaceapps.gallery.cap8">Refuelling and networking between hacking sessions.</figcaption>
         </figure>
       </div>
     </div>
@@ -416,5 +629,155 @@
 
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // ---- Mentor & Judge application forms → Google Apps Script ----
+    var SPACEAPPS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwI1PD-QgougCeaVIqKjC-M0S8quedomMd7hZSP0yopVVmw8aNN5Uvy1RqNc1Y2hsF_BQ/exec';
+
+    // ---- Generic modal open/close (mentor + judge application popups) ----
+    (function () {
+      function openModal(modal) {
+        if (!modal) return;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openModal(document.getElementById(btn.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('.ss-modal-overlay').forEach(function (modal) {
+        modal.querySelectorAll('[data-modal-close]').forEach(function (b) {
+          b.addEventListener('click', function () { closeModal(modal); });
+        });
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeModal(modal);
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        document.querySelectorAll('.ss-modal-overlay.is-open').forEach(function (modal) {
+          closeModal(modal);
+        });
+      });
+    })();
+
+    var SA_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var SA_PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+    function saTlDict() {
+      var lang = (document.documentElement.lang === 'uk' ? 'ua' : document.documentElement.lang) || 'en';
+      var fallback = (window.TL_I18N && window.TL_I18N.en) || {};
+      var dict = (window.TL_I18N && window.TL_I18N[lang]) || fallback;
+      return function (key, fallbackText) {
+        return dict[key] || fallback[key] || fallbackText;
+      };
+    }
+
+    function wireSpaceAppsForm(formId, endpoint, successKey, successFallback) {
+      var form = document.getElementById(formId);
+      if (!form) return;
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var privacyCb = form.querySelector('input[name="privacy"]');
+
+      function showError(field, show) {
+        var err = form.querySelector('.field-error[data-error-for="' + field.name + '"]');
+        if (err) err.classList.toggle('is-visible', !!show);
+        field.classList.toggle('invalid', !!show);
+      }
+
+      function validateField(field) {
+        if (!field) return true;
+        var v = (field.value || '').trim();
+        if (!v && !field.required) { showError(field, false); return true; }
+        if (!v && field.required) { showError(field, true); return false; }
+        var ok = true;
+        if (field.type === 'email') ok = SA_EMAIL_RE.test(v);
+        else if (field.type === 'tel') ok = SA_PHONE_RE.test(v);
+        showError(field, !ok);
+        return ok;
+      }
+
+      function formIsValid() {
+        if (!privacyCb || !privacyCb.checked) return false;
+        var required = form.querySelectorAll('[required]');
+        for (var i = 0; i < required.length; i++) {
+          var el = required[i];
+          if (el.type === 'checkbox') continue;
+          if (!validateField(el)) return false;
+        }
+        return true;
+      }
+
+      function refreshSubmitState() {
+        submitBtn.disabled = !formIsValid();
+      }
+
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        var evt = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'blur';
+        el.addEventListener(evt, function () { validateField(el); refreshSubmitState(); });
+        el.addEventListener('input', refreshSubmitState);
+      });
+      if (privacyCb) privacyCb.addEventListener('change', refreshSubmitState);
+      refreshSubmitState();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formIsValid()) { refreshSubmitState(); return; }
+        var t = saTlDict();
+        var originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = t('spaceapps.f.submitting', 'Submitting…');
+
+        var showSuccess = function () {
+          var successTitle = t(successKey + '.title', successFallback.title);
+          var successBody = t(successKey + '.body', successFallback.body);
+          form.innerHTML =
+            '<div style="padding:2rem;text-align:center;">' +
+              '<div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div>' +
+              '<h3 style="color:var(--accent-glow);margin-bottom:0.5rem;">' + successTitle + '</h3>' +
+              '<p>' + successBody + '</p>' +
+            '</div>';
+        };
+        var showFail = function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          alert(t('spaceapps.f.error.alert', 'Sorry, something went wrong submitting the form. Please email community@techlegion.ch and we\'ll process it manually.'));
+        };
+
+        if (!endpoint) { showSuccess(); return; }
+
+        fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors'
+        }).then(showSuccess).catch(showFail);
+      });
+    }
+
+    wireSpaceAppsForm(
+      'mentor-application-form',
+      SPACEAPPS_ENDPOINT,
+      'spaceapps.mf.success',
+      { title: 'Thanks for applying!', body: 'Your mentor application has been sent to the NASA Space Apps Challenge Zurich organizing team.' }
+    );
+
+    wireSpaceAppsForm(
+      'judge-application-form',
+      SPACEAPPS_ENDPOINT,
+      'spaceapps.jf.success',
+      { title: 'Thanks for applying!', body: 'Your judge application has been sent to the NASA Space Apps Challenge Zurich organizing team.' }
+    );
+  </script>
 </body>
 </html>
