@@ -28,6 +28,20 @@
     /* ===== NASA Space Apps page specific ===== */
     body section { padding: clamp(1.75rem, 3.5vw, 3rem) 0; }
 
+    .spaceapps-hero-lead {
+      max-width: 100%;
+    }
+    /* Override main.css's ".section-head p { max-width: 820px; margin: 0 auto; }"
+       so these paragraphs fill the exact same box as the h1 above them, not a
+       narrower, independently-centered 820px column. */
+    .spaceapps-hero-lead p {
+      max-width: none;
+      margin: 0 0 0.85rem;
+    }
+    .spaceapps-hero-lead p:last-child {
+      margin-bottom: 0;
+    }
+
     .spaceapps-hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -247,7 +261,12 @@
         <img src="assets/img/spaceapps-zurich.png" alt="NASA Space Apps Zurich logo" style="width: 140px; max-width: 40vw; margin: 0 auto 1.25rem; display: block; filter: drop-shadow(0 12px 32px rgba(213, 43, 30, 0.3));" />
         <span class="eyebrow" data-i18n="spaceapps.eyebrow">🚀 Hackathon · NASA Space Apps</span>
         <h1 data-i18n="spaceapps.title">NASA Space Apps Challenge — Zurich</h1>
-        <p data-i18n="spaceapps.lead">Registration for the 2026 NASA Space Apps Challenge is open! Be part of the largest annual global hackathon, taking place worldwide on 14-15 November 2026 — with TechLegion proud to be part of the Zurich, Switzerland community.</p>
+        <div class="spaceapps-hero-lead">
+          <p data-i18n="spaceapps.lead1">Zurich is back for its third annual NASA Space Apps Challenge, with the 2026 edition coming this November!</p>
+          <p data-i18n="spaceapps.lead2">TechLegion is proud to be the main organizer and supporter of the Zurich, Switzerland community, bringing together local talent to collaborate, build, and solve real-world challenges using NASA's open data.</p>
+          <p data-i18n="spaceapps.lead3">Join us in Zurich and be part of a global community turning ideas into innovation! 🌍🚀</p>
+          <p data-i18n="spaceapps.lead4">Registration is open — see you at NASA Space Apps 2026!</p>
+        </div>
         <div class="spaceapps-hero-actions">
           <a href="https://www.spaceappschallenge.org/2026/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="spaceapps.cta.register">Register today!</a>
           <a href="#gallery" class="btn btn-ghost btn-lg" data-i18n="spaceapps.cta.gallery">See past highlights</a>
@@ -542,7 +561,7 @@
   </section>
 
   <!-- FAQ -->
-  <section>
+  <section style="padding-bottom: clamp(0.875rem, 1.75vw, 1.5rem);">
     <div class="container container-narrow">
       <div class="section-head fade-in">
         <span class="tag" data-i18n="spaceapps.faq.tag">❓ FAQ</span>
