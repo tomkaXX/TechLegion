@@ -129,10 +129,66 @@ function doPost(e) {
     if (formType === 'dinner_pledge')  return handleDinnerPledge(p);
     if (formType === 'spaceapps_mentor') return handleSpaceAppsMentor(p);
     if (formType === 'spaceapps_judge')  return handleSpaceAppsJudge(p);
+    if (formType === '_diagnostic')      return handleDiagnostic();
     return handleMembership(p);
   } catch (err) {
     return jsonOut({ ok: false, error: err.message });
   }
+}
+
+/**
+ * Read-only audit: for every sheet this script is supposed to manage, reports
+ * whether the sheet exists, its row count, and whether its header row (row 1)
+ * exactly matches the expected headers defined above. Also lists any sheets
+ * in the spreadsheet that aren't accounted for. Does NOT create or modify
+ * anything — safe to call at any time.
+ *
+ * Call with form_type=_diagnostic (no other fields needed).
+ */
+function handleDiagnostic() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var expected = {};
+  expected[MEMBERSHIP_SHEET] = MEMBERSHIP_HEADERS;
+  expected[COHORT_SHEETS['cca-f']] = COHORT_HEADERS;
+  expected[COHORT_SHEETS['uas']] = COHORT_HEADERS;
+  expected[CONTACT_SHEET] = CONTACT_HEADERS;
+  expected[NEWSLETTER_SHEET] = NEWSLETTER_HEADERS;
+  expected[STUDY_TOUR_SHEET] = STUDY_TOUR_HEADERS;
+  expected[NOMINATION_SHEET] = NOMINATION_HEADERS;
+  expected[DINNER_PLEDGE_SHEET] = DINNER_PLEDGE_HEADERS;
+  expected[SPACEAPPS_MENTOR_SHEET] = SPACEAPPS_MENTOR_HEADERS;
+  expected[SPACEAPPS_JUDGE_SHEET] = SPACEAPPS_JUDGE_HEADERS;
+
+  var allSheetNames = ss.getSheets().map(function (s) { return s.getName(); });
+  var report = {};
+
+  Object.keys(expected).forEach(function (name) {
+    var sheet = ss.getSheetByName(name);
+    var exp = expected[name];
+    if (!sheet) {
+      report[name] = { exists: false, expectedHeaders: exp };
+      return;
+    }
+    var lastRow = sheet.getLastRow();
+    var lastCol = sheet.getLastColumn();
+    var actualHeaders = lastCol > 0 ? sheet.getRange(1, 1, 1, lastCol).getValues()[0] : [];
+    var headerMatch = actualHeaders.length === exp.length &&
+      exp.every(function (h, i) { return actualHeaders[i] === h; });
+    report[name] = {
+      exists: true,
+      rowCount: lastRow,
+      dataRows: Math.max(0, lastRow - 1),
+      headerMatch: headerMatch,
+      actualHeaders: actualHeaders,
+      expectedHeaders: exp
+    };
+  });
+
+  report._unaccountedSheetsInSpreadsheet = allSheetNames.filter(function (n) {
+    return !expected.hasOwnProperty(n);
+  });
+
+  return jsonOut({ ok: true, type: 'diagnostic', report: report });
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
