@@ -2,7 +2,7 @@
  * TechLegion → Google Sheet router + auto-acknowledgement emails
  *
  * Routes incoming form submissions to the correct sheet based on `form_type`:
- *   - form_type=membership (default)        → "TechLegion Membership Applications" sheet
+ *   - form_type=membership (default)        → "Applications"              sheet
  *   - form_type=cohort + cohort=cca-f       → "Claude AI"                 sheet
  *   - form_type=cohort + cohort=uas         → "UAS Drone Pilot"           sheet
  *   - form_type=contact                     → "Contact Messages"          sheet
@@ -24,7 +24,7 @@
  *   4. Submit a test from each form — sheets are created automatically on first use.
  */
 
-var MEMBERSHIP_SHEET    = 'TechLegion Membership Applications';
+var MEMBERSHIP_SHEET    = 'Applications';
 var CONTACT_SHEET       = 'Contact Messages';
 var NEWSLETTER_SHEET    = 'Newsletters';
 var STUDY_TOUR_SHEET    = 'Study Tour Registrations';
