@@ -448,7 +448,7 @@ window.TL_I18N = {
     "nominate.f.error.alert": "Sorry, something went wrong submitting the form. Please email community@techlegion.ch and we'll process it manually.",
 
     /* ---------- NASA Space Apps ---------- */
-    "nav.spaceapps": "NASA Space Apps",
+    "nav.spaceapps": "Space Apps",
     "spaceapps.eyebrow": "🚀 Hackathon · NASA Space Apps",
     "spaceapps.title": "NASA Space Apps Challenge — Zurich",
     "spaceapps.lead1": "Zurich is back for its third annual NASA Space Apps Challenge, with the 2026 edition coming this November!",
