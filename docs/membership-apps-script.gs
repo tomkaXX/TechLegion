@@ -10,6 +10,8 @@
  *   - form_type=study_tour                  → "Study Tour Registrations"  sheet
  *   - form_type=nomination                  → "Dinner Nominations"       sheet
  *   - form_type=dinner_pledge                → "Dinner Pledges"           sheet
+ *   - form_type=spaceapps_mentor             → "Space Apps Mentors"       sheet
+ *   - form_type=spaceapps_judge              → "Space Apps Judges"        sheet
  *
  * For EVERY submission, an acknowledgement email is automatically sent to
  * the submitter's email address confirming receipt.
@@ -28,6 +30,8 @@ var NEWSLETTER_SHEET    = 'Newsletters';
 var STUDY_TOUR_SHEET    = 'Study Tour Registrations';
 var NOMINATION_SHEET    = 'Dinner Nominations';
 var DINNER_PLEDGE_SHEET = 'Dinner Pledges';
+var SPACEAPPS_MENTOR_SHEET = 'Space Apps Mentors';
+var SPACEAPPS_JUDGE_SHEET  = 'Space Apps Judges';
 var COHORT_SHEETS = {
   'cca-f': 'Claude AI',
   'uas':   'UAS Drone Pilot'
@@ -94,6 +98,22 @@ var DINNER_PLEDGE_HEADERS = [
   'Accepted privacy'
 ];
 
+var SPACEAPPS_MENTOR_HEADERS = [
+  'Timestamp',
+  'Full name', 'Email', 'Phone', 'LinkedIn',
+  'Area(s) of expertise', 'Relevant experience',
+  'Availability', 'Prior Space Apps experience', 'Notes',
+  'Accepted privacy'
+];
+
+var SPACEAPPS_JUDGE_HEADERS = [
+  'Timestamp',
+  'Full name', 'Email', 'Phone', 'LinkedIn',
+  'Judging area(s) of expertise', 'Relevant experience',
+  'Availability', 'Prior Space Apps experience', 'Notes',
+  'Accepted privacy'
+];
+
 // ─── Router ──────────────────────────────────────────────────────────────────
 
 function doPost(e) {
@@ -107,6 +127,8 @@ function doPost(e) {
     if (formType === 'study_tour')     return handleStudyTour(p);
     if (formType === 'nomination')     return handleNomination(p);
     if (formType === 'dinner_pledge')  return handleDinnerPledge(p);
+    if (formType === 'spaceapps_mentor') return handleSpaceAppsMentor(p);
+    if (formType === 'spaceapps_judge')  return handleSpaceAppsJudge(p);
     return handleMembership(p);
   } catch (err) {
     return jsonOut({ ok: false, error: err.message });
@@ -256,6 +278,48 @@ function handleDinnerPledge(p) {
   return jsonOut({ ok: true, type: 'dinner_pledge' });
 }
 
+function handleSpaceAppsMentor(p) {
+  var sheet = ensureSheet(SPACEAPPS_MENTOR_SHEET, SPACEAPPS_MENTOR_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.full_name || '',
+    p.email || '',
+    p.phone || '',
+    p.linkedin || '',
+    p.expertise || '',
+    p.experience || '',
+    p.availability || '',
+    p.prior_experience || '',
+    p.notes || '',
+    yesNo(p.privacy)
+  ]);
+
+  sendAcknowledgement(p.email, p.full_name, 'spaceapps_mentor');
+  return jsonOut({ ok: true, type: 'spaceapps_mentor' });
+}
+
+function handleSpaceAppsJudge(p) {
+  var sheet = ensureSheet(SPACEAPPS_JUDGE_SHEET, SPACEAPPS_JUDGE_HEADERS);
+  var yesNo = function (v) { return v ? 'yes' : ''; };
+  sheet.appendRow([
+    new Date(),
+    p.full_name || '',
+    p.email || '',
+    p.phone || '',
+    p.linkedin || '',
+    p.expertise || '',
+    p.experience || '',
+    p.availability || '',
+    p.prior_experience || '',
+    p.notes || '',
+    yesNo(p.privacy)
+  ]);
+
+  sendAcknowledgement(p.email, p.full_name, 'spaceapps_judge');
+  return jsonOut({ ok: true, type: 'spaceapps_judge' });
+}
+
 // ─── Acknowledgement emails ───────────────────────────────────────────────────
 
 /**
@@ -263,7 +327,7 @@ function handleDinnerPledge(p) {
  *
  * @param {string} toEmail     - Recipient address
  * @param {string} firstName   - Recipient first name (may be empty)
- * @param {string} formType    - One of: membership | cohort | contact | newsletter | study_tour | nomination | dinner_pledge
+ * @param {string} formType    - One of: membership | cohort | contact | newsletter | study_tour | nomination | dinner_pledge | spaceapps_mentor | spaceapps_judge
  * @param {string} [extra]     - Optional extra context (e.g. tour name)
  */
 function sendAcknowledgement(toEmail, firstName, formType, extra) {
@@ -363,6 +427,26 @@ function sendAcknowledgement(toEmail, firstName, formType, extra) {
         WEBSITE_URL;
       break;
 
+    case 'spaceapps_mentor':
+      subject = 'TechLegion — NASA Space Apps mentor application received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for applying to mentor at NASA Space Apps Challenge Zurich. We\'ve received your application and will pass it on to the Zurich local event organizing team.\n\n' +
+        'They\'ll be in touch directly once mentor assignments are being finalised.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
+    case 'spaceapps_judge':
+      subject = 'TechLegion — NASA Space Apps judge application received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for applying to judge at NASA Space Apps Challenge Zurich. We\'ve received your application and will pass it on to the Zurich local event organizing team.\n\n' +
+        'They\'ll be in touch directly once judge assignments are being finalised.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
     default:
       subject = 'TechLegion — acknowledgement of receipt';
       body =
@@ -417,5 +501,7 @@ function setup() {
   ensureSheet(STUDY_TOUR_SHEET, STUDY_TOUR_HEADERS);
   ensureSheet(NOMINATION_SHEET, NOMINATION_HEADERS);
   ensureSheet(DINNER_PLEDGE_SHEET, DINNER_PLEDGE_HEADERS);
+  ensureSheet(SPACEAPPS_MENTOR_SHEET, SPACEAPPS_MENTOR_HEADERS);
+  ensureSheet(SPACEAPPS_JUDGE_SHEET, SPACEAPPS_JUDGE_HEADERS);
   Logger.log('All sheets ready.');
 }

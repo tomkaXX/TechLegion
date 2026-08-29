@@ -483,7 +483,7 @@ window.TL_I18N = {
     "spaceapps.role3.body": "Evaluate submissions and help choose Zurich's nominees for global judging. Judge applications open closer to the event on the local event page.",
     "spaceapps.roles.note": "Venue, schedule and volunteer sign-ups for Zurich 2026 will be published on the official local event page as the date approaches — follow TechLegion's channels for updates.",
     "spaceapps.gallery.tag": "📸 Past highlights",
-    "spaceapps.gallery.title": "TechLegion at NASA Space Apps Challenge Zurich",
+    "spaceapps.gallery.title": "NASA Space Apps Challenge Zurich 2025",
     "spaceapps.gallery.lead": "A look back at the 2025 Zurich edition, where a TechLegion-affiliated team was named a Global Nominee.",
     "spaceapps.gallery.cap1": "Welcome to Zürich — the 2025 edition's sponsor and partner line-up.",
     "spaceapps.gallery.cap2": "Teams heads-down during the hackathon weekend.",
