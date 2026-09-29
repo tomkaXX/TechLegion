@@ -12,7 +12,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Success Stories — TechLegion Switzerland</title>
-  <meta name="description" content="Customer success stories from the TechLegion community: Ensor (Claude for code review) and SoftBees × ASVIO Bank (AI-powered AML financial monitoring)." />
+  <meta name="description" content="Customer success stories from the TechLegion community: Ensor (Claude for code review) and SoftBees × ASVIO Bank (AI-powered AML financial monitoring) and Vedic AI Guru (Claude Code multi-agent build)." />
   <meta name="theme-color" content="#050816" />
   <meta property="og:title" content="Customer Success Stories — TechLegion Switzerland" />
   <meta property="og:description" content="How TechLegion community teams put Claude into production — Ensor and SoftBees × ASVIO Bank." />
@@ -137,10 +137,11 @@
       <div class="section-head fade-in" style="max-width: 820px; margin-left: auto; margin-right: auto; text-align: center;">
         <span class="eyebrow">Success stories</span>
         <h1>Customer success stories</h1>
-        <p>How teams in the TechLegion community put Claude into real production work — from everyday engineering to regulated banking.</p>
+        <p>How teams in the TechLegion community put Claude into real production work — from everyday engineering to regulated banking and consumer products.</p>
         <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.25rem;">
           <a href="#ensor" class="btn btn-ghost">#1 TechLegion × Ensor</a>
           <a href="#softbees" class="btn btn-ghost">#2 TechLegion × SoftBees</a>
+          <a href="#vedic-ai-guru" class="btn btn-ghost">#3 TechLegion × Vedic AI Guru</a>
         </div>
       </div>
     </div>
@@ -264,6 +265,116 @@
         <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
           <a href="https://youtu.be/69Bw6WIksIU" target="_blank" rel="noopener" class="btn btn-primary">Watch the demo video</a>
           <a href="https://www.facebook.com/share/p/19eoNMP4nF/" target="_blank" rel="noopener" class="btn btn-ghost">Public reference</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Story #3 — Vedic AI Guru -->
+  <section id="vedic-ai-guru" class="story">
+    <div class="container container-narrow">
+      <article class="story-card fade-in">
+        <span class="tag">Customer Success Story #3</span>
+        <h2>TechLegion × Vedic AI Guru</h2>
+        <p class="story-summary">A TechLegion Architect Cohort member used Claude Code to bring quant-finance quality standards to a Vedic astrology app for professionals: about 3,000 checked data points per chart, a team of six AI agents, and a reading in about a minute.</p>
+
+        <dl class="story-facts">
+          <div><dt>Partner</dt><dd>TechLegion</dd></div>
+          <div><dt>Customer</dt><dd>Vedic AI Guru</dd></div>
+          <div><dt>Industry</dt><dd>Consumer services / Wellness &amp; personal development</dd></div>
+          <div><dt>Use case</dt><dd>Decision support for professionals</dd></div>
+          <div><dt>Claude product</dt><dd>Claude Code (six-agent team) · Claude API (readings)</dd></div>
+          <div><dt>Status</dt><dd>Beta with 30 users · full launch November 2026</dd></div>
+        </dl>
+
+        <div class="story-stats">
+          <div class="stat"><span class="stat-num">~3,000</span><span class="stat-label">Checked data points per chart</span></div>
+          <div class="stat"><span class="stat-num">40–70 s</span><span class="stat-label">Per full reading (previously days by hand)</span></div>
+          <div class="stat"><span class="stat-num">50 / 50</span><span class="stat-label">Forbidden questions refused, no false refusals</span></div>
+        </div>
+
+        <h3>The use case</h3>
+        <p>Decision support for professionals, such as founders, executives, wealth managers and bankers, who face a career or business decision during industry change. The service computes the person's Vedic astrology birth chart with an exact calculation engine. Claude then writes a plain-language reading about that one decision, with dates. Every number in it comes from the engine.</p>
+
+        <h3>The problem</h3>
+        <p>Most astrology apps start with the story and skip the maths. Their calculations can't be checked, and a one-hour time zone error can quietly shift a whole life timeline by about 222 days. Professionals facing a real decision get confident-sounding text with no way to test it.</p>
+
+        <h3>What the partner brought</h3>
+        <p>Yulia Myronova, a member of the TechLegion Architect Cohort, spent ten years in capital markets and strategy at BCG, UBS and Swiss Re. She brought the quality approach of quantitative finance to this problem. Every number must pass checks before anyone reads it. Hypotheses are written down and locked before testing. Results are compared against random charts, and negative results are published.</p>
+        <p>The build ran on Claude Code as a team of six agents with a shared decision log:</p>
+        <ul class="story-list">
+          <li><strong>Orchestrator</strong> routes the work.</li>
+          <li><strong>Product agent</strong> sets priorities.</li>
+          <li><strong>CTO agent</strong> builds the engine.</li>
+          <li><strong>UX agent</strong> designs the experience.</li>
+          <li><strong>Marketing agent</strong> writes content.</li>
+          <li><strong>Eval agent</strong> acts as an independent quality gate.</li>
+        </ul>
+        <p>Claude never makes numbers up. It only turns checked numbers into plain language.</p>
+
+        <h3>Results</h3>
+        <div class="story-results">
+          <div>
+            <h4>Scale and speed</h4>
+            <ul>
+              <li>About 3,000 computed values per person: 2,162 raw astronomical and chart values across 16 divisional charts, 835 derived relations, and 165 decision features that feed the reading</li>
+              <li>Before: each reading made by hand over days. After: a full reading in 40–70 seconds</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Accuracy gates</h4>
+            <ul>
+              <li>No chart goes further unless it matches fixed control totals (a checksum of 337 and planet-by-planet totals); any difference forces a full recalculation</li>
+              <li>Historical time zones are checked before any calculation — 18 of 138 charts with unreliable birth times were rejected before they could produce wrong results</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Independent verification</h4>
+            <ul>
+              <li>A separate script recalculates every chart from scratch without the engine's code: 128 checks on the engine, 125 on the data workbook</li>
+              <li>Three-source rule: any engine change must match three independent sources before it ships</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Agent quality gate</h4>
+            <ul>
+              <li>The Eval agent scores every output for accuracy, completeness and relevance; anything with an invented fact is blocked automatically</li>
+              <li>It found a "green" test letting 21 of 27 forbidden questions through. After the fix, all 50 forbidden questions (health, death, pregnancy, court cases, investments) were refused, with no false refusals on 53 allowed ones</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Research discipline</h4>
+            <ul>
+              <li>Pre-registered study: 60 wealthy people vs. 60 employees, all with top-rated birth data</li>
+              <li>Hypothesis locked with a hash before any calculation; compared against 1,000 random charts matched by birth year and place</li>
+              <li>The result was negative — and it was published, not hidden</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Launch</h4>
+            <ul>
+              <li>Pre-launch: September 2026, with 30 users in beta</li>
+              <li>First reading free, then USD 10 a month for unlimited readings</li>
+              <li>Full-scale launch: November 2026</li>
+            </ul>
+          </div>
+        </div>
+
+        <blockquote class="story-quote">
+          <p>“For professionals navigating a career transition, uncertainty can be challenging. Vedic AI Guru gave me an additional perspective for personal planning and important decisions during a period of change. In my case, it accurately identified the timing of several major life events and offered insightful observations about my personality and natal chart. I would recommend it as a valuable source of support for anyone about to begin a new chapter.”</p>
+          <footer><strong>Anna Vitko</strong>, LL.M., TEP, Wealth Planning Expert, Zurich</footer>
+        </blockquote>
+
+        <h3>The team</h3>
+        <ul class="story-list">
+          <li><strong>Yulia Myronova</strong> — AI Strategist &amp; PM, TechLegion Architect · Founder, Vedic AI Guru</li>
+        </ul>
+
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="https://vedicaiguru.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Vedic AI Guru</a>
+          <a href="https://www.youtube.com/watch?v=RsQvAS_RBCA&amp;t=12s" target="_blank" rel="noopener" class="btn btn-ghost">Watch the video</a>
+          <a href="https://github.com/ymyronova/Vedic.Guru" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          <a href="https://orcid.org/0009-0007-8197-5449" target="_blank" rel="noopener" class="btn btn-ghost">ORCID</a>
         </div>
       </article>
     </div>
