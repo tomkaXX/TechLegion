@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Success Stories — TechLegion Switzerland</title>
+  <meta name="description" content="Customer success stories from the TechLegion community: Ensor (Claude for code review) and SoftBees × ASVIO Bank (AI-powered AML financial monitoring)." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Customer Success Stories — TechLegion Switzerland" />
+  <meta property="og:description" content="How TechLegion community teams put Claude into production — Ensor and SoftBees × ASVIO Bank." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/success-stories.html" />
+  <link rel="alternate" hreflang="en" href="https://techlegion.ch/success-stories.html?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://techlegion.ch/success-stories.html?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://techlegion.ch/success-stories.html?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://techlegion.ch/success-stories.html?lang=it" />
+  <link rel="alternate" hreflang="uk" href="https://techlegion.ch/success-stories.html?lang=ua" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .section-head { margin-bottom: 1.25rem; }
+    .story { scroll-margin-top: 90px; }
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 2.75rem);
+    }
+    .story-card h2 { margin: 0.75rem 0 0.75rem; }
+    .story-card h3 { margin: 2rem 0 0.6rem; font-size: 1.2rem; }
+    .story-card h4 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--white); }
+    .story-card p, .story-card li { color: var(--text-dim); line-height: 1.7; }
+    .story-card strong { color: var(--text); }
+    .story-summary { font-size: 1.1rem; color: var(--text) !important; }
+    .story-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 0;
+      padding: 1.25rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .story-facts dt { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .story-facts dd { margin: 0.2rem 0 0; color: var(--text); font-weight: 500; }
+    .story-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .story-stats .stat {
+      text-align: center;
+      padding: 1.25rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .story-stats .stat-num { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+    .story-list { padding-left: 1.2rem; }
+    .story-list li { margin-bottom: 0.5rem; }
+    .story-results {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .story-results > div {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .story-results ul { padding-left: 1.1rem; margin: 0; }
+    .story-note { font-size: 0.85rem; color: var(--text-muted) !important; margin: 0.75rem 0 0; }
+    .story-quote {
+      margin: 2rem 0 0;
+      padding: 1.5rem 1.75rem;
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, rgba(77, 139, 255, 0.12), rgba(139, 92, 246, 0.08));
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .story-quote p { font-style: italic; color: var(--text) !important; }
+    .story-quote footer { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; }
+    @media (max-width: 760px) {
+      .story-stats, .story-results { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s2"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in" style="max-width: 820px; margin-left: auto; margin-right: auto; text-align: center;">
+        <span class="eyebrow">Success stories</span>
+        <h1>Customer success stories</h1>
+        <p>How teams in the TechLegion community put Claude into real production work — from everyday engineering to regulated banking.</p>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.25rem;">
+          <a href="#ensor" class="btn btn-ghost">#1 TechLegion × Ensor</a>
+          <a href="#softbees" class="btn btn-ghost">#2 TechLegion × SoftBees</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story #1 — Ensor -->
+  <section id="ensor" class="story">
+    <div class="container container-narrow">
+      <article class="story-card fade-in">
+        <span class="tag">Customer Success Story #1</span>
+        <h2>TechLegion × Ensor</h2>
+        <p class="story-summary">Ensor's engineering team uses Claude for code review — shortening the path from pull request to production and freeing engineers to focus on building and supporting the product.</p>
+
+        <dl class="story-facts">
+          <div><dt>Company</dt><dd>Ensor AG</dd></div>
+          <div><dt>Industry</dt><dd>Software / Technology</dd></div>
+          <div><dt>Use case</dt><dd>AI-assisted code review</dd></div>
+          <div><dt>Claude product</dt><dd>Claude</dd></div>
+        </dl>
+
+        <h3>The challenge</h3>
+        <p>As the team grew and release cadence increased, code review became a bottleneck. Pull requests waited for a reviewer, feedback arrived in several rounds, and senior engineers spent a large share of their time on routine review comments instead of design and support work.</p>
+
+        <h3>What the team does with Claude</h3>
+        <p>Claude is part of the team's everyday review workflow. Every change gets a first-pass review from Claude, which flags bugs, edge cases, readability issues and deviations from the team's conventions, and explains the reasoning behind each comment. Engineers then focus their own review on architecture, product decisions and the questions only a human can answer.</p>
+
+        <h3>The results</h3>
+        <ul class="story-list">
+          <li><strong>Faster deployment.</strong> Review feedback arrives within minutes, so changes move from pull request to production with fewer round-trips.</li>
+          <li><strong>Higher confidence per release.</strong> Common issues are caught before a human reviewer ever opens the change.</li>
+          <li><strong>More time for development and support.</strong> Engineers spend less time on routine review and more on building features and supporting the product.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Story #2 — SoftBees / ASVIO Bank -->
+  <section id="softbees" class="story">
+    <div class="container container-narrow">
+      <article class="story-card fade-in">
+        <span class="tag">Customer Success Story #2</span>
+        <h2>TechLegion × SoftBees</h2>
+        <p class="story-summary">Reviewing a bank statement for financial monitoring at ASVIO Bank dropped from 11.5 hours of manual work to about one hour, with every finding evidenced and traceable to the transactions behind it.</p>
+
+        <dl class="story-facts">
+          <div><dt>Partner</dt><dd>SoftBees</dd></div>
+          <div><dt>Customer</dt><dd>ASVIO Bank</dd></div>
+          <div><dt>Industry</dt><dd>Banking / Financial Services</dd></div>
+          <div><dt>Use case</dt><dd>AML / financial monitoring</dd></div>
+          <div><dt>Claude product</dt><dd>Claude 3.7 Sonnet via Amazon Bedrock (API)</dd></div>
+          <div><dt>Deployment</dt><dd>Cloud or fully on-premise (Docker container / Java JAR)</dd></div>
+        </dl>
+
+        <div class="story-stats">
+          <div class="stat"><span class="stat-num">−90%</span><span class="stat-label">Processing time per large statement (11.5 h → ~1 h)</span></div>
+          <div class="stat"><span class="stat-num">17×</span><span class="stat-label">Lower cost of processing a document case</span></div>
+          <div class="stat"><span class="stat-num">4,000+</span><span class="stat-label">Documents processed in 2025–2026</span></div>
+        </div>
+
+        <h3>The use case</h3>
+        <p>AI pre-screening of bank statements. The agent reads statements in any format — text PDF, spreadsheet, scan or phone photo — reconstructs the transaction table, validates it, and produces an explainable risk assessment with the evidence behind every finding. The compliance officer keeps the final decision.</p>
+
+        <h3>The problem</h3>
+        <p>Bank statements submitted for financial monitoring run 40–90 pages and arrive in more than ten different formats, frequently as scans or phone photographs. There is no standard layout across banks, so every document was effectively read from scratch by hand — around 11.5 hours per large statement, with the error risk that monotonous work carries. This sat directly on the bank's compliance exposure.</p>
+
+        <h3>What SoftBees brought</h3>
+        <p>Model selection was an engineering decision rather than a default: SoftBees evaluated a range of models against real banking documents. Local open-source models, without fine-tuning, failed on domain-specific Ukrainian identifiers — MFO routing codes and EDRPOU company numbers read as ordinary digit strings to a general model, and the accuracy of everything downstream depends on getting them right. Claude returned correct results out of the box, with no fine-tuning, which is what made the client's timeline achievable.</p>
+        <p>The team then built a three-path pipeline so the model is used only where it adds value:</p>
+        <ul class="story-list">
+          <li><strong>Text-layer PDFs</strong> go through a deterministic Java parser reading the document's own text and table geometry — no model call, no latency.</li>
+          <li><strong>Post-processing with Claude</strong> is layered on top: it sees each page, its image, and the rows the parser extracted, and fixes what a table parser structurally cannot — rejoining a value wrapped inside its own cell, recognising a bare counterparty code, completing a truncated payment purpose.</li>
+          <li><strong>Scans and photos</strong> are read by Claude directly, one call per page in parallel, with pages cut into bands to buy resolution where pixels are the only source of digits.</li>
+        </ul>
+        <p>Every path ends the same way: identifiers normalised, IBANs verified against their own mod-97 checksum, totals cross-checked against whatever total the statement prints about itself. Rule-based AML analysis then runs over the structured result across nine categories, and each finding cites the specific transaction rows behind it and states what the officer should verify next. SoftBees deliberately did not build a black box — the agent accelerates the first level of review, and responsibility for the decision stays with the human.</p>
+
+        <h3>Results</h3>
+        <div class="story-results">
+          <div>
+            <h4>Before → after</h4>
+            <ul>
+              <li>Processing one large statement: 11.5 hours → ~1 hour (−90%)</li>
+              <li>Analyst throughput: from 1–2 cases per day to dozens</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Processing speed by format</h4>
+            <ul>
+              <li>Spreadsheets and text-layer PDFs: 1–2 seconds</li>
+              <li>Scans and photographs: 60–90 seconds</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Adoption and scale</h4>
+            <ul>
+              <li>4,000+ documents processed across 2025–2026</li>
+              <li>Live in production for financial monitoring — not a pilot</li>
+              <li>Additional banking institutions in deployment discussions</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Independently confirmed by the customer</h4>
+            <ul>
+              <li>Cost of processing one document case: reduced seventeen-fold</li>
+              <li>Human error in the process: effectively eliminated</li>
+            </ul>
+            <p class="story-note">Both figures were stated publicly by ASVIO Bank's Chairman of the Board at the DIGITAL HORIZONS: SMART BANKING conference, September 2025.</p>
+          </div>
+        </div>
+
+        <blockquote class="story-quote">
+          <p>“There is a great deal of discussion around breakthrough AI technologies in banking at the moment, but still few practical cases. The next step in ASVIO Bank's digitalisation was deploying an AI agent to automate financial monitoring and operational processes. What it gave us — ASVIO's first results: we have effectively eliminated human error; we cut the processing time for a single document by 90%, from 11.5 hours to one hour; and we reduced the cost of processing a case of documents seventeen-fold. Our next step is scaling the AI agent, and our clients will feel it in service quality very soon.”</p>
+          <footer><strong>Yevhen Shulika</strong>, Chairman of the Board, ASVIO Bank — DIGITAL HORIZONS: SMART BANKING conference, September 2025</footer>
+        </blockquote>
+
+        <h3>The SoftBees team</h3>
+        <ul class="story-list">
+          <li><strong>Tetiana Dashevska</strong> — CEO &amp; Co-Founder</li>
+          <li><strong>Serhii Ratkov</strong> — CTO &amp; Co-Founder, led the technical side of the implementation</li>
+        </ul>
+
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="https://youtu.be/69Bw6WIksIU" target="_blank" rel="noopener" class="btn btn-primary">Watch the demo video</a>
+          <a href="https://www.facebook.com/share/p/19eoNMP4nF/" target="_blank" rel="noopener" class="btn btn-ghost">Public reference</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="callout fade-in">
+        <h3 data-i18n="cohort2026.join.title">Want to join the next cohort?</h3>
+        <p data-i18n="cohort2026.join.body">Learn more about TechLegion's programs and how to get started on your own CCA-F certification path.</p>
+        <div style="margin-top: 1.25rem; display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+          <a href="summer-school.html" class="btn btn-primary" data-i18n="nav.programs">Programs</a>
+          <a href="cohort-2026.html" class="btn btn-ghost">← Back to 2026 Cohort</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="summer-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="cohort-2026.html" data-i18n="cohort2026.nav_label">2026 Cohort</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="nominate.html" data-i18n="nav.nominate">Nominate</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
