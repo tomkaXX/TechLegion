@@ -12,7 +12,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Success Stories — TechLegion Switzerland</title>
-  <meta name="description" content="Customer success stories from the TechLegion community: Ensor (Claude for code review) and SoftBees × ASVIO Bank (AI-powered AML financial monitoring) and Vedic AI Guru (Claude Code multi-agent build)." />
+  <meta name="description" content="Customer success stories from the TechLegion community: Ensor (Claude for code review) and SoftBees × ASVIO Bank (AI-powered AML financial monitoring) Vedic AI Guru (Claude Code multi-agent build) and Ralchenko Software (Deutsch Lernen app built with Claude Code)." />
   <meta name="theme-color" content="#050816" />
   <meta property="og:title" content="Customer Success Stories — TechLegion Switzerland" />
   <meta property="og:description" content="How TechLegion community teams put Claude into production — Ensor and SoftBees × ASVIO Bank." />
@@ -137,11 +137,12 @@
       <div class="section-head fade-in" style="max-width: 820px; margin-left: auto; margin-right: auto; text-align: center;">
         <span class="eyebrow">Success stories</span>
         <h1>Customer success stories</h1>
-        <p>How teams in the TechLegion community put Claude into real production work — from everyday engineering to regulated banking and consumer products.</p>
+        <p>How teams in the TechLegion community put Claude into real production work — from everyday engineering to regulated banking, consumer products and education.</p>
         <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.25rem;">
           <a href="#ensor" class="btn btn-ghost">#1 TechLegion × Ensor</a>
           <a href="#softbees" class="btn btn-ghost">#2 TechLegion × SoftBees</a>
           <a href="#vedic-ai-guru" class="btn btn-ghost">#3 TechLegion × Vedic AI Guru</a>
+          <a href="#ralchenko-software" class="btn btn-ghost">#4 TechLegion × Ralchenko Software</a>
         </div>
       </div>
     </div>
@@ -375,6 +376,102 @@
           <a href="https://www.youtube.com/watch?v=RsQvAS_RBCA&amp;t=12s" target="_blank" rel="noopener" class="btn btn-ghost">Watch the video</a>
           <a href="https://github.com/ymyronova/Vedic.Guru" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
           <a href="https://orcid.org/0009-0007-8197-5449" target="_blank" rel="noopener" class="btn btn-ghost">ORCID</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Story #4 — Ralchenko Software / Deutsch Lernen -->
+  <section id="ralchenko-software" class="story">
+    <div class="container container-narrow">
+      <article class="story-card fade-in">
+        <span class="tag">Customer Success Story #4</span>
+        <h2>TechLegion × Ralchenko Software</h2>
+        <p class="story-summary">A solo founder used Claude Code to take a full-featured language-learning app from idea to Google Play and keep shipping (70+ releases), growing to 500+ installs, 270 monthly active devices and first subscription revenue.</p>
+
+        <dl class="story-facts">
+          <div><dt>Partner</dt><dd>TechLegion</dd></div>
+          <div><dt>Customer</dt><dd>Ralchenko Software</dd></div>
+          <div><dt>Industry</dt><dd>Education (EdTech, language learning)</dd></div>
+          <div><dt>Product</dt><dd>Deutsch Lernen — Android app, A1 to C2</dd></div>
+          <div><dt>Claude product</dt><dd>Claude Code (primary development tool) · Claude API (Claude Opus 5, bring-your-own-key AI tutor)</dd></div>
+          <div><dt>Live since</dt><dd>April 2026 on Google Play</dd></div>
+        </dl>
+
+        <div class="story-stats">
+          <div class="stat"><span class="stat-num">70+</span><span class="stat-label">Releases since launch, by one developer</span></div>
+          <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Downloads on Google Play</span></div>
+          <div class="stat"><span class="stat-num">+44%</span><span class="stat-label">Monthly active devices (270, last 28 days)</span></div>
+        </div>
+
+        <h3>The use case</h3>
+        <p>Deutsch Lernen is an Android app for learning German from A1 to C2, built for migrants and expats in the DACH region. It combines 9,400+ vocabulary words with FSRS v5 spaced repetition, 180 grammar rules with 1,300+ exercises, quizzes, dictation, listening, and an AI tutor for conversation, speaking and writing practice. The AI tutor runs through the company's own Cloudflare Workers gateway, and users can optionally connect their own API key (Claude, Gemini, Groq or OpenAI). The app is freemium — A1–A2 free, B1–C2 by subscription — with the interface in 10 languages.</p>
+
+        <h3>The problem</h3>
+        <p>German learners need one app that covers vocabulary, grammar and real conversation practice at every CEFR level, in their own interface language. Building and maintaining that normally takes a team.</p>
+
+        <h3>How Claude Code made it possible</h3>
+        <p>With Claude Code as the primary engineering tool — for architecture, code, tests, database migrations and releases — one developer designed, built, tested and released the whole app:</p>
+        <ul class="story-list">
+          <li><strong>25+ screens</strong> and <strong>~400 unit tests</strong></li>
+          <li>A <strong>33-version database schema</strong> with migrations</li>
+          <li><strong>10 UI languages</strong>, Google Play Billing and a backend AI gateway</li>
+          <li>Claude Opus 5 available in the app via the official Anthropic Java SDK as a bring-your-own-key tutor provider (from v2.2.73, September 2026)</li>
+        </ul>
+
+        <h3>Results</h3>
+        <div class="story-results">
+          <div>
+            <h4>Users and growth</h4>
+            <ul>
+              <li>500+ total downloads; installed audience grew from ~400 to 511 users in 23 days (+~28%)</li>
+              <li>Last 28 days vs. previous 28: 217 new installs (+57%), 270 monthly active devices (+44%)</li>
+              <li>First paying subscribers</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Store performance</h4>
+            <ul>
+              <li>669 listing visitors (+117%)</li>
+              <li>225 install clicks (+105%)</li>
+              <li>34% conversion</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Engagement</h4>
+            <ul>
+              <li>Roughly half of the installed base active in the last month (270 active devices vs. 511 users)</li>
+              <li>Users in Ukraine (20%), Germany (15%), Switzerland (7%) and Turkey (5%); fastest growth in Germany</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Community and feedback</h4>
+            <ul>
+              <li>40 beta testers from the Power Hub Zug mentoring program; release notes sent to 44 testers; 31 subscribers in the app's Telegram channel</li>
+              <li>~50 detailed feedback messages led directly to shipped features: placement test, typo-tolerant answers, reworked hints, subscription pricing, and a gateway so the AI tutor works without an API key</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Delivery</h4>
+            <ul>
+              <li>70+ releases since launch in April 2026</li>
+              <li>~400 automated tests</li>
+              <li>Play API 36 / Billing v8 compliance shipped ahead of the August 2026 deadline</li>
+            </ul>
+          </div>
+          <div>
+            <h4>What beta testers say</h4>
+            <ul>
+              <li>“Best language app in the world in my view… I do think this is great work.” — Beta tester, Switzerland (B2–C1)</li>
+              <li>“It really has a strong functional side and covers almost every learning scenario (review, dictionary, speaking, tests).” — Beta tester, Ukraine</li>
+              <li>“I consider the price fair.” — Beta tester, Austria (then subscribed)</li>
+            </ul>
+          </div>
+        </div>
+        <p class="story-note">Figures from Google Play Console, September 2026.</p>
+
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="https://play.google.com/store/apps/details?id=com.germantutor" target="_blank" rel="noopener" class="btn btn-primary">Get it on Google Play</a>
         </div>
       </article>
     </div>
