@@ -525,9 +525,9 @@ window.TL_I18N = {
     "about.ukraine.item3.body": "We've built lasting collaborations with Ukrainian tech and social-impact communities, including Ukrainian Hub and Digitalizing Space, acting as a community partner that helps bring technology into social and education projects across Ukraine.",
 
     /* ---------- Cohort 2026 ---------- */
-    "cohort2026.eyebrow": "2026 Cohort",
+    "cohort2026.eyebrow": "2026 Certified AI Architects Cohort",
     "cohort2026.title": "TechLegion 2026 Cohort",
-    "cohort2026.lead": "Our 2026 cohort brings together professionals working toward Claude Certified Architect Foundations (CCA-F) certification — building real fluency with Claude and AI-assisted architecture through TechLegion's community-driven learning track.",
+    "cohort2026.lead": "Our 2026 cohort brings together professionals working toward Claude Certified Architect Foundations (CCA-F) certification — building real fluency with Claude and AI-assisted architecture through TechLegion's community-driven learning track. Our first cohort brings together an international community of software architects, engineers, cybersecurity experts, technology leaders, and AI practitioners.",
     "cohort2026.stats.success_rate": "Cohort success rate",
     "cohort2026.stats.certified": "Certified so far",
     "cohort2026.stats.certification": "Claude Certified Architect Foundations",
@@ -1326,9 +1326,9 @@ window.TL_I18N = {
     "about.ukraine.item3.body": "Wir haben dauerhafte Kooperationen mit ukrainischen Tech- und Social-Impact-Communities aufgebaut, darunter Ukrainian Hub und Digitalizing Space, und wirken als Community-Partner mit, um Technologie in soziale und Bildungsprojekte in der Ukraine einzubringen.",
 
     /* ---------- Jahrgang 2026 ---------- */
-    "cohort2026.eyebrow": "Jahrgang 2026",
+    "cohort2026.eyebrow": "Jahrgang 2026 der zertifizierten KI-Architekten",
     "cohort2026.title": "TechLegion Jahrgang 2026",
-    "cohort2026.lead": "Unser Jahrgang 2026 vereint Fachleute auf dem Weg zur Zertifizierung Claude Certified Architect Foundations (CCA-F) — echte Kompetenz im Umgang mit Claude und KI-gestützter Architektur, aufgebaut durch TechLegions gemeinschaftsgetriebenen Lernpfad.",
+    "cohort2026.lead": "Unser Jahrgang 2026 vereint Fachleute auf dem Weg zur Zertifizierung Claude Certified Architect Foundations (CCA-F) — echte Kompetenz im Umgang mit Claude und KI-gestützter Architektur, aufgebaut durch TechLegions gemeinschaftsgetriebenen Lernpfad. Unser erster Jahrgang vereint eine internationale Gemeinschaft von Softwarearchitekten, Ingenieuren, Cybersecurity-Expertinnen und -Experten, Technologieführungskräften und KI-Praktikern.",
     "cohort2026.stats.success_rate": "Erfolgsquote des Jahrgangs",
     "cohort2026.stats.certified": "Bisher zertifiziert",
     "cohort2026.stats.certification": "Claude Certified Architect Foundations",
@@ -2128,9 +2128,9 @@ window.TL_I18N = {
     "about.ukraine.item3.body": "Nous avons noué des collaborations durables avec des communautés tech et à impact social ukrainiennes, dont Ukrainian Hub et Digitalizing Space, en agissant comme partenaire communautaire pour intégrer la technologie dans des projets sociaux et éducatifs à travers l'Ukraine.",
 
     /* ---------- Cohorte 2026 ---------- */
-    "cohort2026.eyebrow": "Cohorte 2026",
+    "cohort2026.eyebrow": "Cohorte 2026 des architectes IA certifiés",
     "cohort2026.title": "Cohorte TechLegion 2026",
-    "cohort2026.lead": "Notre cohorte 2026 réunit des professionnels en voie de certification Claude Certified Architect Foundations (CCA-F) — développant une réelle maîtrise de Claude et de l'architecture assistée par IA grâce au parcours d'apprentissage communautaire de TechLegion.",
+    "cohort2026.lead": "Notre cohorte 2026 réunit des professionnels en voie de certification Claude Certified Architect Foundations (CCA-F) — développant une réelle maîtrise de Claude et de l'architecture assistée par IA grâce au parcours d'apprentissage communautaire de TechLegion. Notre première cohorte réunit une communauté internationale d'architectes logiciels, d'ingénieurs, d'experts en cybersécurité, de leaders technologiques et de praticiens de l'IA.",
     "cohort2026.stats.success_rate": "Taux de réussite de la cohorte",
     "cohort2026.stats.certified": "Certifiés à ce jour",
     "cohort2026.stats.certification": "Claude Certified Architect Foundations",
@@ -2930,9 +2930,9 @@ window.TL_I18N = {
     "about.ukraine.item3.body": "Abbiamo costruito collaborazioni durature con comunità tech e a impatto sociale ucraine, tra cui Ukrainian Hub e Digitalizing Space, agendo come partner comunitario per portare la tecnologia in progetti sociali ed educativi in tutta l'Ucraina.",
 
     /* ---------- Coorte 2026 ---------- */
-    "cohort2026.eyebrow": "Coorte 2026",
+    "cohort2026.eyebrow": "Coorte 2026 degli architetti IA certificati",
     "cohort2026.title": "Coorte TechLegion 2026",
-    "cohort2026.lead": "La nostra coorte 2026 riunisce professionisti in cammino verso la certificazione Claude Certified Architect Foundations (CCA-F) — costruendo una reale padronanza di Claude e dell'architettura assistita dall'IA attraverso il percorso di apprendimento comunitario di TechLegion.",
+    "cohort2026.lead": "La nostra coorte 2026 riunisce professionisti in cammino verso la certificazione Claude Certified Architect Foundations (CCA-F) — costruendo una reale padronanza di Claude e dell'architettura assistita dall'IA attraverso il percorso di apprendimento comunitario di TechLegion. La nostra prima coorte riunisce una comunità internazionale di architetti software, ingegneri, esperti di cybersecurity, leader tecnologici e professionisti dell'IA.",
     "cohort2026.stats.success_rate": "Tasso di successo della coorte",
     "cohort2026.stats.certified": "Certificati finora",
     "cohort2026.stats.certification": "Claude Certified Architect Foundations",
@@ -3732,9 +3732,9 @@ window.TL_I18N = {
     "about.ukraine.item3.body": "Ми побудували тривалу співпрацю з українськими тех- та соціально орієнтованими спільнотами, зокрема Ukrainian Hub і Digitalizing Space, виступаючи партнером спільноти, який допомагає впроваджувати технології в соціальні та освітні проєкти по всій Україні.",
 
     /* ---------- Когорта 2026 ---------- */
-    "cohort2026.eyebrow": "Когорта 2026",
+    "cohort2026.eyebrow": "Когорта сертифікованих AI-архітекторів 2026",
     "cohort2026.title": "Когорта TechLegion 2026",
-    "cohort2026.lead": "Наша когорта 2026 року об'єднує фахівців, які прямують до сертифікації Claude Certified Architect Foundations (CCA-F) — здобуваючи справжню впевненість у роботі з Claude та архітектурою за участі ШІ через спільнотний освітній шлях TechLegion.",
+    "cohort2026.lead": "Наша когорта 2026 року об'єднує фахівців, які прямують до сертифікації Claude Certified Architect Foundations (CCA-F) — здобуваючи справжню впевненість у роботі з Claude та архітектурою за участі ШІ через спільнотний освітній шлях TechLegion. Наша перша когорта об'єднує міжнародну спільноту архітекторів програмного забезпечення, інженерів, експертів з кібербезпеки, технологічних лідерів і практиків ШІ.",
     "cohort2026.stats.success_rate": "Рівень успішності когорти",
     "cohort2026.stats.certified": "Сертифіковано наразі",
     "cohort2026.stats.certification": "Claude Certified Architect Foundations",
