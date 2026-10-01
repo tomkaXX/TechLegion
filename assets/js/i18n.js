@@ -508,9 +508,9 @@ window.TL_I18N = {
     "blog.lead": "Stories, recaps and announcements from the TechLegion community.",
     "blog.coming_soon": "Posts coming soon — subscribe to our newsletter to be the first to know.",
     /* ---------- About / Anthropic section ---------- */
-    "about.anthropic.tag": "🚀 Claude Partner Network Member",
+    "about.anthropic.tag": "🚀 Certified Services Partner",
     "about.anthropic.title": "Anthropic Claude Partner Network",
-    "about.anthropic.body": "TechLegion is a proud member of the Anthropic Claude Partner Network. We are committed to supporting AI transformation across Switzerland — helping individuals, startups, and organisations understand, adopt, and responsibly apply the newest AI technologies to shape a better future.",
+    "about.anthropic.body": "TechLegion is a proud Certified Services Partner in the Anthropic Claude Partner Network. We are committed to supporting AI transformation across Switzerland — helping individuals, startups, and organisations understand, adopt, and responsibly apply the newest AI technologies to shape a better future.",
     "about.anthropic.btn": "Learn about Claude",
 
     /* ---------- About / Ukraine partnership ---------- */
@@ -1309,9 +1309,9 @@ window.TL_I18N = {
     "blog.lead": "Geschichten, Rückblicke und Ankündigungen aus der TechLegion-Community.",
     "blog.coming_soon": "Beiträge folgen in Kürze — abonniere unseren Newsletter, um nichts zu verpassen.",
     /* ---------- About / Anthropic ---------- */
-    "about.anthropic.tag": "🚀 Claude Partner Network Mitglied",
+    "about.anthropic.tag": "🚀 Zertifizierter Services-Partner",
     "about.anthropic.title": "Anthropic Claude Partner Network",
-    "about.anthropic.body": "TechLegion ist stolzes Mitglied des Anthropic Claude Partner Network. Wir unterstützen die KI-Transformation in der Schweiz — und helfen Einzelpersonen, Startups und Organisationen dabei, die neuesten KI-Technologien zu verstehen, zu adaptieren und verantwortungsvoll einzusetzen.",
+    "about.anthropic.body": "TechLegion ist stolzer zertifizierter Services-Partner im Anthropic Claude Partner Network. Wir unterstützen die KI-Transformation in der Schweiz — und helfen Einzelpersonen, Startups und Organisationen dabei, die neuesten KI-Technologien zu verstehen, zu adaptieren und verantwortungsvoll einzusetzen.",
     "about.anthropic.btn": "Mehr über Claude erfahren",
 
     /* ---------- About / Ukraine-Partnerschaft ---------- */
@@ -2111,9 +2111,9 @@ window.TL_I18N = {
     "blog.lead": "Récits, retours et annonces de la communauté TechLegion.",
     "blog.coming_soon": "Articles à venir — abonnez-vous à la newsletter pour être informé·e.",
     /* ---------- About / Anthropic ---------- */
-    "about.anthropic.tag": "🚀 Membre du réseau partenaire Claude",
+    "about.anthropic.tag": "🚀 Partenaire de services certifié",
     "about.anthropic.title": "Réseau partenaire Anthropic Claude",
-    "about.anthropic.body": "TechLegion est fièrement membre du réseau partenaire Anthropic Claude. Nous sommes engagés à soutenir la transformation par l'IA en Suisse — en aidant les individus, les startups et les organisations à comprendre, adopter et utiliser de façon responsable les technologies IA les plus récentes.",
+    "about.anthropic.body": "TechLegion est fièrement partenaire de services certifié du réseau partenaire Anthropic Claude. Nous sommes engagés à soutenir la transformation par l'IA en Suisse — en aidant les individus, les startups et les organisations à comprendre, adopter et utiliser de façon responsable les technologies IA les plus récentes.",
     "about.anthropic.btn": "En savoir plus sur Claude",
 
     /* ---------- About / Partenariat avec l'Ukraine ---------- */
@@ -2913,9 +2913,9 @@ window.TL_I18N = {
     "blog.lead": "Storie, recap e annunci dalla community TechLegion.",
     "blog.coming_soon": "Articoli in arrivo — iscriviti alla newsletter per essere il primo a saperlo.",
     /* ---------- About / Anthropic ---------- */
-    "about.anthropic.tag": "🚀 Membro del Claude Partner Network",
+    "about.anthropic.tag": "🚀 Partner di servizi certificato",
     "about.anthropic.title": "Anthropic Claude Partner Network",
-    "about.anthropic.body": "TechLegion è un membro orgoglioso dell'Anthropic Claude Partner Network. Siamo impegnati a sostenere la trasformazione IA in Svizzera — aiutando individui, startup e organizzazioni a comprendere, adottare e applicare responsabilmente le più recenti tecnologie IA.",
+    "about.anthropic.body": "TechLegion è orgogliosamente partner di servizi certificato dell'Anthropic Claude Partner Network. Siamo impegnati a sostenere la trasformazione IA in Svizzera — aiutando individui, startup e organizzazioni a comprendere, adottare e applicare responsabilmente le più recenti tecnologie IA.",
     "about.anthropic.btn": "Scopri Claude",
 
     /* ---------- About / Partnership con l'Ucraina ---------- */
@@ -3715,9 +3715,9 @@ window.TL_I18N = {
     "blog.lead": "Історії, рекапи та анонси спільноти TechLegion.",
     "blog.coming_soon": "Дописи скоро — підпишіться на розсилку, щоб не пропустити.",
     /* ---------- About / Anthropic ---------- */
-    "about.anthropic.tag": "🚀 Член мережі партнерів Claude",
+    "about.anthropic.tag": "🚀 Сертифікований сервісний партнер",
     "about.anthropic.title": "Мережа партнерів Anthropic Claude",
-    "about.anthropic.body": "TechLegion є гордим членом мережі партнерів Anthropic Claude. Ми прагнемо підтримувати ШІ-трансформацію в Швейцарії — допомагаючи особам, стартапам і організаціям зрозуміти, впровадити та відповідально застосовувати найновіші технології ШІ.",
+    "about.anthropic.body": "TechLegion з гордістю є сертифікованим сервісним партнером у мережі партнерів Anthropic Claude. Ми прагнемо підтримувати ШІ-трансформацію в Швейцарії — допомагаючи особам, стартапам і організаціям зрозуміти, впровадити та відповідально застосовувати найновіші технології ШІ.",
     "about.anthropic.btn": "Дізнатися про Claude",
 
     /* ---------- About / Партнерство з Україною ---------- */
