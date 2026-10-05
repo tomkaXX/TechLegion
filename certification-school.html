@@ -263,7 +263,7 @@
       gap: 0.75rem;
       margin-top: 1rem;
     }
-    .ss-modal .choice-row .btn { width: 100%; justify-content: center; }
+    .ss-modal .choice-row .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
     .ss-modal .step { display: none; }
     .ss-modal .step.is-active { display: block; }
     .ss-modal .form-group { margin-bottom: 0.85rem; }
@@ -423,6 +423,7 @@
     .exam-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
     .exam-links .btn { flex: 1 1 auto; justify-content: center; }
     .meta-note { color: var(--text-muted); font-size: 0.75rem; text-align: center; margin: 0.2rem 0 0; }
+    .track-form button[type="submit"]:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.4); transform: none; box-shadow: none; }
     .elig-list { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--text-dim); font-size: 0.9rem; }
     .elig-list li { margin-bottom: 0.35rem; }
     .elig-list strong { color: var(--white); }
@@ -578,7 +579,7 @@
           <div class="row"><span class="k" data-i18n="cs.meta.language">Language</span><span class="v" data-i18n="cs.val.english">English</span></div>
           <div class="row"><span class="k" data-i18n="cs.meta.validity">Validity</span><span class="v" data-i18n="cs.val.12months">12 months</span></div>
           <div class="row"><span class="k" data-i18n="cs.meta.delivery">Delivery</span><span class="v" data-i18n="cs.val.delivery">Online proctored or Pearson test center</span></div>
-          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n="cs.f.val.elig">Standard membership</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n="cs.f.val.elig">TechLegion Standard membership</span></div>
           <div class="row" style="align-items:center;">
             <span class="k" data-i18n="cs.meta.price">Price</span>
             <span class="price-badge" data-i18n-html="cs.f.val.price">$125 USD <small>per attempt</small></span>
@@ -615,7 +616,7 @@
           <div class="cohort-details-full">
             <h4 style="margin-top: 1rem;" data-i18n="cs.elig.title">Who can apply</h4>
             <ul class="elig-list">
-              <li data-i18n-html="cs.p.elig1">Open to <strong>TechLegion members only</strong> who have <strong>signed the Membership Agreement and paid the membership fee</strong>.</li>
+              <li data-i18n-html="cs.p.elig1">Open to <strong>TechLegion members only</strong> with an active <strong>TechLegion Standard membership</strong>.</li>
               <li data-i18n-html="cs.p.elig2">Alternatively, apply through the <a href="#partner-project">Joint Development Partner track</a> — if your project is accepted, you take the certification as a TechLegion partner.</li>
               <li data-i18n-html="cs.elig.rule">Once the email is issued, you have <strong>15 days</strong> to schedule and complete the exam. After 15 days your exam account is deactivated.</li>
             </ul>
@@ -647,7 +648,7 @@
           <div class="row"><span class="k" data-i18n="cs.meta.language">Language</span><span class="v" data-i18n="cs.val.english">English</span></div>
           <div class="row"><span class="k" data-i18n="cs.meta.validity">Validity</span><span class="v" data-i18n="cs.val.12months">12 months</span></div>
           <div class="row"><span class="k" data-i18n="cs.meta.delivery">Delivery</span><span class="v" data-i18n="cs.val.delivery">Online proctored or Pearson test center</span></div>
-          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n-html="cs.p.val.elig">Paid membership <small>or</small> <a href="#partner-project" class="cohort-tag elig-promo">🚀 Joint Development Partner project</a></span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n-html="cs.p.val.elig">TechLegion Standard membership <small>or</small> <a href="#partner-project" class="cohort-tag elig-promo">🚀 Joint Development Partner project</a></span></div>
           <div class="row" style="align-items:center;">
             <span class="k" data-i18n="cs.meta.price">Price</span>
             <span class="price-badge" data-i18n-html="cs.p.val.price">$175 USD <small>per attempt</small></span>
@@ -724,7 +725,7 @@
         <div class="card">
           <div class="card-icon">1️⃣</div>
           <h4 data-i18n="ss.how1.title">Become a member</h4>
-          <p data-i18n-html="cs.how1.body">Foundations requires a Standard membership. Professional requires a signed Membership Agreement and a paid membership fee — or an accepted Joint Development Partner project. <a href="membership.html#apply">Apply here</a>.</p>
+          <p data-i18n-html="cs.how1.body">Foundations and Professional both require a TechLegion Standard membership — Professional is also open through an accepted Joint Development Partner project. <a href="membership.html#apply">Apply here</a>.</p>
         </div>
         <div class="card">
           <div class="card-icon">2️⃣</div>
@@ -754,7 +755,7 @@
         </details>
         <details class="faq-item">
           <summary data-i18n="cs.faq2.q">Who can apply for Claude Certified Architect – Professional?</summary>
-          <p data-i18n="cs.faq2.a">TechLegion members who have signed the Membership Agreement and paid the membership fee. Alternatively, you can apply through the Joint Development Partner track with a real production project.</p>
+          <p data-i18n="cs.faq2.a">TechLegion members with an active TechLegion Standard membership. Alternatively, you can apply through the Joint Development Partner track with a real production project.</p>
         </details>
         <details class="faq-item">
           <summary data-i18n="cs.faq3.q">What is the 15-day rule?</summary>
@@ -855,17 +856,17 @@
         <p data-i18n="cs.modal.f.question">This exam is open to TechLegion community members only. Do you already have an active Standard membership?</p>
         <div class="modal-warning"><p data-i18n-html="cs.modal.rule">⏳ <strong>15-day rule:</strong> once your personalised invitation email is issued, you have 15 days to schedule and complete the exam. After that, your exam account is deactivated.</p></div>
         <div class="choice-row">
-          <button type="button" class="btn btn-primary" data-goto="form-cca-f" data-i18n="cs.modal.yes.std">Yes, I'm a Standard member</button>
+          <button type="button" class="btn btn-primary" data-goto="form-cca-f" data-i18n="cs.modal.yes.std">I'm an active TechLegion Member (Standard Tier)</button>
           <button type="button" class="btn btn-ghost" data-goto="not-member" data-i18n="ss.modal.drone.no">Not yet</button>
         </div>
       </div>
 
       <div class="step" data-step="check-cca-p">
         <h3 data-i18n="cs.modal.p.title">Architect – Professional</h3>
-        <p data-i18n="cs.modal.p.question">This exam is open only to TechLegion members who have signed the Membership Agreement and paid the membership fee — or whose Joint Development Partner project is accepted. Which applies to you?</p>
+        <p data-i18n="cs.modal.p.question">This exam is open only to TechLegion members with an active TechLegion Standard membership — or whose Joint Development Partner project is accepted. Which applies to you?</p>
         <div class="modal-warning"><p data-i18n-html="cs.modal.rule">⏳ <strong>15-day rule:</strong> once your personalised invitation email is issued, you have 15 days to schedule and complete the exam. After that, your exam account is deactivated.</p></div>
         <div class="choice-row">
-          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="member" data-i18n="cs.modal.yes.paid">Signed &amp; paid member</button>
+          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="member" data-i18n="cs.modal.yes.paid">I'm an active TechLegion Member (Standard Tier)</button>
           <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="partner" data-i18n="cs.modal.yes.partner">Partner project</button>
         </div>
         <button type="button" class="btn btn-ghost" data-goto="not-member" style="width:100%; justify-content:center; margin-top: 0.75rem;" data-i18n="cs.modal.neither">Neither yet</button>
@@ -898,7 +899,7 @@
           <label class="check-row"><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n="cs.form.f.confirm">I confirm I have an active TechLegion Standard membership. *</span></label>
           <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
           <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="cs.form.submit">Submit application</button>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" disabled data-i18n="cs.form.submit">Submit application</button>
         </form>
       </div>
 
@@ -916,7 +917,7 @@
           <div class="form-group">
             <label data-i18n="cs.form.p.track">Application track *</label>
             <select name="track" required data-track-select>
-              <option value="member" data-i18n="cs.form.p.track.member">Member — signed agreement &amp; paid fee</option>
+              <option value="member" data-i18n="cs.form.p.track.member">Member — TechLegion Standard membership</option>
               <option value="partner" data-i18n="cs.form.p.track.partner">Joint Development Partner project</option>
             </select>
           </div>
@@ -926,10 +927,10 @@
             <div class="form-group"><label data-i18n="cs.form.p.projurl">Project link (repo, demo or website)</label><input type="url" name="project_url" placeholder="https://" /></div>
           </div>
           <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
-          <label class="check-row" data-member-confirm><input type="checkbox" name="membership_confirmed" value="signed-and-paid" required /><span data-i18n="cs.form.p.confirm">I confirm I have signed the TechLegion Membership Agreement and paid the membership fee. *</span></label>
+          <label class="check-row" data-member-confirm><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n="cs.form.p.confirm">I confirm I have an active TechLegion Standard membership. *</span></label>
           <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
           <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="cs.form.submit">Submit application</button>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" disabled data-i18n="cs.form.submit">Submit application</button>
         </form>
       </div>
 
@@ -946,7 +947,7 @@
           <div class="form-group"><label data-i18n="ss.modal.form.phone">Phone *</label><input type="tel" name="phone" required placeholder="+41 ..." /></div>
           <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
           <p class="modal-error" data-i18n="ss.modal.form.error">Please fill in all required fields with a valid email and phone number.</p>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="ss.modal.form.submit">Reserve my seat</button>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" disabled data-i18n="ss.modal.form.submit">Reserve my seat</button>
         </form>
       </div>
 
@@ -1101,6 +1102,9 @@
           el.addEventListener('input', function () { if (el.classList.contains('invalid')) markField(el); refreshAll(); });
           el.addEventListener('change', function () { if (el.type === 'checkbox') markField(el); refreshAll(); });
         });
+
+        form.addEventListener('input', refreshAll);
+        form.addEventListener('change', refreshAll);
 
         form.addEventListener('submit', function (e) {
           e.preventDefault();
