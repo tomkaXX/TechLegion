@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en" data-page-title-key="cs.title">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certification School — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion Certification School — all-year study groups and exam access for Claude Certified Architect – Foundations, Claude Certified Architect – Professional and UAS Remote Pilot A1/A3. Open to TechLegion members." />
+  <meta name="theme-color" content="#050816" />
+  <meta property="og:title" content="Certification School — TechLegion Switzerland" />
+  <meta property="og:description" content="All-year certification tracks for TechLegion members — Claude Certified Architect (Foundations & Professional) and UAS A1/A3 Drone Pilot." />
+  <meta property="og:image" content="https://techlegion.ch/assets/img/banner.png" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://techlegion.ch/certification-school.html" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    body section { padding: clamp(0.875rem, 1.75vw, 1.5rem) 0; }
+
+    .ss-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .cohort-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      margin-bottom: 1.75rem;
+      transition: all var(--t);
+    }
+    .cohort-card:hover { border-color: var(--border-strong); }
+    .cohort-card h3 { font-size: 1.5rem; margin: 0.5rem 0 0.5rem; }
+    .cohort-card h3 a { color: inherit; text-decoration: none; }
+    .cohort-card h3 a:hover { text-decoration: underline; }
+    .partner-inline { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(25,196,122,0.35); }
+    .partner-inline h4 { margin: 0.5rem 0 0.4rem; }
+    .partner-inline p { color: var(--text-dim); font-size: 0.9rem; margin: 0 0 0.4rem; }
+    .cohort-card .cohort-lead { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .cohort-meta {
+      background: rgba(77,139,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      align-self: start;
+    }
+    .cohort-meta .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--border);
+    }
+    .cohort-meta .row:last-child { border-bottom: none; padding-bottom: 0; }
+    .cohort-meta .row .k {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cohort-meta .row .v { color: var(--white); font-weight: 600; text-align: right; }
+    .cohort-meta .row .v small { display: block; color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
+    .cohort-meta .row .v .elig-promo { margin-top: 0.35rem; font-size: 0.62rem; letter-spacing: 0.08em; text-decoration: none; white-space: normal; text-align: left; transition: border-color 0.2s, box-shadow 0.2s; }
+    .cohort-meta .row .v .elig-promo:hover { border-color: var(--accent-glow); box-shadow: 0 0 12px rgba(77,139,255,0.35); }
+
+    .domain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .domain-list li {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .domain-list li strong { color: var(--white); display: block; margin-bottom: 0.2rem; }
+    .domain-list li .pct {
+      color: var(--accent-glow);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+    .skill-chip {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-glow);
+      background: rgba(77,139,255,0.10);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .scenario-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 0.9rem;
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .scenario-list li::before { content: '▸ '; color: var(--accent-glow); }
+
+    .cohort-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, rgba(77,139,255,0.18), rgba(139,92,246,0.10));
+      border: 1px solid var(--border-strong);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .crumb {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .crumb span { color: var(--accent-glow); }
+
+    .price-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background: var(--grad-accent);
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .price-badge small { font-weight: 500; font-size: 0.75rem; opacity: 0.85; }
+    .price-free { background: linear-gradient(135deg, #19c47a, #0f9a5d); }
+
+    .partner-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.88rem;
+    }
+    .partner-strip .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+    .partner-strip .val { color: var(--white); font-weight: 600; }
+
+    /* Expandable details */
+    .cohort-details-full { display: none; }
+    .cohort-card.is-expanded .cohort-details-full { display: block; }
+    .toggle-details {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--accent-glow);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .toggle-details:hover { background: rgba(77,139,255,0.08); color: var(--white); }
+    .toggle-details .chev { transition: transform var(--t-fast); }
+    .cohort-card.is-expanded .toggle-details .chev { transform: rotate(180deg); }
+
+    /* Modal */
+    .ss-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .ss-modal-overlay.is-open { display: flex; }
+    .ss-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .ss-modal-close {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      transition: all var(--t-fast);
+    }
+    .ss-modal-close:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+    .ss-modal h3 { margin: 0 0 0.5rem; }
+    .ss-modal .modal-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .ss-modal .choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .ss-modal .choice-row .btn { width: 100%; justify-content: center; }
+    .ss-modal .step { display: none; }
+    .ss-modal .step.is-active { display: block; }
+    .ss-modal .form-group { margin-bottom: 0.85rem; }
+    .ss-modal label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.3rem; }
+    .ss-modal input,
+    .ss-modal textarea,
+    .ss-modal select {
+      width: 100%;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+    .ss-modal input:focus,
+    .ss-modal textarea:focus,
+    .ss-modal select:focus { outline: none; border-color: var(--accent); }
+    .ss-modal input.invalid,
+    .ss-modal select.invalid,
+    .ss-modal textarea.invalid { border-color: #ff5b6e; background: rgba(255,91,110,0.06); }
+    .ss-modal .modal-error { color: #ff8a96; font-size: 0.82rem; margin-top: 0.4rem; display: none; }
+    .ss-modal .modal-error.is-visible { display: block; }
+    .ss-modal .modal-info {
+      background: linear-gradient(135deg, rgba(77,139,255,0.10), rgba(139,92,246,0.06));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .ss-modal .modal-info p {
+      margin: 0;
+      padding: 0.25rem 0;
+    }
+    .ss-modal .modal-info p + p {
+      border-top: 1px dashed var(--border);
+      padding-top: 0.45rem;
+      margin-top: 0.25rem;
+    }
+    .ss-modal .modal-info strong { color: var(--white); }
+    .ss-modal .modal-success {
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    .ss-modal .modal-success .check {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 880px) {
+      .cohort-card { grid-template-columns: 1fr; }
+      .scenario-list { grid-template-columns: 1fr; }
+      .partner-strip { grid-template-columns: 1fr; }
+      .ss-modal .choice-row { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Claude exam promo ===== */
+    .promo-callout {
+      border-color: rgba(25,196,122,0.45);
+      background: linear-gradient(135deg, rgba(25,196,122,0.10), rgba(77,139,255,0.06));
+    }
+    .promo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, rgba(25,196,122,0.14), rgba(25,196,122,0.05));
+      border: 1px solid rgba(25,196,122,0.4);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.9rem;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+    }
+    .promo-row .promo-label { color: var(--white); font-weight: 700; }
+    .promo-row .promo-sub { color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 0.1rem; }
+    #promo-form-note {
+      display: none;
+      background: rgba(25,196,122,0.10);
+      border: 1px solid rgba(25,196,122,0.4);
+      border-radius: var(--radius);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      margin: 0 0 1rem;
+    }
+    #promo-form-note.is-visible { display: block; }
+
+    .modal-warning {
+      background: rgba(255, 176, 32, 0.10);
+      border: 1px solid rgba(255, 176, 32, 0.4);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .modal-warning p { margin: 0; }
+    .modal-warning strong { color: var(--white); }
+
+    .step-list { display: flex; flex-direction: column; gap: 0.65rem; margin: 0.5rem 0 0.25rem; }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.9rem;
+    }
+    .step-item .step-num {
+      flex: none;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--bg-elev);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .step-item .step-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .step-item .step-body strong { color: var(--white); font-size: 0.9rem; }
+    .step-item .step-body span { color: var(--text-muted); font-size: 0.78rem; }
+    .step-item .btn { flex: none; padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+    .btn-step-green {
+      background: linear-gradient(135deg, #19c47a, #0f9a5d);
+      color: #fff;
+      border: none;
+    }
+    /* Step states — nothing is ever locked; the recommended next step is just highlighted */
+    .step-item.is-current { border-color: rgba(25,196,122,0.45); background: rgba(25,196,122,0.08); }
+    .step-item.is-current .step-num { background: linear-gradient(135deg, #19c47a, #0f9a5d); color: #fff; }
+    .step-item.is-done { border-color: rgba(25,196,122,0.3); background: rgba(25,196,122,0.04); }
+    .step-item.is-done .step-num { background: linear-gradient(135deg, #19c47a, #0f9a5d); color: #fff; }
+    @media (max-width: 480px) {
+      .step-item { flex-wrap: wrap; }
+      .step-item .btn { margin-left: calc(26px + 0.75rem); }
+    }
+  
+
+    /* ===== Certification School additions ===== */
+    .rule-callout {
+      border-color: rgba(255,176,32,0.45);
+      background: linear-gradient(135deg, rgba(255,176,32,0.10), rgba(77,139,255,0.05));
+    }
+    .rule-callout--inline { margin-top: 1rem; padding: 1.1rem 1.25rem; }
+    .rule-callout--inline h4 { margin: 0.5rem 0 0.4rem; }
+    .rule-callout--inline p { margin: 0; font-size: 0.9rem; }
+    .partner-callout {
+      border-color: rgba(25,196,122,0.45);
+      background: linear-gradient(135deg, rgba(25,196,122,0.10), rgba(77,139,255,0.06));
+    }
+    .exam-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .exam-links .btn { flex: 1 1 auto; justify-content: center; }
+    .meta-note { color: var(--text-muted); font-size: 0.75rem; text-align: center; margin: 0.2rem 0 0; }
+    .elig-list { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--text-dim); font-size: 0.9rem; }
+    .elig-list li { margin-bottom: 0.35rem; }
+    .elig-list strong { color: var(--white); }
+    .ss-modal .check-row {
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      margin: 0.6rem 0; font-size: 0.86rem; color: var(--text-dim);
+    }
+    .ss-modal .check-row input { width: auto; margin-top: 0.2rem; flex: none; }
+    .ss-modal .check-row.invalid span { color: #ff8a96; }
+    .partner-fields { display: none; }
+    .partner-fields.is-visible { display: block; }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .faq-item summary {
+      cursor: pointer; font-weight: 600; color: var(--white); list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--accent-glow); transition: transform var(--t); }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { margin: 0.75rem 0 0; color: var(--text-dim); font-size: 0.93rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="certification-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="padding-top: 4rem; position: relative; overflow: hidden;">
+    <div class="hero-shape s1"></div>
+    <div class="hero-shape s3"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-head fade-in">
+        <span class="eyebrow" data-i18n="cs.hero.eyebrow">Certification School · All year round</span>
+        <h1 data-i18n="cs.hero.title">TechLegion Certification School</h1>
+        <p><span data-i18n="cs.hero.lead1">Three certification tracks. Open all year round.</span><br /><span data-i18n="cs.hero.lead2">Exclusively for TechLegion association members.</span></p>
+        <div class="ss-hero-actions">
+          <a href="#cca-f" class="btn btn-primary btn-lg" data-i18n="cs.hero.btn.f">Architect – Foundations</a>
+          <a href="#cca-p" class="btn btn-primary btn-lg" data-i18n="cs.hero.btn.p">Architect – Professional</a>
+          <a href="#uas" class="btn btn-ghost btn-lg" data-i18n="cs.hero.btn.drone">Drone Pilot A1/A3</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO ROW -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="grid grid-4 fade-in">
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h4 data-i18n="cs.intro1.title">Members only</h4>
+          <p data-i18n="cs.intro1.body">Exam access and study groups are reserved for TechLegion association members. Non-members cannot apply.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🪪</div>
+          <h4 data-i18n="cs.intro2.title">Official certificates</h4>
+          <p data-i18n="cs.intro2.body">Certificates are issued and exams delivered by the official authorising body (Anthropic, EUROCONTROL) — not by TechLegion.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <h4 data-i18n="cs.intro3.title">All year round</h4>
+          <p data-i18n="cs.intro3.body">No seasonal deadlines. Apply whenever you're ready — we process applications continuously throughout the year.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h4 data-i18n="cs.intro4.title">Support throughout</h4>
+          <p data-i18n="cs.intro4.body">Peer-led study sessions, guidance from senior members and answers to your questions along the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK 1 — CLAUDE FOUNDATIONS -->
+  <section id="cca-f">
+    <div class="container">
+      <div class="cohort-card fade-in">
+        <div>
+          <div class="crumb" data-i18n-html="cs.f.crumb">TechLegion · <span>Certification School</span> · Track 1</div>
+          <span class="cohort-tag" data-i18n="cs.f.tag">🤖 Anthropic · Architect · Foundations</span>
+          <h3><a href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Claude Certified Architect – Foundations</a></h3>
+          <p class="cohort-lead" data-i18n="cs.f.lead">Validates that you can scope and design Claude-based solutions: selecting the right model and deployment platform, framing agentic versus single-shot architectures, and accounting for evaluation, cost, and responsible deployment from day one.</p>
+
+          <div class="skill-chips">
+            <span class="skill-chip">Model selection</span>
+            <span class="skill-chip">Deployment platforms</span>
+            <span class="skill-chip">Agentic vs single-shot</span>
+            <span class="skill-chip">Evaluation</span>
+            <span class="skill-chip">Cost</span>
+            <span class="skill-chip">Responsible AI</span>
+          </div>
+
+          <div class="cohort-details-full">
+            <h4 style="margin-top: 1rem;" data-i18n="cs.elig.title">Who can apply</h4>
+            <ul class="elig-list">
+              <li data-i18n-html="cs.f.elig1">Open to <strong>TechLegion community members only</strong>.</li>
+              <li data-i18n-html="cs.f.elig2">You need an active <strong>Standard membership</strong> first — only then do you receive a personalised email to register for the exam.</li>
+              <li data-i18n-html="cs.elig.rule">Once the email is issued, you have <strong>15 days</strong> to schedule and complete the exam. After 15 days your exam account is deactivated.</li>
+            </ul>
+            <div class="callout rule-callout rule-callout--inline">
+              <span class="tag" data-i18n="cs.rule.tag">⏳ The 15-day rule</span>
+              <h4 data-i18n="cs.rule.title">Your exam invitation is active for 15 days</h4>
+              <p data-i18n-html="cs.rule.body">For both Claude Certified Architect exams, TechLegion sends you a <strong>personalised invitation email</strong> to register for the exam once your membership is verified. From the moment that email is issued you have <strong>15 calendar days to schedule and complete the exam</strong>. If you don't schedule or complete it within that window, <strong>your exam account is deactivated</strong>.</p>
+            </div>
+          </div>
+
+          <button type="button" class="toggle-details" data-toggle-details>
+            <span class="toggle-label" data-i18n="ss.toggle.more">See more details</span>
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <aside class="cohort-meta">
+          <div class="row"><span class="k" data-i18n="cs.meta.role">Role</span><span class="v" data-i18n="cs.val.architect">Architect</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.level">Level</span><span class="v" data-i18n="cs.val.foundations">Foundations</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.length">Length</span><span class="v" data-i18n-html="cs.f.val.length">120 minutes <small>~135 min seat time</small></span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.questions">Questions</span><span class="v">60</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.language">Language</span><span class="v" data-i18n="cs.val.english">English</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.validity">Validity</span><span class="v" data-i18n="cs.val.12months">12 months</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.delivery">Delivery</span><span class="v" data-i18n="cs.val.delivery">Online proctored or Pearson test center</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n="cs.f.val.elig">Standard membership</span></div>
+          <div class="row" style="align-items:center;">
+            <span class="k" data-i18n="cs.meta.price">Price</span>
+            <span class="price-badge" data-i18n-html="cs.f.val.price">$125 USD <small>per attempt</small></span>
+          </div>
+          <button type="button" class="btn btn-primary" data-open-track="cca-f" style="margin-top: 0.5rem;" data-i18n="cs.btn.apply">Apply for exam access</button>
+          <div class="exam-links">
+            <a href="cohort-2026.html" class="btn btn-ghost" data-i18n="cs.btn.cohort">TechLegion 2026 cohort</a>
+          </div>
+          <p class="meta-note" data-i18n="cs.meta.registernote">Exam registration works only after you receive your personalised invitation email.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK 2 — CLAUDE PROFESSIONAL -->
+  <section id="cca-p">
+    <div class="container">
+      <div class="cohort-card fade-in">
+        <div>
+          <div class="crumb" data-i18n-html="cs.p.crumb">TechLegion · <span>Certification School</span> · Track 2</div>
+          <span class="cohort-tag" data-i18n="cs.p.tag">🤖 Anthropic · Architect · Professional</span>
+          <h3><a href="https://anthropic-partners.skilljar.com/claude-certified-architect-professional-certification" target="_blank" rel="noopener">Claude Certified Architect – Professional</a></h3>
+          <p class="cohort-lead" data-i18n="cs.p.lead">Validates advanced architecture at scale: designing enterprise solutions, architecting integrations, evaluating and optimizing systems, applying governance and risk management, leading stakeholders across the solution lifecycle, and enabling developer productivity and operations.</p>
+
+          <div class="skill-chips">
+            <span class="skill-chip">Enterprise solutions</span>
+            <span class="skill-chip">Integrations</span>
+            <span class="skill-chip">Evaluation &amp; optimization</span>
+            <span class="skill-chip">Governance &amp; risk</span>
+            <span class="skill-chip">Stakeholder leadership</span>
+            <span class="skill-chip">DevEx &amp; operations</span>
+          </div>
+
+          <div class="cohort-details-full">
+            <h4 style="margin-top: 1rem;" data-i18n="cs.elig.title">Who can apply</h4>
+            <ul class="elig-list">
+              <li data-i18n-html="cs.p.elig1">Open to <strong>TechLegion members only</strong> who have <strong>signed the Membership Agreement and paid the membership fee</strong>.</li>
+              <li data-i18n-html="cs.p.elig2">Alternatively, apply through the <a href="#partner-project">Joint Development Partner track</a> — if your project is accepted, you take the certification as a TechLegion partner.</li>
+              <li data-i18n-html="cs.elig.rule">Once the email is issued, you have <strong>15 days</strong> to schedule and complete the exam. After 15 days your exam account is deactivated.</li>
+            </ul>
+            <div class="callout rule-callout rule-callout--inline">
+              <span class="tag" data-i18n="cs.rule.tag">⏳ The 15-day rule</span>
+              <h4 data-i18n="cs.rule.title">Your exam invitation is active for 15 days</h4>
+              <p data-i18n-html="cs.rule.body">For both Claude Certified Architect exams, TechLegion sends you a <strong>personalised invitation email</strong> to register for the exam once your membership is verified. From the moment that email is issued you have <strong>15 calendar days to schedule and complete the exam</strong>. If you don't schedule or complete it within that window, <strong>your exam account is deactivated</strong>.</p>
+            </div>
+          </div>
+
+          <button type="button" class="toggle-details" data-toggle-details>
+            <span class="toggle-label" data-i18n="ss.toggle.more">See more details</span>
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div id="partner-project" class="partner-inline">
+            <span class="cohort-tag" data-i18n="cs.partner.tag">🚀 Joint Development Partner track</span>
+            <h4 data-i18n="cs.partner.title">Build a real project in production — certify as a TechLegion partner</h4>
+            <p data-i18n-html="cs.partner.body">Showcase your skills by developing a <strong>real project that runs in production</strong>, with TechLegion as your <strong>joint development partner</strong>. If your project is accepted, you can take the Claude Certified Architect – Professional exam <strong>as a TechLegion partner</strong>.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n-html="cs.partner.note">The same 15-day rule applies: once your invitation email is issued, you must schedule and complete the exam within 15 days, or your exam account is deactivated.</p>
+            <button type="button" class="btn btn-primary" data-open-track="cca-p" data-partner="1" style="margin-top: 0.5rem;" data-i18n="cs.partner.btn">Submit your project</button>
+          </div>
+        </div>
+
+        <aside class="cohort-meta">
+          <div class="row"><span class="k" data-i18n="cs.meta.role">Role</span><span class="v" data-i18n="cs.val.architect">Architect</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.level">Level</span><span class="v" data-i18n="cs.val.professional">Professional</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.length">Length</span><span class="v" data-i18n="cs.p.val.length">120 minutes</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.questions">Questions</span><span class="v">63</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.language">Language</span><span class="v" data-i18n="cs.val.english">English</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.validity">Validity</span><span class="v" data-i18n="cs.val.12months">12 months</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.delivery">Delivery</span><span class="v" data-i18n="cs.val.delivery">Online proctored or Pearson test center</span></div>
+          <div class="row"><span class="k" data-i18n="cs.meta.eligibility">Eligibility</span><span class="v" data-i18n-html="cs.p.val.elig">Paid membership <small>or</small> <a href="#partner-project" class="cohort-tag elig-promo">🚀 Joint Development Partner project</a></span></div>
+          <div class="row" style="align-items:center;">
+            <span class="k" data-i18n="cs.meta.price">Price</span>
+            <span class="price-badge" data-i18n-html="cs.p.val.price">$175 USD <small>per attempt</small></span>
+          </div>
+          <button type="button" class="btn btn-primary" data-open-track="cca-p" style="margin-top: 0.5rem;" data-i18n="cs.btn.apply">Apply for exam access</button>
+          <p class="meta-note" data-i18n="cs.meta.registernote">Exam registration works only after you receive your personalised invitation email.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK 3 — UAS -->
+  <section id="uas">
+    <div class="container">
+      <div class="cohort-card fade-in">
+        <div>
+          <div class="crumb" data-i18n-html="cs.d.crumb">TechLegion · <span>Certification School</span> · Track 3</div>
+          <span class="cohort-tag" data-i18n="ss.c2.tag">🛩️ EUROCONTROL</span>
+          <h3>UAS Remote Pilot — Open Category A1 / A3</h3>
+          <p class="cohort-lead" data-i18n="ss.c2.lead">Online training course and theoretical examination required by EU Regulation 2019/947 for anyone operating a drone in the European UAS Open Category A1 or A3.</p>
+
+          <div class="skill-chips">
+            <span class="skill-chip">Air Safety</span>
+            <span class="skill-chip">Airspace Rules</span>
+            <span class="skill-chip">Aviation Regulation</span>
+            <span class="skill-chip">Human Factors</span>
+            <span class="skill-chip">Privacy &amp; GDPR</span>
+          </div>
+
+          <div class="cohort-details-full">
+            <h4 style="margin-top: 1rem;">What you'll learn</h4>
+            <ul class="domain-list">
+              <li><strong>Preparing yourself and your drone for flight</strong>Checklists, weight categories, equipment limits.</li>
+              <li><strong>Deciding when it is safe to fly — and when it is not</strong>Weather, airspace, environment and crowd assessment.</li>
+              <li><strong>Flying in a way that respects the rules</strong>Operational procedures, distance and altitude limits, registration.</li>
+              <li><strong>Reacting to abnormal and emergency situations</strong>In-flight failures, ground emergencies, fly-aways and reporting.</li>
+              <li><strong>Privacy, data protection, insurance and security</strong>Personal data, third-party liability, anti-collision and security duties.</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.75rem;">
+              <strong>Audience:</strong> remote pilots wishing to operate in the European UAS Open Category A1 and/or A3.<br />
+              <strong>Important:</strong> the examination is locked after successful completion. The certificate can be downloaded from your "Remote Pilot Certificates" account.
+            </p>
+          </div>
+
+          <button type="button" class="toggle-details" data-toggle-details>
+            <span class="toggle-label" data-i18n="ss.toggle.more">See more details</span>
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <aside class="cohort-meta">
+          <div class="row"><span class="k" data-i18n="ss.meta.type">Type</span><span class="v" data-i18n="ss.val.online">Online cohort</span></div>
+          <div class="row"><span class="k" data-i18n="ss.meta.format">Format</span><span class="v" data-i18n="ss.c2.val.format">Interactive course + theoretical exam</span></div>
+          <div class="row"><span class="k" data-i18n="ss.meta.categories">Categories</span><span class="v" data-i18n="ss.c2.val.categories">UAS Open A1 + A3</span></div>
+          <div class="row"><span class="k" data-i18n="ss.meta.regulation">Regulation</span><span class="v" data-i18n="ss.c2.val.regulation">EU 2019/947</span></div>
+          <div class="row"><span class="k" data-i18n="ss.meta.credential">Credential</span><span class="v">EUROCONTROL</span></div>
+          <div class="row" style="align-items:center;"><span class="k" data-i18n="ss.meta.courseexam">Course &amp; exam</span><span class="price-badge price-free" data-i18n="ss.val.free">FREE</span></div>
+          <div class="row" style="align-items:center;"><span class="k" data-i18n="ss.meta.studygroup">Study group</span><span class="price-badge price-free" data-i18n-html="ss.val.free.members">FREE <small>for members</small></span></div>
+          <button type="button" class="btn btn-primary" data-open-track="uas" style="margin-top: 0.5rem;" data-i18n="ss.btn.joincohort">Join the cohort</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="ss.how.tag">📝 How it works</span>
+        <h2 data-i18n="cs.how.title">How to get certified with TechLegion</h2>
+        <p data-i18n="cs.how.lead">Three steps, all year round. We organise, you study, the official body certifies.</p>
+      </div>
+      <div class="grid grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon">1️⃣</div>
+          <h4 data-i18n="ss.how1.title">Become a member</h4>
+          <p data-i18n-html="cs.how1.body">Foundations requires a Standard membership. Professional requires a signed Membership Agreement and a paid membership fee — or an accepted Joint Development Partner project. <a href="membership.html#apply">Apply here</a>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2️⃣</div>
+          <h4 data-i18n="cs.how2.title">Fill in the form for your track</h4>
+          <p data-i18n="cs.how2.body">Each track has its own form. We verify your membership and, for the Claude exams, send you a personalised invitation email to register for the exam.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3️⃣</div>
+          <h4 data-i18n="cs.how3.title">Schedule and pass within 15 days</h4>
+          <p data-i18n="cs.how3.body">From the day your invitation is issued you have 15 days to schedule and complete the exam — otherwise your exam account is deactivated. The certificate is issued by the authorising body under your legal name once you pass.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container container-narrow">
+      <div class="section-head fade-in">
+        <span class="tag" data-i18n="membership.faq.tag">❓ FAQ</span>
+        <h2 data-i18n="membership.faq.title">Frequently asked questions</h2>
+      </div>
+      <div class="fade-in">
+        <details class="faq-item">
+          <summary data-i18n="cs.faq1.q">Who can apply for Claude Certified Architect – Foundations?</summary>
+          <p data-i18n="cs.faq1.a">Only TechLegion community members. You need an active Standard membership first; once it's verified, we send you a personalised email to register for the exam.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq2.q">Who can apply for Claude Certified Architect – Professional?</summary>
+          <p data-i18n="cs.faq2.a">TechLegion members who have signed the Membership Agreement and paid the membership fee. Alternatively, you can apply through the Joint Development Partner track with a real production project.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq3.q">What is the 15-day rule?</summary>
+          <p data-i18n="cs.faq3.a">Your personalised exam invitation email is active for 15 calendar days from the day it is issued. Within that window you must both schedule and complete the exam. If you don't, your exam account is deactivated. The rule applies to both Claude exams and to the Joint Development Partner track.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq4.q">What is the Joint Development Partner track?</summary>
+          <p data-i18n="cs.faq4.a">You develop a real project that runs in production, with TechLegion as joint development partner, to showcase your skills. If your project is accepted, you can take the Claude Certified Architect – Professional exam as a TechLegion partner. Describe your project in the Professional application form.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq5.q">How much do the exams cost?</summary>
+          <p data-i18n="cs.faq5.a">The exam fees are set by Anthropic: $125 USD for Foundations and $175 USD for Professional, per attempt. The UAS A1/A3 drone course and exam are free, and the study group is free for members.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq6.q">Who issues the certificates?</summary>
+          <p data-i18n="cs.faq6.a">The official authorising body — Anthropic for the Claude exams, EUROCONTROL for the drone certificate. Certificates are valid for 12 months (Claude exams) and are issued under your legal name. TechLegion organises access and study support only.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="cs.faq7.q">What happened to the Summer School?</summary>
+          <p data-i18n="cs.faq7.a">Summer School 2026 has ended and its promotion is closed. The Certification School replaces it and runs all year round — there are no seasonal deadlines any more.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container container-narrow">
+      <div class="callout fade-in">
+        <span class="tag" data-i18n="ss.cta.tag">🎯 Ready to certify?</span>
+        <h3 data-i18n="cs.cta.title">Three tracks. Official certifications. All year round.</h3>
+        <p data-i18n="cs.cta.body">Unlock new skills with certification study groups, exam access and professional development designed for TechLegion association members.</p>
+        <div class="ss-hero-actions" style="margin-top: 1rem;">
+          <a href="membership.html#apply" class="btn btn-primary btn-lg" data-i18n="ss.cta.btn.member">Become a member</a>
+          <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg" data-i18n="ss.cta.btn.whatsapp">Join our WhatsApp group</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="certification-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="nominate.html" data-i18n="nav.nominate">Nominate</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Application modal (3 forms) ===== -->
+  <div id="cohort-modal" class="ss-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ss-modal">
+      <button type="button" class="ss-modal-close" data-modal-close aria-label="Close">×</button>
+
+      <!-- Eligibility checks -->
+      <div class="step" data-step="check-cca-f">
+        <h3 data-i18n="cs.modal.f.title">Architect – Foundations</h3>
+        <p data-i18n="cs.modal.f.question">This exam is open to TechLegion community members only. Do you already have an active Standard membership?</p>
+        <div class="modal-warning"><p data-i18n-html="cs.modal.rule">⏳ <strong>15-day rule:</strong> once your personalised invitation email is issued, you have 15 days to schedule and complete the exam. After that, your exam account is deactivated.</p></div>
+        <div class="choice-row">
+          <button type="button" class="btn btn-primary" data-goto="form-cca-f" data-i18n="cs.modal.yes.std">Yes, I'm a Standard member</button>
+          <button type="button" class="btn btn-ghost" data-goto="not-member" data-i18n="ss.modal.drone.no">Not yet</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="check-cca-p">
+        <h3 data-i18n="cs.modal.p.title">Architect – Professional</h3>
+        <p data-i18n="cs.modal.p.question">This exam is open only to TechLegion members who have signed the Membership Agreement and paid the membership fee — or whose Joint Development Partner project is accepted. Which applies to you?</p>
+        <div class="modal-warning"><p data-i18n-html="cs.modal.rule">⏳ <strong>15-day rule:</strong> once your personalised invitation email is issued, you have 15 days to schedule and complete the exam. After that, your exam account is deactivated.</p></div>
+        <div class="choice-row">
+          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="member" data-i18n="cs.modal.yes.paid">Signed &amp; paid member</button>
+          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="partner" data-i18n="cs.modal.yes.partner">Partner project</button>
+        </div>
+        <button type="button" class="btn btn-ghost" data-goto="not-member" style="width:100%; justify-content:center; margin-top: 0.75rem;" data-i18n="cs.modal.neither">Neither yet</button>
+      </div>
+
+      <div class="step" data-step="check-uas">
+        <h3 data-i18n="cs.modal.d.title">Drone Pilot A1/A3</h3>
+        <p data-i18n="ss.modal.drone.question">Study groups are for TechLegion Association members only. Are you already a TechLegion association member?</p>
+        <div class="modal-info">
+          <p data-i18n-html="ss.modal.drone.info1"><strong>👥 Cohort size:</strong> capped at 10–15 members so we can give every participant the best experience.</p>
+        </div>
+        <div class="choice-row">
+          <button type="button" class="btn btn-primary" data-goto="form-uas" data-i18n="ss.modal.drone.yes">Yes, I'm a member</button>
+          <button type="button" class="btn btn-ghost" data-goto="not-member" data-i18n="ss.modal.drone.no">Not yet</button>
+        </div>
+      </div>
+
+      <!-- FORM 1 — Architect Foundations -->
+      <div class="step" data-step="form-cca-f">
+        <h3 data-i18n="cs.form.f.title">Apply: Architect – Foundations</h3>
+        <form class="track-form" novalidate>
+          <input type="hidden" name="form_type" value="certification" />
+          <input type="hidden" name="cohort" value="cca-f" />
+          <input type="hidden" name="cohort_choice" value="Claude Certified Architect – Foundations" />
+          <div class="form-group"><label data-i18n="ss.modal.form.firstname">First name *</label><input type="text" name="first_name" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.lastname">Last name *</label><input type="text" name="last_name" required /></div>
+          <div class="form-group"><label data-i18n="cs.form.email">Email (your invitation will be sent here) *</label><input type="email" name="email" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.phone">Phone *</label><input type="tel" name="phone" required placeholder="+41 ..." /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
+          <label class="check-row"><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n="cs.form.f.confirm">I confirm I have an active TechLegion Standard membership. *</span></label>
+          <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
+          <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="cs.form.submit">Submit application</button>
+        </form>
+      </div>
+
+      <!-- FORM 2 — Architect Professional -->
+      <div class="step" data-step="form-cca-p">
+        <h3 data-i18n="cs.form.p.title">Apply: Architect – Professional</h3>
+        <form class="track-form" novalidate>
+          <input type="hidden" name="form_type" value="certification" />
+          <input type="hidden" name="cohort" value="cca-p" />
+          <input type="hidden" name="cohort_choice" value="Claude Certified Architect – Professional" />
+          <div class="form-group"><label data-i18n="ss.modal.form.firstname">First name *</label><input type="text" name="first_name" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.lastname">Last name *</label><input type="text" name="last_name" required /></div>
+          <div class="form-group"><label data-i18n="cs.form.email">Email (your invitation will be sent here) *</label><input type="email" name="email" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.phone">Phone *</label><input type="tel" name="phone" required placeholder="+41 ..." /></div>
+          <div class="form-group">
+            <label data-i18n="cs.form.p.track">Application track *</label>
+            <select name="track" required data-track-select>
+              <option value="member" data-i18n="cs.form.p.track.member">Member — signed agreement &amp; paid fee</option>
+              <option value="partner" data-i18n="cs.form.p.track.partner">Joint Development Partner project</option>
+            </select>
+          </div>
+          <div class="partner-fields" data-partner-fields>
+            <div class="form-group"><label data-i18n="cs.form.p.projname">Project name *</label><input type="text" name="project_name" data-partner-required /></div>
+            <div class="form-group"><label data-i18n="cs.form.p.projdesc">Project description — what it does, who uses it, how Claude is used in production *</label><textarea name="project_description" rows="4" data-partner-required></textarea></div>
+            <div class="form-group"><label data-i18n="cs.form.p.projurl">Project link (repo, demo or website)</label><input type="url" name="project_url" placeholder="https://" /></div>
+          </div>
+          <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
+          <label class="check-row" data-member-confirm><input type="checkbox" name="membership_confirmed" value="signed-and-paid" required /><span data-i18n="cs.form.p.confirm">I confirm I have signed the TechLegion Membership Agreement and paid the membership fee. *</span></label>
+          <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
+          <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="cs.form.submit">Submit application</button>
+        </form>
+      </div>
+
+      <!-- FORM 3 — Drone pilot -->
+      <div class="step" data-step="form-uas">
+        <h3 data-i18n="cs.form.d.title">Join: Drone Pilot A1/A3</h3>
+        <form class="track-form" novalidate>
+          <input type="hidden" name="form_type" value="cohort" />
+          <input type="hidden" name="cohort" value="uas" />
+          <input type="hidden" name="cohort_choice" value="UAS Remote Pilot — Open Category A1 / A3" />
+          <div class="form-group"><label data-i18n="ss.modal.form.firstname">First name *</label><input type="text" name="first_name" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.lastname">Last name *</label><input type="text" name="last_name" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.email">Email *</label><input type="email" name="email" required /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.phone">Phone *</label><input type="tel" name="phone" required placeholder="+41 ..." /></div>
+          <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
+          <p class="modal-error" data-i18n="ss.modal.form.error">Please fill in all required fields with a valid email and phone number.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" data-i18n="ss.modal.form.submit">Reserve my seat</button>
+        </form>
+      </div>
+
+      <!-- Not a member -->
+      <div class="step" data-step="not-member">
+        <h3 data-i18n="ss.modal.notmember.title">Membership first</h3>
+        <p data-i18n="cs.modal.notmember.body">Certification School tracks are reserved for TechLegion association members. Apply for membership first — most applications are approved within five working days — and then come back to apply for your track.</p>
+        <div class="choice-row">
+          <a href="membership.html#apply" class="btn btn-primary" data-i18n="ss.modal.notmember.apply">Apply for membership</a>
+          <button type="button" class="btn btn-ghost" data-modal-close data-i18n="ss.modal.notmember.later">Maybe later</button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="step" data-step="success">
+        <div class="modal-success">
+          <div class="check">✅</div>
+          <h3 data-i18n="cs.modal.success.title">Application received</h3>
+          <p data-success-msg="exam" data-i18n="cs.modal.success.exam">Thanks — we'll verify your membership and email you your personalised exam invitation. Remember: from the day it's issued you have 15 days to schedule and complete the exam.</p>
+          <p data-success-msg="partner" data-i18n="cs.modal.success.partner">Thanks — we'll review your project and get back to you by email. If it's accepted, you'll receive your exam invitation as a TechLegion partner; the 15-day rule then applies.</p>
+          <p data-success-msg="uas" data-i18n="ss.modal.success.body">Thanks — we've recorded your interest for this cohort. The TechLegion team will email you with the schedule and pre-registration steps within a few working days.</p>
+          <button type="button" class="btn btn-ghost" data-modal-close style="margin-top: 1rem;" data-i18n="ss.modal.success.close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Same Apps Script endpoint as the membership form
+    var CERT_SCHOOL_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwc50RQTVzDUmwhVmBOZg_qNM35DH3x19DDSYp1eEFwzlNtzHi23dDI7QahFwFJjMfsBg/exec';
+
+    function tlT(key, fallbackText) {
+      var lang = (document.documentElement.lang === 'uk' ? 'ua' : document.documentElement.lang) || 'en';
+      var d = (window.TL_I18N && window.TL_I18N[lang]) || {};
+      var en = (window.TL_I18N && window.TL_I18N.en) || {};
+      return d[key] || en[key] || fallbackText;
+    }
+
+    // ----- Expand / collapse details -----
+    document.querySelectorAll('[data-toggle-details]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.cohort-card');
+        if (!card) return;
+        var expanded = card.classList.toggle('is-expanded');
+        btn.querySelector('.toggle-label').textContent = expanded
+          ? tlT('ss.toggle.less', 'Hide details')
+          : tlT('ss.toggle.more', 'See more details');
+      });
+    });
+
+    // ----- Application modal -----
+    (function () {
+      var modal = document.getElementById('cohort-modal');
+      if (!modal) return;
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^\+?[0-9\s().\-]{7,20}$/;
+
+      function showStep(name) {
+        modal.querySelectorAll('.step').forEach(function (s) {
+          s.classList.toggle('is-active', s.dataset.step === name);
+        });
+        var box = modal.querySelector('.ss-modal');
+        if (box) box.scrollTop = 0;
+      }
+      function openModal(track, partner) {
+        if (track === 'cca-p' && partner) {
+          setProTrack('partner');
+          showStep('form-cca-p');
+        } else {
+          showStep('check-' + track);
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-track]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openModal(btn.dataset.openTrack, btn.dataset.partner === '1');
+        });
+      });
+      modal.querySelectorAll('[data-modal-close]').forEach(function (b) { b.addEventListener('click', closeModal); });
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+      modal.querySelectorAll('[data-goto]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.dataset.track) setProTrack(b.dataset.track);
+          showStep(b.dataset.goto);
+        });
+      });
+
+      // ----- Professional form: member vs. partner-project track -----
+      var proStep = modal.querySelector('[data-step="form-cca-p"]');
+      var trackSelect = proStep.querySelector('[data-track-select]');
+      var partnerFields = proStep.querySelector('[data-partner-fields]');
+      var memberConfirm = proStep.querySelector('[data-member-confirm]');
+      function setProTrack(track) {
+        trackSelect.value = track;
+        var isPartner = track === 'partner';
+        partnerFields.classList.toggle('is-visible', isPartner);
+        partnerFields.querySelectorAll('[data-partner-required]').forEach(function (el) {
+          el.required = isPartner;
+          if (!isPartner) el.classList.remove('invalid');
+        });
+        var cb = memberConfirm.querySelector('input');
+        cb.required = !isPartner;
+        memberConfirm.style.display = isPartner ? 'none' : '';
+        if (isPartner) cb.checked = false;
+        refreshAll();
+      }
+      trackSelect.addEventListener('change', function () { setProTrack(trackSelect.value); });
+
+      // ----- Validation + submission (shared by all 3 forms) -----
+      var forms = modal.querySelectorAll('form.track-form');
+      function fieldOk(el) {
+        if (el.type === 'checkbox') return !el.required || el.checked;
+        var v = (el.value || '').trim();
+        if (el.required && !v) return false;
+        if (el.type === 'email' && v) return EMAIL_RE.test(v);
+        if (el.type === 'tel' && v) return PHONE_RE.test(v);
+        return true;
+      }
+      function markField(el) {
+        var ok = fieldOk(el);
+        if (el.type === 'checkbox') el.closest('.check-row').classList.toggle('invalid', !ok);
+        else el.classList.toggle('invalid', !ok);
+        return ok;
+      }
+      function formOk(form) {
+        var ok = true;
+        form.querySelectorAll('input, select, textarea').forEach(function (el) { if (!fieldOk(el)) ok = false; });
+        return ok;
+      }
+      function refreshAll() {
+        forms.forEach(function (f) { f.querySelector('[type="submit"]').disabled = !formOk(f); });
+      }
+
+      forms.forEach(function (form) {
+        var errorEl = form.querySelector('.modal-error');
+        var submitBtn = form.querySelector('[type="submit"]');
+        form.querySelectorAll('input, select, textarea').forEach(function (el) {
+          el.addEventListener('blur', function () { if (el.type !== 'checkbox') markField(el); refreshAll(); });
+          el.addEventListener('input', function () { if (el.classList.contains('invalid')) markField(el); refreshAll(); });
+          el.addEventListener('change', function () { if (el.type === 'checkbox') markField(el); refreshAll(); });
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var allValid = true;
+          form.querySelectorAll('input, select, textarea').forEach(function (el) { if (!markField(el)) allValid = false; });
+          if (!allValid) { errorEl.classList.add('is-visible'); return; }
+          errorEl.classList.remove('is-visible');
+
+          var cohort = form.querySelector('[name="cohort"]').value;
+          var trackEl = form.querySelector('[name="track"]');
+          var msgKey = cohort === 'uas' ? 'uas' : (trackEl && trackEl.value === 'partner' ? 'partner' : 'exam');
+          var originalText = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.textContent = tlT('cs.form.sending', 'Sending…');
+
+          fetch(CERT_SCHOOL_ENDPOINT, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+            .then(function () {
+              form.reset();
+              if (cohort === 'cca-p') setProTrack('member');
+              submitBtn.textContent = originalText;
+              refreshAll();
+              modal.querySelectorAll('[data-success-msg]').forEach(function (p) {
+                p.style.display = p.dataset.successMsg === msgKey ? '' : 'none';
+              });
+              showStep('success');
+            })
+            .catch(function () {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+              errorEl.textContent = tlT('cs.form.senderror', 'Sorry, something went wrong. Please email community@techlegion.ch instead.');
+              errorEl.classList.add('is-visible');
+            });
+        });
+      });
+
+      setProTrack('member');
+      refreshAll();
+    })();
+  </script>
+</body>
+</html>
