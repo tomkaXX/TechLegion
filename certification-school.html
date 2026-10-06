@@ -433,6 +433,7 @@
     }
     .ss-modal .check-row input { width: auto; margin-top: 0.2rem; flex: none; }
     .ss-modal .check-row.invalid span { color: #ff8a96; }
+    .ss-modal .check-row a { color: #8fb8ff; text-decoration: underline; }
     .partner-fields { display: none; }
     .partner-fields.is-visible { display: block; }
 
@@ -867,7 +868,7 @@
         <div class="modal-warning"><p data-i18n-html="cs.modal.rule">⏳ <strong>15-day rule:</strong> once your personalised invitation email is issued, you have 15 days to schedule and complete the exam. After that, your exam account is deactivated.</p></div>
         <div class="choice-row">
           <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="member" data-i18n="cs.modal.yes.paid">I'm an active TechLegion Member (Standard Tier)</button>
-          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="partner" data-i18n="cs.modal.yes.partner">Partner project</button>
+          <button type="button" class="btn btn-primary" data-goto="form-cca-p" data-track="partner" data-i18n="cs.modal.yes.partner">I want to submit Partner Project</button>
         </div>
         <button type="button" class="btn btn-ghost" data-goto="not-member" style="width:100%; justify-content:center; margin-top: 0.75rem;" data-i18n="cs.modal.neither">Neither yet</button>
       </div>
@@ -896,7 +897,7 @@
           <div class="form-group"><label data-i18n="cs.form.email">Email (your invitation will be sent here) *</label><input type="email" name="email" required /></div>
           <div class="form-group"><label data-i18n="ss.modal.form.phone">Phone *</label><input type="tel" name="phone" required placeholder="+41 ..." /></div>
           <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
-          <label class="check-row"><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n="cs.form.f.confirm">I confirm I have an active TechLegion Standard membership. *</span></label>
+          <label class="check-row"><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n-html="cs.form.f.confirm">I confirm I have an active <a href="https://techlegion.ch/membership.html" target="_blank" rel="noopener">TechLegion Standard membership</a>. *</span></label>
           <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
           <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
           <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" disabled data-i18n="cs.form.submit">Submit application</button>
@@ -927,7 +928,7 @@
             <div class="form-group"><label data-i18n="cs.form.p.projurl">Project link (repo, demo or website)</label><input type="url" name="project_url" placeholder="https://" /></div>
           </div>
           <div class="form-group"><label data-i18n="ss.modal.form.motivation">Motivation / notes *</label><textarea name="motivation" rows="3" required></textarea></div>
-          <label class="check-row" data-member-confirm><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n="cs.form.p.confirm">I confirm I have an active TechLegion Standard membership. *</span></label>
+          <label class="check-row" data-member-confirm><input type="checkbox" name="membership_confirmed" value="standard" required /><span data-i18n-html="cs.form.p.confirm">I confirm I have an active <a href="https://techlegion.ch/membership.html" target="_blank" rel="noopener">TechLegion Standard membership</a>. *</span></label>
           <label class="check-row"><input type="checkbox" name="rule_15_days" value="accepted" required /><span data-i18n="cs.form.rule">I understand I must schedule and complete the exam within 15 days of receiving my invitation email, otherwise my exam account is deactivated. *</span></label>
           <p class="modal-error" data-i18n="cs.form.error">Please fill in all required fields, use a valid email and phone number, and tick the confirmations.</p>
           <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: 0.5rem;" disabled data-i18n="cs.form.submit">Submit application</button>

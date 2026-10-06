@@ -5,6 +5,9 @@
  *   - form_type=membership (default)        → "Applications"              sheet
  *   - form_type=cohort + cohort=cca-f       → "Claude AI"                 sheet
  *   - form_type=cohort + cohort=uas         → "UAS Drone Pilot"           sheet
+ *   - form_type=certification + cohort=cca-f               → "Certification Applications" sheet
+ *   - form_type=certification + cohort=cca-p + track=member → "Certification Applications" sheet
+ *   - form_type=certification + cohort=cca-p + track=partner → "Partner Projects"         sheet
  *   - form_type=contact                     → "Contact Messages"          sheet
  *   - form_type=newsletter                  → "Newsletters"               sheet
  *   - form_type=study_tour                  → "Study Tour Registrations"  sheet
@@ -32,6 +35,8 @@ var NOMINATION_SHEET    = 'Dinner Nominations';
 var DINNER_PLEDGE_SHEET = 'Dinner Pledges';
 var SPACEAPPS_MENTOR_SHEET = 'Space Apps Mentors';
 var SPACEAPPS_JUDGE_SHEET  = 'Space Apps Judges';
+var CERTIFICATION_SHEET    = 'Certification Applications';
+var PARTNER_PROJECT_SHEET  = 'Partner Projects';
 var COHORT_SHEETS = {
   'cca-f': 'Claude AI',
   'uas':   'UAS Drone Pilot'
@@ -58,6 +63,23 @@ var COHORT_HEADERS = [
   'First name', 'Last name',
   'Email', 'Phone',
   'Motivation / notes'
+];
+
+var CERTIFICATION_HEADERS = [
+  'Timestamp', 'Exam', 'Track',
+  'First name', 'Last name',
+  'Email', 'Phone',
+  'Motivation / notes',
+  'Membership confirmed', 'Accepted 15-day rule'
+];
+
+var PARTNER_PROJECT_HEADERS = [
+  'Timestamp', 'Exam',
+  'First name', 'Last name',
+  'Email', 'Phone',
+  'Project name', 'Project description', 'Project link',
+  'Motivation / notes',
+  'Accepted 15-day rule'
 ];
 
 var CONTACT_HEADERS = [
@@ -122,6 +144,7 @@ function doPost(e) {
     var formType = (p.form_type || 'membership').toLowerCase();
 
     if (formType === 'cohort')         return handleCohort(p);
+    if (formType === 'certification')  return handleCertification(p);
     if (formType === 'contact')        return handleContact(p);
     if (formType === 'newsletter')     return handleNewsletter(p);
     if (formType === 'study_tour')     return handleStudyTour(p);
@@ -151,6 +174,8 @@ function handleDiagnostic() {
   expected[MEMBERSHIP_SHEET] = MEMBERSHIP_HEADERS;
   expected[COHORT_SHEETS['cca-f']] = COHORT_HEADERS;
   expected[COHORT_SHEETS['uas']] = COHORT_HEADERS;
+  expected[CERTIFICATION_SHEET] = CERTIFICATION_HEADERS;
+  expected[PARTNER_PROJECT_SHEET] = PARTNER_PROJECT_HEADERS;
   expected[CONTACT_SHEET] = CONTACT_HEADERS;
   expected[NEWSLETTER_SHEET] = NEWSLETTER_HEADERS;
   expected[STUDY_TOUR_SHEET] = STUDY_TOUR_HEADERS;
@@ -231,7 +256,8 @@ function handleMembership(p) {
 }
 
 function handleCohort(p) {
-  var cohort = (p.cohort_choice || p.cohort || '').toLowerCase();
+  var cohort = (p.cohort || '').toLowerCase();
+  if (!COHORT_SHEETS[cohort]) cohort = (p.cohort_choice || cohort).toLowerCase();
   var sheetName = COHORT_SHEETS[cohort] || 'Cohort Interest';
   var sheet = ensureSheet(sheetName, COHORT_HEADERS);
   sheet.appendRow([
@@ -246,6 +272,54 @@ function handleCohort(p) {
 
   sendAcknowledgement(p.email, p.first_name, 'cohort');
   return jsonOut({ ok: true, type: 'cohort', sheet: sheetName });
+}
+
+/**
+ * Certification School — Claude Certified Architect exam applications.
+ *   cca-f                 → Certification Applications (track = member)
+ *   cca-p, track=member   → Certification Applications
+ *   cca-p, track=partner  → Partner Projects (Joint Development Partner project)
+ */
+function handleCertification(p) {
+  var cohort = (p.cohort || '').toLowerCase();
+  var exam = p.cohort_choice || cohort;
+  var track = (cohort === 'cca-p' && (p.track || '').toLowerCase() === 'partner') ? 'partner' : 'member';
+  var accepted = function (v) { return v ? 'yes' : ''; };
+
+  if (track === 'partner') {
+    var ps = ensureSheet(PARTNER_PROJECT_SHEET, PARTNER_PROJECT_HEADERS);
+    ps.appendRow([
+      new Date(),
+      exam,
+      p.first_name || '',
+      p.last_name || '',
+      p.email || '',
+      p.phone || '',
+      p.project_name || '',
+      p.project_description || '',
+      p.project_url || '',
+      p.motivation || '',
+      accepted(p.rule_15_days)
+    ]);
+    sendAcknowledgement(p.email, p.first_name, 'partner_project', p.project_name);
+    return jsonOut({ ok: true, type: 'certification', track: 'partner', sheet: PARTNER_PROJECT_SHEET });
+  }
+
+  var cs = ensureSheet(CERTIFICATION_SHEET, CERTIFICATION_HEADERS);
+  cs.appendRow([
+    new Date(),
+    exam,
+    track,
+    p.first_name || '',
+    p.last_name || '',
+    p.email || '',
+    p.phone || '',
+    p.motivation || '',
+    p.membership_confirmed || '',
+    accepted(p.rule_15_days)
+  ]);
+  sendAcknowledgement(p.email, p.first_name, 'certification', exam);
+  return jsonOut({ ok: true, type: 'certification', track: 'member', sheet: CERTIFICATION_SHEET });
 }
 
 function handleContact(p) {
@@ -383,7 +457,7 @@ function handleSpaceAppsJudge(p) {
  *
  * @param {string} toEmail     - Recipient address
  * @param {string} firstName   - Recipient first name (may be empty)
- * @param {string} formType    - One of: membership | cohort | contact | newsletter | study_tour | nomination | dinner_pledge | spaceapps_mentor | spaceapps_judge
+ * @param {string} formType    - One of: membership | cohort | certification | partner_project | contact | newsletter | study_tour | nomination | dinner_pledge | spaceapps_mentor | spaceapps_judge
  * @param {string} [extra]     - Optional extra context (e.g. tour name)
  */
 function sendAcknowledgement(toEmail, firstName, formType, extra) {
@@ -415,6 +489,35 @@ function sendAcknowledgement(toEmail, firstName, formType, extra) {
         greeting + '\n\n' +
         'Thanks for expressing interest in one of our study groups! We\'ve received your registration and will be in touch with details about the next available cohort.\n\n' +
         'In the meantime, feel free to join our WhatsApp community at ' + WEBSITE_URL + '/events.html to stay updated.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
+    case 'certification':
+      subject = 'TechLegion — exam application received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for applying for ' + (extra || 'the Claude Certified Architect exam') + ' through the TechLegion Certification School.\n\n' +
+        'What happens next:\n' +
+        '  1. We verify your active TechLegion Standard membership.\n' +
+        '  2. We email you a personalised exam invitation.\n' +
+        '  3. From the day the invitation is issued, you have 15 days to schedule and complete the exam — otherwise your exam account is deactivated.\n\n' +
+        'Not a member yet? Apply at ' + WEBSITE_URL + '/membership.html\n\n' +
+        'If you have any questions, just reply to this email.\n\n' +
+        'Warm regards,\nThe TechLegion Team\n' +
+        WEBSITE_URL;
+      break;
+
+    case 'partner_project':
+      subject = 'TechLegion — Joint Development Partner project received';
+      body =
+        greeting + '\n\n' +
+        'Thank you for submitting ' + (extra ? ('"' + extra + '"') : 'your project') + ' to the TechLegion Joint Development Partner track for Claude Certified Architect – Professional.\n\n' +
+        'What happens next:\n' +
+        '  1. The TechLegion team reviews your project.\n' +
+        '  2. We get back to you by email — we may ask for a short call or more details.\n' +
+        '  3. If your project is accepted, you receive your personalised exam invitation as a TechLegion partner. From the day it is issued, you have 15 days to schedule and complete the exam.\n\n' +
+        'If you have any questions, just reply to this email.\n\n' +
         'Warm regards,\nThe TechLegion Team\n' +
         WEBSITE_URL;
       break;
@@ -552,6 +655,8 @@ function setup() {
   ensureSheet(MEMBERSHIP_SHEET, MEMBERSHIP_HEADERS);
   ensureSheet(COHORT_SHEETS['cca-f'], COHORT_HEADERS);
   ensureSheet(COHORT_SHEETS['uas'], COHORT_HEADERS);
+  ensureSheet(CERTIFICATION_SHEET, CERTIFICATION_HEADERS);
+  ensureSheet(PARTNER_PROJECT_SHEET, PARTNER_PROJECT_HEADERS);
   ensureSheet(CONTACT_SHEET, CONTACT_HEADERS);
   ensureSheet(NEWSLETTER_SHEET, NEWSLETTER_HEADERS);
   ensureSheet(STUDY_TOUR_SHEET, STUDY_TOUR_HEADERS);
