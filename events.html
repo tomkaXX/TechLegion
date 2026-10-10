@@ -101,7 +101,7 @@
           <div class="card-icon">💧</div>
           <h4>Limmern Pumped-Storage Power Station – Hike and Guided Tour</h4>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
-            <strong style="color:var(--text);">29 August 2026</strong> · Linthal / Tierfehd, Glarus
+            <strong style="color:var(--text);">7 November 2026</strong> · Linthal / Tierfehd, Glarus
           </p>
           <p data-i18n="events.tour4.body1">Wanna hike and go on a tour? Join us for a scenic hike followed by a guided visit to the Limmern Pumped-Storage Power Station, one of Switzerland's most impressive engineering achievements.</p>
           <p style="margin-top:0.6rem;" data-i18n="events.tour4.body2">During the tour, we'll explore the underground power station and learn how the facility stores energy by pumping water from Lake Limmern to Lake Mutt, located 630 metres higher. This innovative pumped-storage system enables electricity to be generated on demand, helping to balance the power grid and support the integration of renewable energy sources.</p>
@@ -109,10 +109,36 @@
           <ul style="list-style:none; padding:0; margin: 1rem 0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem; color: var(--text-dim);">
             <li data-i18n-html="events.tour4.li1">🥾 <strong style="color:var(--text);">Hike:</strong> Moderate difficulty</li>
             <li data-i18n-html="events.tour4.li2">👥 <strong style="color:var(--text);">Minimum group:</strong> 6 people</li>
-            <li data-i18n-html="events.tour4.li3">💰 <strong style="color:var(--text);">Cost:</strong> CHF 50 per person (tour fee paid to Axpo, return gondola, and snacks included)</li>
+            <li data-i18n-html="events.tour4.li3">💰 <strong style="color:var(--text);">Cost:</strong> CHF 50 per person (tour fee paid to Axpo, return gondola tickets and snacks included)</li>
           </ul>
           <div style="margin-top: 1.25rem;">
             <a href="#tour-register" class="btn btn-primary" data-preselect-tour="limmern-29-aug-2026" data-i18n="events.tourform.registernow">Register now</a>
+          </div>
+        </div>
+
+        <!-- Gösgen-Däniken (2nd visit) — NEW / APPLICATIONS OPEN -->
+        <div class="card card-highlight" style="position:relative; overflow:hidden;">
+          <span style="
+            position:absolute; top:1rem; right:1rem;
+            background: rgba(77,139,255,0.15);
+            border: 1px solid rgba(77,139,255,0.5);
+            color: var(--accent-glow);
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.tour5.badge">🆕 New · Applications open</span>
+          <div class="card-icon">⚛️</div>
+          <h4>Kernkraftwerk Gösgen-Däniken</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <strong style="color:var(--text);">12 December 2026</strong> · Däniken, Solothurn
+          </p>
+          <p data-i18n="events.tour5.body">A guided visit to Kernkraftwerk Gösgen (KKG), one of Switzerland's most efficient pressurised water reactors with over 45 years of operation. From a single reactor, Gösgen produces around 8 billion kWh a year, roughly 15% of Switzerland's electricity. Its steaming cooling tower is one of the best-known landmarks on the Swiss Plateau, and few people ever get to see a plant of this scale from the inside. An unmissable opportunity for anyone interested in nuclear energy, Swiss energy infrastructure and the future of low-carbon power.</p>
+          <ul style="list-style:none; padding:0; margin: 1rem 0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem; color: var(--text-dim);">
+            <li data-i18n-html="events.tour5.li1">🌐 <strong style="color:var(--text);">Language:</strong> English</li>
+            <li data-i18n-html="events.tour5.li2">👥 <strong style="color:var(--text);">Group size:</strong> 10 people</li>
+            <li data-i18n-html="events.tour5.li3">💰 <strong style="color:var(--text);">Cost:</strong> Free, apéro included</li>
+          </ul>
+          <div style="margin-top: 1.25rem;">
+            <a href="#tour-register" class="btn btn-primary" data-preselect-tour="goesgen-12-dec-2026" data-i18n="events.tourform.registernow">Register now</a>
           </div>
         </div>
 
@@ -239,7 +265,8 @@
             <label data-i18n="events.tourform.tourlabel">Which tour are you registering for? *</label>
             <select name="tour_choice" required>
               <option value="" data-i18n="events.tourform.tourplaceholder">— Select a tour —</option>
-              <option value="limmern-29-aug-2026" data-i18n="events.tour4.optlabel">Limmern Pumped-Storage Power Station — 29 August 2026</option>
+              <option value="limmern-29-aug-2026" data-i18n="events.tour4.optlabel">Limmern Pumped-Storage Power Station — 7 November 2026</option>
+              <option value="goesgen-12-dec-2026" data-i18n="events.tour5.optlabel">Kernkraftwerk Gösgen-Däniken — 12 December 2026</option>
             </select>
           </div>
 
@@ -468,7 +495,8 @@
 
     // Human-readable tour labels for the confirmation modal
     var TOUR_LABELS = {
-      'limmern-29-aug-2026': 'Limmern Pumped-Storage Power Station tour on 29 August 2026'
+      'limmern-29-aug-2026': 'Limmern Pumped-Storage Power Station tour on 7 November 2026',
+      'goesgen-12-dec-2026': 'Kernkraftwerk Gösgen-Däniken tour on 12 December 2026'
     };
 
     // Generic "Register now" preselect — any tour card can add
