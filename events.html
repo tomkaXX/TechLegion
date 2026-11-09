@@ -88,34 +88,6 @@
 
       <div class="h-gallery fade-in">
 
-        <!-- Limmern Pumped-Storage — NEW / APPLICATIONS OPEN -->
-        <div class="card card-highlight" style="position:relative; overflow:hidden;">
-          <span style="
-            position:absolute; top:1rem; right:1rem;
-            background: rgba(77,139,255,0.15);
-            border: 1px solid rgba(77,139,255,0.5);
-            color: var(--accent-glow);
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.tour4.badge">🆕 New · Applications open</span>
-          <div class="card-icon">💧</div>
-          <h4>Limmern Pumped-Storage Power Station – Hike and Guided Tour</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
-            <strong style="color:var(--text);">7 November 2026</strong> · Linthal / Tierfehd, Glarus
-          </p>
-          <p data-i18n="events.tour4.body1">Wanna hike and go on a tour? Join us for a scenic hike followed by a guided visit to the Limmern Pumped-Storage Power Station, one of Switzerland's most impressive engineering achievements.</p>
-          <p style="margin-top:0.6rem;" data-i18n="events.tour4.body2">During the tour, we'll explore the underground power station and learn how the facility stores energy by pumping water from Lake Limmern to Lake Mutt, located 630 metres higher. This innovative pumped-storage system enables electricity to be generated on demand, helping to balance the power grid and support the integration of renewable energy sources.</p>
-          <p style="margin-top:0.6rem;" data-i18n="events.tour4.body3">Tours begin and end in Tierfehd.</p>
-          <ul style="list-style:none; padding:0; margin: 1rem 0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem; color: var(--text-dim);">
-            <li data-i18n-html="events.tour4.li1">🥾 <strong style="color:var(--text);">Hike:</strong> Moderate difficulty</li>
-            <li data-i18n-html="events.tour4.li2">👥 <strong style="color:var(--text);">Minimum group:</strong> 6 people</li>
-            <li data-i18n-html="events.tour4.li3">💰 <strong style="color:var(--text);">Cost:</strong> CHF 50 per person (tour fee paid to Axpo, return gondola tickets and snacks included)</li>
-          </ul>
-          <div style="margin-top: 1.25rem;">
-            <a href="#tour-register" class="btn btn-primary" data-preselect-tour="limmern-29-aug-2026" data-i18n="events.tourform.registernow">Register now</a>
-          </div>
-        </div>
-
         <!-- Gösgen-Däniken (2nd visit) — NEW / APPLICATIONS OPEN -->
         <div class="card card-highlight" style="position:relative; overflow:hidden;">
           <span style="
@@ -140,6 +112,41 @@
           <div style="margin-top: 1.25rem;">
             <a href="#tour-register" class="btn btn-primary" data-preselect-tour="goesgen-12-dec-2026" data-i18n="events.tourform.registernow">Register now</a>
           </div>
+        </div>
+
+        <!-- Limmern Pumped-Storage — COMPLETED -->
+        <div class="card" style="position:relative; overflow:hidden;">
+          <span style="
+            position:absolute; top:1rem; right:1rem;
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.45);
+            color: #4ade80;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.badge.completed">✓ Completed</span>
+          <div class="card-icon">💧</div>
+          <h4>Limmern Pumped-Storage Plant — Axpo</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <strong style="color:var(--text);">7 November 2026</strong> · Linthal / Tierfehd, Glarus
+          </p>
+          <p data-i18n="events.tour4.body">TechLegion visited the Limmern pumped-storage power plant, hidden deep inside the Glarus Alps. Commissioned in 2017, the 1,000 MW station works like a giant battery: water is pumped uphill when power is plentiful and released to generate electricity at peak demand. Since 2021, a 2.2 MW alpine solar plant on the Muttsee dam adds around 3.3 million kWh a year.</p>
+          <!-- Tour photo -->
+          <figure style="margin: 1.25rem 0 0; border-radius: 10px; overflow:hidden; border: 1px solid var(--border);">
+            <img
+              src="assets/img/events/limmern-visit-nov2026.jpeg"
+              alt="TechLegion group at the Limmern Pumped-Storage Power Station, Tierfehd — November 2026"
+              style="width:100%; display:block; object-fit:cover; object-position: center 65%; max-height: 280px;"
+              loading="lazy"
+            />
+            <figcaption style="
+              background: rgba(5,8,22,0.72);
+              color: var(--text-muted);
+              font-size: 0.8rem;
+              padding: 0.5rem 0.85rem;
+              text-align: center;" data-i18n-html="events.tour4.caption">
+              TechLegion community hike and tour at the Limmern Pumped-Storage Power Station, hosted by Axpo · 7 November 2026
+            </figcaption>
+          </figure>
         </div>
 
         <!-- Beznau & Zwillag — COMPLETED -->
@@ -265,7 +272,6 @@
             <label data-i18n="events.tourform.tourlabel">Which tour are you registering for? *</label>
             <select name="tour_choice" required>
               <option value="" data-i18n="events.tourform.tourplaceholder">— Select a tour —</option>
-              <option value="limmern-29-aug-2026" data-i18n="events.tour4.optlabel">Limmern Pumped-Storage Power Station — 7 November 2026</option>
               <option value="goesgen-12-dec-2026" data-i18n="events.tour5.optlabel">Kernkraftwerk Gösgen-Däniken — 12 December 2026</option>
             </select>
           </div>
@@ -495,7 +501,6 @@
 
     // Human-readable tour labels for the confirmation modal
     var TOUR_LABELS = {
-      'limmern-29-aug-2026': 'Limmern Pumped-Storage Power Station tour on 7 November 2026',
       'goesgen-12-dec-2026': 'Kernkraftwerk Gösgen-Däniken tour on 12 December 2026'
     };
 
