@@ -1,0 +1,63 @@
+// =========================================================================
+// TechLegion — Firestore security rules for the member portal
+// Deploy: Firebase console → Firestore Database → Rules → paste → Publish
+//
+// Collections
+//   members/{uid}  one doc per Google account that signed in
+//                  status: pending | approved | rejected
+//                  role:   member | organizer | admin
+//   portal/{id}    events, volunteer opportunities, resources
+//                  (only visible to approved members)
+// =========================================================================
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function myDoc() { return /databases/$(database)/documents/members/$(request.auth.uid); }
+    function me() { return get(myDoc()).data; }
+    function isApproved() { return signedIn() && exists(myDoc()) && me().status == 'approved'; }
+    function isAdmin() { return isApproved() && me().role == 'admin'; }
+
+    match /members/{uid} {
+      // You can read your own record; admins can read everyone.
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      // First login: you may only create your OWN record, as pending member.
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.uid == uid
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.status == 'pending'
+        && request.resource.data.role == 'member'
+        && request.resource.data.keys().hasOnly(
+             ['uid', 'email', 'displayName', 'photoURL', 'status', 'role', 'createdAt', 'lastLogin']);
+
+      // Members may edit only harmless profile fields (never status/role).
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['displayName', 'photoURL', 'lastLogin', 'bio', 'linkedin'])
+        && (!('bio' in request.resource.data) || request.resource.data.bio.size() <= 600)
+        && (!('linkedin' in request.resource.data) || request.resource.data.linkedin.size() <= 200);
+
+      // Admins approve/reject and assign roles (cannot change their own record here).
+      allow update: if isAdmin() && request.auth.uid != uid
+        && request.resource.data.status in ['pending', 'approved', 'rejected']
+        && request.resource.data.role in ['member', 'organizer', 'admin']
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email;
+
+      allow delete: if isAdmin() && request.auth.uid != uid;
+    }
+
+    match /portal/{id} {
+      allow read: if isApproved();
+      allow write: if isAdmin();
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -5,6 +5,20 @@
 (function () {
   'use strict';
 
+  /* ---------- Member login (Firebase) ----------
+     Load auth.js as an ES module from the same folder as this file,
+     so every page gets the login button without editing each page. */
+  (function loadAuth() {
+    try {
+      const me = document.currentScript && document.currentScript.src;
+      if (!me) return;
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.src = new URL('auth.js', me).href;
+      document.head.appendChild(s);
+    } catch (e) {}
+  })();
+
   const STORAGE_KEY = 'tl_lang';
   const DEFAULT_LANG = 'en';
   const SUPPORTED = ['en', 'de', 'fr', 'it', 'ua'];

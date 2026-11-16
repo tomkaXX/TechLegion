@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX5TRZ532B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX5TRZ532B');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member portal — TechLegion Switzerland</title>
+  <meta name="description" content="TechLegion member portal — profile, membership status, events and community resources." />
+  <meta name="theme-color" content="#050816" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta name="robots" content="noindex" />
+  <style>
+    body section { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+    .portal-center { max-width: 560px; margin: 0 auto; text-align: center; }
+    .portal-center .btn { margin-top: 1rem; }
+    .portal-note { color: var(--text-muted); font-size: 0.88rem; margin-top: 1rem; }
+    .portal-muted { color: var(--text-muted); font-size: 0.9rem; margin: 0; word-break: break-all; }
+    .portal-top { align-items: start; }
+    .portal-profile { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem; }
+    .portal-profile h3 { margin: 0 0 0.2rem; }
+    .portal-photo { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-strong); background: var(--bg-elev); display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; color: var(--white); }
+    .portal-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .portal-saved { color: #4ade80; margin-left: 0.75rem; font-size: 0.9rem; }
+    .portal-facts { list-style: none; padding: 0; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .portal-facts li { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem; color: var(--text-dim); }
+    .portal-facts strong { color: var(--text); text-transform: capitalize; }
+    .portal-facts .auth-status { margin: 0; }
+    .portal-section { margin-top: 3rem; }
+    .portal-section h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+    .portal-empty { color: var(--text-muted); font-size: 0.92rem; }
+    .portal-item h4 { margin: 0 0 0.35rem; }
+    .portal-item .portal-date { color: var(--accent-glow); font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; display:block; }
+    .portal-item p { color: var(--text-dim); font-size: 0.92rem; }
+    .portal-item .portal-actions { margin-top: 0.75rem; display:flex; gap: 0.5rem; flex-wrap: wrap; }
+    .portal-item .btn { padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+    .portal-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .portal-tabs button { background: rgba(77,139,255,0.08); border: 1px solid var(--border); color: var(--text); padding: 0.45rem 0.9rem; border-radius: 8px; cursor: pointer; font-size: 0.88rem; }
+    .portal-tabs button.active { background: rgba(77,139,255,0.25); border-color: var(--accent); color: var(--white); }
+    .portal-table-wrap { padding: 0; overflow-x: auto; }
+    .portal-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .portal-table th, .portal-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .portal-table th { color: var(--text-muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .portal-table td small { display:block; color: var(--text-muted); }
+    .portal-table select { background: var(--bg-elev); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.4rem; }
+    .portal-table .row-actions { display:flex; gap: 0.4rem; justify-content: flex-end; white-space: nowrap; }
+    .portal-table .row-actions button { padding: 0.35rem 0.7rem; font-size: 0.8rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--border-strong); background: transparent; color: var(--text); }
+    .portal-table .row-actions .ok { border-color: rgba(34,197,94,0.6); color: #4ade80; }
+    .portal-table .row-actions .no { border-color: rgba(255,91,110,0.6); color: #ff8a96; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="TechLegion logo" />
+        <span>Tech<span class="accent">Legion</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="certification-school.html" data-i18n="nav.programs">Programs</a></li>
+          <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-label="Change language">
+            <span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Members</span>
+        <h1>Member portal</h1>
+        <p>Your TechLegion profile, membership status, events, volunteer opportunities and community resources.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+
+      <!-- Loading -->
+      <div class="portal-state" data-state="loading">
+        <div class="card portal-center"><p>Loading…</p></div>
+      </div>
+
+      <!-- Login not configured yet -->
+      <div class="portal-state" data-state="disabled" hidden>
+        <div class="card portal-center">
+          <div class="card-icon">🛠️</div>
+          <h3>Member login is coming soon</h3>
+          <p>The member portal is being set up. Please check back shortly.</p>
+        </div>
+      </div>
+
+      <!-- Signed out -->
+      <div class="portal-state" data-state="signedout" hidden>
+        <div class="card portal-center">
+          <div class="card-icon">🔐</div>
+          <h3>Sign in to the member portal</h3>
+          <p>Use your Google account. New accounts are reviewed by the TechLegion team before access is granted.</p>
+          <button type="button" class="btn btn-primary" data-action="signin">Sign in with Google</button>
+          <p class="portal-note">Not a member yet? <a href="membership.html">See membership options</a>.</p>
+        </div>
+      </div>
+
+      <!-- Pending -->
+      <div class="portal-state" data-state="pending" hidden>
+        <div class="card portal-center">
+          <div class="card-icon">⏳</div>
+          <h3>Your account is awaiting approval</h3>
+          <p>Thanks for signing in, <strong data-bind="name"></strong>. The TechLegion team will check your membership and approve your account. You'll get access to the portal as soon as it's approved.</p>
+          <p class="portal-note">Signed in as <span data-bind="email"></span>. Not a member yet? <a href="membership.html">Apply for membership</a>.</p>
+        </div>
+      </div>
+
+      <!-- Rejected -->
+      <div class="portal-state" data-state="rejected" hidden>
+        <div class="card portal-center">
+          <div class="card-icon">🚫</div>
+          <h3>Access restricted</h3>
+          <p>Your account (<span data-bind="email"></span>) doesn't have access to the member portal. If you think this is a mistake, please <a href="contact.html">contact us</a>.</p>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="portal-state" data-state="error" hidden>
+        <div class="card portal-center">
+          <div class="card-icon">⚠️</div>
+          <h3>Something went wrong</h3>
+          <p>We couldn't load your membership. Please reload the page or <a href="contact.html">contact us</a>.</p>
+        </div>
+      </div>
+
+      <!-- Approved: dashboard -->
+      <div class="portal-state" data-state="approved" hidden>
+        <div class="grid grid-2 portal-top">
+          <!-- Profile -->
+          <div class="card">
+            <div class="portal-profile">
+              <div class="portal-photo" data-bind-photo></div>
+              <div>
+                <h3 data-bind="name"></h3>
+                <p class="portal-muted" data-bind="email"></p>
+              </div>
+            </div>
+            <form id="profile-form" class="form" novalidate>
+              <div class="form-group">
+                <label>Short bio</label>
+                <textarea name="bio" rows="3" maxlength="600" placeholder="What do you work on? What are you interested in?"></textarea>
+              </div>
+              <div class="form-group">
+                <label>LinkedIn URL</label>
+                <input type="url" name="linkedin" maxlength="200" placeholder="https://www.linkedin.com/in/…" />
+              </div>
+              <button type="submit" class="btn btn-ghost">Save profile</button>
+              <span class="portal-saved" hidden>✓ Saved</span>
+            </form>
+          </div>
+
+          <!-- Membership status -->
+          <div class="card">
+            <h3>Membership status</h3>
+            <ul class="portal-facts">
+              <li><span>Status</span><strong class="auth-status auth-status--approved">Approved</strong></li>
+              <li><span>Role</span><strong data-bind="role"></strong></li>
+              <li><span>Member since</span><strong data-bind="since"></strong></li>
+            </ul>
+            <p class="portal-note">Questions about your membership? <a href="contact.html">Contact us</a>.</p>
+          </div>
+        </div>
+
+        <div class="portal-section">
+          <h2>📅 Events &amp; hackathons</h2>
+          <div class="grid grid-3" data-list="event"></div>
+        </div>
+        <div class="portal-section">
+          <h2>🤝 Volunteer opportunities</h2>
+          <div class="grid grid-3" data-list="volunteer"></div>
+        </div>
+        <div class="portal-section">
+          <h2>📚 Community resources</h2>
+          <div class="grid grid-3" data-list="resource"></div>
+        </div>
+
+        <!-- Admin panel (role = admin only) -->
+        <div class="portal-section" data-admin hidden>
+          <h2>🛡️ Admin — members</h2>
+          <div class="portal-tabs">
+            <button type="button" class="active" data-filter="pending">Pending</button>
+            <button type="button" data-filter="approved">Approved</button>
+            <button type="button" data-filter="rejected">Rejected</button>
+            <button type="button" data-filter="all">All</button>
+          </div>
+          <div class="card portal-table-wrap">
+            <table class="portal-table">
+              <thead><tr><th>Member</th><th>Signed up</th><th>Status</th><th>Role</th><th></th></tr></thead>
+              <tbody data-members></tbody>
+            </table>
+          </div>
+
+          <h2 style="margin-top:2.5rem;">🛡️ Admin — portal content</h2>
+          <div class="card">
+            <form id="item-form" class="form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Section *</label>
+                  <select name="type" required>
+                    <option value="event">Events &amp; hackathons</option>
+                    <option value="volunteer">Volunteer opportunities</option>
+                    <option value="resource">Community resources</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Date (optional)</label>
+                  <input type="date" name="date" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Title *</label>
+                <input type="text" name="title" required maxlength="140" />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" rows="2" maxlength="600"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Link (optional)</label>
+                <input type="url" name="url" maxlength="300" placeholder="https://…" />
+              </div>
+              <button type="submit" class="btn btn-primary">Add to portal</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="TechLegion" />
+          <p data-i18n="footer.mission">Building Switzerland's next generation of innovators through technology, education, startups, and space innovation.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/tech-legion-ch" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/techlegions/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://chat.whatsapp.com/HoHyTAf3OfJ57CHBEDqenl" target="_blank" rel="noopener" aria-label="WhatsApp group">💬</a>
+            <a href="mailto:community@techlegion.ch" aria-label="Email">✉</a>
+          </div>
+        </div>
+        <div>
+          <h5 data-i18n="footer.explore">Explore</h5>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="certification-school.html" data-i18n="nav.programs">Programs</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.community">Community</h5>
+          <ul>
+            <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+            <li><a href="ambassadors.html">Ambassadors</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">Partners</a></li>
+            <li><a href="nominate.html" data-i18n="nav.nominate">Nominate</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a></li>
+            <li><a href="code-conduct.html">Code of Conduct</a></li>
+            <li><a href="content.html">Content Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 TechLegion. All rights reserved.</span>
+        <span><span class="swiss-badge">CH</span> Made in Switzerland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+  /* ---- Member portal (uses window.TLAuth from assets/js/auth.js) ---- */
+  (function () {
+    'use strict';
+    var ROLES = ['member', 'organizer', 'admin'];
+    var adminFilter = 'pending';
+    var loadedFor = null;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
+    function fmtDate(v) {
+      if (!v) return '';
+      var d = v.toDate ? v.toDate() : new Date(v);
+      return isNaN(d) ? '' : d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+    function show(name) {
+      document.querySelectorAll('.portal-state').forEach(function (el) {
+        el.hidden = el.getAttribute('data-state') !== name;
+      });
+    }
+    function bind(user, member) {
+      var name = (member && member.displayName) || user.displayName || user.email;
+      document.querySelectorAll('[data-bind="name"]').forEach(function (el) { el.textContent = name; });
+      document.querySelectorAll('[data-bind="email"]').forEach(function (el) { el.textContent = user.email || ''; });
+      document.querySelectorAll('[data-bind="role"]').forEach(function (el) { el.textContent = (member && member.role) || 'member'; });
+      document.querySelectorAll('[data-bind="since"]').forEach(function (el) { el.textContent = fmtDate(member && (member.approvedAt || member.createdAt)) || '—'; });
+      document.querySelectorAll('[data-bind-photo]').forEach(function (el) {
+        el.innerHTML = user.photoURL
+          ? '<img src="' + esc(user.photoURL) + '" alt="" referrerpolicy="no-referrer" />'
+          : esc(String(name || '?').charAt(0).toUpperCase());
+      });
+    }
+
+    /* ---------- Portal content (events, volunteering, resources) ---------- */
+    async function loadItems(isAdmin) {
+      var A = window.TLAuth, fs = A.fs;
+      var lists = {};
+      document.querySelectorAll('[data-list]').forEach(function (el) { lists[el.getAttribute('data-list')] = el; el.innerHTML = ''; });
+      var items = [];
+      try {
+        var snap = await fs.getDocs(fs.collection(A.db, 'portal'));
+        snap.forEach(function (d) { items.push(Object.assign({ id: d.id }, d.data())); });
+      } catch (e) { console.error(e); }
+      items.sort(function (a, b) { return String(a.date || '9999').localeCompare(String(b.date || '9999')); });
+      items.forEach(function (it) {
+        var box = lists[it.type]; if (!box) return;
+        var url = safeUrl(it.url);
+        var card = document.createElement('div');
+        card.className = 'card portal-item';
+        card.innerHTML =
+          (it.date ? '<span class="portal-date">' + esc(fmtDate(it.date)) + '</span>' : '') +
+          '<h4>' + esc(it.title) + '</h4>' +
+          (it.description ? '<p>' + esc(it.description) + '</p>' : '') +
+          '<div class="portal-actions">' +
+            (url ? '<a class="btn btn-ghost" href="' + esc(url) + '" target="_blank" rel="noopener">Open ↗</a>' : '') +
+            (isAdmin ? '<button type="button" class="btn btn-outline" data-del="' + esc(it.id) + '">Delete</button>' : '') +
+          '</div>';
+        box.appendChild(card);
+      });
+      Object.keys(lists).forEach(function (k) {
+        if (!lists[k].children.length) lists[k].innerHTML = '<p class="portal-empty">Nothing here yet — check back soon.</p>';
+      });
+      document.querySelectorAll('[data-del]').forEach(function (b) {
+        b.addEventListener('click', async function () {
+          if (!confirm('Delete this item from the portal?')) return;
+          await fs.deleteDoc(fs.doc(A.db, 'portal', b.getAttribute('data-del')));
+          loadItems(true);
+        });
+      });
+    }
+
+    /* ---------- Admin: members ---------- */
+    async function loadMembers() {
+      var A = window.TLAuth, fs = A.fs;
+      var tbody = document.querySelector('[data-members]');
+      tbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
+      var rows = [];
+      try {
+        var snap = await fs.getDocs(fs.query(fs.collection(A.db, 'members'), fs.orderBy('createdAt', 'desc')));
+        snap.forEach(function (d) { rows.push(Object.assign({ id: d.id }, d.data())); });
+      } catch (e) { console.error(e); tbody.innerHTML = '<tr><td colspan="5">Could not load members.</td></tr>'; return; }
+      if (adminFilter !== 'all') rows = rows.filter(function (r) { return r.status === adminFilter; });
+      if (!rows.length) { tbody.innerHTML = '<tr><td colspan="5" class="portal-empty">No members in this list.</td></tr>'; return; }
+      var me = A.state.user.uid;
+      tbody.innerHTML = rows.map(function (r) {
+        var opts = ROLES.map(function (ro) { return '<option value="' + ro + '"' + (r.role === ro ? ' selected' : '') + '>' + ro + '</option>'; }).join('');
+        var self = r.id === me;
+        return '<tr data-uid="' + esc(r.id) + '">' +
+          '<td><strong>' + esc(r.displayName || '—') + '</strong><small>' + esc(r.email) + '</small></td>' +
+          '<td>' + esc(fmtDate(r.createdAt)) + '</td>' +
+          '<td><span class="auth-status auth-status--' + esc(r.status) + '">' + esc(r.status) + '</span></td>' +
+          '<td><select data-role' + (self ? ' disabled' : '') + '>' + opts + '</select></td>' +
+          '<td><div class="row-actions">' + (self ? '<small>you</small>' :
+            (r.status !== 'approved' ? '<button type="button" class="ok" data-set="approved">Approve</button>' : '') +
+            (r.status !== 'rejected' ? '<button type="button" class="no" data-set="rejected">Reject</button>' : '')) +
+          '</div></td></tr>';
+      }).join('');
+      tbody.querySelectorAll('[data-set]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var uid = b.closest('tr').getAttribute('data-uid');
+          var st = b.getAttribute('data-set');
+          var patch = { status: st, reviewedAt: fs.serverTimestamp(), reviewedBy: me };
+          if (st === 'approved') patch.approvedAt = fs.serverTimestamp();
+          updateMember(uid, patch);
+        });
+      });
+      tbody.querySelectorAll('[data-role]').forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          var uid = sel.closest('tr').getAttribute('data-uid');
+          if (sel.value === 'admin' && !confirm('Give this person full admin rights?')) { loadMembers(); return; }
+          updateMember(uid, { role: sel.value, reviewedAt: fs.serverTimestamp(), reviewedBy: me });
+        });
+      });
+    }
+    async function updateMember(uid, patch) {
+      var A = window.TLAuth, fs = A.fs;
+      try { await fs.updateDoc(fs.doc(A.db, 'members', uid), patch); }
+      catch (e) { console.error(e); alert('Update failed: ' + (e.code || e.message)); }
+      loadMembers();
+    }
+
+    function setupOnce(isAdmin) {
+      var A = window.TLAuth, fs = A.fs;
+      var pf = document.getElementById('profile-form');
+      var m = A.state.member || {};
+      pf.bio.value = m.bio || '';
+      pf.linkedin.value = m.linkedin || '';
+      pf.onsubmit = async function (e) {
+        e.preventDefault();
+        var li = pf.linkedin.value.trim();
+        if (li && !safeUrl(li)) { alert('Please enter a full URL starting with https://'); return; }
+        try {
+          await fs.updateDoc(fs.doc(A.db, 'members', A.state.user.uid), { bio: pf.bio.value.trim().slice(0, 600), linkedin: li });
+          var ok = pf.querySelector('.portal-saved'); ok.hidden = false; setTimeout(function () { ok.hidden = true; }, 2500);
+        } catch (err) { console.error(err); alert('Could not save your profile.'); }
+      };
+
+      if (!isAdmin) return;
+      document.querySelector('[data-admin]').hidden = false;
+      document.querySelectorAll('[data-filter]').forEach(function (b) {
+        b.onclick = function () {
+          document.querySelectorAll('[data-filter]').forEach(function (x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          adminFilter = b.getAttribute('data-filter');
+          loadMembers();
+        };
+      });
+      var itf = document.getElementById('item-form');
+      itf.onsubmit = async function (e) {
+        e.preventDefault();
+        var title = itf.elements['title'].value.trim();
+        var url = itf.url.value.trim();
+        if (!title) { itf.elements['title'].focus(); return; }
+        if (url && !safeUrl(url)) { alert('Link must start with https://'); return; }
+        try {
+          await fs.addDoc(fs.collection(A.db, 'portal'), {
+            type: itf.type.value, title: title,
+            description: itf.description.value.trim(),
+            url: url, date: itf.date.value || '',
+            createdAt: fs.serverTimestamp(), createdBy: A.state.user.uid
+          });
+          itf.reset();
+          loadItems(true);
+        } catch (err) { console.error(err); alert('Could not add item.'); }
+      };
+      loadMembers();
+    }
+
+    function render(s) {
+      if (!s.ready) return show('loading');
+      if (!s.enabled) return show('disabled');
+      if (!s.user) { loadedFor = null; return show('signedout'); }
+      if (!s.member) return show('loading');
+      bind(s.user, s.member);
+      var st = s.member.status;
+      if (st !== 'approved') return show(st === 'rejected' ? 'rejected' : 'pending');
+      show('approved');
+      if (loadedFor === s.user.uid) return;
+      loadedFor = s.user.uid;
+      var isAdmin = s.member.role === 'admin';
+      setupOnce(isAdmin);
+      loadItems(isAdmin);
+    }
+
+    document.querySelectorAll('[data-action="signin"]').forEach(function (b) {
+      b.addEventListener('click', function () { window.TLAuth && window.TLAuth.signIn().catch(function () {}); });
+    });
+    document.addEventListener('tl-auth', function (e) { render(e.detail); });
+    if (window.TLAuth && window.TLAuth.state) render(window.TLAuth.state);
+    setTimeout(function () { if (!window.TLAuth) show('error'); }, 15000);
+  })();
+  </script>
+</body>
+</html>
