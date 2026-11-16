@@ -88,16 +88,27 @@
 
       <div class="h-gallery fade-in">
 
-        <!-- Gösgen-Däniken (2nd visit) — NEW / APPLICATIONS OPEN -->
-        <div class="card card-highlight" style="position:relative; overflow:hidden;">
+        <!-- Gösgen-Däniken (2nd visit) — REGISTRATION CLOSED -->
+        <div class="card" style="position:relative; overflow:hidden; border-color: rgba(150,150,150,0.35); opacity: 0.75;">
+          <!-- Closed banner -->
+          <div style="
+            background: rgba(150,150,150,0.12);
+            border-bottom: 1px solid rgba(150,150,150,0.35);
+            color: #9ca3af;
+            font-size: 0.78rem; font-weight: 600;
+            padding: 0.4rem 1rem;
+            margin: -1.75rem -1.75rem 1.25rem;
+            text-align: center;" data-i18n="events.badge.closed.banner">
+            🔒 Registration closed
+          </div>
           <span style="
-            position:absolute; top:1rem; right:1rem;
-            background: rgba(77,139,255,0.15);
-            border: 1px solid rgba(77,139,255,0.5);
-            color: var(--accent-glow);
+            position:absolute; top:3.2rem; right:1rem;
+            background: rgba(150,150,150,0.15);
+            border: 1px solid rgba(150,150,150,0.45);
+            color: #9ca3af;
             font-size: 0.72rem; font-weight: 700;
             letter-spacing: 0.12em; text-transform: uppercase;
-            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.tour5.badge">🆕 New · Applications open</span>
+            padding: 0.3rem 0.75rem; border-radius: 999px;" data-i18n="events.badge.closed.pill">Registration closed</span>
           <div class="card-icon">⚛️</div>
           <h4>Kernkraftwerk Gösgen-Däniken</h4>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
@@ -109,9 +120,6 @@
             <li data-i18n-html="events.tour5.li2">👥 <strong style="color:var(--text);">Group size:</strong> 10 people</li>
             <li data-i18n-html="events.tour5.li3">💰 <strong style="color:var(--text);">Cost:</strong> Free, apéro included</li>
           </ul>
-          <div style="margin-top: 1.25rem;">
-            <a href="#tour-register" class="btn btn-primary" data-preselect-tour="goesgen-12-dec-2026" data-i18n="events.tourform.registernow">Register now</a>
-          </div>
         </div>
 
         <!-- Limmern Pumped-Storage — COMPLETED -->
@@ -259,6 +267,8 @@
   </section>
 
   <!-- ===== STUDY TOUR REGISTRATION FORM ===== -->
+  <!-- Hidden: no study tours currently open for registration.
+       To reopen, add an <option> for the new tour and remove this comment wrapper.
   <section id="tour-register" style="padding-top:0;">
     <div class="container container-narrow">
       <div class="form-card fade-in">
@@ -272,7 +282,6 @@
             <label data-i18n="events.tourform.tourlabel">Which tour are you registering for? *</label>
             <select name="tour_choice" required>
               <option value="" data-i18n="events.tourform.tourplaceholder">— Select a tour —</option>
-              <option value="goesgen-12-dec-2026" data-i18n="events.tour5.optlabel">Kernkraftwerk Gösgen-Däniken — 12 December 2026</option>
             </select>
           </div>
 
@@ -330,6 +339,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- WhatsApp communities — open to everyone, no membership required -->
   <section id="whatsapp">
